@@ -22,7 +22,9 @@ import {
   CheckCircle2,
   AlertTriangle,
   Play,
-  X
+  X,
+  Sparkles,
+  Info
 } from 'lucide-react'
 import { GlassPanel, CommandButton, StatusBadge, HolographicBorder } from '@/components/hgi/design-system'
 
@@ -41,7 +43,8 @@ export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   
-  // Simulation State for Judge Mode
+  // Mission Builder & Judge Mode simulation states
+  const [customGoal, setCustomGoal] = useState('')
   const [simActive, setSimActive] = useState(false)
   const [simStage, setSimStage] = useState<'idle' | 'intent' | 'planning' | 'routing' | 'execution' | 'governance' | 'memory' | 'completed'>('idle')
   const [simLogs, setSimLogs] = useState<string[]>([])
@@ -52,10 +55,14 @@ export default function LandingPage() {
   const [passcode, setPasscode] = useState('')
   const [passcodeError, setPasscodeError] = useState('')
 
-  const handleStartSimulation = () => {
+  const handleStartSimulation = (goalText: string) => {
+    setCustomGoal(goalText)
     setSimActive(true)
     setSimStage('intent')
-    setSimLogs(['[SYSTEM] Initializing HGI Session...', '[CENSA] Listening for user intent goal...'])
+    setSimLogs([
+      '[SYSTEM] Initializing HGI Session...',
+      `[CENSA] Parsing goal objective: "${goalText}"`
+    ])
     setProgress(12)
     
     // Smoothly scroll to the simulation section
@@ -74,37 +81,61 @@ export default function LandingPage() {
     if (simStage === 'intent') {
       timer = setTimeout(() => {
         setSimStage('planning')
-        setSimLogs(prev => [...prev, '[CENSA] Goal: "Optimize multi-agent supply chain pipelines"', '[CENSA] Generating Task Directed Acyclic Graph (DAG)...'])
+        setSimLogs(prev => [
+          ...prev, 
+          '[CENSA] Intent classified: AUTOMATION & OPTIMIZATION', 
+          '[CENSA] Compiling Task Directed Acyclic Graph (DAG)...'
+        ])
         setProgress(28)
       }, 1500)
     } else if (simStage === 'planning') {
       timer = setTimeout(() => {
         setSimStage('routing')
-        setSimLogs(prev => [...prev, '[CENSA] Task DAG compiled: 12 stages detected.', '[REGISTRY] Matching agent capabilities... SupportArchitect & CodeSynth loaded.'])
-        setProgress(45)
+        setSimLogs(prev => [
+          ...prev, 
+          '[CENSA] Task DAG successfully compiled with 5 parallel steps.', 
+          '[REGISTRY] Selecting active specialist agents: CodeSynth & SupportArchitect.'
+        ])
+        setProgress(48)
       }, 1500)
     } else if (simStage === 'routing') {
       timer = setTimeout(() => {
         setSimStage('execution')
-        setSimLogs(prev => [...prev, '[PANANI X] Allocating secure Node VM execution isolates...', '[PANANI X] Executing script tool block...'])
-        setProgress(60)
+        setSimLogs(prev => [
+          ...prev, 
+          '[PANANI X] Routing to local vLLM / AMD Instinct MI300X cluster.', 
+          '[PANANI X] Initializing secure Node VM sandbox isolates for tool executions...'
+        ])
+        setProgress(65)
       }, 1500)
     } else if (simStage === 'execution') {
       timer = setTimeout(() => {
         setSimStage('governance')
-        setSimLogs(prev => [...prev, '[KAVACHA] Pre-scan validation rule: role neq banned - PASS', '[KAVACHA] Supply-chain safety checks complete. Writing economic cost ledger...'])
-        setProgress(78)
+        setSimLogs(prev => [
+          ...prev, 
+          '[KAVACHA] Pre-scan audit complete. Shell command restriction check: PASS', 
+          '[KAVACHA] Cost ledger tracking logged. Dynamic resource allocation verified.'
+        ])
+        setProgress(80)
       }, 1500)
     } else if (simStage === 'governance') {
       timer = setTimeout(() => {
         setSimStage('memory')
-        setSimLogs(prev => [...prev, '[MEMORY] Storing cross-session episodic embeddings (pgvector)...', '[MEMORY] Semantic indexing (Qdrant) completed successfully.'])
+        setSimLogs(prev => [
+          ...prev, 
+          '[MEMORY] Storing cross-session episodic embeddings (pgvector).', 
+          '[MEMORY] Semantic context collections synchronized (Qdrant).'
+        ])
         setProgress(92)
       }, 1500)
     } else if (simStage === 'memory') {
       timer = setTimeout(() => {
         setSimStage('completed')
-        setSimLogs(prev => [...prev, '[SYSTEM] Run completed in 8.4s. All systems NOMINAL.', '[SYSTEM] Finalizing output payload...'])
+        setSimLogs(prev => [
+          ...prev, 
+          '[SYSTEM] Work complete. Telemetry status: NOMINAL.', 
+          '[SYSTEM] Presentation workflow output generated.'
+        ])
         setProgress(100)
       }, 1500)
     }
@@ -126,6 +157,14 @@ export default function LandingPage() {
     } else {
       setPasscodeError('Invalid Passcode. Hint: Try AMD-GOLD')
     }
+  }
+
+  const handleResetSim = () => {
+    setCustomGoal('')
+    setSimActive(false)
+    setSimStage('idle')
+    setSimLogs([])
+    setProgress(0)
   }
 
   return (
@@ -278,7 +317,7 @@ export default function LandingPage() {
               Launch Experience
               <ArrowRight className="w-4 h-4 ml-2 inline" />
             </CommandButton>
-            <CommandButton variant="gold" size="lg" onClick={handleStartSimulation}>
+            <CommandButton variant="gold" size="lg" onClick={() => handleStartSimulation('Optimize multi-agent supply chain pipelines')}>
               Watch Live Demo
               <Play className="w-4 h-4 ml-2 inline" />
             </CommandButton>
@@ -692,7 +731,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 9 — Judge Mode (Interactive Simulation Console) */}
+      {/* CHAPTER 9 — Judge Mode & Mission Builder (Unified Interactive Console) */}
       <section id="chapter-9" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           <motion.p
@@ -702,7 +741,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 9 — JUDGE EXPERIENCE
+            CHAPTER 9 — MISSION BUILDER & JUDGE MODE
           </motion.p>
           
           <motion.h2
@@ -712,7 +751,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-center"
           >
-            Launch Live Intelligence
+            Guided Intelligence Demonstration
           </motion.h2>
           
           <motion.p
@@ -722,97 +761,178 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-muted-foreground mb-12 text-center max-w-xl text-sm"
           >
-            Experience the automated coordination pipeline. Watch the operating system plan, secure, audit, and execute in real time.
+            Choose a sample mission below or type your custom objective. Watch HGI compile the workflow and execute the agent swarms.
           </motion.p>
 
-          <HolographicBorder className="w-full max-w-3xl overflow-hidden mb-8">
-            <GlassPanel variant="strong" className="p-6 relative min-h-[400px] flex flex-col">
-              
-              {/* Top status bar */}
-              <div className="flex items-center justify-between border-b border-border/10 pb-4 mb-4">
-                <div className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full ${simActive ? 'bg-primary animate-ping' : 'bg-muted-foreground'}`} />
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">
-                    {simActive ? `RUNNING: ${simStage}` : 'CONSOLE STANDBY'}
-                  </span>
+          {/* Quick Sample Action Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mb-8">
+            {[
+              { label: 'Optimize supply chain routing', icon: Sparkles },
+              { label: 'Audit NestJS packages for security vulnerabilities', icon: Shield },
+              { label: 'Generate semantic vector indexing templates', icon: Database }
+            ].map((card, i) => (
+              <GlassPanel 
+                key={i} 
+                onClick={() => !simActive && handleStartSimulation(card.label)}
+                className={`p-4 border border-primary/20 text-left cursor-pointer hover:border-primary/50 transition-colors ${simActive ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <card.icon className="w-4 h-4 text-primary" />
+                  <span className="text-[10px] font-mono text-muted-foreground">SAMPLE OBJECTIVE</span>
                 </div>
-                <div className="text-xs font-mono text-muted-foreground">PROGRESS: {progress}%</div>
-              </div>
+                <p className="text-xs font-semibold">{card.label}</p>
+              </GlassPanel>
+            ))}
+          </div>
 
-              {/* Progress Bar */}
-              <div className="w-full h-1 bg-border/20 rounded-full mb-6 overflow-hidden">
-                <motion.div 
-                  className="h-full bg-primary" 
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progress}%` }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-
-              {/* Main workflow content area */}
-              <div className="flex-1 grid md:grid-cols-3 gap-6">
-                
-                {/* Steps visual track */}
-                <div className="md:col-span-1 border-r border-border/10 pr-4 flex flex-col gap-3 justify-center">
-                  {[
-                    { id: 'intent', label: '1. Intent Parse' },
-                    { id: 'planning', label: '2. DAG Compilation' },
-                    { id: 'routing', label: '3. Registry Routing' },
-                    { id: 'execution', label: '4. Sandbox Run' },
-                    { id: 'governance', label: '5. Policy Audit' },
-                    { id: 'memory', label: '6. Vault Sync' }
-                  ].map((s) => {
-                    const isPassed = ['completed', 'memory', 'governance', 'execution', 'routing', 'planning', 'intent'].indexOf(simStage) > ['completed', 'memory', 'governance', 'execution', 'routing', 'planning', 'intent'].indexOf(s.id as any)
-                    const isActive = simStage === s.id
-                    return (
-                      <div key={s.id} className="flex items-center gap-2 text-xs font-mono">
-                        {isPassed ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                        ) : isActive ? (
-                          <div className="w-4 h-4 rounded-full border border-primary animate-pulse flex items-center justify-center">
-                            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                          </div>
-                        ) : (
-                          <div className="w-4 h-4 rounded-full border border-border/30" />
-                        )}
-                        <span className={isActive ? 'text-primary font-bold' : isPassed ? 'text-emerald-400' : 'text-muted-foreground'}>
-                          {s.label}
+          <HolographicBorder className="w-full max-w-3xl overflow-hidden mb-8">
+            <GlassPanel variant="strong" className="p-6 relative min-h-[440px] flex flex-col">
+              
+              <AnimatePresence mode="wait">
+                {simStage === 'idle' ? (
+                  <motion.div 
+                    key="input-form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="flex-1 flex flex-col justify-center gap-6"
+                  >
+                    <div className="flex flex-col gap-2">
+                      <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+                        Enter Custom Business Goal
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Optimize multi-agent supply chain pipelines for global routing..."
+                        value={customGoal}
+                        onChange={(e) => setCustomGoal(e.target.value)}
+                        className="w-full bg-black/40 border border-border/20 rounded px-3 py-3 text-sm focus:outline-none focus:border-primary/50 text-foreground"
+                      />
+                    </div>
+                    <CommandButton 
+                      variant="primary" 
+                      size="lg" 
+                      glow 
+                      onClick={() => handleStartSimulation(customGoal || 'Optimize multi-agent supply chain pipelines')}
+                    >
+                      Initialize & Execute Simulation
+                      <Play className="w-4 h-4 ml-2 inline" />
+                    </CommandButton>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key="sim-track"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex-1 flex flex-col gap-6"
+                  >
+                    {/* Top status bar */}
+                    <div className="flex items-center justify-between border-b border-border/10 pb-4">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider">
+                          {simStage === 'completed' ? 'EXECUTION COMPLETED' : `STAGE: ${simStage.toUpperCase()}`}
                         </span>
                       </div>
-                    )
-                  })}
-                </div>
+                      <div className="text-xs font-mono text-muted-foreground">PROGRESS: {progress}%</div>
+                    </div>
 
-                {/* Log terminal output */}
-                <div className="md:col-span-2 bg-black/40 rounded p-4 font-mono text-[11px] leading-relaxed overflow-y-auto max-h-[250px] flex flex-col gap-1.5">
-                  <AnimatePresence>
-                    {simLogs.map((log, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className={log.startsWith('[SYSTEM]') ? 'text-yellow-500' : log.startsWith('[KAVACHA]') ? 'text-emerald-400' : 'text-muted-foreground'}
+                    {/* Progress Bar */}
+                    <div className="w-full h-1 bg-border/20 rounded-full overflow-hidden">
+                      <motion.div 
+                        className="h-full bg-primary" 
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </div>
+
+                    {/* Main workflow content area */}
+                    <div className="flex-1 grid md:grid-cols-3 gap-6">
+                      
+                      {/* Live Status Overlay Checklist */}
+                      <div className="md:col-span-1 border-r border-border/10 pr-4 flex flex-col gap-3 justify-center text-left">
+                        {[
+                          { id: 'intent', label: 'Goal Understood' },
+                          { id: 'planning', label: 'Workflow Planned' },
+                          { id: 'routing', label: 'Model Selected (AMD)' },
+                          { id: 'execution', label: 'Agents Coordinating' },
+                          { id: 'governance', label: 'Governance Passed' },
+                          { id: 'memory', label: 'Memory Retrieved' }
+                        ].map((s) => {
+                          const isPassed = ['completed', 'memory', 'governance', 'execution', 'routing', 'planning', 'intent'].indexOf(simStage) > ['completed', 'memory', 'governance', 'execution', 'routing', 'planning', 'intent'].indexOf(s.id as any)
+                          const isActive = simStage === s.id
+                          return (
+                            <div key={s.id} className="flex items-center gap-2 text-xs font-mono">
+                              {isPassed ? (
+                                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                              ) : isActive ? (
+                                <div className="w-4 h-4 rounded-full border border-primary animate-pulse flex items-center justify-center">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                </div>
+                              ) : (
+                                <div className="w-4 h-4 rounded-full border border-border/30" />
+                              )}
+                              <span className={isActive ? 'text-primary font-bold' : isPassed ? 'text-emerald-400' : 'text-muted-foreground'}>
+                                {s.label}
+                              </span>
+                            </div>
+                          )
+                        })}
+                      </div>
+
+                      {/* Log terminal output */}
+                      <div className="md:col-span-2 bg-black/40 rounded p-4 font-mono text-[10px] leading-relaxed overflow-y-auto max-h-[220px] flex flex-col gap-1 text-left">
+                        {simLogs.map((log, idx) => (
+                          <div
+                            key={idx}
+                            className={log.startsWith('[SYSTEM]') ? 'text-yellow-500' : log.startsWith('[KAVACHA]') ? 'text-emerald-400' : 'text-muted-foreground'}
+                          >
+                            {log}
+                          </div>
+                        ))}
+                        {simStage !== 'completed' && (
+                          <span className="text-primary animate-pulse">▋</span>
+                        )}
+                      </div>
+
+                    </div>
+
+                    {/* Explanatory completion state */}
+                    {simStage === 'completed' && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-4 border border-emerald-500/20 bg-emerald-500/5 rounded p-4 flex flex-col gap-4 text-left"
                       >
-                        {log}
+                        <h3 className="font-bold text-sm text-emerald-400 flex items-center gap-2">
+                          <CheckCircle2 className="w-4 h-4" />
+                          Enterprise Response Generated (Simulated Run)
+                        </h3>
+                        <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-mono border-y border-border/10 py-2">
+                          <div>
+                            <p className="text-muted-foreground">Tokens Saved</p>
+                            <p className="text-xs font-bold text-foreground">~68% via pxpipe</p>
+                          </div>
+                          <div>
+                            <p className="text-muted-foreground">Failover latency</p>
+                            <p className="text-xs font-bold text-foreground">&lt;500ms</p>
+                          </div>
+                          <div>
+                            <p className="text-muted-foreground">Active Hardware</p>
+                            <p className="text-xs font-bold text-foreground">Instinct MI300X</p>
+                          </div>
+                        </div>
+                        <div className="flex justify-end gap-3">
+                          <CommandButton variant="subtle" size="sm" onClick={handleResetSim}>
+                            Reset Console
+                          </CommandButton>
+                        </div>
                       </motion.div>
-                    ))}
-                  </AnimatePresence>
-                  {simActive && simStage !== 'completed' && (
-                    <span className="text-primary animate-pulse">▋</span>
-                  )}
-                </div>
-
-              </div>
-
-              {/* Start Trigger CTA */}
-              {!simActive && (
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center rounded-lg">
-                  <CommandButton variant="primary" size="lg" glow onClick={handleStartSimulation}>
-                    Launch Live Intelligence
-                    <Play className="w-4 h-4 ml-2 inline" />
-                  </CommandButton>
-                </div>
-              )}
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
             </GlassPanel>
           </HolographicBorder>
