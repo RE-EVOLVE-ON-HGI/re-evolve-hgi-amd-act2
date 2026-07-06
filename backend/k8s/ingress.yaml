@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hgi-ingress
+  namespace: hgi
+  annotations: { nginx.ingress.kubernetes.io/proxy-read-timeout: "3600" }
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api.re-evolve.ai
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: { service: { name: hgi-api, port: { number: 80 } } }

@@ -1,0 +1,842 @@
+// =============================================================================
+//  RE-EVOLVE ON HGI — Adaptive Intelligence Operating System
+//  Production data model. Multi-tenant, event-sourced where relevant.
+//  Generator: prisma-client-js | Datasource: PostgreSQL (+ pgvector)
+// =============================================================================
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions", "fullTextSearch"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgvector(map: "vector"), pg_trgm, uuidOssp(map: "uuid-ossp")]
+}
+
+// ----------------------------------------------------------------------------
+//  TENANCY, IDENTITY & ACCESS  (Security Center / RBAC / ABAC)
+// ----------------------------------------------------------------------------
+
+model Organization {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  name        String
+  tier        OrgTier  @default(GROWTH)
+  status      OrgStatus @default(ACTIVE)
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users        User[]
+  ecosystems   Ecosystem[]
+  agents       Agent[]
+  workflows    Workflow[]
+  policies     Policy[]
+  memories     MemoryRecord[]
+  infraNodes   InfraNode[]
+  apiKeys      ApiKey[]
+  auditLogs    AuditLog[]
+  simulations  Simulation[]
+
+  @@index([status, tier])
+  @@map("organizations")
+}
+
+enum OrgTier {
+  GROWTH
+  SCALE
+  ENTERPRISE
+  SOVEREIGN
+}
+
+enum OrgStatus {
+  ACTIVE
+  SUSPENDED
+  ARCHIVED
+}
+
+model User {
+  id             String   @id @default(uuid())
+  orgId          String
+  org            Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  email          String   @unique
+  displayName    String
+  passwordHash   String?           // null when SSO-only
+  status         UserStatus @default(ACTIVE)
+  lastSeenAt     DateTime?
+  mfaEnabled     Boolean  @default(false)
+  attributes     Json     @default("{}")   // ABAC attributes
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  roles      UserRole[]
+  sessions   Session[]
+  auditLogs  AuditLog[]
+  approvals  Approval[]
+
+  @@index([orgId, status])
+  @@map("users")
+}
+
+enum UserStatus {
+  ACTIVE
+  INVITED
+  DISABLED
+}
+
+model Role {
+  id          String   @id @default(uuid())
+  key         String   @unique          // e.g. founder, operator, auditor, agent_admin
+  name        String
+  description String?
+  permissions Permission[]
+  users       UserRole[]
+  @@map("roles")
+}
+
+model Permission {
+  id        String @id @default(uuid())
+  key       String @unique              // resource:action  e.g. agents:execute
+  resource  String
+  action    String
+  roles     Role[]
+  @@index([resource, action])
+  @@map("permissions")
+}
+
+model UserRole {
+  userId String
+  roleId String
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role   Role @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  @@id([userId, roleId])
+  @@map("user_roles")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  refreshHash  String
+  ip           String?
+  userAgent    String?
+  riskScore    Float    @default(0)     // session intelligence
+  expiresAt    DateTime
+  revokedAt    DateTime?
+  createdAt    DateTime @default(now())
+  @@index([userId, expiresAt])
+  @@map("sessions")
+}
+
+model ApiKey {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name        String
+  hashedKey   String   @unique
+  scopes      String[]
+  lastUsedAt  DateTime?
+  expiresAt   DateTime?
+  revokedAt   DateTime?
+  createdAt   DateTime @default(now())
+  @@index([orgId])
+  @@map("api_keys")
+}
+
+// ----------------------------------------------------------------------------
+//  ECOSYSTEM GALAXY / PORTFOLIO & VERTICALS
+// ----------------------------------------------------------------------------
+
+model Ecosystem {
+  id            String   @id @default(uuid())
+  orgId         String
+  org           Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name          String
+  vertical      String                       // Healthcare, RealEstate, FinTech...
+  evolutionLevel Int     @default(1)          // V1..V8
+  stage         EcoStage @default(GROWTH)
+  arrCents      BigInt   @default(0)
+  healthScore   Float    @default(0)
+  metadata      Json     @default("{}")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  metrics       EcosystemMetric[]
+  relationships GraphEdge[] @relation("ecoEdges")
+
+  @@index([orgId, vertical, stage])
+  @@map("ecosystems")
+}
+
+enum EcoStage {
+  LAUNCH
+  GROWTH
+  SCALE
+  MATURE
+  TRANSCEND
+  EXITED
+}
+
+model EcosystemMetric {
+  id          String   @id @default(uuid())
+  ecosystemId String
+  ecosystem   Ecosystem @relation(fields: [ecosystemId], references: [id], onDelete: Cascade)
+  key         String                          // arr_velocity, user_growth, ...
+  value       Float
+  capturedAt  DateTime @default(now())
+  @@index([ecosystemId, key, capturedAt])
+  @@map("ecosystem_metrics")
+}
+
+// ----------------------------------------------------------------------------
+//  AGENT FOUNDRY / ORCHESTRATION / AUTONOMOUS COUNCIL
+// ----------------------------------------------------------------------------
+
+model Agent {
+  id            String   @id @default(uuid())
+  orgId         String
+  org           Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name          String
+  type          AgentType
+  tier          AgentTier @default(SPECIALIST) // council hierarchy
+  model         String   @default("claude-opus-4-8")
+  status        AgentStatus @default(IDLE)
+  capacityPct   Float    @default(0)
+  successRate   Float    @default(0)
+  version       String   @default("v1.0.0")
+  config        Json     @default("{}")        // tools, guardrails, system prompt ref
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  tasks         AgentTask[]
+  messagesOut   AgentMessage[] @relation("from")
+  messagesIn    AgentMessage[] @relation("to")
+  memories      MemoryRecord[]
+  evaluations   AgentEvaluation[]
+
+  @@index([orgId, type, status])
+  @@map("agents")
+}
+
+enum AgentType {
+  PLANNING
+  EXECUTION
+  ANALYTICS
+  GOVERNANCE
+  COMMUNICATION
+  LEARNING
+}
+
+enum AgentTier {
+  COUNCIL_PRIME
+  STRATEGIC
+  EXECUTION
+  SPECIALIST
+}
+
+enum AgentStatus {
+  ACTIVE
+  IDLE
+  TRAINING
+  ERROR
+  RETIRED
+}
+
+model AgentTask {
+  id            String   @id @default(uuid())
+  agentId       String?
+  agent         Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  orchestrationId String?
+  orchestration Orchestration? @relation(fields: [orchestrationId], references: [id])
+  stage         TaskStage @default(INTAKE)
+  status        TaskStatus @default(QUEUED)
+  priority      Int      @default(5)
+  input         Json
+  output        Json?
+  plan          Json?                          // planning-engine output
+  reasoning     Json?                          // reasoning-pipeline trace
+  retries       Int      @default(0)
+  latencyMs     Int?
+  startedAt     DateTime?
+  completedAt   DateTime?
+  createdAt     DateTime @default(now())
+
+  @@index([status, priority, createdAt])
+  @@index([agentId, status])
+  @@map("agent_tasks")
+}
+
+enum TaskStage {
+  INTAKE
+  ANALYZE
+  PLAN
+  EXECUTE
+  VALIDATE
+  DELIVER
+}
+
+enum TaskStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  RETRYING
+  CANCELLED
+}
+
+model AgentMessage {
+  id          String   @id @default(uuid())
+  fromAgentId String
+  toAgentId   String
+  fromAgent   Agent    @relation("from", fields: [fromAgentId], references: [id], onDelete: Cascade)
+  toAgent     Agent    @relation("to",   fields: [toAgentId],   references: [id], onDelete: Cascade)
+  channel     String   @default("a2a")
+  payload     Json
+  createdAt   DateTime @default(now())
+  @@index([fromAgentId, createdAt])
+  @@index([toAgentId, createdAt])
+  @@map("agent_messages")
+}
+
+model AgentEvaluation {
+  id        String  @id @default(uuid())
+  agentId   String
+  agent     Agent   @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  accuracy  Float
+  groundedness Float
+  helpfulness  Float
+  safety       Float
+  latencyMs    Int
+  capturedAt   DateTime @default(now())
+  @@index([agentId, capturedAt])
+  @@map("agent_evaluations")
+}
+
+model Orchestration {
+  id          String   @id @default(uuid())
+  orgId       String
+  goal        String
+  status      TaskStatus @default(RUNNING)
+  topology    Json     @default("{}")          // DAG of agents/tasks
+  consensus   Float?                           // council consensus score
+  startedAt   DateTime @default(now())
+  completedAt DateTime?
+  tasks       AgentTask[]
+  @@index([orgId, status])
+  @@map("orchestrations")
+}
+
+// ----------------------------------------------------------------------------
+//  MEMORY VAULT  (vector + episodic + organizational)
+// ----------------------------------------------------------------------------
+
+model MemoryRecord {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  agentId     String?
+  agent       Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  kind        MemoryKind
+  source      String                           // chat, ide, upload, event
+  content     String
+  summary     String?
+  // pgvector embedding (1536 dims, OpenAI text-embedding-3-large compatible)
+  embedding   Unsupported("vector(1536)")?
+  vectorRef   String?                          // external Qdrant/Pinecone point id
+  tokens      Int      @default(0)
+  retention   RetentionTier @default(WARM)
+  importance  Float    @default(0.5)
+  lastAccess  DateTime?
+  createdAt   DateTime @default(now())
+
+  chunks      MemoryChunk[]
+
+  @@index([orgId, kind, retention])
+  @@index([agentId, createdAt])
+  @@map("memory_records")
+}
+
+enum MemoryKind {
+  CONVERSATION
+  DOCUMENT
+  CODE
+  EVENT
+  CONFIG
+  EPISODIC
+}
+
+enum RetentionTier {
+  HOT
+  WARM
+  COLD
+  ARCHIVE
+}
+
+model MemoryChunk {
+  id        String  @id @default(uuid())
+  memoryId  String
+  memory    MemoryRecord @relation(fields: [memoryId], references: [id], onDelete: Cascade)
+  ordinal   Int
+  content   String
+  embedding Unsupported("vector(1536)")?
+  @@index([memoryId, ordinal])
+  @@map("memory_chunks")
+}
+
+// ----------------------------------------------------------------------------
+//  KNOWLEDGE GRAPH
+// ----------------------------------------------------------------------------
+
+model GraphNode {
+  id        String   @id @default(uuid())
+  orgId     String
+  type      String                             // Person, Organization, Project...
+  label     String
+  props     Json     @default("{}")
+  createdAt DateTime @default(now())
+  outEdges  GraphEdge[] @relation("src")
+  inEdges   GraphEdge[] @relation("dst")
+  @@index([orgId, type])
+  @@map("graph_nodes")
+}
+
+model GraphEdge {
+  id          String   @id @default(uuid())
+  orgId       String
+  srcId       String
+  dstId       String
+  relation    String                           // OWNS, PART_OF, DEPENDS_ON...
+  weight      Float    @default(1)
+  props       Json     @default("{}")
+  src         GraphNode @relation("src", fields: [srcId], references: [id], onDelete: Cascade)
+  dst         GraphNode @relation("dst", fields: [dstId], references: [id], onDelete: Cascade)
+  ecosystem   Ecosystem? @relation("ecoEdges", fields: [ecosystemId], references: [id])
+  ecosystemId String?
+  createdAt   DateTime @default(now())
+  @@index([orgId, relation])
+  @@index([srcId])
+  @@index([dstId])
+  @@map("graph_edges")
+}
+
+// ----------------------------------------------------------------------------
+//  GOVERNANCE GRID / POLICY ENGINE / ETHICS / RISK & COMPLIANCE / AUDIT
+// ----------------------------------------------------------------------------
+
+model Policy {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name        String
+  domain      String                           // DataPrivacy, Security, Ethics...
+  state       PolicyState @default(DESIGN)
+  version     String   @default("v1.0")
+  rules       Json                             // declarative rule set (evaluated by engine)
+  effectiveness Float  @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  evaluations PolicyEvaluation[]
+  violations  Violation[]
+  @@index([orgId, domain, state])
+  @@map("policies")
+}
+
+enum PolicyState {
+  DESIGN
+  REVIEW
+  PUBLISHED
+  ENFORCED
+  EVALUATED
+  RETIRED
+}
+
+model PolicyEvaluation {
+  id        String  @id @default(uuid())
+  policyId  String
+  policy    Policy  @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  subject   Json                              // what was evaluated
+  passed    Boolean
+  detail    Json
+  evaluatedAt DateTime @default(now())
+  @@index([policyId, evaluatedAt])
+  @@map("policy_evaluations")
+}
+
+model Violation {
+  id        String  @id @default(uuid())
+  policyId  String
+  policy    Policy  @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  severity  Severity
+  status    ViolationStatus @default(OPEN)
+  detail    Json
+  detectedAt DateTime @default(now())
+  resolvedAt DateTime?
+  @@index([policyId, status, severity])
+  @@map("violations")
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ViolationStatus {
+  OPEN
+  INVESTIGATING
+  MITIGATED
+  RESOLVED
+}
+
+model Approval {
+  id         String  @id @default(uuid())
+  orgId      String
+  requesterId String?
+  approverId String?
+  approver   User?   @relation(fields: [approverId], references: [id])
+  subjectType String                          // workflow, agent_deploy, policy...
+  subjectId  String
+  status     ApprovalStatus @default(PENDING)
+  chain      Json     @default("[]")          // multi-level approval chain
+  createdAt  DateTime @default(now())
+  decidedAt  DateTime?
+  @@index([orgId, status])
+  @@map("approvals")
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  ESCALATED
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  orgId     String
+  org       Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id])
+  action    String                            // resource:verb
+  resource  String
+  resourceId String?
+  before    Json?
+  after     Json?
+  ip        String?
+  createdAt DateTime @default(now())
+  @@index([orgId, resource, createdAt])
+  @@map("audit_logs")
+}
+
+// ----------------------------------------------------------------------------
+//  WORKFLOW STUDIO
+// ----------------------------------------------------------------------------
+
+model Workflow {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name        String
+  version     String   @default("v1.0")
+  status      WorkflowStatus @default(DRAFT)
+  graph       Json                             // nodes/edges: triggers, actions, conditions
+  trigger     Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  executions  WorkflowExecution[]
+  @@index([orgId, status])
+  @@map("workflows")
+}
+
+enum WorkflowStatus {
+  DRAFT
+  ACTIVE
+  PAUSED
+  ARCHIVED
+}
+
+model WorkflowExecution {
+  id          String   @id @default(uuid())
+  workflowId  String
+  workflow    Workflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+  status      TaskStatus @default(RUNNING)
+  context     Json     @default("{}")
+  steps       Json     @default("[]")          // per-node execution log
+  error       String?
+  durationMs  Int?
+  startedAt   DateTime @default(now())
+  finishedAt  DateTime?
+  @@index([workflowId, status, startedAt])
+  @@map("workflow_executions")
+}
+
+// ----------------------------------------------------------------------------
+//  OBSERVABILITY / GLOBAL TELEMETRY GRID / API OBSERVABILITY / METRICS
+// ----------------------------------------------------------------------------
+
+model TelemetryEvent {
+  id        String   @id @default(uuid())
+  orgId     String
+  region    String                            // us-east-1, eu-west-1...
+  service   String
+  kind      TelemetryKind
+  severity  Severity @default(LOW)
+  payload   Json
+  ts        DateTime @default(now())
+  @@index([orgId, region, kind, ts])
+  @@index([service, ts])
+  @@map("telemetry_events")
+}
+
+enum TelemetryKind {
+  LOG
+  METRIC
+  TRACE
+  EVENT
+  ANOMALY
+}
+
+model Metric {
+  id        String   @id @default(uuid())
+  orgId     String
+  name      String                            // arr, uptime, latency_p95...
+  scope     String                            // global, region, service, agent
+  scopeId   String?
+  value     Float
+  unit      String?
+  ts        DateTime @default(now())
+  @@index([orgId, name, scope, ts])
+  @@map("metrics")
+}
+
+model ApiTraffic {
+  id          String   @id @default(uuid())
+  orgId       String
+  apiPath     String
+  method      String
+  statusCode  Int
+  latencyMs   Int
+  consumer    String?
+  region      String?
+  throttled   Boolean  @default(false)
+  ts          DateTime @default(now())
+  @@index([orgId, apiPath, ts])
+  @@index([statusCode, ts])
+  @@map("api_traffic")
+}
+
+// ----------------------------------------------------------------------------
+//  INFRASTRUCTURE ATLAS / MULTI-REGION OPS
+// ----------------------------------------------------------------------------
+
+model InfraNode {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  kind        InfraKind
+  region      String
+  provider    String                          // aws, gcp, azure, cloudflare
+  status      InfraStatus @default(HEALTHY)
+  healthScore Float    @default(100)
+  utilization Float    @default(0)
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@index([orgId, kind, region, status])
+  @@map("infra_nodes")
+}
+
+enum InfraKind {
+  CLOUD_REGION
+  COMPUTE_CLUSTER
+  AI_NODE
+  EDGE_DEPLOYMENT
+  DATABASE
+  CACHE
+  GPU_CLUSTER
+}
+
+enum InfraStatus {
+  HEALTHY
+  WARNING
+  CRITICAL
+  MAINTENANCE
+  OFFLINE
+}
+
+model Region {
+  id            String  @id @default(uuid())
+  orgId         String
+  code          String                         // us-east, eu-west...
+  name          String
+  online        Boolean @default(true)
+  availability  Float   @default(99.9)
+  latencyMs     Int     @default(0)
+  drStatus      String  @default("ready")
+  rtoMinutes    Int     @default(15)
+  rpoMinutes    Int     @default(5)
+  @@unique([orgId, code])
+  @@map("regions")
+}
+
+// ----------------------------------------------------------------------------
+//  DATA PIPELINE ENGINE
+// ----------------------------------------------------------------------------
+
+model Pipeline {
+  id          String   @id @default(uuid())
+  orgId       String
+  name        String
+  source      String
+  target      String
+  schedule    String?                          // cron
+  status      PipelineStatus @default(HEALTHY)
+  freshnessPct Float   @default(100)
+  qualityScore Float   @default(0)
+  createdAt   DateTime @default(now())
+  runs        PipelineRun[]
+  @@index([orgId, status])
+  @@map("pipelines")
+}
+
+enum PipelineStatus {
+  HEALTHY
+  WARNING
+  FAILED
+  IN_PROGRESS
+  SCHEDULED
+}
+
+model PipelineRun {
+  id          String   @id @default(uuid())
+  pipelineId  String
+  pipeline    Pipeline @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  status      TaskStatus @default(RUNNING)
+  bytes       BigInt   @default(0)
+  durationMs  Int?
+  startedAt   DateTime @default(now())
+  finishedAt  DateTime?
+  @@index([pipelineId, status, startedAt])
+  @@map("pipeline_runs")
+}
+
+// ----------------------------------------------------------------------------
+//  INTELLIGENCE ECONOMY / FINANCIAL COMMAND CENTER
+// ----------------------------------------------------------------------------
+
+model IntelligenceAsset {
+  id          String   @id @default(uuid())
+  orgId       String
+  name        String
+  assetClass  String                           // DataAsset, Model, Insight, Compute, IP
+  valuationCents BigInt @default(0)
+  ownerId     String?
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  listings    MarketListing[]
+  @@index([orgId, assetClass])
+  @@map("intelligence_assets")
+}
+
+model MarketListing {
+  id          String   @id @default(uuid())
+  assetId     String
+  asset       IntelligenceAsset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  priceCents  BigInt
+  status      ListingStatus @default(OPEN)
+  createdAt   DateTime @default(now())
+  transactions EconomicTransaction[]
+  @@index([assetId, status])
+  @@map("market_listings")
+}
+
+enum ListingStatus {
+  OPEN
+  SOLD
+  LICENSED
+  WITHDRAWN
+}
+
+model EconomicTransaction {
+  id          String   @id @default(uuid())
+  orgId       String
+  listingId   String?
+  listing     MarketListing? @relation(fields: [listingId], references: [id])
+  kind        String                           // sale, license, royalty, deploy
+  amountCents BigInt
+  counterparty String?
+  ts          DateTime @default(now())
+  @@index([orgId, kind, ts])
+  @@map("economic_transactions")
+}
+
+model CapitalFlow {
+  id        String   @id @default(uuid())
+  orgId     String
+  category  String                            // operating, growth, strategic, reserve
+  direction FlowDirection
+  amountCents BigInt
+  ts        DateTime @default(now())
+  @@index([orgId, category, ts])
+  @@map("capital_flows")
+}
+
+enum FlowDirection {
+  INFLOW
+  OUTFLOW
+}
+
+// ----------------------------------------------------------------------------
+//  QUANTUM SIMULATION LAB
+// ----------------------------------------------------------------------------
+
+model Simulation {
+  id          String   @id @default(uuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  name        String
+  domain      String                           // chemistry, materials, optimization...
+  qubits      Int      @default(0)
+  status      TaskStatus @default(QUEUED)
+  params      Json     @default("{}")
+  result      Json?
+  fidelity    Float?
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  createdAt   DateTime @default(now())
+  @@index([orgId, domain, status])
+  @@map("simulations")
+}
+
+// ----------------------------------------------------------------------------
+//  NEURAL COMMAND CORE  (decisions / intents / actions)
+// ----------------------------------------------------------------------------
+
+model Decision {
+  id          String   @id @default(uuid())
+  orgId       String
+  intent      String
+  mode        DecisionMode @default(AUTOMATED)
+  impact      Severity @default(MEDIUM)
+  outcome     DecisionOutcome?
+  confidence  Float    @default(0)
+  payload     Json     @default("{}")
+  decidedAt   DateTime @default(now())
+  @@index([orgId, mode, decidedAt])
+  @@map("decisions")
+}
+
+enum DecisionMode {
+  AUTOMATED
+  ASSISTED
+  MANUAL
+}
+
+enum DecisionOutcome {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}

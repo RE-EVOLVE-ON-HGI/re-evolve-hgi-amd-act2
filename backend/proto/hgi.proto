@@ -1,0 +1,12 @@
+syntax = "proto3";
+package hgi;
+
+// Internal service-to-service contract (microservice mesh).
+service Orchestration {
+  rpc Dispatch (DispatchRequest) returns (DispatchReply);
+  rpc TaskStatus (TaskRef) returns (TaskState);
+}
+message DispatchRequest { string orgId = 1; string goal = 2; string inputJson = 3; int32 priority = 4; }
+message DispatchReply   { string orchestrationId = 1; }
+message TaskRef         { string taskId = 1; }
+message TaskState       { string status = 1; int32 latencyMs = 2; }

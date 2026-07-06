@@ -1,0 +1,18 @@
+type AgentEvaluation { accuracy: Float, groundedness: Float, helpfulness: Float, safety: Float, latencyMs: Int }
+type Agent {
+  id: ID!
+  name: String!
+  type: String!
+  tier: String!
+  status: String!
+  capacityPct: Float!
+  successRate: Float!
+  version: String!
+}
+type AgentCapacityBucket { type: String!, status: String!, count: Int! }
+type AgentCapacity { total: Int!, breakdown: [AgentCapacityBucket!]! }
+
+type Query {
+  agents(orgId: ID!): [Agent!]!
+  agentCapacity(orgId: ID!): AgentCapacity!
+}

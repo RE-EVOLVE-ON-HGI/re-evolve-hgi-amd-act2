@@ -1,0 +1,82 @@
+[
+  {
+    "name": "hgi-backend",
+    "purpose": "Core business logic and multi-tenant agent task manager.",
+    "status": "active",
+    "language": "TypeScript",
+    "frameworks": ["NestJS", "Prisma"],
+    "dependencies": ["@prisma/client", "@nestjs/bull", "kafkajs", "socket.io", "pgvector"],
+    "last_activity": "2026-06-05T11:00:00Z",
+    "architecture_type": "Modular Monolith"
+  },
+  {
+    "name": "re-evolve-on-hgi-ui",
+    "purpose": "Consolidated dashboard and visual control console for HGI agent orchestration.",
+    "status": "active",
+    "language": "TypeScript",
+    "frameworks": ["Next.js 16", "React 19"],
+    "dependencies": ["framer-motion", "lucide-react", "socket.io-client", "@react-three/fiber", "three"],
+    "last_activity": "2026-06-05T11:20:00Z",
+    "architecture_type": "App Router SPA"
+  },
+  {
+    "name": "kavacha-hgi-core",
+    "purpose": "Dynamic policy check execution engine and compliance firewall.",
+    "status": "active",
+    "language": "TypeScript",
+    "frameworks": ["NodeJS"],
+    "dependencies": ["ajv", "zod", "jose"],
+    "last_activity": "2026-05-28T14:30:00Z",
+    "architecture_type": "Security Library"
+  },
+  {
+    "name": "artoies-hub",
+    "purpose": "Mobile and hybrid web client interface prototype for managing workflows.",
+    "status": "archived",
+    "language": "TypeScript",
+    "frameworks": ["Vite", "Capacitor"],
+    "dependencies": ["@capacitor/core", "@supabase/supabase-js", "tailwind-merge"],
+    "last_activity": "2026-05-18T18:00:00Z",
+    "architecture_type": "Hybrid SPA"
+  },
+  {
+    "name": "map-for-HGI",
+    "purpose": "Mapcn component library providing map layers built on MapLibre GL.",
+    "status": "active",
+    "language": "TypeScript",
+    "frameworks": ["Next.js 16"],
+    "dependencies": ["maplibre-gl", "lucide-react", "clsx"],
+    "last_activity": "2026-05-31T20:00:00Z",
+    "architecture_type": "React Component Registry"
+  },
+  {
+    "name": "brain-for-HGI-",
+    "purpose": "Intent matching models, sentence embeddings, and neural inference classifiers.",
+    "status": "experimental",
+    "language": "Python",
+    "frameworks": ["PyTorch", "Hugging Face"],
+    "dependencies": ["torch", "transformers", "sentence-transformers"],
+    "last_activity": "2026-06-02T16:00:00Z",
+    "architecture_type": "ML Inference Service"
+  },
+  {
+    "name": "agent-skills",
+    "purpose": "Catalog of atomic agent skill definitions and tool handlers.",
+    "status": "active",
+    "language": "JavaScript",
+    "frameworks": ["NodeJS"],
+    "dependencies": ["axios", "pdf-parse", "cheerio"],
+    "last_activity": "2026-05-25T12:00:00Z",
+    "architecture_type": "Tool Library"
+  },
+  {
+    "name": "dify",
+    "purpose": "Visual LLM app builder fork and agent composition node canvas.",
+    "status": "active",
+    "language": "Python",
+    "frameworks": ["Flask", "React"],
+    "dependencies": ["langchain", "pydantic", "sqlalchemy"],
+    "last_activity": "2026-05-18T14:21:02Z",
+    "architecture_type": "Visual Workflow Platform"
+  }
+]

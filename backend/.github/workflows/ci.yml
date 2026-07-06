@@ -1,0 +1,29 @@
+name: CI
+on: { push: { branches: [main] }, pull_request: {} }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env: { POSTGRES_USER: hgi, POSTGRES_PASSWORD: hgi, POSTGRES_DB: hgi }
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U hgi" --health-interval 10s
+          --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npx prisma generate
+      - run: npx prisma migrate deploy
+        env: { DATABASE_URL: postgresql://hgi:hgi@localhost:5432/hgi }
+      - run: npm run build
+      - run: npm test --if-present
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t ghcr.io/hgi/hgi-backend:${{ github.sha }} .
