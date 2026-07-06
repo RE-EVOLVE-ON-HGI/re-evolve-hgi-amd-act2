@@ -50,3 +50,11 @@ Re-Evolve converges the strongest capabilities from the `nextunicorn2026` organi
 We invite AMD developers, researchers, and advocates to collaborate on building responsible, governed, and performant agentic AI ecosystems. 
 Read the full builder-to-builder invitation at **[COLLABORATION.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/COLLABORATION.md)**.
 
+---
+
+## 5. Open Letter
+
+We have addressed an open letter from our founder to the AMD AI Team, outlining our shared path towards governed, responsible AI.
+Read the letter at **[OPEN_LETTER_TO_AMD.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/OPEN_LETTER_TO_AMD.md)**.
+
+
