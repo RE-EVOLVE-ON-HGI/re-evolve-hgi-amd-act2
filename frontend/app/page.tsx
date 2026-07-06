@@ -25,7 +25,9 @@ import {
   X,
   Sparkles,
   Layers,
-  ArrowLeft
+  ArrowLeft,
+  Settings,
+  HelpCircle
 } from 'lucide-react'
 import { GlassPanel, CommandButton, StatusBadge, HolographicBorder } from '@/components/hgi/design-system'
 
@@ -40,9 +42,15 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
 }
 
-export default function LandingPage() {
+export default function InteractiveStoryPage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   const router = useRouter()
+  
+  // Custom Cursor Particle state
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [showTimelineIndex, setShowTimelineIndex] = useState(0)
+  const [wokenAgents, setWokenAgents] = useState<string[]>([])
   
   // Mission Builder & Judge Mode simulation states
   const [customGoal, setCustomGoal] = useState('')
@@ -56,6 +64,79 @@ export default function LandingPage() {
   const [passcode, setPasscode] = useState('')
   const [passcodeError, setPasscodeError] = useState('')
 
+  // Cursor tracking for canvas particle lines
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  // Canvas particle trail renderer
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animationFrameId: number
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const particles: Array<{ x: number; y: number; vx: number; vy: number; size: number; alpha: number }> = []
+
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      // Add particle at cursor pos
+      if (mousePos.x > 0 && mousePos.y > 0) {
+        particles.push({
+          x: mousePos.x,
+          y: mousePos.y,
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          size: Math.random() * 2 + 1,
+          alpha: 1
+        })
+      }
+
+      // Draw and prune particles
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        p.x += p.vx
+        p.y += p.vy
+        p.alpha -= 0.015
+
+        if (p.alpha <= 0) {
+          particles.splice(i, 1)
+          i--
+          continue
+        }
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(234, 179, 8, ${p.alpha})` // Golden particle glow
+        ctx.fill()
+      }
+
+      animationFrameId = requestAnimationFrame(render)
+    }
+
+    render()
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [mousePos])
+
   const handleStartSimulation = (goalText: string) => {
     setCustomGoal(goalText)
     setSimActive(true)
@@ -66,22 +147,12 @@ export default function LandingPage() {
     ])
     setProgress(12)
     
-    // Smoothly scroll to the simulation section
-    const simSection = document.getElementById('chapter-9')
+    // Smoothly scroll to the simulation section (Scene 10)
+    const simSection = document.getElementById('scene-10')
     if (simSection) {
       simSection.scrollIntoView({ behavior: 'smooth' })
     }
   }
-
-  // Auto-run simulation if URL parameter is present
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search)
-      if (params.get('sim') === 'true') {
-        handleStartSimulation('Optimize multi-agent supply chain pipelines')
-      }
-    }
-  }, [])
 
   // Simulation Sequence Timeline
   useEffect(() => {
@@ -98,7 +169,7 @@ export default function LandingPage() {
           '[CENSA] Compiling Task Directed Acyclic Graph (DAG)...'
         ])
         setProgress(28)
-      }, 1500)
+      }, 1200)
     } else if (simStage === 'planning') {
       timer = setTimeout(() => {
         setSimStage('routing')
@@ -108,7 +179,7 @@ export default function LandingPage() {
           '[REGISTRY] Selecting active specialist agents: CodeSynth & SupportArchitect.'
         ])
         setProgress(48)
-      }, 1500)
+      }, 1200)
     } else if (simStage === 'routing') {
       timer = setTimeout(() => {
         setSimStage('execution')
@@ -118,7 +189,7 @@ export default function LandingPage() {
           '[PANANI X] Initializing secure Node VM sandbox isolates for tool executions...'
         ])
         setProgress(65)
-      }, 1500)
+      }, 1200)
     } else if (simStage === 'execution') {
       timer = setTimeout(() => {
         setSimStage('governance')
@@ -128,7 +199,7 @@ export default function LandingPage() {
           '[KAVACHA] Cost ledger tracking logged. Dynamic resource allocation verified.'
         ])
         setProgress(80)
-      }, 1500)
+      }, 1200)
     } else if (simStage === 'governance') {
       timer = setTimeout(() => {
         setSimStage('memory')
@@ -138,7 +209,7 @@ export default function LandingPage() {
           '[MEMORY] Semantic context collections synchronized (Qdrant).'
         ])
         setProgress(92)
-      }, 1500)
+      }, 1200)
     } else if (simStage === 'memory') {
       timer = setTimeout(() => {
         setSimStage('completed')
@@ -148,7 +219,7 @@ export default function LandingPage() {
           '[SYSTEM] Presentation workflow output generated.'
         ])
         setProgress(100)
-      }, 1500)
+      }, 1200)
     }
     
     return () => clearTimeout(timer)
@@ -178,19 +249,24 @@ export default function LandingPage() {
     setProgress(0)
   }
 
+  const handleWakeAgent = (agent: string) => {
+    if (!wokenAgents.includes(agent)) {
+      setWokenAgents(prev => [...prev, agent])
+    }
+  }
+
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-background overflow-x-hidden text-foreground selection:bg-primary/30 font-sans">
-      {/* Background stars/grid */}
-      <div className="fixed inset-0 bg-neural-grid opacity-20 pointer-events-none z-0" />
-      <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
-      <div className="fixed bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none z-10" />
+    <div ref={containerRef} className="relative min-h-screen bg-black overflow-x-hidden text-foreground selection:bg-primary/30 font-sans">
+      
+      {/* Interactive Background Particle Canvas */}
+      <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none opacity-40" />
 
       {/* Floating background ambient glow */}
       <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Fixed Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-background/20 backdrop-blur-md border-b border-border/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/40 backdrop-blur-md border-b border-border/10">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
@@ -198,7 +274,7 @@ export default function LandingPage() {
             </div>
             <div>
               <h1 className="font-bold text-lg tracking-tight">RE-EVOLVE</h1>
-              <p className="text-[10px] text-muted-foreground font-mono tracking-wider">ON HGI</p>
+              <p className="text-[10px] text-muted-foreground font-mono tracking-wider text-primary">HGI OS CORE</p>
             </div>
           </div>
           
@@ -215,7 +291,7 @@ export default function LandingPage() {
       {/* Passcode Security Modal */}
       <AnimatePresence>
         {showPasscodeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md px-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md px-6">
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -267,96 +343,114 @@ export default function LandingPage() {
         )}
       </AnimatePresence>
 
-      {/* CHAPTER 1 — Black Screen & Universe Awakens */}
-      <section id="chapter-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 text-center border-b border-border/10 z-10 bg-black">
-        <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
-          <div className="w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
-            <NeuralEarthVisualization />
-          </div>
-        </div>
-        
+      {/* SCENE 1 — Dark Opening */}
+      <section id="scene-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center z-10 bg-black">
         <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
+            className="text-2xl md:text-3xl text-muted-foreground italic mb-8 max-w-2xl font-light"
           >
-            AMD Developer Hackathon ACT II
+            "Every generation creates a new operating system."
           </motion.p>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-xl md:text-2xl text-muted-foreground italic mb-8 max-w-2xl font-light"
-          >
-            "Every revolution changed how humans worked.  
-            The next one changes how intelligence itself works."
-          </motion.p>
-          
-          <motion.h1
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4"
-          >
-            RE-EVOLVE ON HGI
-          </motion.h1>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground max-w-xl mb-12"
-          >
-            The Operating System for Autonomous Intelligence
-          </motion.p>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="flex flex-col sm:flex-row items-center gap-4"
-          >
-            <CommandButton variant="primary" size="lg" glow onClick={() => scrollToNext('chapter-2')}>
-              Launch Experience
-              <ArrowRight className="w-4 h-4 ml-2 inline" />
-            </CommandButton>
-            <CommandButton variant="gold" size="lg" onClick={() => handleStartSimulation('Optimize multi-agent supply chain pipelines')}>
-              Watch Live Demo
-              <Play className="w-4 h-4 ml-2 inline" />
-            </CommandButton>
-            <Link href="/builder">
-              <CommandButton variant="subtle" size="lg">
-                Mission Builder App
-                <Zap className="w-4 h-4 ml-2 inline text-yellow-500" />
-              </CommandButton>
-            </Link>
-          </motion.div>
+          <span className="text-xs font-mono text-primary/60 mt-4">Move your cursor to reveal the stars of HGI</span>
         </div>
-        
-        <div className="absolute bottom-8 animate-bounce cursor-pointer" onClick={() => scrollToNext('chapter-2')}>
-          <ArrowDown className="w-6 h-6 text-muted-foreground" />
+        <div className="absolute bottom-8 animate-bounce cursor-pointer" onClick={() => scrollToNext('scene-2')}>
+          <ArrowDown className="w-6 h-6 text-muted-foreground/60" />
         </div>
       </section>
 
-      {/* CHAPTER 2 — AI Today (The Problem) */}
-      <section id="chapter-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-[#050816]/70">
+      {/* SCENE 2 — Technology Timeline */}
+      <section id="scene-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-red-500 mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 2 — AI TODAY & THE CRISIS
+            SCENE 2 — TECHNOLOGY TIMELINE
+          </motion.p>
+
+          <div className="flex flex-col md:flex-row gap-6 items-center justify-between w-full mb-12">
+            {[
+              { year: '1970s', name: 'Computers', desc: 'Hardware Kernel' },
+              { year: '1990s', name: 'Internet', desc: 'Network Packets' },
+              { year: '2000s', name: 'Mobile', desc: 'Device Apps' },
+              { year: '2010s', name: 'Cloud', desc: 'Virtualization' },
+              { year: '2020s', name: 'AI Models', desc: 'Fragmented Weights' }
+            ].map((node, idx) => (
+              <GlassPanel 
+                key={idx} 
+                onClick={() => setShowTimelineIndex(idx)}
+                className={`p-4 cursor-pointer border ${showTimelineIndex === idx ? 'border-primary' : 'border-border/10'} w-full`}
+              >
+                <span className="text-[10px] font-mono text-primary">{node.year}</span>
+                <h3 className="font-bold my-1">{node.name}</h3>
+                <p className="text-[11px] text-muted-foreground">{node.desc}</p>
+              </GlassPanel>
+            ))}
+          </div>
+
+          <motion.h3 
+            className="text-3xl font-bold tracking-tight text-yellow-500 mb-4"
+            key={showTimelineIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            "What comes after AI?"
+          </motion.h3>
+        </div>
+      </section>
+
+      {/* SCENE 3 — The Founder Moment */}
+      <section id="scene-3" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
+          >
+            SCENE 3 — THE FOUNDER MOMENT
+          </motion.p>
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
+          >
+            The Origin of the Mission
+          </motion.h2>
+          
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-lg text-muted-foreground leading-relaxed max-w-2xl font-light italic"
+          >
+            "Great systems are built by people who refuse to stop solving meaningful problems. Not through personal glory, but through persistence, validation, learning, and rebuilding."
+          </motion.p>
+        </div>
+      </section>
+
+      {/* SCENE 4 — The Problem */}
+      <section id="scene-4" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black/60">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-red-500 mb-6 tracking-widest uppercase"
+          >
+            SCENE 4 — THE PROBLEM (FRAGMENTATION)
           </motion.p>
           
           <motion.h2
@@ -369,60 +463,25 @@ export default function LandingPage() {
             Disconnected Intelligence
           </motion.h2>
 
-          {/* Scattered Nodes Animation */}
-          <div className="w-full h-48 relative mb-12 border border-border/10 rounded-lg overflow-hidden bg-black/20 flex items-center justify-center">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: [Math.sin(i) * 50, Math.cos(i) * 80, Math.sin(i) * 50],
-                  y: [Math.cos(i) * 40, Math.sin(i) * 60, Math.cos(i) * 40],
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute w-4 h-4 rounded-full bg-red-500/60 blur-xs"
-                style={{
-                  top: `${30 + (i * 12)}%`,
-                  left: `${20 + (i * 15)}%`
-                }}
-              />
-            ))}
-            <span className="text-xs font-mono text-muted-foreground z-10">ISOLATED AGENT INSTANCES (NO STATE OR SHARING)</span>
+          <div className="w-full h-40 relative mb-12 border border-border/10 rounded bg-black/40 flex items-center justify-center">
+            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+              AI Models float independently. No Memory. No Governance.
+            </span>
           </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12"
-          >
-            Existing AI solutions operate as fragmented, isolated assistants. They respond, they forget, they cannot coordinate safely, and they lack unified memory structures.
-          </motion.p>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-2xl font-bold text-glow-blue max-w-xl"
-          >
-            "The world doesn't need another model. It needs an Operating System."
-          </motion.p>
         </div>
       </section>
 
-      {/* CHAPTER 3 — Why AI Needs an OS */}
-      <section id="chapter-3" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+      {/* SCENE 5 — The Spark */}
+      <section id="scene-5" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-purple-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 3 — THE OPERATING SYSTEM
+            SCENE 5 — THE SPARK
           </motion.p>
           
           <motion.h2
@@ -432,69 +491,34 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
           >
-            The Convergence
+            CENSA Awakens
           </motion.h2>
 
-          {/* Merging Nodes Animation */}
-          <div className="w-full h-48 relative mb-12 border border-border/10 rounded-lg overflow-hidden bg-black/20 flex items-center justify-center">
-            <motion.div
-              animate={{
-                scale: [1, 1.4, 1],
-                opacity: [0.6, 0.9, 0.6]
-              }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="w-12 h-12 rounded-full bg-primary/30 flex items-center justify-center border border-primary/50"
-            >
-              <Brain className="w-6 h-6 text-primary" />
-            </motion.div>
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: [Math.sin(i) * 120, 0, Math.sin(i) * 120],
-                  y: [Math.cos(i) * 60, 0, Math.cos(i) * 60],
-                  opacity: [0.2, 0.8, 0.2]
-                }}
-                transition={{ duration: 5, repeat: Infinity }}
-                className="absolute w-3 h-3 rounded-full bg-secondary/80"
-                style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
-              />
-            ))}
-          </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
+          <motion.div
+            animate={{
+              boxShadow: ["0 0 20px rgba(139,92,246,0.2)", "0 0 40px rgba(139,92,246,0.5)", "0 0 20px rgba(139,92,246,0.2)"]
+            }}
+            transition={{ duration: 2.5, repeat: Infinity }}
+            className="w-20 h-20 rounded-full border border-purple-500 bg-purple-500/10 flex items-center justify-center mb-8"
           >
-            By consolidating orchestration, secure isolates, vector registries, and local accelerators, Re-Evolve brings order.
-          </motion.p>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-2xl font-bold text-glow-blue mt-8"
-          >
-            "When intelligence is orchestrated, individual models become collective intelligence."
-          </motion.p>
+            <Sparkles className="w-8 h-8 text-purple-400" />
+          </motion.div>
+
+          <p className="text-sm font-mono text-muted-foreground">Neural pathways form beneath your cursor</p>
         </div>
       </section>
 
-      {/* CHAPTER 4 — Introducing Re-Evolve */}
-      <section id="chapter-4" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+      {/* SCENE 6 — CENSA */}
+      <section id="scene-6" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/40">
+        <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-purple-400 mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 4 — INTRODUCING THE OS
+            SCENE 6 — CENSA ARCHITECTURE
           </motion.p>
           
           <motion.h2
@@ -502,50 +526,87 @@ export default function LandingPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-12"
           >
-            CENSA Cognitive Orchestration
+            Cognitive Execution Flow
           </motion.h2>
-          
-          {/* Interactive DAG Pipeline representation */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full mb-12">
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full">
             {[
-              { title: '1. Intent Parse', desc: 'Classifies goal categories' },
-              { title: '2. DAG Reasoning', desc: 'Decomposes 12 execution stages' },
-              { title: '3. Agent Match', desc: 'Resolves specialist skills' },
-              { title: '4. Evaluation', desc: 'Measures confidence indexes' }
-            ].map((step, idx) => (
-              <GlassPanel key={idx} className="p-4 border-primary/20 text-left">
-                <span className="text-xs font-mono text-primary font-bold">STAGE 0{idx+1}</span>
-                <h3 className="font-semibold text-sm my-1">{step.title}</h3>
-                <p className="text-[11px] text-muted-foreground">{step.desc}</p>
+              { num: '01', name: 'Intent', desc: 'Goal Parsing' },
+              { num: '02', name: 'Planning', desc: 'DAG Decomposition' },
+              { num: '03', name: 'Task Graph', desc: 'Dependency Resolution' },
+              { num: '04', name: 'Routing', desc: 'Hardware Balance' },
+              { num: '05', name: 'Execution', desc: 'Secure Sandbox VMs' }
+            ].map((step) => (
+              <GlassPanel key={step.num} className="p-4 border-primary/20 text-left">
+                <span className="text-xs font-mono text-primary font-bold">{step.num}</span>
+                <h3 className="font-semibold text-sm my-1">{step.name}</h3>
+                <p className="text-[10px] text-muted-foreground">{step.desc}</p>
               </GlassPanel>
             ))}
           </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            The Cognitive Execution & Neural Synthesis Agent (CENSA) translates abstract inputs into ordered DAG graphs, dynamically managing the lifecycle and task assignments of all available agents.
-          </motion.p>
         </div>
       </section>
 
-      {/* CHAPTER 5 — Panani X Sandbox */}
-      <section id="chapter-5" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+      {/* SCENE 7 — Panani X */}
+      <section id="scene-7" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+        <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-emerald-400 mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-emerald-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 5 — PANANI X RUNTIME
+            SCENE 7 — PANANI X SPECIALISTS
+          </motion.p>
+          
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
+          >
+            Persistent Swarm Registry
+          </motion.h2>
+          <p className="text-xs text-muted-foreground mb-8">Hover or click to wake specialist agents</p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+            {['Planner', 'Research', 'Coding', 'Testing', 'Security', 'Documentation', 'Deployment', 'Performance'].map((agent) => {
+              const isWoken = wokenAgents.includes(agent)
+              return (
+                <GlassPanel
+                  key={agent}
+                  onClick={() => handleWakeAgent(agent)}
+                  className={`p-4 cursor-pointer text-left transition-all border ${isWoken ? 'border-emerald-500 bg-emerald-500/5' : 'border-border/10'}`}
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-xs font-bold">{agent} Agent</span>
+                    <span className={`w-2 h-2 rounded-full ${isWoken ? 'bg-emerald-400 animate-pulse' : 'bg-border/30'}`} />
+                  </div>
+                  <p className="text-[10px] text-muted-foreground">
+                    {isWoken ? 'Status: WOKEN (Sync active)' : 'Click to wake agent'}
+                  </p>
+                </GlassPanel>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* SCENE 8 — Memory */}
+      <section id="scene-8" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black/60">
+        <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-cyan-400 mb-6 tracking-widest uppercase"
+          >
+            SCENE 8 — MEMORY GALAXY
           </motion.p>
           
           <motion.h2
@@ -555,105 +616,28 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
           >
-            Panani X Sandbox Runtime
+            Semantic Memory Vault
           </motion.h2>
 
-          {/* Orbital Agent Swarm Animation */}
-          <div className="w-64 h-64 relative mb-12 border border-border/10 rounded-full flex items-center justify-center bg-black/10">
-            <div className="absolute w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
-              <Cpu className="w-8 h-8 text-emerald-400" />
-            </div>
-            {[...Array(4)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  rotate: 360
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear", delay: i * 2 }}
-                className="absolute w-full h-full"
-              >
-                <div className="absolute w-6 h-6 rounded-lg bg-emerald-950 border border-emerald-500 flex items-center justify-center -top-3 left-[calc(50%-12px)]">
-                  <Terminal className="w-3.5 h-3.5 text-emerald-400" />
-                </div>
-              </motion.div>
-            ))}
+          <div className="w-full h-48 relative border border-border/10 rounded overflow-hidden bg-black/40 flex items-center justify-center">
+            <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+              Every completed mission is mapped onto pgvector & Qdrant stars
+            </span>
           </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            Every script, compiler tool, and external API call executes inside isolated Node `vm` sandboxes. Panani X prevents system escapes, limits resources, and exposes audit logs transparently.
-          </motion.p>
         </div>
       </section>
 
-      {/* CHAPTER 6 — Memory Vault */}
-      <section id="chapter-6" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
+      {/* SCENE 9 — Kavacha */}
+      <section id="scene-9" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-cyan-400 mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-yellow-500 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 6 — MEMORY VAULT
-          </motion.p>
-          
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
-          >
-            Memory Vault Persistent Graph
-          </motion.h2>
-
-          {/* Connected Galaxy Nodes */}
-          <div className="w-full h-48 relative mb-12 border border-border/10 rounded-lg overflow-hidden bg-black/20 flex items-center justify-center">
-            <svg className="absolute inset-0 w-full h-full opacity-60">
-              <line x1="20%" y1="30%" x2="50%" y2="50%" stroke="#06b6d4" strokeWidth="1" strokeDasharray="3,3" />
-              <line x1="80%" y1="40%" x2="50%" y2="50%" stroke="#06b6d4" strokeWidth="1" />
-              <line x1="30%" y1="80%" x2="50%" y2="50%" stroke="#06b6d4" strokeWidth="1" />
-              <line x1="70%" y1="70%" x2="50%" y2="50%" stroke="#06b6d4" strokeWidth="1" strokeDasharray="3,3" />
-            </svg>
-            <div className="absolute w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-400 flex items-center justify-center" style={{top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}>
-              <Database className="w-4 h-4 text-cyan-400" />
-            </div>
-            <div className="absolute w-4 h-4 rounded-full bg-cyan-900 border border-cyan-400" style={{top: '30%', left: '20%'}} />
-            <div className="absolute w-4 h-4 rounded-full bg-cyan-900 border border-cyan-400" style={{top: '40%', left: '80%'}} />
-            <div className="absolute w-4 h-4 rounded-full bg-cyan-900 border border-cyan-400" style={{top: '80%', left: '30%'}} />
-            <div className="absolute w-4 h-4 rounded-full bg-cyan-900 border border-cyan-400" style={{top: '70%', left: '70%'}} />
-          </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            Episodic interaction logs (pgvector) combine with semantic context collections (Qdrant) to form a persistent memory index. Agents recall context across sessions and workspaces seamlessly.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* CHAPTER 7 — Kavacha Governance */}
-      <section id="chapter-7" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-sm font-mono text-yellow-500 mb-6 tracking-widest uppercase"
-          >
-            CHAPTER 7 — KAVACHA SHIELD
+            SCENE 9 — KAVACHA SHIELD
           </motion.p>
           
           <motion.h2
@@ -666,93 +650,31 @@ export default function LandingPage() {
             Kavacha Zero-Trust Shield
           </motion.h2>
 
-          {/* Golden Shield Pulse */}
           <motion.div
             animate={{
-              boxShadow: ["0 0 20px rgba(234,179,8,0.2)", "0 0 40px rgba(234,179,8,0.4)", "0 0 20px rgba(234,179,8,0.2)"]
+              boxShadow: ["0 0 10px rgba(234,179,8,0.1)", "0 0 30px rgba(234,179,8,0.3)", "0 0 10px rgba(234,179,8,0.1)"]
             }}
             transition={{ duration: 3, repeat: Infinity }}
-            className="w-24 h-24 rounded-full border border-yellow-500/50 bg-yellow-500/10 flex items-center justify-center mb-12"
+            className="w-20 h-20 rounded-full border border-yellow-500/40 bg-yellow-500/5 flex items-center justify-center mb-8"
           >
-            <Shield className="w-10 h-10 text-yellow-500" />
+            <Shield className="w-8 h-8 text-yellow-500" />
           </motion.div>
           
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            Kavacha intercepts and validates every execution request. Strict policy configurations evaluate compliance, log audit records, and manage resource billing ledger lines dynamically.
-          </motion.p>
+          <p className="text-sm font-mono text-muted-foreground">Pre-execution validations, illegal argument blockings, and token ledgers</p>
         </div>
       </section>
 
-      {/* CHAPTER 8 — AMD Hardware Integration */}
-      <section id="chapter-8" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-sm font-mono text-red-400 mb-6 tracking-widest uppercase"
-          >
-            CHAPTER 8 — AMD ACCELERATOR
-          </motion.p>
-          
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
-          >
-            AMD AI Developer Cloud
-          </motion.h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full mb-12">
-            <GlassPanel className="p-6 border-red-500/20">
-              <Server className="w-8 h-8 text-red-500 mb-4" />
-              <h3 className="font-bold text-sm mb-2">MI300X Clusters</h3>
-              <p className="text-xs text-muted-foreground">High-memory bandwidth running dense agent topologies.</p>
-            </GlassPanel>
-            <GlassPanel className="p-6 border-red-500/20">
-              <Cpu className="w-8 h-8 text-red-500 mb-4" />
-              <h3 className="font-bold text-sm mb-2">ROCm Architecture</h3>
-              <p className="text-xs text-muted-foreground">Local model serving optimized via native PyTorch environments.</p>
-            </GlassPanel>
-            <GlassPanel className="p-6 border-red-500/20">
-              <Zap className="w-8 h-8 text-red-500 mb-4" />
-              <h3 className="font-bold text-sm mb-2">LiteLLM Failover</h3>
-              <p className="text-xs text-muted-foreground">Reroutes request pathways to Fireworks AI endpoint in under 500ms.</p>
-            </GlassPanel>
-          </div>
-          
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl"
-          >
-            Built on AMD AI Fabric. vLLM servers hosted on local Instinct arrays process core inference tasks, while remote failovers maintain session continuity.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* CHAPTER 9 — Unified Mission Builder & Judge Mode Console */}
-      <section id="chapter-9" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+      {/* SCENE 10 — Mission Builder & Unified Demo */}
+      <section id="scene-10" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 9 — MISSION BUILDER & JUDGE MODE
+            SCENE 10 — MISSION BUILDER APP
           </motion.p>
           
           <motion.h2
@@ -762,7 +684,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-center"
           >
-            Guided Intelligence Demonstration
+            Launch Guided Swarm Simulation
           </motion.h2>
           
           <motion.p
@@ -772,32 +694,24 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-muted-foreground mb-12 text-center max-w-xl text-sm"
           >
-            Choose a sample mission below or type your custom objective. Watch HGI compile the workflow and execute the agent swarms.
+            Click one of the templates or enter a goal. Watch HGI compile the workflow.
           </motion.p>
 
-          {/* Quick Sample Action Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mb-8">
-            {[
-              { label: 'Optimize supply chain routing', icon: Sparkles },
-              { label: 'Audit NestJS packages for security vulnerabilities', icon: Shield },
-              { label: 'Generate semantic vector indexing templates', icon: Database }
-            ].map((card, i) => (
-              <GlassPanel 
-                key={i} 
-                onClick={() => !simActive && handleStartSimulation(card.label)}
-                className={`p-4 border border-primary/20 text-left cursor-pointer hover:border-primary/50 transition-colors ${simActive ? 'opacity-50 cursor-not-allowed' : ''}`}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <card.icon className="w-4 h-4 text-primary" />
-                  <span className="text-[10px] font-mono text-muted-foreground">SAMPLE OBJECTIVE</span>
-                </div>
-                <p className="text-xs font-semibold">{card.label}</p>
-              </GlassPanel>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-2xl mb-8">
+            <GlassPanel onClick={() => !simActive && handleStartSimulation('Build an Automotive AI Company')} className="p-4 cursor-pointer hover:border-primary/50 text-left">
+              <span className="text-[10px] font-mono text-primary">SCENARIO A</span>
+              <h4 className="font-bold text-sm my-1">"Build an Automotive AI Company"</h4>
+              <p className="text-[10px] text-muted-foreground">Decomposes manufacturing metrics, routing, and safety audits.</p>
+            </GlassPanel>
+            <GlassPanel onClick={() => !simActive && handleStartSimulation('Optimize supply chain routing')} className="p-4 cursor-pointer hover:border-primary/50 text-left">
+              <span className="text-[10px] font-mono text-primary">SCENARIO B</span>
+              <h4 className="font-bold text-sm my-1">"Optimize supply chain routing"</h4>
+              <p className="text-[10px] text-muted-foreground">Balances token savings and model execution latency layers.</p>
+            </GlassPanel>
           </div>
 
           <HolographicBorder className="w-full max-w-3xl overflow-hidden mb-8">
-            <GlassPanel variant="strong" className="p-6 relative min-h-[440px] flex flex-col">
+            <GlassPanel variant="strong" className="p-6 relative min-h-[400px] flex flex-col">
               
               <AnimatePresence mode="wait">
                 {simStage === 'idle' ? (
@@ -810,11 +724,11 @@ export default function LandingPage() {
                   >
                     <div className="flex flex-col gap-2">
                       <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-                        Enter Custom Business Goal
+                        Enter custom goal
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. Optimize multi-agent supply chain pipelines for global routing..."
+                        placeholder="e.g. Build an Automotive AI Company..."
                         value={customGoal}
                         onChange={(e) => setCustomGoal(e.target.value)}
                         className="w-full bg-black/40 border border-border/20 rounded px-3 py-3 text-sm focus:outline-none focus:border-primary/50 text-foreground"
@@ -824,7 +738,7 @@ export default function LandingPage() {
                       variant="primary" 
                       size="lg" 
                       glow 
-                      onClick={() => handleStartSimulation(customGoal || 'Optimize multi-agent supply chain pipelines')}
+                      onClick={() => handleStartSimulation(customGoal || 'Build an Automotive AI Company')}
                     >
                       Initialize & Execute Simulation
                       <Play className="w-4 h-4 ml-2 inline" />
@@ -837,7 +751,6 @@ export default function LandingPage() {
                     animate={{ opacity: 1 }}
                     className="flex-1 flex flex-col gap-6"
                   >
-                    {/* Top status bar */}
                     <div className="flex items-center justify-between border-b border-border/10 pb-4">
                       <div className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
@@ -848,7 +761,6 @@ export default function LandingPage() {
                       <div className="text-xs font-mono text-muted-foreground">PROGRESS: {progress}%</div>
                     </div>
 
-                    {/* Progress Bar */}
                     <div className="w-full h-1 bg-border/20 rounded-full mb-6 overflow-hidden">
                       <motion.div 
                         className="h-full bg-primary" 
@@ -858,10 +770,8 @@ export default function LandingPage() {
                       />
                     </div>
 
-                    {/* Main workflow content area */}
                     <div className="flex-1 grid md:grid-cols-3 gap-6">
                       
-                      {/* Live Status Overlay Checklist */}
                       <div className="md:col-span-1 border-r border-border/10 pr-4 flex flex-col gap-3 justify-center text-left">
                         {[
                           { id: 'intent', label: 'Goal Understood' },
@@ -892,8 +802,7 @@ export default function LandingPage() {
                         })}
                       </div>
 
-                      {/* Log terminal output */}
-                      <div className="md:col-span-2 bg-black/40 rounded p-4 font-mono text-[10px] leading-relaxed overflow-y-auto max-h-[220px] flex flex-col gap-1 text-left">
+                      <div className="md:col-span-2 bg-black/40 rounded p-4 font-mono text-[10px] leading-relaxed overflow-y-auto max-h-[200px] flex flex-col gap-1 text-left">
                         {simLogs.map((log, idx) => (
                           <div
                             key={idx}
@@ -909,7 +818,6 @@ export default function LandingPage() {
 
                     </div>
 
-                    {/* Explanatory completion state */}
                     {simStage === 'completed' && (
                       <motion.div 
                         initial={{ opacity: 0, y: 10 }}
@@ -950,68 +858,17 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 10 — Architecture stack building */}
-      <section id="chapter-10" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
-        <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
-          >
-            CHAPTER 10 — ARCHITECTURE BLUEPRINT
-          </motion.p>
-          
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-3xl md:text-5xl font-bold tracking-tight mb-12"
-          >
-            Interactive Stack Blueprint
-          </motion.h2>
-
-          {/* Animated Stack Layer Construction */}
-          <div className="flex flex-col gap-2.5 w-full max-w-xl">
-            {[
-              { num: 'L1', name: 'Developer Ingress (CLI, SDK, Web)', border: 'border-primary/20' },
-              { num: 'L2', name: 'CENSA Planner (DAG Compilation)', border: 'border-purple-500/20' },
-              { num: 'L3', name: 'Agent Registry (Dynamic Specialists)', border: 'border-pink-500/20' },
-              { num: 'L4', name: 'Panani X Runtime (Node VM Sandbox)', border: 'border-emerald-500/20' },
-              { num: 'L5', name: 'Kavacha Governance (Audit Ledger)', border: 'border-yellow-500/20' },
-              { num: 'L6', name: 'Memory Vault (pgvector & Qdrant)', border: 'border-cyan-500/20' },
-              { num: 'L7', name: 'AMD AI Fabric (MI300X & ROCm)', border: 'border-red-500/20' }
-            ].map((layer, idx) => (
-              <motion.div
-                key={layer.num}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-              >
-                <GlassPanel className={`p-3.5 border ${layer.border} text-left flex items-center gap-4`}>
-                  <span className="font-mono text-xs font-bold text-muted-foreground w-8">{layer.num}</span>
-                  <span className="text-sm font-semibold">{layer.name}</span>
-                </GlassPanel>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CHAPTER 11 — The Vision & Launch Judge Experience */}
-      <section id="chapter-11" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black">
+      {/* SCENE 11 — AMD Infrastructure */}
+      <section id="scene-11" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
+            className="text-xs font-mono text-red-500 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 11 — THE PITCH
+            SCENE 11 — AMD COMPUTE ACTIVE
           </motion.p>
           
           <motion.h2
@@ -1021,20 +878,86 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
           >
-            Responsible Global Intelligence
+            Hardware Routing Layer
           </motion.h2>
+          
+          <GlassPanel className="p-6 border-red-500/20 max-w-xl mb-6">
+            <span className="text-xs font-mono text-primary font-bold block mb-2">INTEGRATION COMPLIANCE STATUS</span>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              "Prepared for Live AMD Compute Activation" (Pending Instinct credentials).
+            </p>
+          </GlassPanel>
+        </div>
+      </section>
+
+      {/* SCENE 12 — Enterprise Universe */}
+      <section id="scene-12" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+        <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
+          >
+            SCENE 12 — ENTERPRISE CONSTELLATIONS
+          </motion.p>
+          
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-12"
+          >
+            Industry Constellations
+          </motion.h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+            {['Automotive', 'Healthcare', 'Finance', 'Manufacturing', 'Research', 'Government', 'Energy'].map((industry) => (
+              <GlassPanel key={industry} className="p-4 border-border/10 text-left">
+                <span className="text-xs font-mono text-primary font-bold block mb-1">CONSTELLATION</span>
+                <h4 className="font-bold text-sm">{industry}</h4>
+              </GlassPanel>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SCENE 13 — The Future */}
+      <section id="scene-13" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black">
+        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
+          >
+            SCENE 13 — THE ROAD AHEAD
+          </motion.p>
           
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-12 font-light"
+            className="text-xl md:text-2xl text-muted-foreground italic mb-6 max-w-2xl font-light"
           >
-            We are building toward an open future. A secure computing substrate where millions of agents work side by side under explicit human validation, ensuring intelligence remains predictable, audited, and aligned.
+            "AI models answer questions. Re-Evolve orchestrates intelligence."
           </motion.p>
 
-          <CommandButton variant="gold" size="lg" glow onClick={() => scrollToNext('chapter-9')}>
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-12"
+          >
+            Build the future with us.
+          </motion.h2>
+
+          <CommandButton variant="gold" size="lg" glow onClick={() => scrollToNext('scene-10')}>
             Launch Judge Experience
             <ArrowRight className="w-4 h-4 ml-2 inline" />
           </CommandButton>
@@ -1042,7 +965,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-6 border-t border-border/10 z-10 bg-background">
+      <footer className="relative py-12 px-6 border-t border-border/10 z-10 bg-black/90">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
