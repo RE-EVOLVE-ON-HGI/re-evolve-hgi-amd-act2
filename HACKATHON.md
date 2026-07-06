@@ -24,3 +24,10 @@ Re-Evolve on HGI is an **Agentic Operating System** built to orchestrate special
 4.  **Memory Vault**: Multi-tiered semantic retrieval graphs utilizing pgvector and Qdrant.
 5.  **Multi-Provider Failover Router**: Automatically shifts routing path away from degraded servers to AMD Instinct clusters.
 6.  **Judge Mode Tracing Dashboard**: One-click demo representing all 12 stages with latencies, active models, active agents, and confidence scores.
+
+---
+
+## 3. Future Collaboration Vision
+
+For a deeper look into how Re-Evolve on HGI aims to build the future of governed agentic AI together with the AMD ecosystem, refer to **[COLLABORATION.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/COLLABORATION.md)**.
+

@@ -212,3 +212,10 @@ We believe the future of AI is not a single model.
 It is an intelligent operating system that enables many models, many agents, and many workflows to work together responsibly.
 
 Re-Evolve on HGI is our step toward that future.
+
+---
+
+## Beyond the Hackathon
+
+Re-Evolve on HGI is intended to continue evolving beyond the competition as an open, extensible AI Agent Operating System supporting enterprise automation, governed AI, and modern AI infrastructure.
+

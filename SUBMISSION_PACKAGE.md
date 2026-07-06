@@ -37,4 +37,11 @@ Re-Evolve on HGI delivers a **governed multi-agent Operating System** that manag
 
 ## 4. Judging Demo Cues
 
-Refer to **[JUDGE_SCRIPT.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-v3/JUDGE_SCRIPT.md)** to run the demo. Clicking **Launch Judge Mode Demo** on the workspaces console triggers a full visual tracing matrix mapping active models, agents, policies, confidence, and latencies across all 12 stages.
+Refer to **[JUDGE_SCRIPT.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/JUDGE_SCRIPT.md)** to run the demo. Clicking **Launch Judge Mode Demo** on the workspaces console triggers a full visual tracing matrix mapping active models, agents, policies, confidence, and latencies across all 12 stages.
+
+---
+
+## 5. Future Vision
+
+For details on the multi-year roadmaps and builder-to-builder collaboration proposals, see **[COLLABORATION.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/COLLABORATION.md)**.
+

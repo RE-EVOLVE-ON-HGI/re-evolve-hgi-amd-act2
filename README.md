@@ -42,3 +42,11 @@ Re-Evolve converges the strongest capabilities from the `nextunicorn2026` organi
 -   **[Autgentication-HGI](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/clones/Autgentication-HGI)**: Multi-tenant OAuth 2.1 / OIDC user security structure.
 -   **[Bumblebee-for-Kavacha-](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/clones/Bumblebee-for-Kavacha-)**: Checks tool dependencies for supply-chain compromises.
 -   **[SkillSpector-HGI](https://github.com/nextunicorn2026/SkillSpector-HGI)**: Static analysis scanner validating agent skill files.
+
+---
+
+## 4. Strategic Collaboration
+
+We invite AMD developers, researchers, and advocates to collaborate on building responsible, governed, and performant agentic AI ecosystems. 
+Read the full builder-to-builder invitation at **[COLLABORATION.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/COLLABORATION.md)**.
+
