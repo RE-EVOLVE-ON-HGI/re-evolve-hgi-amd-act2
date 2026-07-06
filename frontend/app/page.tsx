@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
 import { 
   ArrowRight, 
   Shield, 
@@ -20,9 +21,10 @@ import {
   Terminal,
   CheckCircle2,
   AlertTriangle,
-  Play
+  Play,
+  X
 } from 'lucide-react'
-import { GlassPanel, CommandButton, StatusBadge, HolographicBorder, DataStream } from '@/components/hgi/design-system'
+import { GlassPanel, CommandButton, StatusBadge, HolographicBorder } from '@/components/hgi/design-system'
 
 // Dynamic import for 3D component to avoid SSR issues
 const NeuralEarthVisualization = dynamic(
@@ -37,12 +39,18 @@ const fadeUp = {
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
   
   // Simulation State for Judge Mode
   const [simActive, setSimActive] = useState(false)
   const [simStage, setSimStage] = useState<'idle' | 'intent' | 'planning' | 'routing' | 'execution' | 'governance' | 'memory' | 'completed'>('idle')
   const [simLogs, setSimLogs] = useState<string[]>([])
   const [progress, setProgress] = useState(0)
+
+  // Passcode Modal state
+  const [showPasscodeModal, setShowPasscodeModal] = useState(false)
+  const [passcode, setPasscode] = useState('')
+  const [passcodeError, setPasscodeError] = useState('')
 
   const handleStartSimulation = () => {
     setSimActive(true)
@@ -109,6 +117,17 @@ export default function LandingPage() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const handleVerifyPasscode = (e: React.FormEvent) => {
+    e.preventDefault()
+    const cleanPass = passcode.trim().toUpperCase()
+    if (cleanPass === 'AMD-GOLD' || cleanPass === 'NEXT-UNICORN') {
+      setShowPasscodeModal(false)
+      router.push('/hq')
+    } else {
+      setPasscodeError('Invalid Passcode. Hint: Try AMD-GOLD')
+    }
+  }
+
   return (
     <div ref={containerRef} className="relative min-h-screen bg-background overflow-x-hidden text-foreground selection:bg-primary/30">
       {/* Background stars/grid */}
@@ -135,15 +154,68 @@ export default function LandingPage() {
           
           <div className="flex items-center gap-6">
             <StatusBadge status="online" label="ALL SYSTEMS NOMINAL" />
-            <Link href="/hq">
-              <CommandButton variant="primary" size="sm" glow>
-                Enter Workspace
-                <ArrowRight className="w-3 h-3 ml-2 inline" />
-              </CommandButton>
-            </Link>
+            <CommandButton variant="primary" size="sm" glow onClick={() => setShowPasscodeModal(true)}>
+              Enter Workspace
+              <ArrowRight className="w-3 h-3 ml-2 inline" />
+            </CommandButton>
           </div>
         </div>
       </nav>
+
+      {/* Passcode Security Modal */}
+      <AnimatePresence>
+        {showPasscodeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md px-6">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="w-full max-w-md"
+            >
+              <HolographicBorder>
+                <GlassPanel variant="strong" className="p-6 relative">
+                  <button 
+                    onClick={() => { setShowPasscodeModal(false); setPasscode(''); setPasscodeError(''); }}
+                    className="absolute right-4 top-4 text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
+                    <Lock className="w-4 h-4 text-primary" />
+                    Security Verification Required
+                  </h3>
+                  <p className="text-xs text-muted-foreground mb-6">
+                    Enter the operational security passcode to unlock developer dashboards and workspace systems.
+                  </p>
+                  
+                  <form onSubmit={handleVerifyPasscode} className="flex flex-col gap-4">
+                    <input
+                      type="text"
+                      placeholder="Enter Passcode..."
+                      value={passcode}
+                      onChange={(e) => setPasscode(e.target.value)}
+                      className="w-full bg-black/40 border border-border/20 rounded px-3 py-2 text-sm focus:outline-none focus:border-primary/50 uppercase tracking-widest text-center text-foreground placeholder:text-muted-foreground/60"
+                      required
+                      autoFocus
+                    />
+                    {passcodeError && (
+                      <p className="text-[10px] text-yellow-500 font-mono text-center">
+                        {passcodeError}
+                      </p>
+                    )}
+                    <div className="flex justify-between items-center text-[10px] text-muted-foreground font-mono mt-2">
+                      <span>Passcode hint: AMD-GOLD</span>
+                    </div>
+                    <CommandButton variant="primary" size="sm" type="submit" glow>
+                      Decrypt & Enter
+                    </CommandButton>
+                  </form>
+                </GlassPanel>
+              </HolographicBorder>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* CHAPTER 1 — The Future */}
       <section id="chapter-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 text-center border-b border-border/10 z-10">
@@ -207,9 +279,15 @@ export default function LandingPage() {
               <ArrowRight className="w-4 h-4 ml-2 inline" />
             </CommandButton>
             <CommandButton variant="gold" size="lg" onClick={handleStartSimulation}>
-              Watch Intelligence Wake Up
+              Watch Live Demo
               <Play className="w-4 h-4 ml-2 inline" />
             </CommandButton>
+            <Link href="/builder">
+              <CommandButton variant="subtle" size="lg">
+                Mission Builder App
+                <Zap className="w-4 h-4 ml-2 inline text-yellow-500" />
+              </CommandButton>
+            </Link>
           </motion.div>
         </div>
         
