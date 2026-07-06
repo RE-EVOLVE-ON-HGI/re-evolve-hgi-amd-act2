@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="900" height="520">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060912"/>
+      <stop offset="100%" style="stop-color:#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="l1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#1e3a5f00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="url(#bg)" rx="12"/>
+  <rect width="900" height="520" fill="none" stroke="#1e293b" stroke-width="1" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="44" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="16" font-weight="700" fill="#f1f5f9" text-anchor="middle" letter-spacing="3">ARCHITECTURE · 7-LAYER INTELLIGENCE STACK</text>
+  <rect x="320" y="52" width="260" height="1" fill="url(#accent)"/>
+
+  <!-- Layer 1 — Ingress -->
+  <rect x="60" y="72" width="780" height="54" rx="8" fill="#0f172a" stroke="#3b82f640" stroke-width="1"/>
+  <rect x="60" y="72" width="6" height="54" rx="3" fill="#3b82f6"/>
+  <text x="85" y="95" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#60a5fa">LAYER 01</text>
+  <text x="85" y="113" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Ingress / Developer Console</text>
+  <text x="420" y="95" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">CLI · SDK · Next.js Mission Control · REST API</text>
+  <text x="420" y="113" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">WebSocket Live Streams · Authentication · Rate Limiting</text>
+
+  <!-- Arrow -->
+  <line x1="450" y1="126" x2="450" y2="142" stroke="#3b82f650" stroke-width="2"/>
+  <polygon points="444,138 450,148 456,138" fill="#3b82f650"/>
+
+  <!-- Layer 2 — CENSA -->
+  <rect x="60" y="150" width="780" height="54" rx="8" fill="#0f172a" stroke="#8b5cf640" stroke-width="1"/>
+  <rect x="60" y="150" width="6" height="54" rx="3" fill="#8b5cf6"/>
+  <text x="85" y="173" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#a78bfa">LAYER 02</text>
+  <text x="85" y="191" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">CENSA — Cognitive Orchestrator</text>
+  <text x="420" y="173" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Intent Parsing · Task DAG Generation · 12-Stage Planner</text>
+  <text x="420" y="191" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Capability Matching · Confidence Scoring · SVG Graph Visualization</text>
+
+  <!-- Arrow -->
+  <line x1="450" y1="204" x2="450" y2="220" stroke="#8b5cf650" stroke-width="2"/>
+  <polygon points="444,216 450,226 456,216" fill="#8b5cf650"/>
+
+  <!-- Layer 3 — Agent Registry -->
+  <rect x="60" y="228" width="780" height="54" rx="8" fill="#0f172a" stroke="#06b6d440" stroke-width="1"/>
+  <rect x="60" y="228" width="6" height="54" rx="3" fill="#06b6d4"/>
+  <text x="85" y="251" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#22d3ee">LAYER 03</text>
+  <text x="85" y="269" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Agent Registry</text>
+  <text x="420" y="251" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Dynamic Specialist Loading · Skill File Validation · SkillSpector</text>
+  <text x="420" y="269" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Capability Declaration · Agent Lifecycle Management</text>
+
+  <!-- Arrow -->
+  <line x1="450" y1="282" x2="450" y2="298" stroke="#06b6d450" stroke-width="2"/>
+  <polygon points="444,294 450,304 456,294" fill="#06b6d450"/>
+
+  <!-- Layer 4 — Panani X -->
+  <rect x="60" y="306" width="780" height="54" rx="8" fill="#0f172a" stroke="#f59e0b40" stroke-width="1"/>
+  <rect x="60" y="306" width="6" height="54" rx="3" fill="#f59e0b"/>
+  <text x="85" y="329" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#fbbf24">LAYER 04</text>
+  <text x="85" y="347" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Panani X Runtime</text>
+  <text x="420" y="329" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Node VM Isolates · BullMQ Task Queues · Tool Execution Logs</text>
+  <text x="420" y="347" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Sandboxed Execution · Timeout Guards · Resource Metering</text>
+
+  <!-- Arrow -->
+  <line x1="450" y1="360" x2="450" y2="376" stroke="#f59e0b50" stroke-width="2"/>
+  <polygon points="444,372 450,382 456,372" fill="#f59e0b50"/>
+
+  <!-- Layer 5 — Kavacha -->
+  <rect x="60" y="384" width="780" height="54" rx="8" fill="#0f172a" stroke="#ef444440" stroke-width="1"/>
+  <rect x="60" y="384" width="6" height="54" rx="3" fill="#ef4444"/>
+  <text x="85" y="407" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#f87171">LAYER 05</text>
+  <text x="85" y="425" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" font-weight="600" fill="#e2e8f0">Kavacha — Zero-Trust Governance</text>
+  <text x="420" y="407" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Inline Policy Engine · Audit Ledger · Economic Billing Tracker</text>
+  <text x="420" y="425" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#475569" text-anchor="middle">Supply-Chain Block · Tool Input Scanning · Immutable Logs</text>
+
+  <!-- Arrow -->
+  <line x1="225" y1="438" x2="225" y2="454" stroke="#22c55e50" stroke-width="2"/>
+  <polygon points="219,450 225,460 231,450" fill="#22c55e50"/>
+  <line x1="675" y1="438" x2="675" y2="454" stroke="#22c55e50" stroke-width="2"/>
+  <polygon points="669,450 675,460 681,450" fill="#22c55e50"/>
+
+  <!-- Layer 6 + 7 split -->
+  <rect x="60" y="462" width="370" height="44" rx="8" fill="#0f172a" stroke="#22c55e40" stroke-width="1"/>
+  <rect x="60" y="462" width="6" height="44" rx="3" fill="#22c55e"/>
+  <text x="85" y="481" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#4ade80">LAYER 06</text>
+  <text x="85" y="497" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">Memory Vault (pgvector · Qdrant)</text>
+
+  <rect x="470" y="462" width="370" height="44" rx="8" fill="#0f172a" stroke="#e8560040" stroke-width="1"/>
+  <rect x="470" y="462" width="6" height="44" rx="3" fill="#e85600"/>
+  <text x="495" y="481" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#fb923c">LAYER 07</text>
+  <text x="495" y="497" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="13" font-weight="600" fill="#e2e8f0">AMD AI Fabric (MI300X · ROCm · vLLM)</text>
+
+  <!-- Bottom label -->
+  <text x="450" y="518" font-family="ui-monospace,SFMono-Regular,monospace" font-size="9" fill="#334155" text-anchor="middle">Re-Evolve on HGI · 7-Layer Intelligence Stack · v2.0.0-final</text>
+</svg>

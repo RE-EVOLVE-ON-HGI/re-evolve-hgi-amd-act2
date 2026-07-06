@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060912"/>
+      <stop offset="50%" style="stop-color:#0a0f1e"/>
+      <stop offset="100%" style="stop-color:#06090f"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#8b5cf6"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e2e8f0"/>
+      <stop offset="60%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#94a3b8"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="nodeglow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#3b82f620"/>
+      <stop offset="100%" style="stop-color:#00000000"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="340" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#94a3b8" stroke-width="0.5">
+    <line x1="0" y1="40" x2="1200" y2="40"/>
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="160" x2="1200" y2="160"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="280" x2="1200" y2="280"/>
+    <line x1="0" y1="320" x2="1200" y2="320"/>
+    <line x1="100" y1="0" x2="100" y2="340"/>
+    <line x1="200" y1="0" x2="200" y2="340"/>
+    <line x1="300" y1="0" x2="300" y2="340"/>
+    <line x1="400" y1="0" x2="400" y2="340"/>
+    <line x1="500" y1="0" x2="500" y2="340"/>
+    <line x1="600" y1="0" x2="600" y2="340"/>
+    <line x1="700" y1="0" x2="700" y2="340"/>
+    <line x1="800" y1="0" x2="800" y2="340"/>
+    <line x1="900" y1="0" x2="900" y2="340"/>
+    <line x1="1000" y1="0" x2="1000" y2="340"/>
+    <line x1="1100" y1="0" x2="1100" y2="340"/>
+  </g>
+
+  <!-- Neural network nodes - right side -->
+  <!-- Connection lines -->
+  <g opacity="0.15" stroke="url(#accentGrad)" stroke-width="0.8" fill="none">
+    <line x1="870" y1="60" x2="950" y2="120"/>
+    <line x1="870" y1="60" x2="1020" y2="80"/>
+    <line x1="950" y1="120" x2="1050" y2="160"/>
+    <line x1="1020" y1="80" x2="1100" y2="130"/>
+    <line x1="1050" y1="160" x2="1130" y2="200"/>
+    <line x1="1100" y1="130" x2="1150" y2="80"/>
+    <line x1="1130" y1="200" x2="1180" y2="150"/>
+    <line x1="870" y1="60" x2="900" y2="140"/>
+    <line x1="900" y1="140" x2="960" y2="200"/>
+    <line x1="960" y1="200" x2="1050" y2="240"/>
+    <line x1="1050" y1="240" x2="1140" y2="280"/>
+    <line x1="1020" y1="80" x2="950" y2="120"/>
+    <line x1="950" y1="120" x2="1000" y2="190"/>
+    <line x1="1000" y1="190" x2="1080" y2="220"/>
+    <line x1="840" y1="180" x2="900" y2="140"/>
+    <line x1="840" y1="180" x2="870" y2="250"/>
+    <line x1="870" y1="250" x2="960" y2="280"/>
+    <line x1="960" y1="280" x2="1040" y2="300"/>
+    <line x1="1040" y1="300" x2="1130" y2="310"/>
+  </g>
+
+  <!-- Neural nodes -->
+  <g filter="url(#nodeglow)">
+    <circle cx="870" cy="60" r="5" fill="#3b82f6" opacity="0.9"/>
+    <circle cx="950" cy="120" r="4" fill="#8b5cf6" opacity="0.85"/>
+    <circle cx="1020" cy="80" r="6" fill="#06b6d4" opacity="0.9"/>
+    <circle cx="1050" cy="160" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="1100" cy="130" r="5" fill="#8b5cf6" opacity="0.85"/>
+    <circle cx="1130" cy="200" r="4" fill="#06b6d4" opacity="0.8"/>
+    <circle cx="1150" cy="80" r="3" fill="#3b82f6" opacity="0.7"/>
+    <circle cx="1180" cy="150" r="4" fill="#8b5cf6" opacity="0.75"/>
+    <circle cx="900" cy="140" r="5" fill="#06b6d4" opacity="0.85"/>
+    <circle cx="960" cy="200" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="1050" cy="240" r="5" fill="#8b5cf6" opacity="0.85"/>
+    <circle cx="1140" cy="280" r="3" fill="#06b6d4" opacity="0.7"/>
+    <circle cx="1000" cy="190" r="4" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="1080" cy="220" r="5" fill="#8b5cf6" opacity="0.85"/>
+    <circle cx="840" cy="180" r="6" fill="#06b6d4" opacity="0.9"/>
+    <circle cx="870" cy="250" r="4" fill="#3b82f6" opacity="0.75"/>
+    <circle cx="960" cy="280" r="5" fill="#8b5cf6" opacity="0.8"/>
+    <circle cx="1040" cy="300" r="4" fill="#06b6d4" opacity="0.75"/>
+    <circle cx="1130" cy="310" r="3" fill="#3b82f6" opacity="0.7"/>
+  </g>
+
+  <!-- Left glow halo behind text -->
+  <ellipse cx="380" cy="170" rx="340" ry="160" fill="url(#centerGlow)"/>
+
+  <!-- Top accent line -->
+  <rect x="60" y="52" width="160" height="2" fill="url(#accentGrad)" rx="1"/>
+
+  <!-- OS Version badge -->
+  <rect x="60" y="60" width="120" height="22" rx="11" fill="#3b82f615" stroke="#3b82f640" stroke-width="1"/>
+  <text x="120" y="75" font-family="ui-monospace,SFMono-Regular,monospace" font-size="10" fill="#60a5fa" text-anchor="middle" font-weight="500">v2.0.0-final</text>
+
+  <!-- Main Title -->
+  <text x="60" y="130" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="52" font-weight="700" fill="url(#titleGrad)" filter="url(#glow)" letter-spacing="-1">Re-Evolve on HGI</text>
+
+  <!-- Subtitle -->
+  <text x="60" y="165" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="18" font-weight="400" fill="#64748b" letter-spacing="0.5">Human-Governed Adaptive Intelligence</text>
+
+  <!-- Divider line -->
+  <rect x="60" y="185" width="500" height="1" fill="#1e293b"/>
+
+  <!-- Description text -->
+  <text x="60" y="212" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" fill="#94a3b8" letter-spacing="0.2">The Operating System for Autonomous Intelligence.</text>
+  <text x="60" y="232" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="14" fill="#94a3b8" letter-spacing="0.2">CENSA · Panani X · Kavacha · Memory Vault · AMD AI Fabric</text>
+
+  <!-- Nav buttons -->
+  <!-- Docs -->
+  <rect x="60" y="260" width="110" height="34" rx="6" fill="#3b82f6" opacity="0.9"/>
+  <text x="115" y="282" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="600">Documentation</text>
+
+  <!-- Architecture -->
+  <rect x="182" y="260" width="110" height="34" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="237" y="282" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle" font-weight="500">Architecture</text>
+
+  <!-- Quick Start -->
+  <rect x="304" y="260" width="110" height="34" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="359" y="282" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle" font-weight="500">Quick Start</text>
+
+  <!-- AMD badge -->
+  <rect x="60" y="308" width="80" height="18" rx="4" fill="#e8000015" stroke="#e8000030" stroke-width="1"/>
+  <text x="100" y="321" font-family="ui-monospace,SFMono-Regular,monospace" font-size="9" fill="#f87171" text-anchor="middle">AMD MI300X</text>
+
+  <rect x="150" y="308" width="80" height="18" rx="4" fill="#8b5cf615" stroke="#8b5cf630" stroke-width="1"/>
+  <text x="190" y="321" font-family="ui-monospace,SFMono-Regular,monospace" font-size="9" fill="#a78bfa" text-anchor="middle">Fireworks AI</text>
+
+  <rect x="240" y="308" width="80" height="18" rx="4" fill="#06b6d415" stroke="#06b6d430" stroke-width="1"/>
+  <text x="280" y="321" font-family="ui-monospace,SFMono-Regular,monospace" font-size="9" fill="#22d3ee" text-anchor="middle">ROCm · vLLM</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="338" width="1200" height="2" fill="url(#accentGrad)"/>
+</svg>
