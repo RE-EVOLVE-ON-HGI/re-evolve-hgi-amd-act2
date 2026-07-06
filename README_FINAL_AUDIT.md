@@ -5,7 +5,7 @@
 
 ## 1. Link & Asset Verification Checklist
 
-This audit report verifies that all relative paths, Mermaid blocks, and asset URLs inside `README.md` are valid and render correctly.
+This audit report verifies that all relative paths, Mermaid blocks, and asset URLs inside the restored `README.md` are valid and render correctly.
 
 - [x] **Mermaid Flow Diagram**
   - Syntactically verified: Core architecture flow contains 8 sequentially chained nodes.

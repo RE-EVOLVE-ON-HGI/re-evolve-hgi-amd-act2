@@ -1,162 +1,463 @@
-# RE-EVOLVE ON HGI
-### The Human-Governed Adaptive Intelligence Operating System
-### Built for the AMD Developer Hackathon ACT II
+<div align="center">
+
+<img src=".github/assets/github-banner.svg" alt="Re-Evolve on HGI — Human-Governed Adaptive Intelligence Operating System" width="100%"/>
+
+<br/>
+
+[![Version](https://img.shields.io/badge/version-2.0.0--final-3b82f6?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2/releases)
+[![License](https://img.shields.io/badge/license-MIT-8b5cf6?style=flat-square&labelColor=0d1117)](LICENSE)
+[![AMD AI Cloud](https://img.shields.io/badge/AMD-AI%20Developer%20Cloud-e85600?style=flat-square&labelColor=0d1117&logo=amd)](https://www.amd.com/en/developer.html)
+[![Fireworks AI](https://img.shields.io/badge/Fireworks-AI%20Inference-f59e0b?style=flat-square&labelColor=0d1117)](https://fireworks.ai)
+[![NestJS](https://img.shields.io/badge/Backend-NestJS-e0234e?style=flat-square&labelColor=0d1117&logo=nestjs)](https://nestjs.com)
+[![Next.js](https://img.shields.io/badge/Frontend-Next.js-ffffff?style=flat-square&labelColor=0d1117&logo=nextdotjs)](https://nextjs.org)
+[![PostgreSQL](https://img.shields.io/badge/DB-PostgreSQL%20%2B%20pgvector-336791?style=flat-square&labelColor=0d1117&logo=postgresql)](https://www.postgresql.org)
+[![Qdrant](https://img.shields.io/badge/Vector-Qdrant-dc2626?style=flat-square&labelColor=0d1117)](https://qdrant.tech)
+[![TypeScript](https://img.shields.io/badge/Lang-TypeScript-3178c6?style=flat-square&labelColor=0d1117&logo=typescript)](https://www.typescriptlang.org)
+
+<br/>
+
+**[Live Demo](https://frontend-alpha-rose-25.vercel.app)** · **[Architecture](#-section-02--os-overview--architecture)** · **[Quick Start](#-section-07--developer-journey)** · **[Demo Script](DEMO_SCRIPT.md)** · **[Judge Guide](JUDGE_GUIDE.md)** · **[Slide Outline](SLIDE_OUTLINE.md)**
+
+</div>
 
 ---
 
-[Live Demo](https://frontend-alpha-rose-25.vercel.app) · [Documentation](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/AMD_INTEGRATION_GUIDE.md) · [GitHub Code](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2) · [Architecture Blueprint](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/REPOSITORY_OVERVIEW.md)
+## 🧠 Section 02 — OS Overview & Architecture
 
----
+Re-Evolve on HGI is a production-grade **AI Agent Operating System** — not an assistant, not a framework, but a complete intelligence coordination platform. It translates abstract human goals into governed, sandboxed, explainable multi-agent execution pipelines, with persistent semantic memory and real-time hardware routing to AMD AI Fabric. Every layer of the stack has a defined role, a clear contract, and a verifiable audit trail.
 
-## What is Re-Evolve on HGI?
+<br/>
 
-Re-Evolve on HGI is a next-generation Enterprise AI Agent Operating System that bridges the gap between raw machine intelligence and safe production execution. Designed for high-throughput computing environments, it wraps individual specialist agents in a secure control plane featuring cognitive task decomposition, zero-trust sandbox execution, persistent episodic memory indexing, and strict policy compliance filters. By combining local hardware accelerators with API failover paths, Re-Evolve provides a reliable substrate for orchestrating autonomous workflows.
+<div align="center">
+<img src=".github/assets/architecture.svg" alt="7-Layer Intelligence Stack" width="100%"/>
+</div>
 
----
-
-## Why Re-Evolve?
-
-### The Core Problem (Fragmented AI)
-*   **No Orchestration**: Multi-agent tasks lack structured scheduling, leading to cyclic reasoning paths.
-*   **No Sandbox Isolation**: Running un-isolated code blocks directly exposes backend host processes.
-*   **Fragmented Memory**: Agents operate in isolated sessions, failing to share context across workflows.
-*   **Zero Policy Controls**: Developers cannot audit, intercept, or throttle malicious or costly API actions.
-
-### The Solution (The HGI Kernel)
-Re-Evolve introduces a unified operating system kernel that routes goals through planning compilers, matches capabilities in real-time, runs tasks inside secure sandboxes, and verifies compliance before final response delivery.
-
----
-
-## Core Architecture
+<br/>
 
 ```mermaid
 graph TD
-    A[User Goal Input] --> B[Mission Builder / Guided Demo]
-    B --> C[CENSA Task Graph Compiler]
-    C --> D[Adaptive Intelligence Routing]
-    D --> E[Panani X VM Sandbox]
-    E --> F[Memory Vault pgvector & Qdrant]
-    F --> G[Kavacha Zero-Trust Shield]
-    G --> H[Enterprise Result Payload]
+    A["🖥️ Ingress Layer\nCLI · SDK · Next.js · REST API"] --> B["🧠 CENSA Orchestrator\nDAG Planning · Stage Management · Confidence Scoring"]
+    B --> C["🤖 Agent Registry\nDynamic Specialist Loading · Skill Validation"]
+    C --> D["⚡ Panani X Runtime\nNode VM Isolates · BullMQ · Tool Execution"]
+    D --> E["🛡️ Kavacha Governance\nPolicy Engine · Audit Ledger · Economic Billing"]
+    E --> F1["💾 Memory Vault\npgvector · Qdrant · Semantic Retrieval"]
+    E --> F2["🔴 AMD AI Fabric\nInstinct MI300X · ROCm · vLLM · Fireworks AI"]
+    F1 --> B
+    F2 --> D
+
+    style A fill:#0f172a,stroke:#3b82f6,color:#e2e8f0
+    style B fill:#0f172a,stroke:#8b5cf6,color:#e2e8f0
+    style C fill:#0f172a,stroke:#06b6d4,color:#e2e8f0
+    style D fill:#0f172a,stroke:#f59e0b,color:#e2e8f0
+    style E fill:#0f172a,stroke:#ef4444,color:#e2e8f0
+    style F1 fill:#0f172a,stroke:#22c55e,color:#e2e8f0
+    style F2 fill:#0f172a,stroke:#e85600,color:#e2e8f0
 ```
 
 ---
 
-## Key Components
+## ⚡ Section 03 — The Intelligence Stack
 
-1.  **CENSA (Cognitive Execution & Neural Synthesis Agent)**: Decomposes user goals into structured Task Directed Acyclic Graphs (DAGs) and monitors workflow lifecycles.
-2.  **Panani X Runtime**: Allocates secure, isolated Node `vm` sandboxes to execute untrusted code scripts safely.
-3.  **Memory Vault**: Synchronizes pgvector episodic interaction history and Qdrant semantic indexes for cross-session context recall.
-4.  **Kavacha Governance**: Intercepts command executions, scans for illegal arguments, and writes billing ledger records.
-5.  **Mission Builder**: A companion interface where users enter custom goals and inspect structured execution outputs.
-6.  **Judge Mode**: A one-click guided demonstration page executing automated pipelines with live status overlays.
-7.  **Adaptive Routing**: Dynamically balances model execution paths between local ROCm clusters and remote APIs.
+<div align="center">
+
+| Component | Role | Technology |
+|-----------|------|------------|
+| **CENSA** | Cognitive Orchestrator — parses goals, generates Task DAGs, manages execution timelines | NestJS · TypeScript · SVG Visualization |
+| **Panani X** | Sandboxed Task Runtime — executes agent tools inside Node VM isolates with timeout guards | Node.js `vm` · BullMQ · Redis |
+| **Kavacha** | Zero-Trust Governance — scans tool inputs inline, blocks threats, maintains audit ledger | Policy Engine · Prisma · PostgreSQL |
+| **Memory Vault** | Persistent Semantic Memory — multi-tiered episodic + semantic retrieval across sessions | pgvector · Qdrant · PostgreSQL |
+| **Agent Galaxy** | Specialist Swarms — dynamically loaded agents matched to task capabilities | Agent Registry · SkillSpector · TypeScript |
+| **Enterprise APIs** | REST + WebSocket endpoints with auth, rate limiting, and live event streaming | NestJS · Passport · WebSockets |
+| **AMD AI Fabric** | Hardware Routing Layer — LiteLLM/vLLM failover to AMD Instinct MI300X clusters in <500ms | ROCm · vLLM · LiteLLM · Fireworks AI |
+
+</div>
+
+<br/>
+
+<details>
+<summary><strong>📐 CENSA — Cognitive Execution &amp; Neural Synthesis Agent</strong></summary>
+<br/>
+<div align="center">
+<img src=".github/assets/censa.svg" alt="CENSA Component Card" width="80%"/>
+</div>
+
+CENSA is the central nervous system of Re-Evolve. It accepts a natural language goal, infers user intent using the configured LLM, and generates an execution Directed Acyclic Graph (DAG). At each stage, CENSA matches required capabilities to available specialists in the Agent Registry, evaluates confidence scores, and outputs logs.
+
+**Responsibilities:**
+- Goal parsing and intent inference
+- Task DAG generation with dependency resolution
+- Agent capability matching
+- Confidence scoring at each stage
+- Live visual progress tracking
+- Stage retry logic and failure escalation
+
+</details>
+
+<details>
+<summary><strong>⚡ Panani X — Sandboxed Task Runtime</strong></summary>
+<br/>
+<div align="center">
+<img src=".github/assets/runtime.svg" alt="Panani X Runtime Card" width="80%"/>
+</div>
+
+Panani X executes every tool call inside a Node.js `vm` sandbox. Tools cannot access the host file system, make unauthorized network requests, or escape their defined execution boundary.
+
+**Responsibilities:**
+- Node VM sandbox isolation per tool execution
+- Execution timeout enforcement
+- Tool output logging and streaming
+- Resource usage metering
+
+</details>
+
+<details>
+<summary><strong>🛡️ Kavacha — Zero-Trust Governance Engine</strong></summary>
+<br/>
+<div align="center">
+<img src=".github/assets/kavacha.svg" alt="Kavacha Governance Card" width="80%"/>
+</div>
+
+Kavacha evaluates every tool call before it executes. Inline policies block known command injection patterns, validate parameters, and log decisions to an immutable audit trail.
+
+**Responsibilities:**
+- Pre-execution inline policy scanning
+- Illegal command parameter blocking
+- Immutable audit log creation
+- Economic billing ledger management
+
+</details>
+
+<details>
+<summary><strong>💾 Memory Vault — Persistent Semantic Memory</strong></summary>
+<br/>
+<div align="center">
+<img src=".github/assets/memory.svg" alt="Memory Vault Card" width="80%"/>
+</div>
+
+Memory Vault provides three-tier persistent memory. Episodic memory stores interaction histories in PostgreSQL with pgvector for vector similarity search. Semantic memory indexes knowledge in Qdrant for fast approximate nearest-neighbor retrieval.
+
+**Responsibilities:**
+- Episodic memory storage and retrieval (pgvector)
+- Semantic vector search (Qdrant)
+- Cross-session context persistence
+- Agent memory namespace isolation
+
+</details>
 
 ---
 
-## AMD Developer Hackathon Integration
+## 🔄 Section 04 — Interactive System Flow
 
-Re-Evolve is engineered from the ground up to leverage AMD Instinct MI300X accelerators. 
+<div align="center">
+<img src=".github/assets/system-flow.svg" alt="8-Stage Execution Pipeline" width="100%"/>
+</div>
 
-*   **Integrated**: Mapped provider routing abstraction layers and LiteLLM configurations inside `ModelService`.
-*   **Prepared**: Local ROCm-accelerated vLLM compose templates built for model serving.
-*   **Pending AMD Access**: Live hardware compute verification is pending access to target AMD Instinct cloud credentials.
+<br/>
+
+```mermaid
+sequenceDiagram
+    actor Developer
+    participant CENSA as 🧠 CENSA
+    participant Registry as 🤖 Registry
+    participant Panani as ⚡ Panani X
+    participant Kavacha as 🛡️ Kavacha
+    participant Memory as 💾 Memory
+    participant AMD as 🔴 AMD Fabric
+
+    Developer->>CENSA: Submit goal
+    CENSA->>Memory: Retrieve context
+    Memory-->>CENSA: Relevant history
+    CENSA->>CENSA: Generate Task DAG (5 stages)
+    CENSA->>Registry: Match agent capabilities
+    Registry-->>CENSA: Specialist agents loaded
+    loop For each task stage
+        CENSA->>Kavacha: Validate tool call
+        Kavacha-->>CENSA: ALLOW / BLOCK + audit log
+        CENSA->>Panani: Execute in VM isolate
+        Panani->>AMD: Route inference request
+        AMD-->>Panani: Model response
+        Panani-->>CENSA: Tool output
+        CENSA->>Memory: Persist stage result
+    end
+    CENSA-->>Developer: Final output + trace
+```
 
 ---
 
-## Technology Stack
+## 🛠️ Section 05 — Technology Ecosystem
 
-*   **Frontend**: React, Next.js (Turbopack), Tailwind CSS, Framer Motion, Lucid Icons
-*   **Backend**: NestJS, TypeScript, Jest integration suite
-*   **Databases**: PostgreSQL (pgvector), Qdrant Vector DB
-*   **Model Serving**: AMD AI Developer Cloud (Prepared), Fireworks AI Inference API, Ollama (vLLM local)
+<div align="center">
+
+### Core Infrastructure
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| Runtime | Node.js 20 LTS | Backend execution environment |
+| Framework | NestJS 10 | Modular backend architecture |
+| Language | TypeScript 5 | Type-safe development |
+| Frontend | Next.js 16 (Turbopack) | Presentation & Guided Demo portal |
+| DB | PostgreSQL 16 | Relational database mapping |
+| Vector | pgvector & Qdrant | Semantic and episodic memory caches |
+
+### AI & Inference Routing
+
+| Provider | Status | Integration Target |
+|---------|---------|------------|
+| **AMD AI Developer Cloud** | Prepared (Pending AMD compute access) | Direct Instinct compute serving via ROCm PyTorch HIP configurations. |
+| **Fireworks AI** | Implemented | High-throughput OpenAI-compatible inference fallback. |
+| **Ollama** | Implemented | Local testing inference connector. |
+
+</div>
 
 ---
 
-## Live Demo
+## 🌌 Section 06 — Repository Universe
 
-Experience the live guided run at:  
-👉 **[https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)**
+<div align="center">
+<img src=".github/assets/repo-universe.svg" alt="Repository Universe" width="100%"/>
+</div>
 
-1.  Select a sample objective card or enter a custom goal.
-2.  Click **Initialize & Execute Simulation** to trigger the pipeline.
-3.  Audit real-time terminal outputs and Live Status Overlay checkmarks.
-4.  Type the passcode **`AMD-GOLD`** in the header to enter the gated enterprise workspace.
+<br/>
+
+| Repository | Role | Integration Point |
+|------------|------|-----------------|
+| **re-evolve-hgi-amd-act2** | Core OS — CENSA, Panani X, Kavacha, Memory Vault | Central Hub |
+| **pxpipe-token-cutdown-** | Text-to-PNG token compressor (-68% tokens) | CENSA prompt pipeline |
+| **Autgentication-HGI** | Multi-tenant OAuth 2.1 / OIDC auth | Ingress layer |
+| **Bumblebee-for-Kavacha-** | Supply-chain dependency scanner | Kavacha pre-scan |
+| **SkillSpector-HGI** | Static agent skill file validator | Agent Registry |
 
 ---
 
-## Repository Structure
+## 🚀 Section 07 — Developer Journey
+
+<div align="center">
+<img src=".github/assets/developer-journey.svg" alt="Developer Journey" width="100%"/>
+</div>
+
+<br/>
+
+### Step 1 — Install (30 seconds)
+
+```bash
+git clone https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2
+cd re-evolve-hgi-amd-act2
+cp .env.example .env     # Add your API keys
+```
+
+### Step 2 — Run Backend
+
+```bash
+cd backend
+pnpm install
+npx prisma migrate dev --name init
+pnpm run start:dev
+# ✓ NestJS running at http://localhost:3001
+```
+
+### Step 3 — Run Frontend
+
+```bash
+cd frontend
+pnpm install
+pnpm run dev
+# ✓ Mission Control at http://localhost:3000
+```
+
+### Step 4 — Submit Your First Goal
+
+```bash
+curl -X POST http://localhost:3001/agent/run \
+  -H "Content-Type: application/json" \
+  -d '{"goal": "Analyze this codebase and identify security vulnerabilities"}'
+```
+
+### Step 5 — Local Model Serving via ROCm
+
+```yaml
+# docker-compose.amd.yml
+services:
+  inference:
+    image: vllm/vllm-openai:latest
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    environment:
+      - HIP_VISIBLE_DEVICES=0,1,2,3
+    command: --model google/gemma-2-9b-it --port 8000 --host 0.0.0.0
+```
+
+---
+
+## 🏢 Section 08 — Enterprise Use Cases
+
+<div align="center">
+
+| Industry | Agent Swarm Scenario | Governance Requirement |
+|---------|---------------------|----------------------|
+| **Healthcare** | Clinical decision support, patient record summarization | HIPAA audit trails, PII redaction |
+| **Finance** | Portfolio analysis, regulatory filing review | SOC 2 compliance, immutable decision logs |
+| **Manufacturing** | Predictive maintenance, supply chain optimization | OT/IT boundary policies, sandbox isolation |
+| **Government** | Policy document analysis, citizen query routing | Data sovereignty, classification-level filtering |
+
+</div>
+
+---
+
+## 🔴 Section 09 — AMD Developer Cloud Integration
+
+*   **Status**: `Prepared (Pending AMD compute access)`
+*   **Wording**: "AMD integration layer prepared. Live AMD compute validation pending access."
 
 ```
-re-evolve-hgi-amd-act2/
-├── backend/                  # NestJS API logic
-│   └── src/modules/          # Agent, Memory, Model, and Security modules
-├── frontend/                 # Next.js Presentation & Demo portal
-│   ├── app/                  # Route layouts, builder pages, and 404 handler
-│   └── components/hgi/       # UI components & particle globe canvas
-├── docs/                     # Integration guides and manuals
-└── docker-compose.yml        # Local execution container settings
+┌──────────────────────────────────────────────────────────────────┐
+│                    AMD AI Integration Layer                       │
+│                                                                  │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────────┐  │
+│   │  AMD Instinct │    │  ROCm Stack  │    │  Fireworks AI    │  │
+│   │  MI300X       │    │  vLLM Serve  │    │  Inference API   │  │
+│   │  Clusters     │    │  PyTorch HIP │    │  Hosted Models   │  │
+│   └──────┬───────┘    └──────┬───────┘    └────────┬─────────┘  │
+│          └─────────────────────────────────────────┘            │
+│                         LiteLLM Proxy                            │
+│              Unified OpenAI-Compatible Endpoint                  │
+│              Auto-failover in < 500ms                            │
+└──────────────────────────────────────────────────────────────────┘
+                              │
+                    Re-Evolve HGI Core OS
+              CENSA → Panani X → Kavacha → Memory
+```
+
+Re-Evolve's model router is fully abstracted in `ModelService` (`backend/src/modules/model/model.service.ts`). It targets local ROCm-accelerated vLLM endpoints hosted on AMD Instinct MI300X clusters when credentials are set, automatically routing to hosted Fireworks AI inference fallbacks in under 500ms on connection timeouts.
+
+---
+
+## 📅 Section 10 — Project Roadmap
+
+<div align="center">
+<img src=".github/assets/roadmap.svg" alt="Re-Evolve Roadmap" width="100%"/>
+</div>
+
+<br/>
+
+```mermaid
+timeline
+    title The Journey Ahead · Re-Evolve on HGI
+    section Hackathon Scope (Completed)
+        Q1-Q2 : Core OS Stabilization
+              : CENSA · Panani X · Kavacha
+              : Gated Feature Flag passcodes (AMD-GOLD)
+              : Live simulator console
+    section Post-Hackathon Vision
+        Q3-Q4 : Multi-region cluster orchestrations
+              : Visual DAG Builder
+              : Decentralized governance logs
 ```
 
 ---
 
-## Documentation Registry
+## 🤝 Section 11 — Open Source & Community
 
--   **[docs/AMD_INTEGRATION_GUIDE.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/docs/AMD_INTEGRATION_GUIDE.md)**: Details Instinct MI300X configuration files.
--   **[REPOSITORY_OVERVIEW.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/REPOSITORY_OVERVIEW.md)**: Maps codebase blueprints.
--   **[JUDGE_GUIDE.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/JUDGE_GUIDE.md)**: Summarizes evaluation points.
--   **[DEMO_SCRIPT.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/DEMO_SCRIPT.md)**: Detailed guided walkthrough path.
--   **[VIDEO_SCRIPT.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/VIDEO_SCRIPT.md)**: 2-minute video visual-audio timeline.
--   **[SUBMISSION_CHECKLIST.md](file:///Users/nextunicorn/.gemini/antigravity-ide/scratch/re-evolve-hgi-amd-act2/SUBMISSION_CHECKLIST.md)**: Coordinates of all public assets and URLs.
+```mermaid
+flowchart LR
+    A["💡 Idea / Issue"] --> B["📋 GitHub Issue\nBug · Feature · RFC"]
+    B --> C{"Type?""}
+    C -->|Bug| D["🐛 Bug Report\nTemplate"]
+    C -->|Feature| E["✨ Feature Request\nTemplate"]
+    C -->|Large Change| F["📝 RFC\nRequest for Comment"]
+    D --> G["🔀 Pull Request"]
+    E --> G
+    F --> H["💬 Community Discussion\n7-day comment period"]
+    H --> G
+    G --> I["🔍 Code Review\n+ CI checks"]
+    I --> J["✅ Merge to main"]
+    J --> K["📦 Semantic Release\nCHANGELOG update"]
 
----
-
-## Deployment & Coordinates
-
-*   **Repository URL**: `https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2`
-*   **Production URL**: `https://frontend-alpha-rose-25.vercel.app`
-*   **Branch**: `main`
-*   **Release Tag**: `v2.0.0-final`
-
----
-
-## Project Status Matrix
-
-| Component | Status | Description |
-|-----------|--------|-------------|
-| **Frontend** | Implemented | Deployed Next.js 16 app with 12-chapter keynote landing page. |
-| **Backend** | Implemented | NestJS API verified against Jest test suites. |
-| **Documentation** | Implemented | Complete guides on architecture, slides, scripts, and compliance. |
-| **Deployment** | Implemented | Active production server hosted on Vercel over HTTPS. |
-| **Mission Builder** | Implemented | Interactive objective execution console live. |
-| **Judge Mode** | Implemented | One-click simulation with Live Status Overlay checkmarks. |
-| **AMD Integration** | Prepared | Provider abstractions configured. (Pending AMD compute access). |
+    style A fill:#0f172a,stroke:#3b82f6,color:#e2e8f0
+    style J fill:#0f172a,stroke:#22c55e,color:#e2e8f0
+    style K fill:#0f172a,stroke:#8b5cf6,color:#e2e8f0
+```
 
 ---
 
-## Roadmap
+## 👤 Section 12 — Founder Vision
 
-### Hackathon Scope (Completed)
-- [x] Secure sandbox containerization (Panani X).
-- [x] Gated feature flag passcode overlays.
-- [x] Unified presenter console with live terminal output log screens.
-- [x] vLLM / Fireworks API fallback routing settings.
+<div align="center">
 
-### Post-Hackathon Vision
-- [ ] Multi-region cluster orchestrations.
-- [ ] Self-healing container environments.
-- [ ] Decentralized governance ledgers.
+*From Aryan, Founder of Re-Evolve on HGI*
+
+</div>
+
+I started Re-Evolve because I kept asking a question that existing tools couldn't answer:
+
+**If AI systems are becoming genuinely capable, why do they still forget everything the moment a session ends? Why do they work alone? Why can't I see what they're doing or why?**
+
+The answers pointed to the same gap: there is no operating system for intelligence.
+
+There are models. There are frameworks. There are chat interfaces. But there is no layer that sits between the raw capability of a language model and the coordinated, governed, explainable behavior that real-world applications require.
+
+That is what Re-Evolve is. Not a better chatbot. Not a smarter framework. An operating system — with a planner, a runtime, a security layer, a memory system, and a hardware routing layer — that makes autonomous agents behave like disciplined, auditable, production-grade systems rather than probabilistic black boxes.
+
+I believe the future of AI is not defined by any single model or company. It is defined by the infrastructure we build together — infrastructure that allows many agents, with many capabilities, built by many developers, to work together safely and responsibly.
+
+That infrastructure should be open. It should be explainable. It should be governed.
+
+Re-Evolve on HGI is my contribution to that infrastructure. It is not finished. It may never be. But it is honest — every claim backed by code, every architectural decision documented, every limitation acknowledged.
+
+If you are building something in this space, I would genuinely love to compare notes. Not as a sales conversation. As one builder to another.
+
+The problems are hard enough. We should work on them together.
+
+— *Aryan, Founder, Re-Evolve on HGI*
 
 ---
 
-## Contributing
-
-We welcome open collaboration on the HGI kernel core. Refer to repository issues for active discussions and design specifications.
+Read the full open letter: **[An Open Letter to the AMD AI Team →](docs/OPEN_LETTER_TO_AMD.md)**
 
 ---
 
-## Founder Note
+## 🔗 Section 13 — Quick Links
 
-> "Building Re-Evolve on HGI is about bringing security and predictability to autonomous intelligence. Operating systems have always unlocked the potential of raw hardware. By building the HGI kernel, we ensure that as models scale, their coordinates remain safe, audited, and aligned. Thank you for giving builders the opportunity to define what comes next."
-> 
-> — Aryan, Founder of Re-Evolve on HGI
+<div align="center">
+
+| Resource | Description |
+|----------|-------------|
+| **[README](README.md)** | This document |
+| **[AMD Guide](docs/AMD_INTEGRATION_GUIDE.md)** | Instinct MI300X & ROCm server settings |
+| **[Blueprint](REPOSITORY_OVERVIEW.md)** | Codebase file hierarchies and logic mappings |
+| **[Judge Guide](JUDGE_GUIDE.md)** | Quick coordinates for hackathon evaluators |
+| **[Demo Script](DEMO_SCRIPT.md)** | Step-by-step console guided walkthrough |
+| **[Video Script](VIDEO_SCRIPT.md)** | 2-minute pitch visual-audio timeline overlays |
+| **[Checklist](SUBMISSION_CHECKLIST.md)** | Submission assets and live URL links |
+
+</div>
+
+---
+
+## 🏁 Section 14 — Footer
+
+<div align="center">
+
+<br/>
+
+**Re-Evolve on HGI** · Human-Governed Adaptive Intelligence Operating System
+
+Built for the AMD Developer Hackathon ACT II · v2.0.0-final
+
+<br/>
+
+[![AMD](https://img.shields.io/badge/Powered%20by-AMD%20AI%20Developer%20Cloud-e85600?style=flat-square&labelColor=0d1117)](https://www.amd.com/en/developer.html)
+[![Fireworks](https://img.shields.io/badge/Inference-Fireworks%20AI-f59e0b?style=flat-square&labelColor=0d1117)](https://fireworks.ai)
+[![License](https://img.shields.io/badge/License-MIT-8b5cf6?style=flat-square&labelColor=0d1117)](LICENSE)
+
+<br/>
+
+*"Whether or not our paths cross after this hackathon, thank you for creating opportunities that encourage developers around the world to imagine, build, and share ambitious ideas."*
+
+— Aryan, Founder
+
+<br/>
+
+[nextunicorn2026](https://github.com/nextunicorn2026) · [MIT License](LICENSE) · [Code of Conduct](CODE_OF_CONDUCT.md)
+
+</div>
