@@ -24,7 +24,8 @@ import {
   Play,
   X,
   Sparkles,
-  Info
+  Layers,
+  ArrowLeft
 } from 'lucide-react'
 import { GlassPanel, CommandButton, StatusBadge, HolographicBorder } from '@/components/hgi/design-system'
 
@@ -77,7 +78,6 @@ export default function LandingPage() {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search)
       if (params.get('sim') === 'true') {
-        // Start simulation with default supply chain goal
         handleStartSimulation('Optimize multi-agent supply chain pipelines')
       }
     }
@@ -179,7 +179,7 @@ export default function LandingPage() {
   }
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-background overflow-x-hidden text-foreground selection:bg-primary/30">
+    <div ref={containerRef} className="relative min-h-screen bg-background overflow-x-hidden text-foreground selection:bg-primary/30 font-sans">
       {/* Background stars/grid */}
       <div className="fixed inset-0 bg-neural-grid opacity-20 pointer-events-none z-0" />
       <div className="fixed top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent pointer-events-none z-10" />
@@ -235,7 +235,7 @@ export default function LandingPage() {
                     Security Verification Required
                   </h3>
                   <p className="text-xs text-muted-foreground mb-6">
-                    Enter the operational security passcode to unlock developer dashboards and workspace systems.
+                    Enter the operational security passcode to unlock the live enterprise workspace dashboards.
                   </p>
                   
                   <form onSubmit={handleVerifyPasscode} className="flex flex-col gap-4">
@@ -267,8 +267,8 @@ export default function LandingPage() {
         )}
       </AnimatePresence>
 
-      {/* CHAPTER 1 — The Future */}
-      <section id="chapter-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 text-center border-b border-border/10 z-10">
+      {/* CHAPTER 1 — Black Screen & Universe Awakens */}
+      <section id="chapter-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-24 text-center border-b border-border/10 z-10 bg-black">
         <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40">
           <div className="w-[600px] h-[600px] md:w-[800px] md:h-[800px]">
             <NeuralEarthVisualization />
@@ -346,8 +346,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 2 — The Problem */}
-      <section id="chapter-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
+      {/* CHAPTER 2 — AI Today (The Problem) */}
+      <section id="chapter-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-[#050816]/70">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
@@ -356,7 +356,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-red-500 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 2 — THE CRISIS
+            CHAPTER 2 — AI TODAY & THE CRISIS
           </motion.p>
           
           <motion.h2
@@ -412,7 +412,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 3 — The Birth of HGI */}
+      {/* CHAPTER 3 — Why AI Needs an OS */}
       <section id="chapter-3" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
@@ -422,7 +422,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 3 — THE EVOLUTION
+            CHAPTER 3 — THE OPERATING SYSTEM
           </motion.p>
           
           <motion.h2
@@ -484,7 +484,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 4 — Meet CENSA */}
+      {/* CHAPTER 4 — Introducing Re-Evolve */}
       <section id="chapter-4" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
@@ -494,7 +494,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-purple-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 4 — THE BRAIN
+            CHAPTER 4 — INTRODUCING THE OS
           </motion.p>
           
           <motion.h2
@@ -535,7 +535,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 5 — Meet Panani X */}
+      {/* CHAPTER 5 — Panani X Sandbox */}
       <section id="chapter-5" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
@@ -545,7 +545,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-emerald-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 5 — THE RUNTIME
+            CHAPTER 5 — PANANI X RUNTIME
           </motion.p>
           
           <motion.h2
@@ -601,7 +601,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-cyan-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 6 — THE GALAXY
+            CHAPTER 6 — MEMORY VAULT
           </motion.p>
           
           <motion.h2
@@ -653,7 +653,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-yellow-500 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 7 — THE GUARD
+            CHAPTER 7 — KAVACHA SHIELD
           </motion.p>
           
           <motion.h2
@@ -699,7 +699,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-red-400 mb-6 tracking-widest uppercase"
           >
-            CHAPTER 8 — THE ACCELERATOR
+            CHAPTER 8 — AMD ACCELERATOR
           </motion.p>
           
           <motion.h2
@@ -742,7 +742,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 9 — Judge Mode & Mission Builder (Unified Interactive Console) */}
+      {/* CHAPTER 9 — Unified Mission Builder & Judge Mode Console */}
       <section id="chapter-9" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           <motion.p
@@ -960,7 +960,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 10 — THE BLUEPRINT
+            CHAPTER 10 — ARCHITECTURE BLUEPRINT
           </motion.p>
           
           <motion.h2
@@ -1001,8 +1001,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CHAPTER 11 — The Vision */}
-      <section id="chapter-11" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
+      {/* CHAPTER 11 — The Vision & Launch Judge Experience */}
+      <section id="chapter-11" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <motion.p
             initial="hidden"
@@ -1011,7 +1011,7 @@ export default function LandingPage() {
             variants={fadeUp}
             className="text-sm font-mono text-primary mb-6 tracking-widest uppercase"
           >
-            CHAPTER 11 — THE HORIZON
+            CHAPTER 11 — THE PITCH
           </motion.p>
           
           <motion.h2
@@ -1033,44 +1033,11 @@ export default function LandingPage() {
           >
             We are building toward an open future. A secure computing substrate where millions of agents work side by side under explicit human validation, ensuring intelligence remains predictable, audited, and aligned.
           </motion.p>
-        </div>
-      </section>
 
-      {/* CHAPTER 12 — The Invitation */}
-      <section id="chapter-12" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-background/50">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-sm font-mono text-yellow-500 mb-6 tracking-widest uppercase"
-          >
-            CHAPTER 12 — AN INVITATION
-          </motion.p>
-
-          <GlassPanel className="p-8 border-yellow-500/20 max-w-2xl text-left relative overflow-hidden">
-            <div className="absolute right-0 top-0 opacity-10">
-              <Brain className="w-48 h-48 text-yellow-500" />
-            </div>
-            
-            <p className="text-md md:text-lg italic text-muted-foreground leading-relaxed mb-6 font-light">
-              "We believe the future won't be built by one company. It will be built by communities. Researchers. Developers. Open collaboration. Thank you for giving builders the opportunity to imagine what comes next."
-            </p>
-            
-            <div className="flex items-center justify-between mt-8 border-t border-border/10 pt-4">
-              <div>
-                <p className="font-bold text-sm">Aryan</p>
-                <p className="text-[10px] text-muted-foreground font-mono">Founder, Re-Evolve on HGI</p>
-              </div>
-              
-              <Link href="/docs/OPEN_LETTER_TO_AMD.md">
-                <CommandButton variant="gold" size="sm">
-                  Read Founder Letter →
-                </CommandButton>
-              </Link>
-            </div>
-          </GlassPanel>
+          <CommandButton variant="gold" size="lg" glow onClick={() => scrollToNext('chapter-9')}>
+            Launch Judge Experience
+            <ArrowRight className="w-4 h-4 ml-2 inline" />
+          </CommandButton>
         </div>
       </section>
 
