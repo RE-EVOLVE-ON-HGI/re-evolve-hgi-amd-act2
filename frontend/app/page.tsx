@@ -72,6 +72,17 @@ export default function LandingPage() {
     }
   }
 
+  // Auto-run simulation if URL parameter is present
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+      if (params.get('sim') === 'true') {
+        // Start simulation with default supply chain goal
+        handleStartSimulation('Optimize multi-agent supply chain pipelines')
+      }
+    }
+  }, [])
+
   // Simulation Sequence Timeline
   useEffect(() => {
     if (!simActive) return
@@ -838,7 +849,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* Progress Bar */}
-                    <div className="w-full h-1 bg-border/20 rounded-full overflow-hidden">
+                    <div className="w-full h-1 bg-border/20 rounded-full mb-6 overflow-hidden">
                       <motion.div 
                         className="h-full bg-primary" 
                         initial={{ width: 0 }}
