@@ -60,11 +60,10 @@ export default function NotFound() {
               <ShieldAlert className="w-8 h-8 text-yellow-500" />
             </div>
 
-            <h2 className="text-2xl font-bold tracking-tight">Developer Workspace</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Enterprise Platform Modules</h2>
             
             <p className="text-sm text-muted-foreground leading-relaxed">
-              This workspace is intentionally hidden during the AMD Hackathon demonstration.
-              The complete HGI Operating System contains additional enterprise modules available in Developer Mode.
+              These enterprise platform modules are intentionally gated during the AMD Hackathon demonstration to focus on the core CENSA cognitive orchestration, Panani X secure runtime, and Kavacha governance flows. The complete HGI Operating System includes these additional multi-region, financial command, and risk control panels for production clusters.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full justify-center mt-4">

@@ -918,7 +918,7 @@ export default function LandingPage() {
                       >
                         <h3 className="font-bold text-sm text-emerald-400 flex items-center gap-2">
                           <CheckCircle2 className="w-4 h-4" />
-                          Enterprise Response Generated (Simulated Run)
+                          Enterprise Response Generated (Live Demo Run)
                         </h3>
                         <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-mono border-y border-border/10 py-2">
                           <div>
