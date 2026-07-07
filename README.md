@@ -43,6 +43,12 @@ Re-Evolve on HGI is a production-grade **AI Agent Operating System** — not an 
 <br/>
 
 <div align="center">
+<img src=".github/assets/diagrams/system-architecture.svg" alt="System Architecture Diagram" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src=".github/assets/architecture.svg" alt="7-Layer Intelligence Stack" width="100%"/>
 </div>
 
@@ -123,6 +129,12 @@ CENSA is the central nervous system of Re-Evolve. It accepts a natural language 
 <br/>
 
 <div align="center">
+<img src=".github/assets/diagrams/runtime-lifecycle.svg" alt="Runtime Isolate Lifecycle" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src=".github/assets/runtime.svg" alt="Panani X Runtime Card" width="80%"/>
 </div>
 
@@ -140,6 +152,12 @@ Panani X executes every tool call inside a Node.js `vm` sandbox. Tools cannot ac
 <summary><strong>🛡️ Kavacha — Zero-Trust Governance Engine</strong></summary>
 <br/>
 <div align="center">
+<img src=".github/assets/diagrams/agent-lifecycle.svg" alt="Agent Lifecycle Regulation Schema" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src=".github/assets/kavacha.svg" alt="Kavacha Governance Card" width="80%"/>
 </div>
 
@@ -156,6 +174,12 @@ Kavacha evaluates every tool call before it executes. Inline policies block know
 <details>
 <summary><strong>💾 Memory Vault — Persistent Semantic Memory</strong></summary>
 <br/>
+<div align="center">
+<img src=".github/assets/diagrams/memory-flow.svg" alt="Memory Vault Flow" width="100%"/>
+</div>
+
+<br/>
+
 <div align="center">
 <img src=".github/assets/memory.svg" alt="Memory Vault Card" width="80%"/>
 </div>
@@ -263,6 +287,18 @@ sequenceDiagram
 
 <br/>
 
+<div align="center">
+<img src=".github/assets/diagrams/sdk-layers.svg" alt="HGI SDK Stack Layers" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src=".github/assets/diagrams/deployment-pipeline.svg" alt="Deployment Pipeline Schema" width="100%"/>
+</div>
+
+<br/>
+
 ### Step 1 — Install (30 seconds)
 
 ```bash
@@ -326,6 +362,12 @@ services:
 <br/>
 
 <div align="center">
+<img src=".github/assets/diagrams/enterprise-stack.svg" alt="Enterprise OS Stack" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 
 | Industry | Agent Swarm Scenario | Governance Requirement |
 |---------|---------------------|----------------------|
@@ -347,6 +389,12 @@ services:
 
 <div align="center">
 <img src=".github/assets/screens/amd-routing.svg" alt="AMD Compute Routing" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
+<img src=".github/assets/diagrams/provider-routing.svg" alt="Adaptive Provider Routing" width="100%"/>
 </div>
 
 <br/>
