@@ -90,21 +90,22 @@ export default function InteractiveStoryPage() {
   const [passcode, setPasscode] = useState('')
   const [passcodeError, setPasscodeError] = useState('')
 
+  // Hover states for the final scene portal
+  const [portalHovered, setPortalHovered] = useState(false)
+
   // Toggle Sound with Web Audio API Initialization
   const toggleSound = () => {
     if (typeof window === 'undefined') return
     
     if (soundEnabled) {
-      // Mute
       if (humOscRef.current) {
         try {
           humOscRef.current.stop()
         } catch(e){}
-        humOscRef.current = null;
+        humOscRef.current = null
       }
       setSoundEnabled(false)
     } else {
-      // Unmute & Initialize
       try {
         const AudioContextClass = window.AudioContext || (window as any).webkitAudioContext
         const ctx = new AudioContextClass()
@@ -116,12 +117,12 @@ export default function InteractiveStoryPage() {
         const gain = ctx.createGain()
 
         osc.type = 'sine'
-        osc.frequency.setValueAtTime(55, ctx.currentTime) // 55Hz bass hum
+        osc.frequency.setValueAtTime(55, ctx.currentTime) // 55Hz low hum
 
         filter.type = 'lowpass'
-        filter.frequency.setValueAtTime(120, ctx.currentTime)
+        filter.frequency.setValueAtTime(110, ctx.currentTime)
 
-        gain.gain.setValueAtTime(0.06, ctx.currentTime) // low volume hum
+        gain.gain.setValueAtTime(0.05, ctx.currentTime)
 
         osc.connect(filter)
         filter.connect(gain)
@@ -132,9 +133,9 @@ export default function InteractiveStoryPage() {
         humOscRef.current = osc
         humGainRef.current = gain
         setSoundEnabled(true)
-        playFeedbackSound(440, 0.08) // Soft boot tone
+        playFeedbackSound(440, 0.08) // boot chime
       } catch (err) {
-        console.error("Web Audio API failed to load:", err)
+        console.error("Web Audio API failed:", err)
       }
     }
   }
@@ -150,7 +151,7 @@ export default function InteractiveStoryPage() {
       osc.type = 'sine'
       osc.frequency.setValueAtTime(frequency, ctx.currentTime)
 
-      gain.gain.setValueAtTime(0.04, ctx.currentTime)
+      gain.gain.setValueAtTime(0.03, ctx.currentTime)
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration)
 
       osc.connect(gain)
@@ -174,7 +175,7 @@ export default function InteractiveStoryPage() {
           if (scrollPos >= top && scrollPos < top + height) {
             if (activeScene !== i + 1) {
               setActiveScene(i + 1)
-              playFeedbackSound(200 + (i * 40), 0.04) // Dynamic orbital sound feedback
+              playFeedbackSound(220 + (i * 35), 0.04) // Dynamic tone
             }
             break
           }
@@ -211,15 +212,15 @@ export default function InteractiveStoryPage() {
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       
-      // Add particle at cursor pos
-      if (mousePos.x > 0 && mousePos.y > 0 && Math.random() < 0.35) {
+      // Add particle at cursor pos with gravitational attraction towards center
+      if (mousePos.x > 0 && mousePos.y > 0 && Math.random() < 0.4) {
         particles.push({
           x: mousePos.x,
           y: mousePos.y,
-          vx: (Math.random() - 0.5) * 1.5,
-          vy: (Math.random() - 0.5) * 1.5,
-          size: Math.random() * 2 + 1,
-          alpha: 0.85
+          vx: (Math.random() - 0.5) * 2,
+          vy: (Math.random() - 0.5) * 2,
+          size: Math.random() * 2.5 + 1.2,
+          alpha: 0.9
         })
       }
 
@@ -228,7 +229,7 @@ export default function InteractiveStoryPage() {
         const p = particles[i]
         p.x += p.vx
         p.y += p.vy
-        p.alpha -= 0.012
+        p.alpha -= 0.015
 
         if (p.alpha <= 0) {
           particles.splice(i, 1)
@@ -238,7 +239,7 @@ export default function InteractiveStoryPage() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(234, 179, 8, ${p.alpha * 0.7})` // Golden particle glow
+        ctx.fillStyle = `rgba(251, 191, 36, ${p.alpha * 0.75})` // Golden yellow glow
         ctx.fill()
       }
 
@@ -272,10 +273,10 @@ export default function InteractiveStoryPage() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     // Render glowing vehicle blueprint
-    ctx.strokeStyle = 'rgba(234, 179, 8, 0.8)' // Golden glow
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.85)' // Golden glow
     ctx.lineWidth = 1.5
-    ctx.shadowBlur = 10
-    ctx.shadowColor = 'rgba(234, 179, 8, 0.5)'
+    ctx.shadowBlur = 12
+    ctx.shadowColor = 'rgba(251, 191, 36, 0.6)'
 
     // Chassis sleek lines
     ctx.beginPath()
@@ -295,7 +296,7 @@ export default function InteractiveStoryPage() {
     ctx.stroke()
 
     // Inner cabin / seats
-    ctx.strokeStyle = 'rgba(234, 179, 8, 0.3)'
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.35)'
     ctx.beginPath()
     ctx.moveTo(170, 45)
     ctx.lineTo(180, 85)
@@ -306,13 +307,13 @@ export default function InteractiveStoryPage() {
     ctx.stroke()
 
     // Drive axles & Battery pack
-    ctx.strokeStyle = 'rgba(234, 179, 8, 0.4)'
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)'
     ctx.strokeRect(140, 115, 170, 15)
-    ctx.fillStyle = 'rgba(234, 179, 8, 0.1)'
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.15)'
     ctx.fillRect(140, 115, 170, 15)
 
     // Wheels
-    ctx.strokeStyle = 'rgba(234, 179, 8, 0.9)'
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.95)'
     ctx.beginPath()
     ctx.arc(110, 130, 20, 0, Math.PI * 2)
     ctx.arc(340, 130, 20, 0, Math.PI * 2)
@@ -331,7 +332,7 @@ export default function InteractiveStoryPage() {
     ctx.stroke()
 
     // Sensors & LIDAR lines
-    ctx.strokeStyle = 'rgba(251, 191, 36, 0.6)'
+    ctx.strokeStyle = 'rgba(251, 191, 36, 0.7)'
     ctx.beginPath()
     ctx.moveTo(200, 30)
     ctx.lineTo(180, 10)
@@ -340,7 +341,7 @@ export default function InteractiveStoryPage() {
     ctx.stroke()
 
     // Technical Labels
-    ctx.fillStyle = 'rgba(234, 179, 8, 0.8)'
+    ctx.fillStyle = 'rgba(251, 191, 36, 0.9)'
     ctx.font = '9px monospace'
     ctx.fillText("LIDAR MATRIX - OK", 140, 10)
     ctx.fillText("HGI OS CORE CONNECTED", 260, 125)
@@ -398,63 +399,151 @@ export default function InteractiveStoryPage() {
     }
   }
 
+  const scrollToNext = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Camera glide / Intelligence Core position mapping per scene
+  const getCoreTransform = () => {
+    switch(activeScene) {
+      case 1:
+        // Scene 1: Tiny particle, middle center
+        return { x: 0, y: 0, scale: 0.18, rotate: 0, filter: 'blur(0px)', opacity: 1 }
+      case 2:
+        // Scene 2: Growing consciousness, larger breathing orb in center
+        return { x: 0, y: -20, scale: 1.1, rotate: 30, filter: 'blur(0px)', opacity: 1 }
+      case 3:
+        // Scene 3: Learning, shifts right, learning paths flow
+        return { x: 180, y: 0, scale: 1.2, rotate: 90, filter: 'blur(0px)', opacity: 0.95 }
+      case 4:
+        // Scene 4: Splitting, scales down in middle
+        return { x: 0, y: 0, scale: 0.6, rotate: 180, filter: 'blur(0px)', opacity: 1 }
+      case 5:
+        // Scene 5: Galaxy, scales up, orbits expand
+        return { x: -200, y: -40, scale: 1.4, rotate: 270, filter: 'blur(0px)', opacity: 0.9 }
+      case 6:
+        // Scene 6: EIR Assembly, shifts to top left
+        return { x: -320, y: -220, scale: 0.8, rotate: 360, filter: 'blur(0px)', opacity: 0.85 }
+      case 7:
+        // Scene 7: Spawning Agents, middle right
+        return { x: 300, y: 80, scale: 1.1, rotate: 420, filter: 'blur(0px)', opacity: 1 }
+      case 8:
+        // Scene 8: Reasoning DAG, top right
+        return { x: 260, y: -180, scale: 0.9, rotate: 480, filter: 'blur(0px)', opacity: 0.9 }
+      case 9:
+        // Scene 9: Solution simulator, shifts to middle left
+        return { x: -280, y: 120, scale: 1.3, rotate: 540, filter: 'blur(0px)', opacity: 1 }
+      case 10:
+        // Scene 10: Telemetry, middle center, circular rings
+        return { x: 0, y: -10, scale: 1.0, rotate: 600, filter: 'blur(0px)', opacity: 1 }
+      case 11:
+        // Scene 11: Compute router, dual node balance red/gold shifts left
+        return { x: -160, y: 0, scale: 1.2, rotate: 660, filter: 'blur(0px)', opacity: 1 }
+      case 12:
+        // Scene 12: Industry segments, shifts right
+        return { x: 220, y: -30, scale: 1.1, rotate: 720, filter: 'blur(0px)', opacity: 0.95 }
+      case 13:
+        // Scene 13: Evolution pyramid, middle center
+        return { x: 0, y: 0, scale: 1.3, rotate: 780, filter: 'blur(0px)', opacity: 1 }
+      case 14:
+        // Scene 14: Future horizon, scales down, perspective path
+        return { x: 0, y: -100, scale: 0.5, rotate: 840, filter: 'blur(1px)', opacity: 0.8 }
+      case 15:
+        // Scene 15: Returns as HGI Emblem
+        return { 
+          x: 0, 
+          y: 0, 
+          scale: portalHovered ? 4.5 : 1.0, 
+          rotate: 900, 
+          filter: 'blur(0px)',
+          opacity: 1
+        }
+      default:
+        return { x: 0, y: 0, scale: 1, rotate: 0, filter: 'blur(0px)', opacity: 1 }
+    }
+  }
+
   return (
     <div ref={containerRef} className="relative min-h-screen bg-black overflow-x-hidden text-foreground selection:bg-yellow-500/30 font-sans">
       
-      {/* Fixed Ambient Stars / Cosmos */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(24,24,27,0.8),black)]" />
-      <div className="fixed top-10 left-10 w-2 h-2 rounded-full bg-white/20 animate-pulse pointer-events-none" />
-      <div className="fixed top-1/3 right-20 w-1.5 h-1.5 rounded-full bg-white/10 animate-ping pointer-events-none" />
-      <div className="fixed bottom-24 left-1/4 w-2 h-2 rounded-full bg-white/15 animate-pulse pointer-events-none" />
+      {/* ======================================================== */}
+      {/* 3D-LIKE CINEMATIC SPACE GRID BACKDROP */}
+      {/* ======================================================== */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(ellipse_at_center,rgba(24,24,37,0.75),black)]" />
+      
+      {/* Perspective Grid Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] bg-[linear-gradient(to_right,rgba(251,191,36,0.3)_1px,transparent_1px),linear-gradient(to_bottom,rgba(251,191,36,0.3)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-      {/* Floating background ambient glow */}
-      <div className="fixed top-1/4 left-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl pointer-events-none z-0" />
-      <div className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none z-0" />
+      {/* Ambient Volumetric Glow Circles */}
+      <div className="fixed top-1/4 left-1/4 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-600/5 rounded-full blur-3xl pointer-events-none z-0" />
+
+      {/* Floating Constellation Stars */}
+      <div className="fixed top-20 left-20 w-1.5 h-1.5 rounded-full bg-white/20 animate-pulse pointer-events-none" />
+      <div className="fixed top-1/3 right-32 w-1 h-1 rounded-full bg-white/10 animate-ping pointer-events-none" />
+      <div className="fixed bottom-36 left-1/5 w-2 h-2 rounded-full bg-white/15 animate-pulse pointer-events-none" />
 
       {/* Interactive Background Particle Canvas */}
       <canvas ref={canvasRef} className="fixed inset-0 z-10 pointer-events-none opacity-50" />
 
       {/* ======================================================== */}
-      {/* THE MAIN CHARACTER: INTELLIGENCE CORE (FIXED CONTAINER) */}
+      {/* THE MAIN CHARACTER: INTELLIGENCE CORE (GLIDING CAMERA) */}
       {/* ======================================================== */}
       <div className="fixed inset-0 pointer-events-none z-20 flex items-center justify-center">
-        <div className="relative flex items-center justify-center">
-          
-          {/* Main Core Body */}
+        <motion.div
+          animate={getCoreTransform()}
+          transition={{
+            type: 'spring',
+            stiffness: 45,
+            damping: 18,
+            mass: 1.2
+          }}
+          className="relative flex items-center justify-center"
+        >
+          {/* Pulsing Outer Aura */}
           <motion.div
             animate={{
-              scale: activeScene === 1 ? 0.2 : activeScene === 2 ? 1 : activeScene === 3 ? 1.3 : activeScene === 4 ? 0.8 : activeScene === 5 ? 1.5 : 1,
-              opacity: activeScene === 15 ? 0 : [0.8, 1, 0.8]
+              scale: [1, 1.15, 1],
+              opacity: [0.3, 0.6, 0.3]
             }}
             transition={{
-              type: 'spring',
-              stiffness: 70,
-              damping: 15,
-              opacity: { repeat: Infinity, duration: 3, ease: 'easeInOut' }
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut'
             }}
-            className={`rounded-full transition-all duration-700 flex items-center justify-center ${
+            className={`absolute rounded-full filter blur-xl ${
+              activeScene === 11 
+                ? 'w-40 h-40 bg-red-500' 
+                : 'w-36 h-36 bg-yellow-500'
+            }`}
+          />
+
+          {/* Main Core Body */}
+          <div
+            className={`rounded-full transition-all duration-700 flex items-center justify-center border ${
               activeScene === 1 
-                ? 'w-6 h-6 bg-yellow-500 shadow-[0_0_30px_rgba(234,179,8,1)]' 
+                ? 'w-8 h-8 bg-yellow-500 border-yellow-400 shadow-[0_0_40px_rgba(251,191,36,1)]' 
                 : activeScene === 11
-                ? 'w-24 h-24 bg-gradient-to-br from-red-600 via-amber-500 to-yellow-500 shadow-[0_0_60px_rgba(220,38,38,0.7)]'
-                : 'w-20 h-20 bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 shadow-[0_0_50px_rgba(234,179,8,0.6)]'
+                ? 'w-24 h-24 bg-gradient-to-br from-red-600 via-amber-500 to-yellow-500 border-red-500 shadow-[0_0_60px_rgba(220,38,38,0.8)]'
+                : 'w-20 h-20 bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 border-yellow-500 shadow-[0_0_50px_rgba(251,191,36,0.7)]'
             }`}
           >
             {activeScene > 1 && (
-              <Brain className={`w-10 h-10 ${activeScene === 11 ? 'text-white' : 'text-black'}`} />
+              <Brain className={`w-10 h-10 transition-colors duration-500 ${activeScene === 11 ? 'text-white' : 'text-black'}`} />
             )}
-          </motion.div>
+          </div>
 
-          {/* Subsystems & Satellite Orbits (Scene 3 & 4) */}
+          {/* Orbiting Satellite Subsystems (Scene 3 & 4) */}
           {(activeScene === 3 || activeScene === 4) && (
             <motion.div 
               animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-44 h-44 border border-dashed border-yellow-500/20 rounded-full"
+              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-48 h-48 border border-dashed border-yellow-500/25 rounded-full"
             >
-              <div className="absolute -top-1.5 left-[86px] w-3 h-3 bg-yellow-500 rounded-full shadow-[0_0_10px_rgba(234,179,8,1)]" />
-              <div className="absolute top-[86px] -left-1.5 w-3 h-3 bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,1)]" />
-              <div className="absolute top-[86px] -right-1.5 w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_10px_rgba(250,204,21,1)]" />
+              <div className="absolute -top-1.5 left-[90px] w-3 h-3 bg-yellow-500 rounded-full shadow-[0_0_12px_rgba(251,191,36,1)]" />
+              <div className="absolute top-[90px] -left-1.5 w-3 h-3 bg-amber-500 rounded-full shadow-[0_0_12px_rgba(245,158,11,1)]" />
+              <div className="absolute top-[90px] -right-1.5 w-3 h-3 bg-yellow-400 rounded-full shadow-[0_0_12px_rgba(250,204,21,1)]" />
             </motion.div>
           )}
 
@@ -462,8 +551,8 @@ export default function InteractiveStoryPage() {
           {activeScene === 5 && (
             <motion.div 
               animate={{ rotate: -360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-64 h-64 border border-dashed border-white/5 rounded-full flex items-center justify-center"
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-72 h-72 border border-dashed border-white/10 rounded-full flex items-center justify-center"
             >
               <div className="absolute top-0 w-2.5 h-2.5 bg-yellow-500 rounded-full" />
               <div className="absolute bottom-0 w-2.5 h-2.5 bg-amber-500 rounded-full" />
@@ -472,23 +561,23 @@ export default function InteractiveStoryPage() {
             </motion.div>
           )}
 
-          {/* circular Telemetry progress rings (Scene 10) */}
+          {/* Telemetry Progress Rings (Scene 10) */}
           {activeScene === 10 && (
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
-              className="absolute w-32 h-32 border-4 border-dashed border-yellow-500/30 rounded-full"
+              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+              className="absolute w-36 h-36 border-4 border-dashed border-yellow-500/40 rounded-full"
             />
           )}
 
-        </div>
+        </motion.div>
       </div>
 
-      {/* Fixed Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/40 backdrop-blur-md border-b border-white/5">
+      {/* Fixed Navigation Header */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/45 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/10">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-500 to-amber-600 flex items-center justify-center shadow-lg shadow-yellow-500/15">
               <Brain className="w-5 h-5 text-black" />
             </div>
             <div>
@@ -503,9 +592,9 @@ export default function InteractiveStoryPage() {
             <button 
               onClick={toggleSound}
               className="p-2 bg-zinc-900/60 rounded-full border border-white/5 text-zinc-400 hover:text-white transition-colors flex items-center justify-center"
-              title={soundEnabled ? "Mute ambient audio" : "Unmute ambient audio"}
+              title={soundEnabled ? "Mute ambient hum" : "Unmute ambient hum"}
             >
-              {soundEnabled ? <Volume2 className="w-4 h-4 text-yellow-400" /> : <VolumeX className="w-4 h-4" />}
+              {soundEnabled ? <Volume2 className="w-4 h-4 text-yellow-400 animate-pulse" /> : <VolumeX className="w-4 h-4" />}
             </button>
 
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-zinc-900/60 rounded-full border border-white/5">
@@ -521,13 +610,68 @@ export default function InteractiveStoryPage() {
         </div>
       </nav>
 
+      {/* Security Passcode Gate Modal */}
+      <AnimatePresence>
+        {showPasscodeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md px-6">
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="w-full max-w-md"
+            >
+              <HolographicBorder>
+                <GlassPanel variant="strong" className="p-6 relative">
+                  <button 
+                    onClick={() => { setShowPasscodeModal(false); setPasscode(''); setPasscodeError(''); }}
+                    className="absolute right-4 top-4 text-zinc-400 hover:text-white transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                  <h3 className="text-lg font-bold mb-2 text-white flex items-center gap-2">
+                    <Lock className="w-4 h-4 text-yellow-500" />
+                    Security Decryption
+                  </h3>
+                  <p className="text-xs text-zinc-400 mb-6 leading-relaxed">
+                    Enter the operational passcode to unlock the live workspaces and sub-agent terminals.
+                  </p>
+                  
+                  <form onSubmit={handleVerifyPasscode} className="flex flex-col gap-4">
+                    <input
+                      type="text"
+                      placeholder="Enter Passcode..."
+                      value={passcode}
+                      onChange={(e) => setPasscode(e.target.value)}
+                      className="w-full bg-zinc-950 border border-zinc-800 rounded px-3.5 py-2.5 text-sm focus:outline-none focus:border-yellow-500/50 uppercase tracking-widest text-center text-white placeholder:text-zinc-600"
+                      required
+                      autoFocus
+                    />
+                    {passcodeError && (
+                      <p className="text-xs text-yellow-500 font-mono text-center">
+                        {passcodeError}
+                      </p>
+                    )}
+                    <div className="flex justify-between items-center text-[10px] text-zinc-500 font-mono mt-1">
+                      <span>Passcode: AMD-GOLD</span>
+                    </div>
+                    <CommandButton variant="primary" size="sm" type="submit" glow>
+                      Decrypt & Unlock
+                    </CommandButton>
+                  </form>
+                </GlassPanel>
+              </HolographicBorder>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* ======================================================== */}
       {/* SCENE 1: THE AWAKENING */}
       {/* ======================================================== */}
       <section id="scene-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center z-30 pt-20">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full mb-6">
-            CHAPTER 01 — THE SINGULAR POINT
+          <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 rounded-full mb-8">
+            ACT I: WONDER — THE SINGULAR POINT
           </span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -538,14 +682,14 @@ export default function InteractiveStoryPage() {
             RE-EVOLVE ON <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-600 bg-clip-text text-transparent">HGI</span>
           </motion.h1>
           <p className="text-lg md:text-2xl text-zinc-400 font-light max-w-2xl mb-12 leading-relaxed">
-            Witness the birth of a new computing paradigm. A single living core expanding into an autonomous enterprise engineering operating system.
+            A single living intelligence core, architected to orchestrate autonomous multi-agent networks on AMD Instinct compute.
           </p>
           <div className="flex gap-4">
             <CommandButton variant="primary" size="lg" glow onClick={() => scrollToNext('scene-9')}>
-              Launch Simulator
+              Run Simulation
             </CommandButton>
             <CommandButton variant="subtle" size="lg" onClick={() => scrollToNext('scene-2')}>
-              Begin Journey
+              Scroll to Begin
               <ArrowDown className="w-4 h-4 ml-2 inline animate-bounce" />
             </CommandButton>
           </div>
@@ -553,37 +697,37 @@ export default function InteractiveStoryPage() {
       </section>
 
       {/* ======================================================== */}
-      {/* SCENE 2: THE PROBLEM */}
+      {/* SCENE 2: THE CRISIS */}
       {/* ======================================================== */}
-      <section id="scene-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
+      <section id="scene-2" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/30 py-24">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-red-500 uppercase tracking-widest border border-red-500/30 bg-red-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 02 — THE COLLAPSE
+              ACT I: WONDER — THE COLLAPSE
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              Disconnected Weights
+              AI Fragmentation Collapse
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              The visitor observes the Core expanding—but finding only isolated, stateless chat wrappers that degrade under complexity.
+              The visitor observes the Core expanding, finding only isolated, stateless chat wrappers that degrade under codebase complexity.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <div className="border border-red-500/10 bg-zinc-900/10 rounded-2xl p-8 flex flex-col justify-between backdrop-blur-sm">
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">Traditional LLMs</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Fragmented Weights</h3>
                 <p className="text-zinc-400 text-sm mb-6 leading-relaxed">
-                  Stateless prompts that lose repository context, trigger security errors, and fail to test or execute.
+                  Stateless query prompts, copy-pasting loops, zero testing validation, and raw script interfaces.
                 </p>
               </div>
-              <div className="text-xs font-mono text-zinc-500">Traditional wrappers fail under enterprise loads.</div>
+              <div className="text-xs font-mono text-zinc-500">Traditional wrappers degrade quickly.</div>
             </div>
             <div className="border border-yellow-500/15 bg-zinc-900/20 rounded-2xl p-8 flex flex-col justify-between backdrop-blur-sm">
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">HGI Statefulness</h3>
+                <h3 className="text-xl font-bold text-white mb-4">Unified Statefulness</h3>
                 <p className="text-zinc-300 text-sm mb-6 leading-relaxed">
-                  Persistent token caching, recursive AST parsing, and zero-trust shell compliance active.
+                  Episodic context vectors, automated AST indexing, and pre-scan command shields active.
                 </p>
               </div>
               <div className="text-xs font-mono text-yellow-500">Persistent memory and secure sandboxes active.</div>
@@ -595,14 +739,14 @@ export default function InteractiveStoryPage() {
       {/* ======================================================== */}
       {/* SCENE 3: THE JOURNEY */}
       {/* ======================================================== */}
-      <section id="scene-3" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
+      <section id="scene-3" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/30 py-24">
         <div className="max-w-5xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 03 — THE TIMELINE
+              ACT I: WONDER — ORBITS OF LEARNING
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              Orbits of Learning
+              Chronological Path
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
               The Core connects with past configurations, loading chronological models to understand its capabilities.
@@ -611,10 +755,10 @@ export default function InteractiveStoryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
             {[
-              { year: '2023', stage: 'CORE SEED', title: 'Conceptualization', desc: 'Defining memory-persistent agent boundaries.' },
-              { year: '2024', stage: 'EXECUTION', title: 'Panani X Engine', desc: 'Secure sandbox VMs built directly.' },
-              { year: 'Early 2025', stage: 'SHIELD', title: 'Kavacha Active', desc: 'AST code scanners and cost tracking.' },
-              { year: 'Late 2025', stage: 'COMPUTE', title: 'AMD Instinct', desc: 'Local ROCm 7.2 serve capability.' },
+              { year: '2023', stage: 'SEEDED', title: 'Conceptualization', desc: 'Defining memory-persistent agent boundaries.' },
+              { year: '2024', stage: 'SANDBOXED', title: 'Panani X Engine', desc: 'Secure sandbox VMs built directly.' },
+              { year: 'Early 2025', stage: 'SHIELDED', title: 'Kavacha Active', desc: 'AST code scanners and cost tracking.' },
+              { year: 'Late 2025', stage: 'POWERED', title: 'AMD Instinct', desc: 'Local ROCm 7.2 serve capability.' },
               { year: '2026', stage: 'LAUNCH', title: 'HGI OS Core', desc: 'The complete software workspace OS.' }
             ].map((node, idx) => (
               <GlassPanel 
@@ -634,14 +778,14 @@ export default function InteractiveStoryPage() {
       {/* ======================================================== */}
       {/* SCENE 4: THE BIRTH OF HGI */}
       {/* ======================================================== */}
-      <section id="scene-4" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
+      <section id="scene-4" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/30 py-24">
         <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 04 — DIVISION
+              ACT II: DISCOVERY — DIVISION
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-6">
-              Splitting the Core
+              Core Subsystems Division
             </h2>
             <p className="text-zinc-400 mb-8 leading-relaxed">
               Watch the central intelligence core split into five co-dependent systems orbiting the human-governed integration layer.
@@ -651,12 +795,11 @@ export default function InteractiveStoryPage() {
               <div className="flex gap-3 items-center text-zinc-300"><span className="text-yellow-500">2.</span> Panani X — Sandbox Agent Swarms</div>
               <div className="flex gap-3 items-center text-zinc-300"><span className="text-yellow-500">3.</span> Memory Vault — pgvector Semantic Stars</div>
               <div className="flex gap-3 items-center text-zinc-300"><span className="text-yellow-500">4.</span> Kavacha — Zero-Trust Policy Shields</div>
-              <div className="flex gap-3 items-center text-zinc-300"><span className="text-yellow-500">5.</span> EIR — Code Compilation Runtime</div>
+              <div className="flex gap-3 items-center text-zinc-300"><span className="text-yellow-500">5.</span> Engineering Runtime — Code AST Compiler</div>
             </div>
           </div>
           <div className="text-center text-zinc-500 text-xs font-mono">
-            {/* Visual spacing for orbiting cores */}
-            Orbit simulation active. Look at the center of your screen.
+            Orbit simulation active. The sub-cores are spinning around the central node.
           </div>
         </div>
       </section>
@@ -664,17 +807,17 @@ export default function InteractiveStoryPage() {
       {/* ======================================================== */}
       {/* SCENE 5: ARCHITECTURE GALAXY */}
       {/* ======================================================== */}
-      <section id="scene-5" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
+      <section id="scene-5" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/30 py-24">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 05 — ARCHITECTURE GALAXY
+              ACT II: DISCOVERY — CONSTELLATIONS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              Connecting the Nodes
+              Constellation Nodes Formed
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              The cores form constellations, linking sub-agents, database pools, and hardware sockets dynamically.
+              The sub-cores expand into a complex constellation grid, linking sub-agents, memory partitions, and hardware.
             </p>
           </div>
 
@@ -696,17 +839,17 @@ export default function InteractiveStoryPage() {
       {/* ======================================================== */}
       {/* SCENE 6: ENGINEERING INTELLIGENCE RUNTIME */}
       {/* ======================================================== */}
-      <section id="scene-6" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
+      <section id="scene-6" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/30 py-24">
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 06 — THE ASSEMBLY
+              ACT II: DISCOVERY — ASSEMBLY
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              The Coding Factory (EIR)
+              Engineering Factory (EIR)
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              The cores align. Watch ideas convert into structured, compilable code units.
+              Watch structural requirements convert into compiled, verified code modules.
             </p>
           </div>
 
@@ -755,13 +898,13 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 07 — AGENT REGISTRY
+              ACT III: UNDERSTANDING — SWARM
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              Agent Registry Swarm
+              Persistent Agent swarm
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              The Core spawns specialist registry sub-agents. Click to wake or standby.
+              The Core spawns specialist registry sub-agents to collaborate.
             </p>
           </div>
 
@@ -795,13 +938,13 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 08 — REASONING
+              ACT III: UNDERSTANDING — REASONING
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              CENSA Decision Trees
+              Visual Reasoning DAGs
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              The cores arrange into a reasoning tree to parse intents, check dependencies, and route hardware.
+              Watch the cores arrange into a clean tree shape, mapping functional requirements to dependency routes.
             </p>
           </div>
 
@@ -829,7 +972,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           <div className="text-center mb-12">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 09 — SOLUTION BUILDER
+              ACT III: UNDERSTANDING — SOLUTION BUILDER
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Watch Intelligence Think
@@ -998,10 +1141,10 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 10 — TELEMETRY
+              ACT IV: BELIEF — TELEMETRY
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
-              Intelligence Self-Monitoring
+              Core Self-Monitoring
             </h2>
             <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
               The Core scans its own performance metrics, monitoring queues, latency bounds, and VRAM footprints.
@@ -1034,7 +1177,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-red-500 uppercase tracking-widest border border-red-500/30 bg-red-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 11 — HARDWARE ROUTER
+              ACT IV: BELIEF — HARDWARE ROUTER
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Deciding Compute Routes
@@ -1077,7 +1220,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 12 — CONSTELLATIONS
+              ACT IV: BELIEF — CONSTELLATIONS
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Powering Complex Domains
@@ -1108,7 +1251,7 @@ export default function InteractiveStoryPage() {
       <section id="scene-13" className="relative min-h-screen flex flex-col justify-center items-center px-6 z-30 bg-black/40 py-24">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full mb-8">
-            CHAPTER 13 — THE EVOLUTION
+            ACT V: LAUNCH — THE EVOLUTION
           </span>
           <p className="text-xl md:text-3xl text-zinc-300 italic mb-12 max-w-2xl font-light leading-relaxed">
             "Models answer questions. Assistants write drafts. HGI orchestrates whole engineering architectures."
@@ -1137,7 +1280,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-5xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              CHAPTER 14 — ROADMAP
+              ACT V: LAUNCH — ROADMAP
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Horizon Roadmap
@@ -1149,18 +1292,18 @@ export default function InteractiveStoryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { p: 'Phase 1', t: 'Hackathon Freeze', d: 'Validated Instinct clusters, baseline memory vectors.' },
-              { p: 'Phase 2', t: 'Developer Preview', d: 'Spawning first workspace integrations to select teams.' },
-              { p: 'Phase 3', t: 'SDK Launch', d: 'Open registry access, custom skill manifest exports.' },
-              { p: 'Phase 4', t: 'Unified ecosystem', d: 'Community-led agent networks coordinating globally.' }
+              { phase: 'Phase 1', title: 'Hackathon Freeze', desc: 'Validated Instinct clusters, baseline memory vectors.' },
+              { phase: 'Phase 2', title: 'Developer Preview', desc: 'Spawning first workspace integrations to select teams.' },
+              { phase: 'Phase 3', title: 'SDK Launch', desc: 'Open registry access, custom skill manifest exports.' },
+              { phase: 'Phase 4', title: 'Unified ecosystem', desc: 'Community-led agent networks coordinating globally.' }
             ].map((phase, idx) => (
               <div
                 key={idx}
                 onClick={() => { setActiveRoadmapStage(idx); playFeedbackSound(800 + (idx * 50), 0.05); }}
                 className={`p-6 rounded-2xl cursor-pointer border text-left transition-all ${activeRoadmapStage === idx ? 'border-yellow-500 bg-yellow-500/5' : 'border-zinc-800'}`}
               >
-                <span className="text-xs font-mono text-yellow-500 block mb-2">{phase.p} — {phase.t}</span>
-                <p className="text-xs text-zinc-400 leading-normal">{phase.d}</p>
+                <span className="text-xs font-mono text-yellow-500 block mb-2">{phase.phase} — {phase.title}</span>
+                <p className="text-xs text-zinc-400 leading-normal">{phase.desc}</p>
               </div>
             ))}
           </div>
@@ -1173,7 +1316,7 @@ export default function InteractiveStoryPage() {
       <section id="scene-15" className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center z-30 bg-black py-24">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full mb-12">
-            CHAPTER 15 — CONVERGENCE
+            ACT V: LAUNCH — CONVERGENCE
           </span>
           
           <h2 className="text-3xl md:text-5xl font-light text-zinc-500 mb-4">
@@ -1184,9 +1327,15 @@ export default function InteractiveStoryPage() {
           </h1>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md">
-            <CommandButton variant="primary" size="lg" glow onClick={() => setShowPasscodeModal(true)}>
-              Launch Judge Workspace
-            </CommandButton>
+            <motion.div
+              onHoverStart={() => { setPortalHovered(true); playFeedbackSound(1000, 0.1); }}
+              onHoverEnd={() => setPortalHovered(false)}
+              className="w-full"
+            >
+              <CommandButton variant="primary" size="lg" glow onClick={() => setShowPasscodeModal(true)}>
+                Launch Judge Workspace
+              </CommandButton>
+            </motion.div>
             <CommandButton variant="subtle" size="lg" onClick={() => router.push('/hq')}>
               Explore Reference Agent
             </CommandButton>
