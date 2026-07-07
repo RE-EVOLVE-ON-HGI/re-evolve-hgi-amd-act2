@@ -18,6 +18,7 @@ import { TelemetryModule } from './modules/telemetry/telemetry.module';
 import { GovernanceModule } from './modules/governance/governance.module';
 import { SimulationModule } from './modules/simulation/simulation.module';
 import { ModelModule } from './modules/model/model.module';
+import { EirModule } from './modules/eir/eir.module';
 
 @Module({
   imports: [
@@ -28,7 +29,7 @@ import { ModelModule } from './modules/model/model.module';
       playground: true,
     }),
     // infrastructure
-    PrismaModule, KafkaModule, RedisModule, AuthModule, RealtimeModule, ModelModule,
+    PrismaModule, KafkaModule, RedisModule, AuthModule, RealtimeModule, ModelModule, EirModule,
     // domain modules (fully implemented reference set)
     AgentsModule, MemoryModule, WorkflowsModule, TelemetryModule, GovernanceModule, SimulationModule,
     // ── remaining wireframe modules attach here, identical pattern ──

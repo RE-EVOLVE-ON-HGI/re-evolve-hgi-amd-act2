@@ -890,6 +890,56 @@ export default function InteractiveStoryPage() {
         </div>
       </section>
 
+      {/* SCENE 11.5 — Engineering Intelligence Runtime (EIR) */}
+      <section id="scene-eir" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10 bg-black/40">
+        <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
+          <motion.p
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-xs font-mono text-primary mb-6 tracking-widest uppercase"
+          >
+            SCENE 11.5 — ENGINEERING INTELLIGENCE RUNTIME
+          </motion.p>
+          
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-3xl md:text-5xl font-bold tracking-tight mb-8"
+          >
+            Engineering Intelligence Runtime (EIR)
+          </motion.h2>
+
+          <p className="text-sm text-muted-foreground max-w-2xl mb-12">
+            The EIR coordinates the complete software lifecycle, compiling abstract product ideas into tested, secure production systems.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
+            <GlassPanel className="p-6">
+              <span className="text-xs font-mono text-primary font-bold block mb-2">1. IDEA & PLANNING</span>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                CENSA acts as the Engineering Director, mapping requirements to PRD documents, generating dynamic Task DAG structures, and sizing stage complexity.
+              </p>
+            </GlassPanel>
+            <GlassPanel className="p-6">
+              <span className="text-xs font-mono text-primary font-bold block mb-2">2. ARCHITECTURE & CODE</span>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Panani X spawns persistent specialists (Backend, Frontend, QA) who write and verify modifications directly using Repository AST embeddings.
+              </p>
+            </GlassPanel>
+            <GlassPanel className="p-6">
+              <span className="text-xs font-mono text-primary font-bold block mb-2">3. SECURITY & COMPLIANCE</span>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Kavacha validates all dependencies, secrets, and structural patterns. Prompts and lessons learned are persisted securely into the Memory Vault.
+              </p>
+            </GlassPanel>
+          </div>
+        </div>
+      </section>
+
       {/* SCENE 12 — Enterprise Universe */}
       <section id="scene-12" className="relative min-h-screen flex flex-col justify-center items-center px-6 border-b border-border/10 z-10">
         <div className="max-w-4xl mx-auto text-center w-full flex flex-col items-center">
