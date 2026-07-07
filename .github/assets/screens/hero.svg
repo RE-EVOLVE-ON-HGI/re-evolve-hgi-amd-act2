@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <rect width="100%" height="100%" fill="#070708" rx="12"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#glow)"/>
+  
+  <!-- Grid overlay -->
+  <path d="M 0,50 L 800,50 M 0,100 L 800,100 M 0,150 L 800,150 M 0,200 L 800,200 M 0,250 L 800,250 M 0,300 L 800,300 M 100,0 L 100,350 M 200,0 L 200,350 M 300,0 L 300,350 M 400,0 L 400,350 M 500,0 L 500,350 M 600,0 L 600,350 M 700,0 L 700,350" stroke="#FFFFFF" stroke-opacity="0.02" stroke-width="1"/>
+
+  <!-- Logo and Core -->
+  <circle cx="400" cy="110" r="30" fill="#0D0D11" stroke="#F59E0B" stroke-width="2" style="filter: drop-shadow(0px 0px 15px rgba(245,158,11,0.5));"/>
+  <path d="M 390,110 L 410,110 M 400,100 L 400,120" stroke="#FBBF24" stroke-width="2"/>
+  
+  <text x="400" y="195" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="800" fill="url(#gold)" text-anchor="middle" letter-spacing="4">RE-EVOLVE ON HGI</text>
+  <text x="400" y="235" font-family="monospace" font-size="14" fill="#A1A1AA" text-anchor="middle" letter-spacing="2">THE INTELLIGENCE OPERATING SYSTEM</text>
+  
+  <rect x="250" y="270" width="300" height="36" rx="18" fill="#18181B" stroke="#27272A" stroke-width="1"/>
+  <text x="400" y="292" font-family="monospace" font-size="11" fill="#FBBF24" text-anchor="middle">ROCm 7.2 INSTINCT MI300X • v2.0.0-final</text>
+</svg>

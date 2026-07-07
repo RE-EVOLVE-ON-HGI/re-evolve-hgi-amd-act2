@@ -6,13 +6,21 @@
 
 [![Version](https://img.shields.io/badge/version-2.0.0--final-3b82f6?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2/releases)
 [![License](https://img.shields.io/badge/license-MIT-8b5cf6?style=flat-square&labelColor=0d1117)](LICENSE)
+[![AMD Hackathon](https://img.shields.io/badge/AMD%20Developer%20Hackathon-Act%20II-FE5F55?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+[![ROCm Ready](https://img.shields.io/badge/ROCm%20Ready-7.2-ED1C24?style=flat-square&labelColor=0d1117&logo=amd)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
 [![AMD AI Cloud](https://img.shields.io/badge/AMD-AI%20Developer%20Cloud-e85600?style=flat-square&labelColor=0d1117&logo=amd)](https://www.amd.com/en/developer.html)
 [![Fireworks AI](https://img.shields.io/badge/Fireworks-AI%20Inference-f59e0b?style=flat-square&labelColor=0d1117)](https://fireworks.ai)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel%20Deployment-Active-000000?style=flat-square&labelColor=0d1117&logo=vercel)](https://frontend-alpha-rose-25.vercel.app)
+[![TypeScript](https://img.shields.io/badge/Lang-TypeScript-3178c6?style=flat-square&labelColor=0d1117&logo=typescript)](https://www.typescriptlang.org)
 [![NestJS](https://img.shields.io/badge/Backend-NestJS-e0234e?style=flat-square&labelColor=0d1117&logo=nestjs)](https://nestjs.com)
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js-ffffff?style=flat-square&labelColor=0d1117&logo=nextdotjs)](https://nextjs.org)
 [![PostgreSQL](https://img.shields.io/badge/DB-PostgreSQL%20%2B%20pgvector-336791?style=flat-square&labelColor=0d1117&logo=postgresql)](https://www.postgresql.org)
 [![Qdrant](https://img.shields.io/badge/Vector-Qdrant-dc2626?style=flat-square&labelColor=0d1117)](https://qdrant.tech)
-[![TypeScript](https://img.shields.io/badge/Lang-TypeScript-3178c6?style=flat-square&labelColor=0d1117&logo=typescript)](https://www.typescriptlang.org)
+[![Enterprise Architecture](https://img.shields.io/badge/Enterprise-Architecture-34D399?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+[![Multi-Agent System](https://img.shields.io/badge/Multi--Agent-System-818CF8?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+[![HGI SDK](https://img.shields.io/badge/HGI-SDK-fbbf24?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+[![Panani X Runtime](https://img.shields.io/badge/Panani%20X-Runtime-06b6d4?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+[![EIR Runtime](https://img.shields.io/badge/EIR-Runtime-F59E0B?style=flat-square&labelColor=0d1117)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
 
 <br/>
 
@@ -25,6 +33,12 @@
 ## 🧠 Section 02 — OS Overview & Architecture
 
 Re-Evolve on HGI is a production-grade **AI Agent Operating System** — not an assistant, not a framework, but a complete intelligence coordination platform. It translates abstract human goals into governed, sandboxed, explainable multi-agent execution pipelines, with persistent semantic memory and real-time hardware routing to AMD AI Fabric. Every layer of the stack has a defined role, a clear contract, and a verifiable audit trail.
+
+<br/>
+
+<div align="center">
+<img src=".github/assets/screens/architecture-galaxy.svg" alt="Architecture Galaxy Map" width="100%"/>
+</div>
 
 <br/>
 
@@ -78,6 +92,12 @@ graph TD
 <summary><strong>📐 CENSA — Cognitive Execution &amp; Neural Synthesis Agent</strong></summary>
 <br/>
 <div align="center">
+<img src=".github/assets/screens/censa-orchestrator.svg" alt="CENSA Orchestrator Map" width="100%"/>
+</div>
+
+<br/>
+
+<div align="center">
 <img src=".github/assets/censa.svg" alt="CENSA Component Card" width="80%"/>
 </div>
 
@@ -96,6 +116,12 @@ CENSA is the central nervous system of Re-Evolve. It accepts a natural language 
 <details>
 <summary><strong>⚡ Panani X — Sandboxed Task Runtime</strong></summary>
 <br/>
+<div align="center">
+<img src=".github/assets/screens/panani-runtime.svg" alt="Panani X Runtime Map" width="100%"/>
+</div>
+
+<br/>
+
 <div align="center">
 <img src=".github/assets/runtime.svg" alt="Panani X Runtime Card" width="80%"/>
 </div>
@@ -291,6 +317,14 @@ services:
 
 ## 🏢 Section 08 — Enterprise Use Cases
 
+<br/>
+
+<div align="center">
+<img src=".github/assets/screens/enterprise-usecases.svg" alt="Enterprise Use Cases Constellations" width="100%"/>
+</div>
+
+<br/>
+
 <div align="center">
 
 | Industry | Agent Swarm Scenario | Governance Requirement |
@@ -308,6 +342,14 @@ services:
 
 *   **Status**: `Prepared (Pending AMD compute access)`
 *   **Wording**: "AMD integration layer prepared. Live AMD compute validation pending access."
+
+<br/>
+
+<div align="center">
+<img src=".github/assets/screens/amd-routing.svg" alt="AMD Compute Routing" width="100%"/>
+</div>
+
+<br/>
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -413,6 +455,36 @@ The problems are hard enough. We should work on them together.
 ---
 
 Read the full open letter: **[An Open Letter to the AMD AI Team →](docs/OPEN_LETTER_TO_AMD.md)**
+
+---
+
+## 🎨 Product Gallery
+
+To experience the launch of a new computing paradigm, refer to the high-fidelity screenshots of the RE-EVOLVE HGI operational platform:
+
+### 1. Unified Hero Portal
+<img src=".github/assets/screens/hero.svg" alt="Hero Portal" width="100%"/>
+
+### 2. Cognitive Architecture Galaxy
+<img src=".github/assets/screens/architecture-galaxy.svg" alt="Architecture Galaxy" width="100%"/>
+
+### 3. Engineering Intelligence Runtime (EIR) Assembly Line
+<img src=".github/assets/screens/eir-runtime.svg" alt="EIR Assembly Line" width="100%"/>
+
+### 4. Panani X Swarm Agent Registry
+<img src=".github/assets/screens/panani-runtime.svg" alt="Panani X Swarm" width="100%"/>
+
+### 5. Interactive Mission Control Simulator
+<img src=".github/assets/screens/mission-builder.svg" alt="Mission Control" width="100%"/>
+
+### 6. Security Decryption & Judge Access Gateway
+<img src=".github/assets/screens/judge-mode.svg" alt="Judge Mode Access" width="100%"/>
+
+### 7. Telemetry & Performance Dashboard
+<img src=".github/assets/screens/telemetry-dashboard.svg" alt="Performance Telemetry" width="100%"/>
+
+### 8. Final Convergence & Portal
+<img src=".github/assets/screens/final-impact.svg" alt="Final Portal Convergence" width="100%"/>
 
 ---
 
