@@ -56,12 +56,12 @@ Re-Evolve on HGI is a production-grade **AI Agent Operating System** — not an 
 
 ```mermaid
 graph TD
-    A["🖥️ Ingress Layer\nCLI · SDK · Next.js · REST API"] --> B["🧠 CENSA Orchestrator\nDAG Planning · Stage Management · Confidence Scoring"]
-    B --> C["🤖 Agent Registry\nDynamic Specialist Loading · Skill Validation"]
-    C --> D["⚡ Panani X Runtime\nNode VM Isolates · BullMQ · Tool Execution"]
-    D --> E["🛡️ Kavacha Governance\nPolicy Engine · Audit Ledger · Economic Billing"]
-    E --> F1["💾 Memory Vault\npgvector · Qdrant · Semantic Retrieval"]
-    E --> F2["🔴 AMD AI Fabric\nInstinct MI300X · ROCm · vLLM · Fireworks AI"]
+    A[Ingress Layer] --> B[CENSA Orchestrator]
+    B --> C[Agent Registry]
+    C --> D[Panani X Runtime]
+    D --> E[Kavacha Governance]
+    E --> F1[Memory Vault]
+    E --> F2[AMD AI Fabric]
     F1 --> B
     F2 --> D
 
@@ -207,29 +207,29 @@ Memory Vault provides three-tier persistent memory. Episodic memory stores inter
 ```mermaid
 sequenceDiagram
     actor Developer
-    participant CENSA as 🧠 CENSA
-    participant Registry as 🤖 Registry
-    participant Panani as ⚡ Panani X
-    participant Kavacha as 🛡️ Kavacha
-    participant Memory as 💾 Memory
-    participant AMD as 🔴 AMD Fabric
+    participant CENSA as CENSA
+    participant Registry as Registry
+    participant Panani as Panani X
+    participant Kavacha as Kavacha
+    participant Memory as Memory
+    participant AMD as AMD Fabric
 
     Developer->>CENSA: Submit goal
     CENSA->>Memory: Retrieve context
     Memory-->>CENSA: Relevant history
-    CENSA->>CENSA: Generate Task DAG (5 stages)
+    CENSA->>CENSA: Generate Task DAG
     CENSA->>Registry: Match agent capabilities
     Registry-->>CENSA: Specialist agents loaded
     loop For each task stage
         CENSA->>Kavacha: Validate tool call
-        Kavacha-->>CENSA: ALLOW / BLOCK + audit log
+        Kavacha-->>CENSA: Validate result
         CENSA->>Panani: Execute in VM isolate
         Panani->>AMD: Route inference request
         AMD-->>Panani: Model response
         Panani-->>CENSA: Tool output
         CENSA->>Memory: Persist stage result
     end
-    CENSA-->>Developer: Final output + trace
+    CENSA-->>Developer: Final output and trace
 ```
 
 ---
@@ -432,11 +432,11 @@ Re-Evolve's model router is fully abstracted in `ModelService` (`backend/src/mod
 
 ```mermaid
 timeline
-    title The Journey Ahead · Re-Evolve on HGI
-    section Hackathon Scope (Completed)
+    title The Journey Ahead
+    section Hackathon Scope
         Q1-Q2 : Core OS Stabilization
-              : CENSA · Panani X · Kavacha
-              : Gated Feature Flag passcodes (AMD-GOLD)
+              : CENSA - Panani X - Kavacha
+              : Gated Feature Flag passcode
               : Live simulator console
     section Post-Hackathon Vision
         Q3-Q4 : Multi-region cluster orchestrations
@@ -450,18 +450,18 @@ timeline
 
 ```mermaid
 flowchart LR
-    A["💡 Idea / Issue"] --> B["📋 GitHub Issue\nBug · Feature · RFC"]
-    B --> C{"Type?""}
-    C -->|Bug| D["🐛 Bug Report\nTemplate"]
-    C -->|Feature| E["✨ Feature Request\nTemplate"]
-    C -->|Large Change| F["📝 RFC\nRequest for Comment"]
-    D --> G["🔀 Pull Request"]
+    A[Idea or Issue] --> B[GitHub Issue]
+    B --> C{Type}
+    C -->|Bug| D[Bug Report]
+    C -->|Feature| E[Feature Request]
+    C -->|Large Change| F[RFC Document]
+    D --> G[Pull Request]
     E --> G
-    F --> H["💬 Community Discussion\n7-day comment period"]
+    F --> H[Community Discussion]
     H --> G
-    G --> I["🔍 Code Review\n+ CI checks"]
-    I --> J["✅ Merge to main"]
-    J --> K["📦 Semantic Release\nCHANGELOG update"]
+    G --> I[Code Review]
+    I --> J[Merge to main]
+    J --> K[Semantic Release]
 
     style A fill:#0f172a,stroke:#3b82f6,color:#e2e8f0
     style J fill:#0f172a,stroke:#22c55e,color:#e2e8f0
