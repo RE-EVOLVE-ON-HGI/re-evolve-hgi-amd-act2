@@ -11,6 +11,7 @@ import { MemoryModule } from '../memory/memory.module';
 import { GovernanceModule } from '../governance/governance.module';
 
 import { AgentsGrpcController } from './agents.grpc.controller';
+import { ReferenceArchitectAgent } from './reference-architect.agent';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { AgentsGrpcController } from './agents.grpc.controller';
     GovernanceModule,
   ],
   controllers: [AgentsController, AgentsGrpcController],
-  providers: [AgentsService, AgentsResolver, OrchestratorService, AgentRuntimeProcessor, IntentService],
+  providers: [AgentsService, AgentsResolver, OrchestratorService, AgentRuntimeProcessor, IntentService, ReferenceArchitectAgent],
   exports: [AgentsService, OrchestratorService],
 })
 export class AgentsModule {}
