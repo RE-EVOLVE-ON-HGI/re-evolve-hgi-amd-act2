@@ -7,70 +7,119 @@ export class ModelService {
 
   constructor(private config: ConfigService) {}
 
-  async chat(messages: any[], options?: { model?: string; temperature?: number }): Promise<string> {
-    const model = options?.model || 'llama-v3-8b-instruct';
+  async chat(messages: any[], options?: { model?: string; temperature?: number; complexity?: 'simple' | 'complex' }): Promise<string> {
+    const defaultModel = options?.complexity === 'complex' ? 'accounts/fireworks/models/llama-v3-70b-instruct' : 'llama-v3-8b-instruct';
+    const model = options?.model || defaultModel;
     const temp = options?.temperature ?? 0.7;
 
     const fireworksKey = process.env.FIREWORKS_API_KEY;
     const amdCloudUrl = process.env.AMD_CLOUD_URL || 'http://localhost:11434';
     const amdCloudKey = process.env.AMD_CLOUD_API_KEY;
 
-    if (model.includes('fireworks') || (fireworksKey && !model.includes('amd'))) {
-      this.logger.log(`Routing chat request to Fireworks AI using model: ${model}`);
+    // Decision factor logs
+    this.logger.log(`[ROUTING DECISION] Goal complexity: ${options?.complexity || 'simple'} | Requested: ${model}`);
+
+    if (model.includes('fireworks') || (fireworksKey && !model.includes('amd') && options?.complexity === 'complex')) {
+      this.logger.log(`[ROUTING] Selected Provider: Fireworks AI | Reason: Complex Reasoning Requirement | Model: ${model}`);
       try {
-        const res = await fetch('https://api.fireworks.ai/inference/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${fireworksKey}`,
-          },
-          body: JSON.stringify({
-            model: model.includes('/') ? model : `accounts/fireworks/models/${model}`,
-            messages,
-            temperature: temp,
-          }),
-        });
-        if (!res.ok) {
-          const errText = await res.text();
-          throw new Error(`Fireworks API error: ${res.status} - ${errText}`);
-        }
-        const json = await res.json();
-        return json.choices[0].message.content || '';
+        return await this.callWithRetry(() => this.executeFireworks(model, messages, temp, fireworksKey), 3);
       } catch (e: any) {
-        this.logger.error(`Fireworks chat call failed: ${e.message}. Falling back to mock generator.`);
+        this.logger.error(`[ROUTING FALLBACK] Fireworks API call failed: ${e.message}. Falling back to mock generator.`);
         return this.mockChatResponse(messages);
       }
     }
 
-    if (model.includes('amd') || model.includes('ollama') || model.includes('litellm')) {
-      this.logger.log(`Routing chat request to AMD AI Developer Cloud / Ollama using model: ${model}`);
+    if (model.includes('amd') || model.includes('ollama') || model.includes('litellm') || (!fireworksKey && amdCloudUrl)) {
+      this.logger.log(`[ROUTING] Selected Provider: AMD Instinct Cluster / Ollama | Reason: Local Execution Priority | Model: ${model}`);
       try {
-        const res = await fetch(`${amdCloudUrl}/v1/chat/completions`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            ...(amdCloudKey ? { 'Authorization': `Bearer ${amdCloudKey}` } : {}),
-          },
-          body: JSON.stringify({
-            model: model,
-            messages,
-            temperature: temp,
-          }),
-        });
-        if (!res.ok) {
-          const errText = await res.text();
-          throw new Error(`AMD Cloud/Ollama error: ${res.status} - ${errText}`);
-        }
-        const json = await res.json();
-        return json.choices[0].message.content || '';
+        return await this.callWithRetry(() => this.executeAmd(amdCloudUrl, model, messages, temp, amdCloudKey), 3);
       } catch (e: any) {
-        this.logger.error(`AMD Cloud/Ollama call failed: ${e.message}. Falling back to mock generator.`);
+        this.logger.error(`[ROUTING FALLBACK] AMD Instinct Cluster / Ollama call failed: ${e.message}. Falling back to mock generator.`);
         return this.mockChatResponse(messages);
       }
     }
 
-    this.logger.log(`No keys configured or local model specified. Using mock generator.`);
+    this.logger.log(`[ROUTING] Selected Provider: Fallback Provider Active | Reason: No Keys Configured`);
     return this.mockChatResponse(messages);
+  }
+
+  async checkHealth(): Promise<{ fireworks: string; amd: string }> {
+    const results = { fireworks: 'unhealthy', amd: 'unhealthy' };
+    const fireworksKey = process.env.FIREWORKS_API_KEY;
+    const amdCloudUrl = process.env.AMD_CLOUD_URL || 'http://localhost:11434';
+
+    if (fireworksKey) {
+      try {
+        const res = await fetch('https://api.fireworks.ai/inference/v1/models', {
+          headers: { 'Authorization': `Bearer ${fireworksKey}` }
+        });
+        if (res.ok) results.fireworks = 'healthy';
+      } catch {}
+    }
+
+    try {
+      const res = await fetch(`${amdCloudUrl}/v1/models`);
+      if (res.ok) results.amd = 'healthy';
+    } catch {}
+
+    return results;
+  }
+
+  private async callWithRetry(fn: () => Promise<string>, retries: number): Promise<string> {
+    let attempt = 0;
+    while (attempt < retries) {
+      try {
+        return await fn();
+      } catch (e: any) {
+        attempt++;
+        this.logger.warn(`API call attempt ${attempt} failed: ${e.message}. Retrying in ${attempt * 200}ms...`);
+        if (attempt >= retries) throw e;
+        await new Promise(resolve => setTimeout(resolve, attempt * 200));
+      }
+    }
+    throw new Error('Retries exhausted');
+  }
+
+  private async executeFireworks(model: string, messages: any[], temp: number, key?: string): Promise<string> {
+    const res = await fetch('https://api.fireworks.ai/inference/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${key}`,
+      },
+      body: JSON.stringify({
+        model: model.includes('/') ? model : `accounts/fireworks/models/${model}`,
+        messages,
+        temperature: temp,
+      }),
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Fireworks error: ${res.status} - ${errText}`);
+    }
+    const json = await res.json();
+    return json.choices[0].message.content || '';
+  }
+
+  private async executeAmd(url: string, model: string, messages: any[], temp: number, key?: string): Promise<string> {
+    const res = await fetch(`${url}/v1/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(key ? { 'Authorization': `Bearer ${key}` } : {}),
+      },
+      body: JSON.stringify({
+        model: model,
+        messages,
+        temperature: temp,
+      }),
+    });
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`AMD Cloud/Ollama error: ${res.status} - ${errText}`);
+    }
+    const json = await res.json();
+    return json.choices[0].message.content || '';
   }
 
   private mockChatResponse(messages: any[]): string {

@@ -196,7 +196,8 @@ Return your response ONLY as a JSON object matching the following structure:
         },
       ];
 
-      const response = await this.model.chat(messages, { model: agent?.model, temperature: 0.3 });
+      const complexity = (task.stage === 'EXECUTE' || task.stage === 'PLAN' || task.stage === 'VALIDATE') ? 'complex' : 'simple';
+      const response = await this.model.chat(messages, { model: agent?.model, temperature: 0.3, complexity });
       const parsed = JSON.parse(response);
       return {
         plan: parsed.plan || { steps: [`execute:${task.stage}`] },
