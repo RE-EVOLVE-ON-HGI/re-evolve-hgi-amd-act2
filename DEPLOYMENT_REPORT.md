@@ -7,7 +7,7 @@ This report registers the production deployments and configurations for the Gold
 
 ## 1. Active Deployments
 
--   **Frontend Console**: `https://re-evolve-mission-control.vercel.app`
+-   **Frontend Console**: `https://frontend-alpha-rose-25.vercel.app`
     -   *Hosting Provider*: Vercel.
     -   *SSL status*: Verified active (HTTPS enforced).
 -   **Backend REST/GraphQL API**: `https://re-evolve-api.onrender.com`

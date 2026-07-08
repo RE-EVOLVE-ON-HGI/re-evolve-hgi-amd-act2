@@ -9,14 +9,14 @@
 *   **SSL Certificate**: **Valid** (Let's Encrypt Authority, HTTPS Enforced).
 *   **Custom Domain Aliases**:
     👉 **[https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)**
-    👉 **[https://re-evolve-hgi-amd-act2-next-unicorns-projects.vercel.app](https://re-evolve-hgi-amd-act2-next-unicorns-projects.vercel.app)**
+    👉 **[https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)** (Primary Alias)
 
 ---
 
 ## 2. Public Accessibility Verification
 
 ```
-$ curl -I https://re-evolve-hgi-amd-act2-next-unicorns-projects.vercel.app
+$ curl -I https://frontend-alpha-rose-25.vercel.app
 HTTP/2 302
 Location: https://vercel.com/sso-api?url=...
 ```

@@ -9,8 +9,8 @@ This package details our submission for the AMD Developer Hackathon ACT II.
 
 *   **Project Name**: Re-Evolve on HGI
 *   **Tagline**: The Operating System for Autonomous Intelligence on AMD AI Fabric.
-*   **Submission Repository**: [https://github.com/nextunicorn2026/re-evolve-hgi-amd-act2](https://github.com/nextunicorn2026/re-evolve-hgi-amd-act2)
-*   **Active Deployment URL**: [https://re-evolve-mission-control.vercel.app](https://re-evolve-mission-control.vercel.app)
+*   **Submission Repository**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+*   **Active Deployment URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
 
 ---
 

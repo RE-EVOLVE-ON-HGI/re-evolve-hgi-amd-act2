@@ -10,8 +10,8 @@ This document consolidates our final submission details for the Hackathon review
 *   **Project Name**: Re-Evolve on HGI
 *   **Tagline**: The Operating System for Autonomous Intelligence on AMD AI Fabric.
 *   **Target Track**: AI Agent Frameworks & Infrastructure Optimization.
-*   **Repository URL**: [https://github.com/nextunicorn2026/RE-EVOLVE-ON-HGI-Os](https://github.com/nextunicorn2026/RE-EVOLVE-ON-HGI-Os)
-*   **Active Deployment URL**: [https://re-evolve-mission-control.vercel.app](https://re-evolve-mission-control.vercel.app)
+*   **Repository URL**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
+*   **Active Deployment URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
 
 ---
 
