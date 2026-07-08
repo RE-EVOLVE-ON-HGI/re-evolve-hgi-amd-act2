@@ -671,7 +671,7 @@ export default function InteractiveStoryPage() {
       <section id="scene-1" className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center z-30 pt-20">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 rounded-full mb-8">
-            ACT I: WONDER — THE SINGULAR POINT
+            प्रज्ञा / Intelligence · ACT I: WONDER — THE SINGULAR POINT
           </span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -743,7 +743,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-5xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              ACT I: WONDER — ORBITS OF LEARNING
+              विद्या / Knowledge · ACT I: WONDER — ORBITS OF LEARNING
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Chronological Path
@@ -938,7 +938,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              ACT III: UNDERSTANDING — REASONING
+              विवेक / Discernment · ACT III: UNDERSTANDING — REASONING
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Visual Reasoning DAGs
@@ -1141,7 +1141,7 @@ export default function InteractiveStoryPage() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-16">
             <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full">
-              ACT IV: BELIEF — TELEMETRY
+              स्मृति / Memory · ACT IV: BELIEF — TELEMETRY
             </span>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-4">
               Core Self-Monitoring
@@ -1316,15 +1316,18 @@ export default function InteractiveStoryPage() {
       <section id="scene-15" className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center z-30 bg-black py-24">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <span className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest border border-yellow-500/30 bg-yellow-500/10 px-2.5 py-1 rounded-full mb-12">
-            ACT V: LAUNCH — CONVERGENCE
+            सिद्धम् / Completed · ACT V: LAUNCH — CONVERGENCE
           </span>
           
           <h2 className="text-3xl md:text-5xl font-light text-zinc-500 mb-4">
             The Future Doesn't Need Another AI Assistant.
           </h2>
-          <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-16 tracking-tight">
+          <h1 className="text-4xl md:text-7xl font-extrabold text-white mb-6 tracking-tight">
             It Needs an Intelligence Operating System.
           </h1>
+          <p className="text-sm font-mono text-yellow-500/80 mb-16 tracking-widest uppercase">
+            As Above, So Below.
+          </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center w-full max-w-md">
             <motion.div
