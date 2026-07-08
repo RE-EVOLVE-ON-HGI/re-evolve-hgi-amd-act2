@@ -8,7 +8,7 @@ export class ModelService {
   constructor(private config: ConfigService) {}
 
   async chat(messages: any[], options?: { model?: string; temperature?: number; complexity?: 'simple' | 'complex' }): Promise<string> {
-    const defaultModel = options?.complexity === 'complex' ? 'accounts/fireworks/models/llama-v3-70b-instruct' : 'llama-v3-8b-instruct';
+    const defaultModel = options?.complexity === 'complex' ? 'accounts/fireworks/models/deepseek-v4-pro' : 'llama-v3-8b-instruct';
     const model = options?.model || defaultModel;
     const temp = options?.temperature ?? 0.7;
 
