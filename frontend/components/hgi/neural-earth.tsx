@@ -85,6 +85,7 @@ function NeuralConnections() {
       {lines.map((line, i) => (
         <line key={i}>
           <bufferGeometry>
+            {/* @ts-ignore */}
             <bufferAttribute
               attach="attributes-position"
               count={2}

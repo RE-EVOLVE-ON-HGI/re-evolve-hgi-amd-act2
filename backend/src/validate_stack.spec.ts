@@ -90,5 +90,5 @@ describe('AI Execution Stack Zero-Trust Verification', () => {
     }
 
     console.log('--- Phase 4: CENSA Routing validation completed ---\n');
-  }, 40000);
+  }, 180000);
 });

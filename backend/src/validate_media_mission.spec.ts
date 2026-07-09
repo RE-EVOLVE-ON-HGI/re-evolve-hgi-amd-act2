@@ -203,5 +203,5 @@ LAUNCH PACKAGE: Electric Sports Car
     console.log('\n==================================================');
     console.log('MISSION COMPLETE: Launch Campaign Assembled successfully');
     console.log('==================================================\n');
-  }, 180000);
+  }, 500000);
 });

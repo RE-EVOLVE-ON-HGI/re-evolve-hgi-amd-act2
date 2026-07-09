@@ -124,7 +124,6 @@ export default function NeuralCorePage() {
               label={metric.label}
               value={metric.value}
               unit={metric.unit}
-              icon={metric.icon}
               trend={metric.status === "nominal" ? "up" : "down"}
               trendValue="+2.4%"
             />

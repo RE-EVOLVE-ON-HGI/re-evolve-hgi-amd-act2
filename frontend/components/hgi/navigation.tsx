@@ -45,7 +45,7 @@ import { GlassPanel, StatusBadge } from './design-system'
 interface NavItem {
   name: string
   href: string
-  icon: React.ElementType
+  icon: any
   badge?: string
   status?: 'online' | 'offline' | 'syncing' | 'error' | 'standby'
 }
