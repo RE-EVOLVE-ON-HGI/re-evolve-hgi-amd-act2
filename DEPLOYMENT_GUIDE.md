@@ -44,8 +44,8 @@ AMD_CLOUD_API_KEY="local-rocm-key"
 
 ### 2.2 Frontend Config (`frontend/.env`):
 ```env
-NEXT_PUBLIC_API_URL="https://your-backend-render-app.onrender.com"
-NEXT_PUBLIC_WS_URL="https://your-backend-render-app.onrender.com"
+NEXT_PUBLIC_API_URL="https://your-backend-railway-app.up.railway.app"
+NEXT_PUBLIC_WS_URL="https://your-backend-railway-app.up.railway.app"
 ```
 
 ---

@@ -29,7 +29,7 @@
 
 ## 3. Environment & API Integration Status
 
--   **`NEXT_PUBLIC_BACKEND_URL`**: `https://re-evolve-api.onrender.com` (configured on Vercel production).
+-   **`NEXT_PUBLIC_BACKEND_URL`**: `https://xb8rdgq6.up.railway.app` (configured on Vercel production).
 -   **API Endpoint Status**: Reachable (returns HTTP 404/Not Found from Render, confirming routing listener is active).
 -   **WebSocket Realtime Connection**: Enabled via `socket.io-client` pointing to `/realtime` namespace.
 
