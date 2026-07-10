@@ -1,4 +1,4 @@
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://xb8rdgq6.up.railway.app';
 
 // Helper for standard JSON fetches with JWT authentication
 async function fetchJson<T>(path: string, options?: RequestInit): Promise<T | null> {

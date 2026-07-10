@@ -7,7 +7,7 @@
 
 | Variable Name | Required | Configured Value | Status |
 |---------------|----------|------------------|--------|
-| `NEXT_PUBLIC_BACKEND_URL` | Yes | `https://re-evolve-api.onrender.com` | ✅ Validated |
+| `NEXT_PUBLIC_BACKEND_URL` | Yes | `https://xb8rdgq6.up.railway.app` | ✅ Validated |
 
 ---
 
