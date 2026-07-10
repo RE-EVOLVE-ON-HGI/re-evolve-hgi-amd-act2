@@ -153,7 +153,7 @@ export class ModelService {
     if (lastMsgLower.includes('writecode') || lastMsgLower.includes('developer agent')) {
       return JSON.stringify({
         ok: true,
-        code: `// Dynamic build code\nconst result = "HGI Executed";\nconsole.log(result);`,
+        code: `// Dynamic build code\nconst result = "HGI Executed";\n`,
         trace: 'Developer Agent compiled instructions in sandbox sandbox-188'
       });
     }

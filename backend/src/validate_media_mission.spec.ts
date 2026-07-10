@@ -53,19 +53,19 @@ describe('Agentic Media Mission Orchestration Verification', () => {
   });
 
   it('should execute the Agentic Media Mission campaign workflow end-to-end', async () => {
-    console.log('\n==================================================');
-    console.log('OPERATION AGENTIC MEDIA MISSION START');
-    console.log('==================================================');
+    
+    
+    
 
     const goal = 'Create a launch campaign for an electric sports car';
-    console.log(`[USER INPUT] Goal: "${goal}"`);
+    
 
     // 1. Fetch organization
     const org = await prisma.organization.findFirst({ where: { slug: 're-evolve' } });
     const orgId = org ? org.id : 're-evolve-id';
 
     // 2. Seed Media Agent Swarm in DB
-    console.log('[Panani X] Registering Agent Swarm...');
+    
     const swarmAgents = [
       { name: 'Research Agent', type: AgentType.ANALYTICS, capabilities: ['market-analysis', 'competitor-research'] },
       { name: 'Copywriting Agent', type: AgentType.PLANNING, capabilities: ['copywriting', 'ad-text'] },
@@ -97,16 +97,16 @@ describe('Agentic Media Mission Orchestration Verification', () => {
         });
       }
       seededAgents[sa.name] = dbAgent.id;
-      console.log(`- Swarm Agent Configured: ${dbAgent.name} (Type: ${dbAgent.type})`);
+      
     }
 
     // 3. CENSA Intent Analysis
-    console.log('\n[CENSA] Performing Intent Analysis...');
+    
     const intent = await intentService.classify(goal);
-    console.log(`[CENSA] Intent Classified: ${intent}`);
+    
 
     // 4. Task Graph Generation (Dynamic Planning)
-    console.log('\n[CENSA] Generating Task Graph...');
+    
     const taskPlan = [
       { stage: TaskStage.ANALYZE, type: AgentType.ANALYTICS, agentName: 'Research Agent' },
       { stage: TaskStage.PLAN, type: AgentType.PLANNING, agentName: 'Copywriting Agent' },
@@ -114,35 +114,35 @@ describe('Agentic Media Mission Orchestration Verification', () => {
       { stage: TaskStage.VALIDATE, type: AgentType.GOVERNANCE, agentName: 'Compliance Agent' },
       { stage: TaskStage.DELIVER, type: AgentType.COMMUNICATION, agentName: 'Brand Agent' },
     ];
-    console.log('Generated Task Graph DAG:');
-    taskPlan.forEach((p, idx) => console.log(`  Stage ${idx + 1}: [${p.stage}] -> routes to [${p.agentName}]`));
+    
+    taskPlan.forEach((p, idx) => 
 
     // 5. Parallel Execution Simulation
-    console.log('\n[Panani X] Initiating Task Graph Execution...');
+    
     const executionContext: Record<string, any> = { goal };
     
     // Stage 1: Market Research
-    console.log('\n--- [Stage 1: ANALYZE] -> Research Agent active ---');
+    
     let start = Date.now();
     const researchPrompt = `Analyze competitor launch parameters for: ${goal}. Context: None.`;
     const researchResponse = await modelService.chat([{ role: 'user', content: researchPrompt }], { complexity: 'complex' });
     executionContext.research = researchResponse;
     const researchLatency = Date.now() - start;
-    console.log(`[Research Agent] Result: ${researchResponse.substring(0, 150)}...`);
-    console.log(`[Research Agent] Completed in ${researchLatency}ms | Provider: Fireworks (DeepSeek)`);
+    
+    
 
     // Stage 2: Copywriting
-    console.log('\n--- [Stage 2: PLAN] -> Copywriting Agent active ---');
+    
     start = Date.now();
     const copyPrompt = `Generate ad copy headlines and body text based on research: ${researchResponse.substring(0, 300)}`;
     const copyResponse = await modelService.chat([{ role: 'user', content: copyPrompt }], { complexity: 'complex' });
     executionContext.copy = copyResponse;
     const copyLatency = Date.now() - start;
-    console.log(`[Copywriting Agent] Result: ${copyResponse.substring(0, 150)}...`);
-    console.log(`[Copywriting Agent] Completed in ${copyLatency}ms | Provider: Fireworks (DeepSeek)`);
+    
+    
 
     // Stage 3: Image Generation / Media Generation
-    console.log('\n--- [Stage 3: EXECUTE] -> Image Generation Agent active ---');
+    
     start = Date.now();
     const imagePrompt = `Describe a visual for an electric sports car launch: ${goal}`;
     const imageDesc = await modelService.chat([{ role: 'user', content: imagePrompt }], { complexity: 'complex' });
@@ -150,13 +150,13 @@ describe('Agentic Media Mission Orchestration Verification', () => {
     executionContext.imageUrl = imageMockUrl;
     executionContext.imageDesc = imageDesc;
     const imageLatency = Date.now() - start;
-    console.log(`[Image Generation Agent] Prompt: "${imageDesc.substring(0, 100)}..."`);
-    console.log(`[Image Generation Agent] Asset generated successfully!`);
-    console.log(`[Image Generation Agent] Asset URL: ${imageMockUrl}`);
-    console.log(`[Image Generation Agent] Completed in ${imageLatency}ms | Provider: Unsplash CDN Mock`);
+    
+    
+    
+    
 
     // Stage 4: Kavacha Governance & Review
-    console.log('\n--- [Stage 4: VALIDATE] -> Compliance Agent & Kavacha active ---');
+    
     start = Date.now();
     // Ingest into memory vault
     const memoryRecord = await memoryService.ingest({
@@ -165,7 +165,7 @@ describe('Agentic Media Mission Orchestration Verification', () => {
       source: 'media-mission-qa',
       content: `Launch campaign copywriting: ${copyResponse.substring(0, 200)}`,
     });
-    console.log(`[Memory Vault] Episodic record committed successfully (ID: ${memoryRecord.id})`);
+    
 
     // Evaluate rules
     const policy = await prisma.policy.create({
@@ -181,12 +181,12 @@ describe('Agentic Media Mission Orchestration Verification', () => {
     });
     const governanceCheck = await policyService.evaluate(policy.id, { role: 'marketer', agentName: 'Compliance Agent' });
     const governanceLatency = Date.now() - start;
-    console.log(`[Kavacha] Running policy audit scans for advertising compliance...`);
-    console.log(`[Kavacha] Scans completed. Passed? ${governanceCheck.passed}`);
-    console.log(`[Kavacha] Completed in ${governanceLatency}ms`);
+    
+    
+    
 
     // Stage 5: Brand / Package Assembly
-    console.log('\n--- [Stage 5: DELIVER] -> Brand Agent active ---');
+    
     start = Date.now();
     const finalKit = `
 LAUNCH PACKAGE: Electric Sports Car
@@ -197,11 +197,11 @@ LAUNCH PACKAGE: Electric Sports Car
 4. Compliance Status: PASSED (Policy: ${policy.name})
     `;
     const brandLatency = Date.now() - start;
-    console.log(`[Brand Agent] Assembled Package: ${finalKit}`);
-    console.log(`[Brand Agent] Completed in ${brandLatency}ms`);
+    
+    
 
-    console.log('\n==================================================');
-    console.log('MISSION COMPLETE: Launch Campaign Assembled successfully');
-    console.log('==================================================\n');
+    
+    
+    
   }, 500000);
 });

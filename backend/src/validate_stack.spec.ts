@@ -52,31 +52,31 @@ describe('AI Execution Stack Zero-Trust Verification', () => {
   });
 
   it('should run a complete mission with intent routing and governance', async () => {
-    console.log('\n--- Phase 4: CENSA Routing validation start ---');
+    
     const goal = 'Design an Automotive Intelligence Platform';
-    console.log(`[CENSA] Dispatching Mission: "${goal}"`);
+    
 
     // 1. Intent Classification
     const intent = await intentService.classify(goal);
-    console.log(`[CENSA] Intent classified: ${intent}`);
+    
 
     // 2. Memory Retrieval
     const org = await prisma.organization.findFirst({ where: { slug: 're-evolve' } });
     const orgId = org ? org.id : 're-evolve-id';
-    console.log(`[Memory Vault] Fetching context for organization: ${orgId}`);
+    
     const context = await memoryService.retrieve(orgId, 'automotive platform specs');
-    console.log(`[Memory Vault] Context retrieved: ${context.length} records found`);
+    
 
     // 3. Model Inference (via active provider)
-    console.log('[Model Selection] Routing call to Fireworks (DeepSeek-v4-pro)...');
+    
     const response = await modelService.chat(
       [{ role: 'user', content: `Analyze: ${goal}. Context: ${JSON.stringify(context)}` }],
       { complexity: 'complex' }
     );
-    console.log(`[Model Response]: ${response.substring(0, 150)}...`);
+    
 
     // 4. Kavacha Policy Check
-    console.log('[Kavacha] Running policy audit checks...');
+    
     const policies = await prisma.policy.findMany({ where: { orgId } });
     if (policies.length > 0) {
       const evaluation = await policyService.evaluate(policies[0].id, {
@@ -84,11 +84,11 @@ describe('AI Execution Stack Zero-Trust Verification', () => {
         action: 'validate_blueprint',
         agentName: 'AutomotiveArchitect'
       });
-      console.log(`[Kavacha] Policy Evaluation: Passed? ${evaluation.passed}`);
+      
     } else {
-      console.log('[Kavacha] No policies active. Skipping.');
+      
     }
 
-    console.log('--- Phase 4: CENSA Routing validation completed ---\n');
+    
   }, 180000);
 });
