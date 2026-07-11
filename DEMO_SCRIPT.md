@@ -8,7 +8,7 @@
 This guide outlines the step-by-step walkthrough of the Re-Evolve live demonstration.
 
 ### Step 1: Open the Landing Page Presentation
-*   **Action**: Navigate to `https://release-certification.vercel.app`.
+*   **Action**: Navigate to `https://frontend-teal-eta-x4jumavddh.vercel.app`.
 *   **Visual**: The visitor is greeted by a dark, starry cinematic landing page displaying the neural connection orb.
 *   **Narrative**: Explain the core vision: Re-Evolve is the world's first Human-Governed Adaptive Intelligence (HGI) Operating System built specifically to coordinate agent swarms safely on high-throughput AMD Instinct compute grids.
 

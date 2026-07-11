@@ -7,7 +7,7 @@ This report registers the production deployments and configurations for the Gold
 
 ## 1. Active Deployments
 
--   **Frontend Console**: `https://release-certification.vercel.app`
+-   **Frontend Console**: `https://frontend-teal-eta-x4jumavddh.vercel.app`
     -   *Hosting Provider*: Vercel.
     -   *SSL status*: Verified active (HTTPS enforced).
 -   **Backend REST/GraphQL API**: `https://xb8rdgq6.up.railway.app`

@@ -30,7 +30,7 @@ This report certifies the final submission readiness of the **Re-Evolve on HGI**
 ### 2.4 Deployment Score (10 / 10)
 - Backend NestJS builds compile without warnings. Jest integration test suites pass with **100% success rate**.
 - Live frontend runs over SSL (HTTPS) on Vercel production:
-  👉 **[https://release-certification.vercel.app](https://release-certification.vercel.app)**
+  👉 **[https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)**
 
 ### 2.5 AMD Integration Status (Active & Compliant)
 - Bypassed Git SSL authentication certificate blockers on the cloud environment.

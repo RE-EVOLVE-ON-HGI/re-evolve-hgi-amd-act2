@@ -12,7 +12,7 @@
 | **Repository URL** | https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2 |
 | **Visibility** | Public |
 | **Default Branch** | `main` |
-| **Homepage URL** | https://release-certification.vercel.app |
+| **Homepage URL** | https://frontend-teal-eta-x4jumavddh.vercel.app |
 
 ---
 
@@ -102,7 +102,7 @@
 
 | Environment | URL | Status |
 |-------------|-----|--------|
-| Frontend (Vercel) | https://release-certification.vercel.app | Production |
+| Frontend (Vercel) | https://frontend-teal-eta-x4jumavddh.vercel.app | Production |
 | Backend (Railway/Render) | Per deployment config | Configured |
 
 ---

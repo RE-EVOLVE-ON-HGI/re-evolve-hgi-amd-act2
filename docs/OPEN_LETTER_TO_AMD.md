@@ -358,7 +358,7 @@ The problems are hard enough. We should work on them together.
 
 | Resource | URL |
 |----------|-----|
-| **Live Frontend** | https://release-certification.vercel.app |
+| **Live Frontend** | https://frontend-teal-eta-x4jumavddh.vercel.app |
 | **Backend Health** | https://xb8rdgq6.up.railway.app/api/model/health |
 | **Repository** | https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2 |
 | **Spec Index** | `SPEC_INDEX.md` |

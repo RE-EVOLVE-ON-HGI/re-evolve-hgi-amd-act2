@@ -6,7 +6,7 @@
 ## 1. Submission Identity
 
 *   **Repository URL**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
-*   **Production Deployment URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
+*   **Production Deployment URL**: [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)
 *   **Latest Commit**: `805286a`
 *   **Latest Tag**: `v2.0.0-final`
 *   **Deployment Status**: 🟩 **ONLINE** (Nominal)

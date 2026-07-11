@@ -28,5 +28,5 @@ Re-Evolve on HGI has successfully finalized its production release audit. All Qu
 *   **Judge Experience Rating**: **9.8 / 10**
 *   **Enterprise Readiness Rating**: **9.9 / 10**
 *   **AMD Validation Status**: Active & Compliant (Diagnostics verified in Jupyter notebook).
-*   **Production Deployment**: Online over HTTPS at [https://release-certification.vercel.app](https://release-certification.vercel.app).
+*   **Production Deployment**: Online over HTTPS at [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app).
 *   **Final Recommendation**: 🟩 **GO (FREEZE AND DEMONSTRATE)**

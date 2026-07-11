@@ -35,7 +35,7 @@ Every feature mentioned in the README was verified against the live codebase:
 | PostgreSQL 16 + pgvector | ✅ VERIFIED | Docker container `hgi-civ-postgres` (pgvector/pgvector:pg16) — Up 3 days |
 | Redis 7 | ✅ VERIFIED | Docker container `hgi-civ-redis` — Up 3 days, PONG |
 | Qdrant | ✅ VERIFIED | Docker container `hgi-amd-qdrant` — Up 2 days |
-| Live Vercel Deployment | ✅ VERIFIED | `https://release-certification.vercel.app` (per DEPLOYMENT_VALIDATION.md) |
+| Live Vercel Deployment | ✅ VERIFIED | `https://frontend-teal-eta-x4jumavddh.vercel.app` (per DEPLOYMENT_VALIDATION.md) |
 | Gemma 4 E4B | ⚠️ EXPERIMENTAL | Not deployed on active Fireworks account. Added as optional routing target only. |
 | Temporal Workflow | ⚠️ EXPERIMENTAL | Not running in hackathon demo scope. Mocked in test suite. |
 | Kafka event streaming | ⚠️ EXPERIMENTAL | Not running in hackathon demo scope. Mocked in test suite. |
@@ -46,7 +46,7 @@ Every feature mentioned in the README was verified against the live codebase:
 
 | Resource | URL | Status |
 |---|---|---|
-| Live Demo | `https://release-certification.vercel.app` | ✅ Active (per DEPLOYMENT_VALIDATION.md) |
+| Live Demo | `https://frontend-teal-eta-x4jumavddh.vercel.app` | ✅ Active (per DEPLOYMENT_VALIDATION.md) |
 | GitHub Repo | `https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2` | ✅ Active (confirmed via browser) |
 | Local Dev | `http://localhost:3001` | ✅ Running (Next.js dev server active) |
 

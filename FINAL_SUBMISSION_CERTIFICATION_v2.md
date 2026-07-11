@@ -15,7 +15,7 @@ Re-Evolve on HGI has been audited across all dimensions—repository sanity, dep
 ## 1. Release Profile
 
 *   **Repository URL**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
-*   **Verified Production URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
+*   **Verified Production URL**: [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)
 *   **Release Tag**: `v2.0.0-final` (Synchronized locally and pushed remotely)
 *   **Target Branch**: `main`
 
@@ -27,7 +27,7 @@ Re-Evolve on HGI has been audited across all dimensions—repository sanity, dep
 *   **Evidence**: Verified clean directory structure containing standard `.gitignore`, MIT `LICENSE`, and `CONTRIBUTING.md` at the root. No hardcoded private API keys or database credentials are present in code tracking.
 
 ### Deployment Health: Excellent
-*   **Evidence**: Production aliasing mapped successfully to `https://release-certification.vercel.app`. SSL certificate verified active (TLS 1.3). The app is globally accessible with immediate first paint.
+*   **Evidence**: Production aliasing mapped successfully to `https://frontend-teal-eta-x4jumavddh.vercel.app`. SSL certificate verified active (TLS 1.3). The app is globally accessible with immediate first paint.
 
 ### Documentation Health: Excellent
 *   **Evidence**: Updated all stale URL references in `SUBMISSION_PACKAGE.md`, `AMD_SUBMISSION_PACKAGE.md`, `DEPLOYMENT_REPORT.md`, `GITHUB_PUBLICATION_REPORT.md`, and `GLOBAL_DEPLOYMENT_REPORT.md` to point to the production endpoint.

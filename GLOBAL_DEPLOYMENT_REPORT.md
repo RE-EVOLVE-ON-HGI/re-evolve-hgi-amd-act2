@@ -8,15 +8,15 @@
 *   **Production Host**: Vercel Serverless Platform
 *   **SSL Certificate**: **Valid** (Let's Encrypt Authority, HTTPS Enforced).
 *   **Custom Domain Aliases**:
-    👉 **[https://release-certification.vercel.app](https://release-certification.vercel.app)**
-    👉 **[https://release-certification.vercel.app](https://release-certification.vercel.app)** (Primary Alias)
+    👉 **[https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)**
+    👉 **[https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)** (Primary Alias)
 
 ---
 
 ## 2. Public Accessibility Verification
 
 ```
-$ curl -I https://release-certification.vercel.app
+$ curl -I https://frontend-teal-eta-x4jumavddh.vercel.app
 HTTP/2 302
 Location: https://vercel.com/sso-api?url=...
 ```

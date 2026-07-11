@@ -5,14 +5,13 @@ The HGI stack is deployed as a distributed set of services to ensure high availa
 
 ### 1.1 Frontend (Vercel)
 - **Framework**: Next.js.
-- **Domain**: `release-certification.vercel.app`.
+- **Domain**: `frontend-teal-eta-x4jumavddh.vercel.app`.
 - **CI/CD**: Automatic deployments from the `main` branch.
 
-### 1.2 Backend (Railway)
-- **Framework**: NestJS.
-- **Infrastructure**: Containerized deployment on Railway.
-- **Database**: Managed PostgreSQL with pgvector.
-- **Queue**: Managed Redis for BullMQ.
+### 1.2 Backend (Vercel)
+- **Framework**: NestJS (serverless).
+- **Domain**: `backend-seven-puce-67.vercel.app`.
+- **Health Endpoint**: `/api/health`.
 
 ### 1.3 Compute Layer (AMD AI Fabric)
 - **Local**: ROCm vLLM running on AMD Instinct MI300X.

@@ -21,7 +21,7 @@ This report certifies the successful remote Git configuration, account permissio
 *   **Vercel Project ID**: `prj_jy8Uehmxxv7dBsol7QSGydX2iHhm`
 *   **Vercel Org ID**: `team_83wzZUHSlCLWu7gakWuoQS1V`
 *   **Project Name**: `re-evolve-hgi-amd-act2`
-*   **Production Deployment URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
+*   **Production Deployment URL**: [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)
 *   **Verification Status**: Checked. The build completes statically without errors, and the domain aliases point correctly to our optimized cinematic keynote.
 
 ---

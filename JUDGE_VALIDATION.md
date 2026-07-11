@@ -22,7 +22,7 @@ This document provides a step-by-step verification path for hackathon judges to 
 - [ ] **Quick Start**: Clear instructions for local execution.
 
 ### 🛑 Checkpoint 3: The Live Experience (The Demo)
-**Action**: Visit [https://release-certification.vercel.app](https://release-certification.vercel.app).
+**Action**: Visit [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app).
 **What to look for**:
 - [ ] **Landing Page**: Cinematic storytelling flow (Scenes 1-15).
 - [ ] **Interaction**: The "Run Simulation" button triggers the interactive DAG sequence.

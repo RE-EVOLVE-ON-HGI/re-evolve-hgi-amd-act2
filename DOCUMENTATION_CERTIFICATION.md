@@ -46,7 +46,7 @@
 | Qdrant Vector DB | ✅ ONLINE |
 | Fireworks AI Gateway | ✅ ONLINE |
 | Next.js Dev Server | ✅ ONLINE (localhost:3001) |
-| Vercel Production | ✅ ONLINE (release-certification.vercel.app) |
+| Vercel Production | ✅ ONLINE (https://frontend-teal-eta-x4jumavddh.vercel.app) |
 
 ---
 

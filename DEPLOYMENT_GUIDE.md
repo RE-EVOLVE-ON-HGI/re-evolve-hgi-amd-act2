@@ -35,7 +35,7 @@ JWT_SECRET="production-jwt-access-secret-key"
 
 # Queue & Event Broker
 REDIS_URL="redis://:<password>@<redis-host>:6379"
-KAFKA_BROKERS="localhost:9092"
+KAFKA_BROKERS="<kafka-host>:9092"
 
 # LLM Providers
 FIREWORKS_API_KEY="your-fireworks-api-key"
@@ -44,8 +44,8 @@ AMD_CLOUD_API_KEY="local-rocm-key"
 
 ### 2.2 Frontend Config (`frontend/.env`):
 ```env
-NEXT_PUBLIC_API_URL="https://your-backend-railway-app.up.railway.app"
-NEXT_PUBLIC_WS_URL="https://your-backend-railway-app.up.railway.app"
+NEXT_PUBLIC_API_URL="https://backend-seven-puce-67.vercel.app/api"
+NEXT_PUBLIC_WS_URL="https://backend-seven-puce-67.vercel.app"
 ```
 
 ---

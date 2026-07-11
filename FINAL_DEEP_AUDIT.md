@@ -4,7 +4,7 @@
 **Generated:** 2026-07-06  
 **Auditors:** Principal Software Architect, AMD Judge, Security Auditor, QA Lead, DevOps Lead, UX Reviewer  
 **Repository:** https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2  
-**Live URL:** https://release-certification.vercel.app  
+**Live URL:** https://frontend-teal-eta-x4jumavddh.vercel.app  
 **Tag:** `v2.0.0-final`
 
 ---

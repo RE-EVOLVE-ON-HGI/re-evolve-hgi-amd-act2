@@ -10,7 +10,7 @@ This checklist verifies all submission requirements for the Unicorn Track (Enter
 - [x] **GitHub Repository URL**
   - Hosted at: [RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
 - [x] **Live Hosted Application URL**
-  - Live production URL: [https://release-certification.vercel.app](https://release-certification.vercel.app)
+  - Live production URL: [https://frontend-teal-eta-x4jumavddh.vercel.app](https://frontend-teal-eta-x4jumavddh.vercel.app)
 - [x] **Developer Passcode Gateway**
   - Access Code to unlock the full workspace: `AMD-GOLD` or `NEXT-UNICORN`
 - [x] **Provider Abstraction**
