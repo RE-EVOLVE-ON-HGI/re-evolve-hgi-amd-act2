@@ -10,7 +10,7 @@
 [![ROCm Ready](https://img.shields.io/badge/ROCm%20Ready-7.2-ED1C24?style=flat-square&labelColor=0d1117&logo=amd)](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
 [![AMD AI Cloud](https://img.shields.io/badge/AMD-AI%20Developer%20Cloud-e85600?style=flat-square&labelColor=0d1117&logo=amd)](https://www.amd.com/en/developer.html)
 [![Fireworks AI](https://img.shields.io/badge/Fireworks-AI%20Inference-f59e0b?style=flat-square&labelColor=0d1117)](https://fireworks.ai)
-[![Vercel Deployment](https://img.shields.io/badge/Vercel%20Deployment-Active-000000?style=flat-square&labelColor=0d1117&logo=vercel)](https://release-certification.vercel.app)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel%20Deployment-Active-000000?style=flat-square&labelColor=0d1117&logo=vercel)](https://frontend-teal-eta-x4jumavddh.vercel.app)
 [![TypeScript](https://img.shields.io/badge/Lang-TypeScript-3178c6?style=flat-square&labelColor=0d1117&logo=typescript)](https://www.typescriptlang.org)
 [![NestJS](https://img.shields.io/badge/Backend-NestJS-e0234e?style=flat-square&labelColor=0d1117&logo=nestjs)](https://nestjs.com)
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js-ffffff?style=flat-square&labelColor=0d1117&logo=nextdotjs)](https://nextjs.org)
@@ -24,12 +24,12 @@
 
 <br/>
 
-**[Live Demo](https://release-certification.vercel.app)** · **[Architecture](#-section-02--os-overview--architecture)** · **[Quick Start](#-section-07--developer-journey)** · **[Demo Script](DEMO_SCRIPT.md)** · **[Judge Guide](JUDGE_GUIDE.md)** · **[Slide Outline](SLIDE_OUTLINE.md)**
+**[Live Demo](https://frontend-teal-eta-x4jumavddh.vercel.app)** · **[Architecture](#-section-02--os-overview--architecture)** · **[Quick Start](#-section-07--developer-journey)** · **[Demo Script](DEMO_SCRIPT.md)** · **[Judge Guide](JUDGE_GUIDE.md)** · **[Slide Outline](SLIDE_OUTLINE.md)**
 
 **Production URLs**
-- Frontend: https://release-certification.vercel.app
-- Backend: https://xb8rdgq6.up.railway.app/api
-- Health: https://xb8rdgq6.up.railway.app/api/model/health
+- Frontend: https://frontend-teal-eta-x4jumavddh.vercel.app
+- Backend: https://backend-seven-puce-67.vercel.app/api
+- Health: https://backend-seven-puce-67.vercel.app/api/health
 
 </div>
 

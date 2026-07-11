@@ -1,19 +1,11 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/build-step",
-      "config": {
-        "cmd": "npm run build"
-      }
-    },
-    {
-      "src": "dist/main.js",
-      "use": "@vercel/node"
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run start:dev",
+  "installCommand": "npm install",
+  "framework": "nestjs",
   "routes": [
-    { "src": "/api/(.*)", "dest": "/dist/main.js" }
+    { "src": "/(.*)", "dest": "/dist/main.serverless.js" }
   ],
   "env": {
     "NODE_ENV": "production"

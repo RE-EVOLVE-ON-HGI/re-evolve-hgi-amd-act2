@@ -4,7 +4,7 @@
   "description": "RE-EVOLVE ON HGI — Adaptive Intelligence Operating System backend",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "build": "nest build",\n    "vercel-build": "npm run build",
     "start": "node dist/main.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
