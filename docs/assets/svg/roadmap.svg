@@ -1,0 +1,393 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="amdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ED1C24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+    <marker id="mstone" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto">
+      <circle cx="7" cy="7" r="7" fill="url(#goldGrad)" stroke="#080D16" stroke-width="2"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bgGrad)"/>
+  <rect width="1400" height="900" fill="url(#grid)"/>
+
+  <text x="700" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="26" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    HGI ROADMAP — AMD ACT 2: FROM FOUNDATION TO INTELLIGENCE
+  </text>
+  <text x="700" y="68" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Q3 2024 → Q4 2026 • 7-Layer Stack • Enterprise-Grade • Air-Gap Ready • Self-Improving
+  </text>
+
+  <!-- Timeline Axis -->
+  <line x1="100" y1="150" x2="1300" y2="150" stroke="#334155" stroke-width="3"/>
+  <g font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+    <text x="150" y="135" text-anchor="middle">Q3'24</text>
+    <text x="350" y="135" text-anchor="middle">Q4'24</text>
+    <text x="550" y="135" text-anchor="middle">Q1'25</text>
+    <text x="750" y="135" text-anchor="middle">Q2'25</text>
+    <text x="950" y="135" text-anchor="middle">Q3'25</text>
+    <text x="1150" y="135" text-anchor="middle">Q4'25</text>
+    <text x="1350" y="135" text-anchor="middle">Q1'26+</text>
+  </g>
+
+  <!-- Phase 1: Foundation -->
+  <g transform="translate(150, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#60A5FA" font-weight="600">PHASE 1</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">FOUNDATION</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q3 2024 — Q4 2024</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#4ADE80">✓</text>
+      <text x="15" y="0">Monorepo (Turborepo + pnpm)</text>
+      <text x="0" y="22" fill="#4ADE80">✓</text>
+      <text x="15" y="22">Core Packages: contracts, types, errors</text>
+      <text x="0" y="44" fill="#4ADE80">✓</text>
+      <text x="15" y="44">CENSA v1: Intent → DAG → Registry</text>
+      <text x="0" y="66" fill="#4ADE80">✓</text>
+      <text x="15" y="66">Panani X: VM Isolate Runtime</text>
+      <text x="0" y="88" fill="#4ADE80">✓</text>
+      <text x="15" y="88">Kavacha: OPA/Rego Policy Engine</text>
+      <text x="0" y="110" fill="#4ADE80">✓</text>
+      <text x="15" y="110">Memory Vault: PostgreSQL + pgvector</text>
+      <text x="0" y="132" fill="#4ADE80">✓</text>
+      <text x="15" y="132">LiteLLM Gateway + AMD Cluster</text>
+      <text x="0" y="154" fill="#4ADE80">✓</text>
+      <text x="15" y="154">CLI v1: Mission Run / Agent Dev</text>
+      <text x="0" y="176" fill="#4ADE80">✓</text>
+      <text x="15" y="176">CI/CD: GitHub Actions → Railway</text>
+      <text x="0" y="198" fill="#4ADE80">✓</text>
+      <text x="15" y="198">Observability: OTel + Prometheus</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: MVP Mission Execution</text>
+      <text x="0" y="242" fill="#64748B">End-to-end: CLI → CENSA → Agent → Result</text>
+    </g>
+  </g>
+
+  <!-- Phase 2: Enterprise Hardening -->
+  <g transform="translate(350, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#A78BFA" font-weight="600">PHASE 2</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">ENTERPRISE</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q1 2025 — Q2 2025</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#4ADE80">✓</text>
+      <text x="15" y="0">SOC2 Type II / FedRAMP Prep</text>
+      <text x="0" y="22" fill="#4ADE80">✓</text>
+      <text x="15" y="22">Air-Gap Deployment (K3s + Helm)</text>
+      <text x="0" y="44" fill="#4ADE80">✓</text>
+      <text x="15" y="44">BYOK / CMEK (Customer Keys)</text>
+      <text x="0" y="66" fill="#4ADE80">✓</text>
+      <text x="15" y="66">RBAC + ABAC (Cedar Policies)</text>
+      <text x="0" y="88" fill="#4ADE80">✓</text>
+      <text x="15" y="88">Audit Ledger: Immutable + Queryable</text>
+      <text x="0" y="110" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="110">Multi-Region HA (Active-Active)</text>
+      <text x="0" y="132" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="132">Disaster Recovery (RPO 5min/RTO 15min)</text>
+      <text x="0" y="154" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="154">SLSA L3 Supply Chain Attestation</text>
+      <text x="0" y="176" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="176">Private Link / VPC Endpoints Only</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: Enterprise Ready</text>
+      <text x="0" y="242" fill="#64748B">FedRAMP ATO Track, Air-Gap Verified</text>
+    </g>
+  </g>
+
+  <!-- Phase 3: Intelligence Layer -->
+  <g transform="translate(550, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">PHASE 3</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">INTELLIGENCE</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q2 2025 — Q3 2025</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="0">CENSA v2: Learned Routing (RL)</text>
+      <text x="0" y="22" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="22">Semantic Router (BGE-M3 Embeddings)</text>
+      <text x="0" y="44" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="44">Adaptive Budget Allocation</text>
+      <text x="0" y="66" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="66">Multi-Agent Swarm Coordination</text>
+      <text x="0" y="88" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="88">Self-Healing DAGs (Auto-Retry/Rewrite)</text>
+      <text x="0" y="110" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="110">Memory: Episodic + Semantic Fusion</text>
+      <text x="0" y="132" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="132">Agent Marketplace / Registry v2</text>
+      <text x="0" y="154" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="154">Eval Framework: Auto-Benchmarks</text>
+      <text x="0" y="176" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="176">Cost Optimization: Model Distillation</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: Self-Optimizing</text>
+      <text x="0" y="242" fill="#64748B">CENSA learns from every mission</text>
+    </g>
+  </g>
+
+  <!-- Phase 4: Platform Scale -->
+  <g transform="translate(750, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FB923C" font-weight="600">PHASE 4</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">PLATFORM</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q3 2025 — Q4 2025</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="0">Frontend: Dashboard v2 (Real-time)</text>
+      <text x="0" y="22" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="22">Multi-Tenancy (Orgs/Workspaces)</text>
+      <text x="0" y="44" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="44">Plugin SDK (WASM Components)</text>
+      <text x="0" y="66" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="66">Marketplace: Agents, Missions, Policies</text>
+      <text x="0" y="88" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="88">GitOps: ArgoCD / Flux Integration</text>
+      <text x="0" y="110" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="110">Terraform Provider (GA)</text>
+      <text x="0" y="132" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="132">API Gateway: GraphQL + REST + gRPC</text>
+      <text x="0" y="154" fill="#FBBF24" font-weight="600">~</text>
+      <text x="15" y="154">Enterprise SSO (SCIM, JIT Provision)</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: Platform GA</text>
+      <text x="0" y="242" fill="#64748B">100+ Orgs, 10K+ Missions/Day</text>
+    </g>
+  </g>
+
+  <!-- Phase 5: Autonomous Intelligence -->
+  <g transform="translate(950, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#F87171" font-weight="600">PHASE 5</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">AUTONOMY</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q4 2025 — Q1 2026</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="0">CENSA v3: Goal-Oriented Planning</text>
+      <text x="0" y="22" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="22">Auto-Mission Generation (NL → DAG)</text>
+      <text x="0" y="44" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="44">Agent Evolution (Genetic Search)</text>
+      <text x="0" y="66" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="66">Continuous Model Fine-Tuning</text>
+      <text x="0" y="88" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="88">Cross-Mission Knowledge Transfer</text>
+      <text x="0" y="110" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="110">Proactive Remediation (Pre-Incident)</text>
+      <text x="0" y="132" fill="#F87171" font-weight="600">★</text>
+      <text x="15" y="132">Human Preference Learning (RLHF)</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: Autonomous Ops</text>
+      <text x="0" y="242" fill="#64748B">Missions run, optimize, evolve 24/7</text>
+    </g>
+  </g>
+
+  <!-- Phase 6: Ecosystem -->
+  <g transform="translate(1150, 170)">
+    <rect x="-100" y="0" width="200" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#22D3EE" font-weight="600">PHASE 6</text>
+    <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">ECOSYSTEM</text>
+    <text x="0" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FBBF24">Q1 2026+</text>
+
+    <line x1="-80" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="1"/>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-80, 95)" fill="#E2E8F0">
+      <text x="0" y="0" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="0">Open Core: MIT/Apache-2.0</text>
+      <text x="0" y="22" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="22">Community Agent Registry</text>
+      <text x="0" y="44" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="44">Partner Integrations (Datadog,</text>
+      <text x="15" y="58">  Splunk, ServiceNow, GitHub)</text>
+      <text x="0" y="80" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="80">AMD ROCm Native Optimization</text>
+      <text x="0" y="102" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="102">HGI Certification Program</text>
+      <text x="0" y="124" fill="#FBBF24" font-weight="600">★</text>
+      <text x="15" y="124">Research Partnerships (Univ/Labs)</text>
+      <text x="0" y="220" fill="#FBBF24" font-weight="600">MILESTONE: Industry Standard</text>
+      <text x="0" y="242" fill="#64748B">Open Governance, Vendor Neutral</text>
+    </g>
+  </g>
+
+  <!-- Cross-Cutting Themes -->
+  <g transform="translate(700, 470)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="700">CROSS-CUTTING THEMES (CONTINUOUS INVESTMENT)</text>
+
+    <g transform="translate(-600, 30)">
+      <!-- Theme 1: AMD Optimization -->
+      <g transform="translate(0, 0)">
+        <rect x="-180" y="0" width="360" height="160" rx="10" fill="url(#glassGrad)" stroke="url(#amdGrad)" stroke-width="2" filter="url(#glow)"/>
+        <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FF6B6B" font-weight="600">AMD INSTINCT OPTIMIZATION</text>
+        <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-160, 40)" fill="#E2E8F0">
+          <text x="0" y="0" fill="#4ADE80">✓</text>
+          <text x="15" y="0">ROCm 7.2+ / MIOpen / hipBLAS</text>
+          <text x="0" y="20" fill="#4ADE80">✓</text>
+          <text x="15" y="20">FP8 Quantization (Llama-3.1-405B)</text>
+          <text x="0" y="40" fill="#4ADE80">✓</text>
+          <text x="15" y="40">Tensor Parallel (TP=8) + Pipeline</text>
+          <text x="0" y="60" fill="#FBBF24">~</text>
+          <text x="15" y="60">Kernel Fusion (FlashAttn-3, Triton)</text>
+          <text x="0" y="80" fill="#FBBF24">~</text>
+          <text x="15" y="80">Speculative Decoding (Medusa/EAGLE)</text>
+          <text x="0" y="100" fill="#FBBF24">~</text>
+          <text x="15" y="100">MI300X → MI325X → MI350 Upgrade Path</text>
+          <text x="0" y="120" fill="#64748B">Target: 2x throughput / 50% cost reduction</text>
+        </g>
+      </g>
+
+      <!-- Theme 2: Security & Governance -->
+      <g transform="translate(400, 0)">
+        <rect x="-180" y="0" width="360" height="160" rx="10" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+        <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">SECURITY & GOVERNANCE</text>
+        <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-160, 40)" fill="#E2E8F0">
+          <text x="0" y="0" fill="#4ADE80">✓</text>
+          <text x="15" y="0">Kavacha: Real-time PII/Secret Scan</text>
+          <text x="0" y="20" fill="#4ADE80">✓</text>
+          <text x="15" y="20">Immutable Audit Ledger (Merkle)</text>
+          <text x="0" y="40" fill="#FBBF24">~</text>
+          <text x="15" y="40">Formal Verification (Rego → Wasm)</text>
+          <text x="0" y="60" fill="#FBBF24">~</text>
+          <text x="15" y="60">Zero-Knowledge Attestations</text>
+          <text x="0" y="80" fill="#FBBF24">~</text>
+          <text x="15" y="80">Confidential Computing (SEV-SNP)</text>
+          <text x="0" y="100" fill="#FBBF24">~</text>
+          <text x="15" y="100">AI Safety: Constitutional AI Policies</text>
+          <text x="0" y="120" fill="#64748B">Target: Zero Critical CVEs, 100% Policy Coverage</text>
+        </g>
+      </g>
+
+      <!-- Theme 3: Developer Experience -->
+      <g transform="translate(800, 0)">
+        <rect x="-180" y="0" width="360" height="160" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+        <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#22D3EE" font-weight="600">DEVELOPER EXPERIENCE</text>
+        <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-160, 40)" fill="#E2E8F0">
+          <text x="0" y="0" fill="#4ADE80">✓</text>
+          <text x="15" y="0">CLI: Mission Templates, Debug REPL</text>
+          <text x="0" y="20" fill="#4ADE80">✓</text>
+          <text x="15" y="20">SDK: TypeScript, Python, Go (GA)</text>
+          <text x="0" y="40" fill="#FBBF24">~</text>
+          <text x="15" y="40">VS Code Extension (Inline Agent)</text>
+          <text x="0" y="60" fill="#FBBF24">~</text>
+          <text x="15" y="60">Web Dashboard: Visual DAG Builder</text>
+          <text x="0" y="80" fill="#FBBF24">~</text>
+          <text x="15" y="80">Local Dev: Kind + Tilt (Hot Reload)</text>
+          <text x="0" y="100" fill="#FBBF24">~</text>
+          <text x="15" y="100">Docs: Interactive Tutorials, Playground</text>
+          <text x="0" y="120" fill="#64748B">Target: <5min Hello World, <30min First Mission</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- AMD Hardware Roadmap Alignment -->
+    <g transform="translate(-600, 210)">
+      <rect x="-180" y="0" width="1360" height="120" rx="10" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FBBF24" font-weight="600">AMD HARDWARE ROADMAP ALIGNMENT — HGI INFERENCE TIER</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">
+        <!-- Current -->
+        <g transform="translate(-620, 40)">
+          <text x="0" y="0" fill="#4ADE80" font-weight="600">NOW (2024):</text>
+          <text x="0" y="18" fill="#E2E8F0">MI300X (192GB HBM3) × 8 per node</text>
+          <text x="0" y="36" fill="#E2E8F0">ROCm 7.2, vLLM 0.5+, FlashAttention-2</text>
+          <text x="0" y="54" fill="#E2E8F0">Models: 405B (TP8), 70B (TP4), 8B (TP1)</text>
+          <text x="0" y="72" fill="#64748B">Throughput: ~250 tok/s (70B), ~50 tok/s (405B)</text>
+        </g>
+
+        <!-- Near -->
+        <g transform="translate(-200, 40)">
+          <text x="0" y="0" fill="#FBBF24" font-weight="600">H1 2025:</text>
+          <text x="0" y="18" fill="#E2E8F0">MI325X (288GB HBM3E) × 8</text>
+          <text x="0" y="36" fill="#E2E8F0">ROCm 7.3, vLLM 0.6, FP8 Native</text>
+          <text x="0" y="54" fill="#E2E8F0">Models: 405B (TP4), 70B (TP2), Quantized</text>
+          <text x="0" y="72" fill="#64748B">Throughput: ~2x MI300X, 1.5x HBM capacity</text>
+        </g>
+
+        <!-- Far -->
+        <g transform="translate(220, 40)">
+          <text x="0" y="0" fill="#FBBF24" font-weight="600">H2 2025:</text>
+          <text x="0" y="18" fill="#E2E8F0">MI350 Series (CDNA 4, HBM3E)</text>
+          <text x="0" y="36" fill="#E2E8F0">ROCm 8.x, vLLM 1.0, New Matrix Cores</text>
+          <text x="0" y="54" fill="#E2E8F0">MXFP4/MXFP6 Quantization, Sparsity</text>
+          <text x="0" y="72" fill="#64748B">Throughput: ~4-6x MI300X, Train + Inference</text>
+        </g>
+
+        <!-- Future -->
+        <g transform="translate(640, 40)">
+          <text x="0" y="0" fill="#60A5FA" font-weight="600">2026+:</text>
+          <text x="0" y="18" fill="#E2E8F0">MI400 (CDNA 5, UALink Scale-Up)</text>
+          <text x="0" y="36" fill="#E2E8F0">Unified Memory (CPU+GPU Coherent)</text>
+          <text x="0" y="54" fill="#E2E8F0">HGI: Native ROCm Kernels, Agent Acceleration</text>
+          <text x="0" y="72" fill="#64748B">Target: Real-time 1T+ Model Inference</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- Key Metrics Footer -->
+  <g transform="translate(700, 850)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">KEY METRICS:</tspan>  99.9% Mission Success SLA  ·  < 500ms TTFT (AMD)  ·  $0.00/1M tokens (Owned HW)  ·  100% Air-Gap Ops  ·  SOC2/FedRAMP Ready  ·  SLSA L3 Supply Chain
+      <tspan dx="20" fill="#FBBF24">  |  REPOS: github.com/hgi/core · github.com/hgi/agents · github.com/hgi/infra</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    PANANI X — SANDBOXED RUNTIME
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Node.js vm Isolates • Zero FS Access • Enforced Timeouts • Resource Metering • Output Streaming
+  </text>
+
+  <!-- Central: VM Isolate Architecture -->
+  <g transform="translate(600, 380)">
+    <!-- Outer boundary: Process -->
+    <rect x="-350" y="-250" width="700" height="500" rx="16" fill="none" stroke="url(#blueGrad)" stroke-width="2" stroke-dasharray="8,4" opacity="0.5"/>
+    <text x="-330" y="-235" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">HOST PROCESS (Node.js)</text>
+
+    <!-- Inner: VM Isolate -->
+    <rect x="-280" y="-200" width="560" height="400" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-180" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="700">VM ISOLATE (vm.createContext)</text>
+    <text x="0" y="-160" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">Isolated Global Scope • No require() • No process • No __dirname</text>
+
+    <!-- Sandbox Globals -->
+    <g transform="translate(-250, -130)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">SANDBOX GLOBALS</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#E2E8F0">console → CapturedStream</text>
+        <text x="0" y="18" fill="#E2E8F0">setTimeout / setInterval → TimerGuard</text>
+        <text x="0" y="36" fill="#E2E8F0">fetch → NetworkPolicyGate</text>
+        <text x="0" y="54" fill="#E2E8F0">JSON / Math / Date → Safe</text>
+        <text x="0" y="72" fill="#E2E8F0">Buffer → Limited (1MB)</text>
+        <text x="0" y="90" fill="#E2E8F0">Promise → Native</text>
+        <text x="0" y="108" fill="#EF4444">require → UNDEFINED</text>
+        <text x="0" y="126" fill="#EF4444">process → UNDEFINED</text>
+        <text x="0" y="144" fill="#EF4444">fs → UNDEFINED</text>
+        <text x="0" y="162" fill="#EF4444">__dirname → UNDEFINED</text>
+        <text x="0" y="180" fill="#EF4444">module → UNDEFINED</text>
+      </g>
+    </g>
+
+    <!-- Execution Pipeline -->
+    <g transform="translate(-250, 30)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FBBF24" font-weight="600">EXECUTION PIPELINE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#E2E8F0">1. validateScript(script) → AST parse</text>
+        <text x="0" y="18" fill="#E2E8F0">2. createContext(sandbox) → vm.createContext</text>
+        <text x="0" y="36" fill="#E2E8F0">3. compileWithTimeout(script, 300s)</text>
+        <text x="0" y="54" fill="#E2E8F0">4. runInContext(script, context)</text>
+        <text x="0" y="72" fill="#E2E8F0">5. streamOutput(stdout/stderr)</text>
+        <text x="0" y="90" fill="#E2E8F0">6. enforceResourceLimits()</text>
+        <text x="0" y="108" fill="#E2E8F0">7. captureResult / throwError</text>
+        <text x="0" y="126" fill="#E2E8F0">8. cleanupContext() → GC hint</text>
+      </g>
+    </g>
+
+    <!-- Resource Metering -->
+    <g transform="translate(80, 30)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#4ADE80" font-weight="600">RESOURCE METERING</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#E2E8F0">CPU Time: process.hrtime.bigint()</text>
+        <text x="0" y="18" fill="#E2E8F0">Wall Time: Date.now() delta</text>
+        <text x="0" y="36" fill="#E2E8F0">Memory: process.memoryUsage()</text>
+        <text x="0" y="54" fill="#E2E8F0">Heap Limit: 512 MB (configurable)</text>
+        <text x="0" y="72" fill="#E2E8F0">Output Buffer: 10 MB max</text>
+        <text x="0" y="90" fill="#E2E8F0">Network: 0 bytes (blocked by default)</text>
+        <text x="0" y="108" fill="#E2E8F0">File Ops: 0 (blocked by default)</text>
+        <text x="0" y="126" fill="#22C55E" font-size="9">Enforced via Proxy traps</text>
+      </g>
+    </g>
+
+    <!-- Timeout Guard -->
+    <g transform="translate(80, 180)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FB923C" font-weight="600">TIMEOUT GUARD (timeout.guard.ts)</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#E2E8F0">AbortController + Promise.race()</text>
+        <text x="0" y="18" fill="#E2E8F0">Wall-clock: 300s default</text>
+        <text x="0" y="36" fill="#E2E8F0">CPU: 60s default (configurable)</text>
+        <text x="0" y="54" fill="#E2E8F0">Graceful: SIGTERM → 5s → SIGKILL</text>
+        <text x="0" y="72" fill="#E2E8F0">On timeout: partial output preserved</text>
+        <text x="0" y="90" fill="#EF4444" font-size="9">NO zombie processes</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Left Panel: Security Model -->
+  <g transform="translate(50, 110)">
+    <rect x="0" y="0" width="160" height="280" rx="10" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="80" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#F87171" font-weight="600">SECURITY MODEL</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+      <text x="0" y="0" fill="#EF4444" font-weight="600">DENY BY DEFAULT</text>
+      <text x="0" y="20" fill="#64748B">No fs, net, process</text>
+      <text x="0" y="40" fill="#60A5FA" font-weight="600">ALLOWLIST ONLY</text>
+      <text x="0" y="60" fill="#64748B">console, timers,</text>
+      <text x="0" y="75" fill="#64748B">fetch (policy-gated)</text>
+      <text x="0" y="100" fill="#FBBF24" font-weight="600">CAPABILITY TOKENS</text>
+      <text x="0" y="120" fill="#64748B">Per-task granular</text>
+      <text x="0" y="135" fill="#64748B">Signed JWT claims</text>
+      <text x="0" y="155" fill="#4ADE80" font-weight="600">AUDIT LOGGING</text>
+      <text x="0" y="175" fill="#64748B">Every syscall attempt</text>
+      <text x="0" y="190" fill="#64748B">Immutable ledger</text>
+      <text x="0" y="210" fill="#A78BFA" font-weight="600">NO ESCAPES</text>
+      <text x="0" y="230" fill="#64748B">vm2 CVE mitigations</text>
+      <text x="0" y="245" fill="#64748B">Prototype pollution</text>
+      <text x="0" y="260" fill="#64748B">Context isolation</text>
+    </g>
+  </g>
+
+  <!-- Right Panel: Integration Points -->
+  <g transform="translate(990, 110)">
+    <rect x="0" y="0" width="160" height="280" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="80" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#22D3EE" font-weight="600">INTEGRATION</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">CENSA → Panani X</text>
+      <text x="0" y="20" fill="#64748B">task.payload.script</text>
+      <text x="0" y="35" fill="#64748B">task.payload.input</text>
+      <text x="0" y="50" fill="#64748B">task.payload.limits</text>
+      <text x="0" y="75" fill="#E2E8F0" font-weight="600">Output → Kavacha</text>
+      <text x="0" y="95" fill="#64748B">result.stdout</text>
+      <text x="0" y="110" fill="#64748B">result.stderr</text>
+      <text x="0" y="125" fill="#64748B">result.metrics</text>
+      <text x="0" y="150" fill="#E2E8F0" font-weight="600">Memory Vault</text>
+      <text x="0" y="170" fill="#64748B">episodic.store()</text>
+      <text x="0" y="185" fill="#64748B">semantic.embed()</text>
+      <text x="0" y="205" fill="#E2E8F0" font-weight="600">CLI / SDK</text>
+      <text x="0" y="225" fill="#64748B">panani run file.js</text>
+      <text x="0" y="240" fill="#64748B">panani exec 'code'</text>
+      <text x="0" y="255" fill="#64748B">SDK: execute()</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Key Files -->
+  <g transform="translate(600, 745)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">panani-runtime.service.ts</tspan>  ·  <tspan fill="#FBBF24">vm.isolate.ts</tspan>  ·  <tspan fill="#FBBF24">timeout.guard.ts</tspan>  ·  <tspan fill="#FBBF24">resource.meter.ts</tspan>  ·  <tspan fill="#FBBF24">sandbox.globals.ts</tspan>  ·  <tspan fill="#FBBF24">output.stream.ts</tspan>
+    </text>
+  </g>
+
+  <!-- Bottom: API Contract -->
+  <g transform="translate(600, 770)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">
+      API: panani.execute({ script, input, limits?, policy? }) → Promise<{ stdout, stderr, metrics, exitCode }>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,316 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <linearGradient id="amdGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ED1C24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#amdGrad)" filter="url(#textGlow)">
+    AMD ADAPTIVE ROUTING — INTELLIGENT PROVIDER SELECTION
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    CENSA Intent Classification → Semantic Router → Priority Engine → Budget Guard → Fallback Chain
+  </text>
+
+  <!-- Top: Routing Pipeline -->
+  <g transform="translate(600, 130)">
+    <!-- Step 1: Intent Classification -->
+    <g transform="translate(-500, -80)">
+      <rect x="-150" y="0" width="300" height="130" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">1. INTENT CLASSIFICATION</text>
+      <text x="0" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">CENSA Analyzer</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-130, 55)">
+        <text x="0" y="0" fill="#4ADE80">✓ Task Type: code / reasoning / creative / analysis</text>
+        <text x="0" y="16" fill="#4ADE80">✓ Complexity: low / medium / high / extreme</text>
+        <text x="0" y="32" fill="#4ADE80">✓ Domain: security / data / devops / general</text>
+        <text x="0" y="48" fill="#4ADE80">✓ Constraints: latency / cost / quality / privacy</text>
+        <text x="0" y="64" fill="#FBBF24">→ Intent Vector: {type, complexity, domain, constraints}</text>
+      </g>
+    </g>
+
+    <line x1="-350" y1="65" x2="-270" y2="65" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 2: Semantic Router -->
+    <g transform="translate(-150, -80)">
+      <rect x="-150" y="0" width="300" height="130" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">2. SEMANTIC ROUTER</text>
+      <text x="0" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Embedding-based Model Matching</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-130, 55)">
+        <text x="0" y="0" fill="#4ADE80">✓ Intent → Embedding (BGE-M3, 1024-dim)</text>
+        <text x="0" y="16" fill="#4ADE80">✓ Candidate Models → Embeddings (pre-computed)</text>
+        <text x="0" y="32" fill="#4ADE80">✓ Cosine Similarity: intent ⋅ model_capability</text>
+        <text x="0" y="48" fill="#4ADE80">✓ Top-K candidates (K=5) with scores</text>
+        <text x="0" y="64" fill="#FBBF24">→ Ranked Model List + Confidence Scores</text>
+      </g>
+    </g>
+
+    <line x1="0" y1="65" x2="80" y2="65" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 3: Priority Engine -->
+    <g transform="translate(200, -80)">
+      <rect x="-150" y="0" width="300" height="130" rx="12" fill="url(#glassGrad)" stroke="url(#amdGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FF6B6B" font-weight="600">3. PRIORITY ENGINE</text>
+      <text x="0" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">AMD-First Preference Logic</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-130, 55)">
+        <text x="0" y="0" fill="#4ADE80">✓ Tier 1: AMD Instinct (owned, zero marginal cost)</text>
+        <text x="0" y="16" fill="#4ADE80">✓ Tier 2: Fireworks AI (optimized, fast)</text>
+        <text x="0" y="32" fill="#4ADE80">✓ Tier 3: OpenRouter (broad model access)</text>
+        <text x="0" y="48" fill="#4ADE80">✓ Override: Intent constraints (privacy=AMD only)</text>
+        <text x="0" y="64" fill="#FBBF24">→ Selected Provider + Model + Params</text>
+      </g>
+    </g>
+
+    <line x1="350" y1="65" x2="430" y2="65" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Step 4: Budget Guard -->
+    <g transform="translate(550, -80)">
+      <rect x="-150" y="0" width="300" height="130" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#4ADE80" font-weight="600">4. BUDGET GUARD</text>
+      <text x="0" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Cost Control & Quota Enforcement</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-130, 55)">
+        <text x="0" y="0" fill="#4ADE80">✓ Per-mission budget (USD / tokens / time)</text>
+        <text x="0" y="16" fill="#4ADE80">✓ Per-org daily/monthly limits</text>
+        <text x="0" y="32" fill="#4ADE80">✓ Real-time cost estimation (pre-flight)</text>
+        <text x="0" y="48" fill="#4ADE80">✓ Auto-downgrade: 405B → 70B → 8B if over</text>
+        <text x="0" y="64" fill="#FBBF24">→ Approved Request + Cost Ceiling</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Middle: Provider Tiers Visualization -->
+  <g transform="translate(600, 300)">
+    <!-- TIER 1: AMD INSTINCT -->
+    <g transform="translate(-500, 0)">
+      <rect x="-220" y="0" width="440" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#amdGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FF6B6B" font-weight="700">TIER 1: AMD INSTINCT (PREFERRED)</text>
+      <text x="0" y="52" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">Zero Marginal Cost • Data Sovereignty • Full Control</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-200, 70)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">HARDWARE:</text>
+        <text x="10" y="20" fill="#E2E8F0">• MI300X: 8x per node, 192GB HBM3 each</text>
+        <text x="10" y="38" fill="#E2E8F0">• MI325X: 256GB HBM3e (roadmap H1 2026)</text>
+        <text x="10" y="56" fill="#E2E8F0">• ROCm 7.2: HIP, hipBLAS, hipFFT, RCCL</text>
+        <text x="10" y="74" fill="#E2E8F0">• vLLM 0.5+: PagedAttention, FlashAttn-2</text>
+
+        <text x="0" y="105" fill="#FBBF24" font-weight="600">MODELS (ON-PREM):</text>
+        <text x="10" y="125" fill="#4ADE80">✓ Llama-3.1-405B-Instruct (FP8, TP=8)</text>
+        <text x="10" y="143" fill="#4ADE80">✓ Llama-3.1-70B-Instruct (BF16, TP=4)</text>
+        <text x="10" y="161" fill="#4ADE80">✓ CodeLlama-34B / 70B (TP=2/4)</text>
+        <text x="10" y="179" fill="#4ADE80">✓ Mixtral-8x22B-Instruct (TP=8)</text>
+        <text x="10" y="197" fill="#4ADE80">✓ Qwen2.5-Coder-32B (TP=2)</text>
+        <text x="10" y="215" fill="#4ADE80">✓ BGE-M3 / E5-Mistral (Embeddings, CPU)</text>
+
+        <text x="0" y="245" fill="#FBBF24" font-weight="600">ADVANTAGES:</text>
+        <text x="10" y="265" fill="#22C55E">✓ $0/token (CapEx only, 3-5 yr amortization)</text>
+        <text x="10" y="283" fill="#22C55E">✓ Data never leaves infrastructure</text>
+        <text x="10" y="301" fill="#22C55E">✓ Sub-100ms cold start (model in VRAM)</text>
+      </g>
+    </g>
+
+    <!-- TIER 2: FIREWORKS -->
+    <g transform="translate(60, 0)">
+      <rect x="-180" y="0" width="360" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FB923C" font-weight="700">TIER 2: FIREWORKS AI</text>
+      <text x="0" y="52" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">Optimized Inference • Specialized Models • Fast Cold Start</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-160, 70)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MODELS:</text>
+        <text x="10" y="20" fill="#E2E8F0">• Llama-3.1-405B / 70B / 8B (FP8)</text>
+        <text x="10" y="38" fill="#E2E8F0">• Mixtral-8x7B / 8x22B (MoE)</text>
+        <text x="10" y="56" fill="#E2E8F0">• Qwen2.5-Coder-32B / 7B</text>
+        <text x="10" y="74" fill="#E2E8F0">• DeepSeek-Coder-V2 / R1</text>
+        <text x="10" y="92" fill="#E2E8F0">• Phi-3.5-Mini / MoE</text>
+        <text x="10" y="110" fill="#E2E8F0">• Custom LoRA fine-tunes</text>
+
+        <text x="0" y="140" fill="#FBBF24" font-weight="600">FEATURES:</text>
+        <text x="10" y="160" fill="#4ADE80">✓ Function calling (native)</text>
+        <text x="10" y="178" fill="#4ADE80">✓ JSON mode (guarded)</text>
+        <text x="10" y="196" fill="#4ADE80">✓ Speculative decoding</text>
+        <text x="10" y="214" fill="#4ADE80">✓ <100ms TTFT (warm)</text>
+        <text x="10" y="232" fill="#4ADE80">✓ Per-token streaming</text>
+
+        <text x="0" y="260" fill="#FBBF24" font-weight="600">COST:</text>
+        <text x="10" y="280" fill="#FBBF24">~$0.90/M input, $1.80/M output (70B)</text>
+      </g>
+    </g>
+
+    <!-- TIER 3: OPENROUTER -->
+    <g transform="translate(320, 0)">
+      <rect x="-180" y="0" width="360" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#F87171" font-weight="700">TIER 3: OPENROUTER (FALLBACK)</text>
+      <text x="0" y="52" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">Broadest Model Access • Pay-per-use • Last Resort</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-160, 70)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MODEL CATALOG:</text>
+        <text x="10" y="20" fill="#E2E8F0">• GPT-4o / 4o-mini / o1-preview</text>
+        <text x="10" y="38" fill="#E2E8F0">• Claude-3.5-Sonnet / Opus / Haiku</text>
+        <text x="10" y="56" fill="#E2E8F0">• Gemini-1.5-Pro / Flash</text>
+        <text x="10" y="74" fill="#E2E8F0">• 200+ Open models (Llama, Qwen, etc.)</text>
+        <text x="10" y="92" fill="#E2E8F0">• Specialized: SQL, Math, Multilingual</text>
+
+        <text x="0" y="120" fill="#FBBF24" font-weight="600">TRADE-OFFS:</text>
+        <text x="10" y="140" fill="#F87171">✗ Higher latency (multi-hop)</text>
+        <text x="10" y="158" fill="#F87171">✗ Data leaves infrastructure</text>
+        <text x="10" y="176" fill="#F87171">✗ Variable pricing / availability</text>
+        <text x="10" y="194" fill="#4ADE80">✓ Widest capability coverage</text>
+        <text x="10" y="212" fill="#4ADE80">✓ Automatic fallback routing</text>
+        <text x="10" y="230" fill="#4ADE80">✓ No capacity planning needed</text>
+
+        <text x="0" y="255" fill="#FBBF24" font-weight="600">COST:</text>
+        <text x="10" y="275" fill="#FBBF24">Variable: $0.15–$15/M tokens</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom: Decision Matrix & Fallback Flow -->
+  <g transform="translate(600, 610)">
+    <!-- Decision Matrix -->
+    <g transform="translate(-500, 0)">
+      <rect x="-280" y="0" width="560" height="160" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FBBF24" font-weight="600">ROUTING DECISION MATRIX</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-260, 35)">
+        <!-- Table Header -->
+        <text x="10" y="0" fill="#FBBF24" font-weight="600">SCENARIO</text>
+        <text x="130" y="0" fill="#FBBF24" font-weight="600">PRIMARY</text>
+        <text x="250" y="0" fill="#FBBF24" font-weight="600">FALLBACK 1</text>
+        <text x="370" y="0" fill="#FBBF24" font-weight="600">FALLBACK 2</text>
+        <text x="490" y="0" fill="#FBBF24" font-weight="600">REASON</text>
+
+        <!-- Rows -->
+        <text x="10" y="20" fill="#E2E8F0">Code Generation (High)</text>
+        <text x="130" y="20" fill="#4ADE80">AMD: CodeLlama-70B</text>
+        <text x="250" y="20" fill="#FB923C">Fireworks: DeepSeek-Coder</text>
+        <text x="370" y="20" fill="#F87171">OpenRouter: GPT-4o</text>
+        <text x="490" y="20" fill="#64748B">Code-specialized, low latency</text>
+
+        <text x="10" y="38" fill="#E2E8F0">Reasoning / Analysis (Extreme)</text>
+        <text x="130" y="38" fill="#4ADE80">AMD: Llama-3.1-405B</text>
+        <text x="250" y="38" fill="#FB923C">Fireworks: Llama-3.1-405B</text>
+        <text x="370" y="38" fill="#F87171">OpenRouter: o1-preview</text>
+        <text x="490" y="38" fill="#64748B">Max context, reasoning tokens</text>
+
+        <text x="10" y="56" fill="#E2E8F0">Privacy / Regulated (HIPAA)</text>
+        <text x="130" y="56" fill="#4ADE80">AMD: Llama-3.1-70B</text>
+        <text x="250" y="56" fill="#EF4444">BLOCKED</text>
+        <text x="370" y="56" fill="#EF4444">BLOCKED</text>
+        <text x="490" y="56" fill="#EF4444">Data sovereignty mandate</text>
+
+        <text x="10" y="74" fill="#E2E8F0">Creative / General (Low)</text>
+        <text x="130" y="74" fill="#4ADE80">AMD: Llama-3.1-8B</text>
+        <text x="250" y="74" fill="#FB923C">Fireworks: Phi-3.5-Mini</text>
+        <text x="370" y="74" fill="#F87171">OpenRouter: Haiku</text>
+        <text x="490" y="74" fill="#64748B">Cost-optimized, fast</text>
+
+        <text x="10" y="92" fill="#E2E8F0">Embeddings / RAG</text>
+        <text x="130" y="92" fill="#4ADE80">AMD: BGE-M3 (CPU)</text>
+        <text x="250" y="92" fill="#FB923C">Fireworks: E5-Mistral</text>
+        <text x="370" y="92" fill="#F87171">OpenRouter: text-emb-3</text>
+        <text x="490" y="92" fill="#64748B">Local CPU prefers AMD</text>
+
+        <text x="10" y="110" fill="#E2E8F0">Budget Exceeded (Org Limit)</text>
+        <text x="130" y="110" fill="#4ADE80">AMD: 8B / Quantized</text>
+        <text x="250" y="110" fill="#EF4444">DENY</text>
+        <text x="370" y="110" fill="#EF4444">DENY</text>
+        <text x="490" y="110" fill="#EF4444">Hard stop, human review</text>
+
+        <text x="10" y="128" fill="#E2E8F0">AMD Capacity Full (Queue)</text>
+        <text x="130" y="128" fill="#EF4444">QUEUE</text>
+        <text x="250" y="128" fill="#FB923C">Fireworks: Auto-spillover</text>
+        <text x="370" y="128" fill="#F87171">OpenRouter: Auto-spillover</text>
+        <text x="490" y="128" fill="#FBBF24">Graceful degradation</text>
+      </g>
+    </g>
+
+    <!-- Fallback Flow Visualization -->
+    <g transform="translate(300, 0)">
+      <rect x="-280" y="0" width="560" height="160" rx="12" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FBBF24" font-weight="600">FALLBACK CHAIN EXECUTION FLOW</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-260, 40)">
+        <text x="0" y="0" fill="#E2E8F0">Request Received</text>
+        <text x="0" y="20" fill="#64748B">▼</text>
+        <text x="0" y="40" fill="#4ADE80">AMD Instinct Available?</text>
+        <text x="0" y="60" fill="#64748B">├─ Yes → Route to AMD → Execute</text>
+        <text x="0" y="80" fill="#64748B">└─ No (capacity / model missing) → ▼</text>
+        <text x="0" y="100" fill="#FB923C">Fireworks Available?</text>
+        <text x="0" y="120" fill="#64748B">├─ Yes → Route to Fireworks → Execute</text>
+        <text x="0" y="140" fill="#64748B">└─ No → ▼</text>
+        <text x="0" y="160" fill="#F87171">OpenRouter Available?</text>
+        <text x="0" y="180" fill="#64748B">├─ Yes → Route → Execute (with warning)</text>
+        <text x="0" y="200" fill="#64748B">└─ No → Return 503 (All Tiers Exhausted)</text>
+
+        <!-- Side annotations -->
+        <text x="200" y="40" fill="#FBBF24" font-size="7">+ Budget Check</text>
+        <text x="200" y="60" fill="#FBBF24" font-size="7">+ Privacy Gate</text>
+        <text x="200" y="100" fill="#FBBF24" font-size="7">+ Latency SLA</text>
+        <text x="200" y="140" fill="#FBBF24" font-size="7">+ Cost Ceiling</text>
+        <text x="200" y="180" fill="#FBBF24" font-size="7">+ Audit Log</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">packages/censa/src/adaptive-router.ts</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/semantic-router.ts</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/budget-guard.ts</tspan>  ·  <tspan fill="#FBBF24">packages/litellm-gateway/config.yaml</tspan>  ·  <tspan fill="#FBBF24">infra/amd/cluster.tf</tspan>  ·  <tspan fill="#FBBF24">infra/amd/models/</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#030712;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0C1522;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bgGrad)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    ARCHITECTURE GALAXY — HGI ECOSYSTEM
+  </text>
+
+  <!-- Constellation lines (faint) -->
+  <g stroke="#334155" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3">
+    <line x1="600" y1="150" x2="600" y2="280"/>
+    <line x1="600" y1="150" x2="300" y2="300"/>
+    <line x1="600" y1="150" x2="900" y2="300"/>
+    <line x1="300" y1="300" x2="150" y2="500"/>
+    <line x1="300" y1="300" x2="450" y2="500"/>
+    <line x1="900" y1="300" x2="750" y2="500"/>
+    <line x1="900" y1="300" x2="1050" y2="500"/>
+    <line x1="150" y1="500" x2="150" y2="680"/>
+    <line x1="450" y1="500" x2="450" y2="680"/>
+    <line x1="750" y1="500" x2="750" y2="680"/>
+    <line x1="1050" y1="500" x2="1050" y2="680"/>
+  </g>
+
+  <!-- Central Sun: HGI Core -->
+  <g transform="translate(600, 150)">
+    <circle cx="0" cy="0" r="55" fill="url(#goldGrad)" filter="url(#glow)" opacity="0.3"/>
+    <circle cx="0" cy="0" r="40" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="16" fill="#FBBF24" font-weight="700">HGI CORE</text>
+    <text x="0" y="18" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Orchestration Layer</text>
+  </g>
+
+  <!-- Planet Layer 1: Core Services -->
+  <g transform="translate(300, 300)">
+    <circle cx="0" cy="0" r="45" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">CENSA</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">Cognitive Orchestrator</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Goal→Intent→DAG</text>
+  </g>
+
+  <g transform="translate(900, 300)">
+    <circle cx="0" cy="0" r="45" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FB923C" font-weight="600">PANANI X</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">Sandboxed Runtime</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">VM Isolates</text>
+  </g>
+
+  <!-- Planet Layer 2: Governance & Memory -->
+  <g transform="translate(150, 500)">
+    <circle cx="0" cy="0" r="40" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">KAVACHA</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">Zero-Trust Policy</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">OPA/Rego Engine</text>
+  </g>
+
+  <g transform="translate(450, 500)">
+    <circle cx="0" cy="0" r="40" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">AGENT REGISTRY</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">Capability Mapping</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Swarms · Skills</text>
+  </g>
+
+  <g transform="translate(750, 500)">
+    <circle cx="0" cy="0" r="40" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#4ADE80" font-weight="600">MEMORY VAULT</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">Episodic + Semantic</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">pgvector · Qdrant</text>
+  </g>
+
+  <g transform="translate(1050, 500)">
+    <circle cx="0" cy="0" r="40" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#22D3EE" font-weight="600">PROVIDER ROUTER</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#94A3B8">LiteLLM Gateway</text>
+    <text x="0" y="24" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">AMD · Fireworks · OR</text>
+  </g>
+
+  <!-- Satellite Layer: External Integrations -->
+  <g transform="translate(150, 680)">
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="3" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#60A5FA" font-weight="600">REST/GraphQL API</text>
+    <text x="0" y="15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">TypeScript SDK · CLI</text>
+  </g>
+
+  <g transform="translate(450, 680)">
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="3" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#4ADE80" font-weight="600">AMD INSTINCT MI300X</text>
+    <text x="0" y="15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">ROCm 7.2 · vLLM</text>
+  </g>
+
+  <g transform="translate(750, 680)">
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="3" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FB923C" font-weight="600">FIREWORKS AI</text>
+    <text x="0" y="15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Failover < 500ms</text>
+  </g>
+
+  <g transform="translate(1050, 680)">
+    <ellipse cx="0" cy="0" rx="60" ry="25" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="3" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#A78BFA" font-weight="600">OPENROUTER</text>
+    <text x="0" y="15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Model Breadth</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(600, 830)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">●</tspan> Core    <tspan fill="#60A5FA">●</tspan> Orchestration    <tspan fill="#FB923C">●</tspan> Execution    <tspan fill="#F87171">●</tspan> Governance    <tspan fill="#A78BFA">●</tspan> Registry    <tspan fill="#4ADE80">●</tspan> Memory    <tspan fill="#22D3EE">●</tspan> Routing
+    </text>
+  </g>
+</svg>

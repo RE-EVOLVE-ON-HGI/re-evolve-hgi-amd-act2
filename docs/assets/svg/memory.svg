@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    MEMORY VAULT — ARCHITECTURE
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Dual-Store: Episodic (PostgreSQL + pgvector) + Semantic (Qdrant) • Vector Retrieval • Context Injection
+  </text>
+
+  <!-- Top: Dual Store Overview -->
+  <g transform="translate(600, 130)">
+    <!-- Episodic Store -->
+    <g transform="translate(-350, 0)">
+      <rect x="0" y="0" width="300" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="150" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#60A5FA" font-weight="600">EPISODIC STORE</text>
+      <text x="150" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">PostgreSQL + pgvector</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 65)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">SCHEMA:</text>
+        <text x="0" y="20" fill="#64748B">episodes (id, mission_id, task_id,</text>
+        <text x="20" y="38" fill="#64748B">agent_id, input_hash, output_hash,</text>
+        <text x="20" y="56" fill="#64748B">embedding vector(1536),</text>
+        <text x="20" y="74" fill="#64748B">metadata jsonb, created_at)</text>
+        <text x="0" y="100" fill="#E2E8F0" font-weight="600">INDEXES:</text>
+        <text x="0" y="120" fill="#64748B">• HNSW on embedding (m=16, ef=64)</text>
+        <text x="0" y="138" fill="#64748B">• B-tree on mission_id, task_id</text>
+        <text x="0" y="156" fill="#64748B">• GIN on metadata jsonb</text>
+        <text x="0" y="180" fill="#E2E8F0" font-weight="600">QUERY PATTERNS:</text>
+        <text x="0" y="200" fill="#64748B">• Similarity: embedding <-> query (k=5)</text>
+        <text x="0" y="218" fill="#64748B">• Context: WHERE mission_id=$1</text>
+      </g>
+    </g>
+
+    <!-- Semantic Store -->
+    <g transform="translate(50, 0)">
+      <rect x="0" y="0" width="300" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="150" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#A78BFA" font-weight="600">SEMANTIC STORE</text>
+      <text x="150" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">Qdrant Vector Database</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 65)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">COLLECTIONS:</text>
+        <text x="0" y="20" fill="#64748B">• knowledge_code (code patterns)</text>
+        <text x="0" y="38" fill="#64748B">• knowledge_docs (documentation)</text>
+        <text x="0" y="56" fill="#64748B">• knowledge_research (papers)</text>
+        <text x="0" y="74" fill="#64748B">• knowledge_best_practices</text>
+        <text x="0" y="100" fill="#E2E8F0" font-weight="600">CONFIG:</text>
+        <text x="0" y="120" fill="#64748B">• HNSW: m=32, ef_construct=256</text>
+        <text x="0" y="138" fill="#64748B">• Quantization: Scalar (INT8)</text>
+        <text x="0" y="156" fill="#64748B">• Payload: {source, tags, capability}</text>
+        <text x="0" y="180" fill="#E2E8F0" font-weight="600">QUERY:</text>
+        <text x="0" y="200" fill="#64748B">• Filter by capability tag</text>
+        <text x="0" y="218" fill="#64748B">• Hybrid: vector + filter</text>
+      </g>
+    </g>
+
+    <!-- Embeddings Service -->
+    <g transform="translate(450, 0)">
+      <rect x="0" y="0" width="300" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="150" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FBBF24" font-weight="600">EMBEDDINGS SERVICE</text>
+      <text x="150" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#94A3B8">embeddings.service.ts</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 65)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">PROVIDERS:</text>
+        <text x="0" y="20" fill="#60A5FA">Primary: text-embedding-3-large</text>
+        <text x="20" y="38" fill="#64748B">1536 dims, $0.0001/1K tokens</text>
+        <text x="0" y="56" fill="#4ADE80">Fallback: all-MiniLM-L6-v2 (local)</text>
+        <text x="20" y="74" fill="#64748B">384 dims, zero cost, offline</text>
+        <text x="0" y="100" fill="#E2E8F0" font-weight="600">CACHING:</text>
+        <text x="0" y="120" fill="#64748B">• Redis: text hash → vector</text>
+        <text x="0" y="138" fill="#64748B">• TTL: 24h, hit rate 87%</text>
+        <text x="0" y="156" fill="#64748B">• Batch API: 100 texts/call</text>
+        <text x="0" y="180" fill="#E2E8F0" font-weight="600">API:</text>
+        <text x="0" y="200" fill="#64748B">embed(text): Promise<vector[]></text>
+        <text x="0" y="218" fill="#64748B">embedBatch(texts[]): Promise<vector[][]></text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Middle: Retrieval Pipeline -->
+  <g transform="translate(600, 370)">
+    <rect x="-500" y="0" width="1000" height="180" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#4ADE80" font-weight="600">RETRIEVAL PIPELINE — context.injector.ts</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-480, 45)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">1. QUERY CONSTRUCTION</text>
+      <text x="20" y="20" fill="#64748B">query = task.intent + " " + task.capability + " " + task.keywords</text>
+      <text x="20" y="38" fill="#64748B">embedding = await embeddings.embed(query)</text>
+
+      <text x="0" y="60" fill="#E2E8F0" font-weight="600">2. PARALLEL SEARCH</text>
+      <text x="20" y="80" fill="#60A5FA">episodic = pgvector.search(embedding, {</text>
+      <text x="40" y="98" fill="#64748B">k: 5, filter: { mission_id: ctx.missionId }</text>
+      <text x="20" y="116" fill="#64748B">})</text>
+      <text x="20" y="134" fill="#A78BFA">semantic = qdrant.search(embedding, {</text>
+      <text x="40" y="152" fill="#64748B">k: 5, filter: { capability: task.capability },</text>
+      <text x="40" y="170" fill="#64748B">score_threshold: 0.75</text>
+      <text x="20" y="188" fill="#64748B">})</text>
+
+      <text x="0" y="210" fill="#E2E8F0" font-weight="600">3. MERGE & RANK</text>
+      <text x="20" y="230" fill="#64748B">results = merge(episodic, semantic)</text>
+      <text x="20" y="248" fill="#64748B">sort by: recency * 0.4 + similarity * 0.6</text>
+      <text x="20" y="266" fill="#64748B">dedupe by content_hash</text>
+      <text x="20" y="284" fill="#64748B">top_k = 5</text>
+
+      <text x="0" y="310" fill="#E2E8F0" font-weight="600">4. CONTEXT HYDRATION</text>
+      <text x="20" y="330" fill="#64748B">task.payload.context = {</text>
+      <text x="40" y="348" fill="#60A5FA">episodic: results.episodic.map(format),</text>
+      <text x="40" y="366" fill="#A78BFA">semantic: results.semantic.map(format),</text>
+      <text x="40" y="384" fill="#FBBF24">confidenceBoost: 0.15</text>
+      <text x="20" y="402" fill="#64748B">}</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Summarizer & Metrics -->
+  <g transform="translate(600, 570)">
+    <g transform="translate(-500, 0)">
+      <rect x="0" y="0" width="320" height="180" rx="10" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="160" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FB923C" font-weight="600">SUMMARIZER AGENT</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+        <text x="0" y="0" fill="#E2E8F0">summarizer.agent.ts</text>
+        <text x="0" y="20" fill="#64748B">• Cron: daily 02:00 UTC</text>
+        <text x="0" y="38" fill="#64748B">• Groups episodes by mission_id</text>
+        <text x="0" y="56" fill="#64748B">• LLM: summarize(task outputs)</text>
+        <text x="0" y="74" fill="#64748B">• Stores as compressed_episode</text>
+        <text x="0" y="92" fill="#64748B">• Originals → S3 cold storage</text>
+        <text x="0" y="110" fill="#64748B">• Reduces vector count ~80%</text>
+        <text x="0" y="128" fill="#64748B">• Retains searchable embeddings</text>
+        <text x="0" y="146" fill="#22C55E" font-weight="600">Compression: 5:1 ratio</text>
+      </g>
+    </g>
+
+    <g transform="translate(-160, 0)">
+      <rect x="0" y="0" width="320" height="180" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="160" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#22D3EE" font-weight="600">PERFORMANCE METRICS</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">LATENCY (P99):</text>
+        <text x="0" y="20" fill="#4ADE80">Episodic search: < 30ms</text>
+        <text x="0" y="38" fill="#4ADE80">Semantic search: < 45ms</text>
+        <text x="0" y="56" fill="#4ADE80">Embeddings (cached): < 5ms</text>
+        <text x="0" y="74" fill="#4ADE80">Embeddings (API): ~120ms</text>
+        <text x="0" y="92" fill="#4ADE80">Full pipeline: < 100ms</text>
+
+        <text x="0" y="110" fill="#E2E8F0" font-weight="600">SCALE:</text>
+        <text x="0" y="130" fill="#64748B">Episodic vectors: 45M+</text>
+        <text x="0" y="148" fill="#64748B">Semantic vectors: 12M+</text>
+        <text x="0" y="166" fill="#64748B">Daily writes: 500K episodes</text>
+        <text x="0" y="184" fill="#64748B">Cache hit rate: 87%</text>
+      </g>
+    </g>
+
+    <g transform="translate(180, 0)">
+      <rect x="0" y="0" width="320" height="180" rx="10" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="160" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">RETENTION & COMPLIANCE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">TIERED STORAGE:</text>
+        <text x="0" y="20" fill="#64748B">Hot (pgvector): 30 days</text>
+        <text x="0" y="38" fill="#64748B">Warm (S3/Parquet): 1 year</text>
+        <text x="0" y="56" fill="#64748B">Cold (Glacier): 7 years</text>
+
+        <text x="0" y="80" fill="#E2E8F0" font-weight="600">GDPR / CCPA:</text>
+        <text x="0" y="100" fill="#64748B">• Right to erasure: DELETE</text>
+        <text x="0" y="118" fill="#64748B">  CASCADE on user_id</text>
+        <text x="0" y="136" fill="#64748B">• Vector purge: async job</text>
+        <text x="0" y="154" fill="#64748B">• Audit log: immutable</text>
+
+        <text x="0" y="176" fill="#E2E8F0" font-weight="600">BACKUP:</text>
+        <text x="0" y="196" fill="#64748B">• PITR: 5-min RPO</text>
+        <text x="0" y="214" fill="#64748B">• Cross-region replica</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Key Files -->
+  <g transform="translate(600, 775)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">qdrant.service.ts</tspan>  ·  <tspan fill="#FBBF24">embeddings.service.ts</tspan>  ·  <tspan fill="#FBBF24">episodic.ledger.ts</tspan>  ·  <tspan fill="#FBBF24">summarizer.agent.ts</tspan>  ·  <tspan fill="#FBBF24">context.injector.ts</tspan>  ·  <tspan fill="#FBBF24">retention.cron.ts</tspan>
+    </text>
+  </g>
+</svg>

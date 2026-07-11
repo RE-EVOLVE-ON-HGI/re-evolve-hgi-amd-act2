@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    RUNTIME LIFECYCLE — PANANI X EXECUTION FLOW
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Submit → Validate → Isolate → Compile → Execute → Stream → Meter → Cleanup → Result
+  </text>
+
+  <!-- Center: Lifecycle Stages as horizontal pipeline -->
+  <g transform="translate(600, 200)">
+    <!-- Stage 1: SUBMIT -->
+    <g transform="translate(-500, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">1. SUBMIT</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">CLI / SDK / API</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">payload: script, input</text>
+    </g>
+
+    <line x1="-430" y1="0" x2="-350" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 2: VALIDATE -->
+    <g transform="translate(-280, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#22D3EE" font-weight="600">2. VALIDATE</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">AST Parse</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">No eval/Function</text>
+    </g>
+
+    <line x1="-210" y1="0" x2="-130" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 3: ISOLATE -->
+    <g transform="translate(-50, 0)">
+      <ellipse cx="0" cy="0" rx="80" ry="40" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#A78BFA" font-weight="600">3. ISOLATE</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">vm.createContext</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Sandbox Globals</text>
+    </g>
+
+    <line x1="30" y1="0" x2="110" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 4: COMPILE -->
+    <g transform="translate(190, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FB923C" font-weight="600">4. COMPILE</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">vm.Script</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Cached bytecode</text>
+    </g>
+
+    <line x1="260" y1="0" x2="340" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 5: EXECUTE -->
+    <g transform="translate(420, 0)">
+      <ellipse cx="0" cy="0" rx="80" ry="40" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FBBF24" font-weight="600">5. EXECUTE</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">runInContext()</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Timeout Guard</text>
+    </g>
+
+    <line x1="500" y1="0" x2="580" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 6: STREAM -->
+    <g transform="translate(660, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#4ADE80" font-weight="600">6. STREAM</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">stdout/stderr</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Async Iterator</text>
+    </g>
+
+    <line x1="730" y1="0" x2="810" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 7: METER -->
+    <g transform="translate(890, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#F87171" font-weight="600">7. METER</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">CPU / Mem / Wall</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Enforce Limits</text>
+    </g>
+
+    <line x1="960" y1="0" x2="1040" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 8: CLEANUP -->
+    <g transform="translate(1120, 0)">
+      <ellipse cx="0" cy="0" rx="70" ry="40" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FBBF24" font-weight="600">8. CLEANUP</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">GC Hint</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Release Handles</text>
+    </g>
+  </g>
+
+  <!-- Detailed Views Below -->
+  <!-- Left: Validation Details -->
+  <g transform="translate(50, 320)">
+    <rect x="0" y="0" width="350" height="220" rx="10" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">VALIDATION (validateScript)</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0">parse(script, { ecmaVersion: 2024 })</text>
+      <text x="0" y="22" fill="#64748B">↓ Walker visits all nodes</text>
+      <text x="0" y="40" fill="#EF4444" font-weight="600">DENY: CallExpression → eval / Function</text>
+      <text x="0" y="58" fill="#EF4444" font-weight="600">DENY: MemberExpression → process.* / require</text>
+      <text x="0" y="76" fill="#EF4444" font-weight="600">DENY: ImportDeclaration (dynamic)</text>
+      <text x="0" y="94" fill="#EF4444" font-weight="600">DENY: MetaProperty → import.meta</text>
+      <text x="0" y="112" fill="#EF4444" font-weight="600">DENY: AwaitExpression (top-level)</text>
+      <text x="0" y="130" fill="#64748B">↓ Allowed: literals, math, arrays, objects</text>
+      <text x="0" y="148" fill="#64748B">Allowed: console.*, setTimeout, setInterval</text>
+      <text x="0" y="166" fill="#64748B">Allowed: fetch (policy-gated via Kavacha)</text>
+      <text x="0" y="184" fill="#22C55E" font-weight="600">✓ Returns: sanitized AST / throws SecurityError</text>
+    </g>
+  </g>
+
+  <!-- Center: Isolation Details -->
+  <g transform="translate(425, 320)">
+    <rect x="0" y="0" width="350" height="220" rx="10" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">ISOLATION (createSandbox)</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0">const sandbox = {</text>
+      <text x="20" y="20" fill="#60A5FA">console: makeSafeConsole(),</text>
+      <text x="20" y="38" fill="#60A5FA">setTimeout, clearTimeout,</text>
+      <text x="20" y="56" fill="#60A5FA">setInterval, clearInterval,</text>
+      <text x="20" y="74" fill="#60A5FA">fetch: policyGatedFetch(policy),</text>
+      <text x="20" y="92" fill="#60A5FA">Math, Date, JSON, Array, Object,</text>
+      <text x="20" y="110" fill="#60A5FA">Map, Set, Promise, Symbol,</text>
+      <text x="20" y="128" fill="#60A5FA">Buffer: makeSafeBuffer(),</text>
+      <text x="20" y="146" fill="#60A5FA">__HGI_TASK_ID: taskId,</text>
+      <text x="20" y="164" fill="#60A5FA">__HGI_METRICS: metricsCollector</text>
+      <text x="0" y="182" fill="#E2E8F0">};</text>
+      <text x="0" y="200" fill="#22C55E" font-weight="600">vm.createContext(sandbox) → frozen</text>
+    </g>
+  </g>
+
+  <!-- Right: Execution Details -->
+  <g transform="translate(800, 320)">
+    <rect x="0" y="0" width="350" height="220" rx="10" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FBBF24" font-weight="600">EXECUTION (runInContext)</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0">const controller = new AbortController();</text>
+      <text x="0" y="20" fill="#64748B">const timeoutMs = limits.wallClock || 300000;</text>
+      <text x="0" y="38" fill="#E2E8F0">const cpuTimeoutMs = limits.cpuTime || 60000;</text>
+      <text x="0" y="58" fill="#FBBF24" font-weight="600">// Wall-clock guard</text>
+      <text x="20" y="78" fill="#E2E8F0">const wallTimer = setTimeout(() => {</text>
+      <text x="40" y="98" fill="#E2E8F0">controller.abort('WALL_TIMEOUT');</text>
+      <text x="20" y="118" fill="#E2E8F0">}, timeoutMs);</text>
+      <text x="0" y="138" fill="#FBBF24" font-weight="600">// CPU-time guard (worker thread)</text>
+      <text x="20" y="158" fill="#E2E8F0">const cpuTimer = startCPUMonitor(cpuTimeoutMs,</text>
+      <text x="20" y="178" fill="#E2E8F0">() => controller.abort('CPU_TIMEOUT'));</text>
+      <text x="0" y="198" fill="#64748B">try { script.runInContext(ctx, {</text>
+      <text x="20" y="218" fill="#64748B">timeout: timeoutMs,</text>
+      <text x="20" y="238" fill="#64748B">signal: controller.signal });</text>
+      <text x="0" y="258" fill="#64748F">} finally { clear(wallTimer, cpuTimer); }</text>
+    </g>
+  </g>
+
+  <!-- Bottom Row: Error Handling, Metrics, Output -->
+  <g transform="translate(50, 560)">
+    <rect x="0" y="0" width="350" height="200" rx="10" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">ERROR HANDLING</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#EF4444" font-weight="600">SecurityError</text>
+      <text x="0" y="18" fill="#64748B">→ Validation failed (blocked)</text>
+      <text x="0" y="36" fill="#EF4444" font-weight="600">TimeoutError</text>
+      <text x="0" y="54" fill="#64748B">→ WALL_TIMEOUT / CPU_TIMEOUT</text>
+      <text x="0" y="72" fill="#EF4444" font-weight="600">RangeError</text>
+      <text x="0" y="90" fill="#64748B">→ Memory limit exceeded</text>
+      <text x="0" y="108" fill="#EF4444" font-weight="600">ScriptError</text>
+      <text x="0" y="126" fill="#64748B">→ Runtime exception (captured)</text>
+      <text x="0" y="144" fill="#EF4444" font-weight="600">AbortError</text>
+      <text x="0" y="162" fill="#64748B">→ External cancellation</text>
+      <text x="0" y="180" fill="#22C55E" font-weight="600">All errors: partial output preserved</text>
+    </g>
+  </g>
+
+  <g transform="translate(425, 560)">
+    <rect x="0" y="0" width="350" height="200" rx="10" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FB923C" font-weight="600">METRICS COLLECTED</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0">wallTimeMs: number</text>
+      <text x="0" y="18" fill="#E2E8F0">cpuTimeMs: number (via hrtime)</text>
+      <text x="0" y="36" fill="#E2E8F0">peakMemoryMB: number</text>
+      <text x="0" y="54" fill="#E2E8F0">outputBytes: number</text>
+      <text x="0" y="72" fill="#E2E8F0">exitCode: 0 | 1 | signal</text>
+      <text x="0" y="90" fill="#FBBF24" font-weight="600">error?: { name, message, stack }</text>
+      <text x="0" y="110" fill="#64748B">stdoutChunks: string[]</text>
+      <text x="0" y="128" fill="#64748B">stderrChunks: string[]</text>
+      <text x="0" y="146" fill="#64748B">securityViolations: string[]</text>
+      <text x="0" y="164" fill="#64748B">policyBlocks: number</text>
+      <text x="0" y="182" fill="#22C55E" font-weight="600">→ Stored in Memory Vault (Episodic)</text>
+    </g>
+  </g>
+
+  <g transform="translate(800, 560)">
+    <rect x="0" y="0" width="350" height="200" rx="10" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#4ADE80" font-weight="600">OUTPUT FORMAT</text>
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0">interface ExecutionResult {</text>
+      <text x="20" y="20" fill="#60A5FA">stdout: string;</text>
+      <text x="20" y="38" fill="#60A5FA">stderr: string;</text>
+      <text x="20" y="56" fill="#60A5FA">metrics: ExecutionMetrics;</text>
+      <text x="20" y="74" fill="#60A5FA">exitCode: number;</text>
+      <text x="20" y="92" fill="#60A5FA">error?: ScriptError;</text>
+      <text x="20" y="110" fill="#60A5FA">securityViolations: string[];</text>
+      <text x="0" y="128" fill="#E2E8F0">}</text>
+      <text x="0" y="150" fill="#64748B">Streaming: AsyncIterable<{ type: 'stdout'|'stderr',</text>
+      <text x="20" y="168" fill="#64748B">data: string, timestamp: number }></text>
+      <text x="0" y="186" fill="#22C55E" font-weight="600">→ Real-time UI / Log aggregation</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Key Files -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">panani-runtime.service.ts</tspan>  ·  <tspan fill="#FBBF24">vm.isolate.ts</tspan>  ·  <tspan fill="#FBBF24">timeout.guard.ts</tspan>  ·  <tspan fill="#FBBF24">resource.meter.ts</tspan>  ·  <tspan fill="#FBBF24">sandbox.globals.ts</tspan>  ·  <tspan fill="#FBBF24">output.stream.ts</tspan>  ·  <tspan fill="#FBBF24">validate.script.ts</tspan>
+    </text>
+  </g>
+</svg>

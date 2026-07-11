@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    CENSA — ORCHESTRATOR INTERNALS
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Pipeline: Intent Inference → DAG Generation → Agent Matching → Confidence Scoring → Execution Plan
+  </text>
+
+  <!-- Left Column: Intent Inference -->
+  <g transform="translate(80, 110)">
+    <rect x="0" y="0" width="280" height="320" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="140" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#60A5FA" font-weight="600">INTENT INFERENCE</text>
+    <text x="140" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">intent.service.ts</text>
+
+    <!-- Flow steps -->
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(20, 75)">
+      <text x="0" y="0" fill="#E2E8F0">1. Parse Goal</text>
+      <text x="0" y="15" fill="#64748B">→ JSON / Natural Lang</text>
+      <text x="0" y="35" fill="#E2E8F0">2. Embed</text>
+      <text x="0" y="50" fill="#64748B">→ text-embedding-3-large</text>
+      <text x="0" y="70" fill="#E2E8F0">3. Classify</text>
+      <text x="0" y="85" fill="#64748B">→ cosine similarity</text>
+      <text x="0" y="105" fill="#E2E8F0">4. Threshold</text>
+      <text x="0" y="120" fill="#64748B">→ confidence ≥ 0.80</text>
+      <text x="0" y="140" fill="#E2E8F0">5. Fallback</text>
+      <text x="0" y="155" fill="#64748B">→ clarifying question</text>
+      <text x="0" y="175" fill="#E2E8F0">6. Emit Intent</text>
+      <text x="0" y="190" fill="#64748B">→ Intent enum + payload</text>
+      <text x="0" y="210" fill="#E2E8F0">7. Cache</text>
+      <text x="0" y="225" fill="#64748B">→ Redis TTL 1h</text>
+    </g>
+
+    <!-- Intent Types -->
+    <text x="140" y="305" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">
+      CODE_GEN · RESEARCH · ANALYSIS · CREATIVE · DEBUG · REVIEW · DEPLOY
+    </text>
+  </g>
+
+  <!-- Center Column: DAG Generation -->
+  <g transform="translate(400, 110)">
+    <rect x="0" y="0" width="400" height="450" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="200" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FBBF24" font-weight="600">DAG GENERATION — dag.generator.ts</text>
+
+    <!-- Code-like visualization -->
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(20, 55)">
+      <text x="0" y="0" fill="#FBBF24">function buildDAG(intent: Intent, ctx: Context): TaskDAG {</text>
+      <text x="20" y="20" fill="#60A5FA">// 1. Decompose intent into atomic tasks</text>
+      <text x="20" y="38" fill="#E2E8F0">const tasks = decompose(intent, ctx.capabilities);</text>
+      <text x="20" y="56" fill="#60A5FA">// 2. Build dependency graph</text>
+      <text x="20" y="74" fill="#E2E8F0">const edges = inferDependencies(tasks);</text>
+      <text x="20" y="92" fill="#60A5FA">// 3. Validate acyclic (Kahn's algorithm)</text>
+      <text x="20" y="110" fill="#E2E8F0">if (hasCycle(tasks, edges)) throw CycleError;</text>
+      <text x="20" y="128" fill="#60A5FA">// 4. Topological sort for execution order</text>
+      <text x="20" y="146" fill="#E2E8F0">const order = topoSort(tasks, edges);</text>
+      <text x="20" y="164" fill="#60A5FA">// 5. Detect parallel groups</text>
+      <text x="20" y="182" fill="#E2E8F0">const groups = findParallelGroups(order);</text>
+      <text x="20" y="200" fill="#60A5FA">// 6. Assign timeouts & retries</text>
+      <text x="20" y="218" fill="#E2E8F0">tasks.forEach(t => {t.timeout=300s; t.retry=3;});</text>
+      <text x="20" y="236" fill="#60A5FA">// 7. Compute critical path</text>
+      <text x="20" y="254" fill="#E2E8F0">const critPath = dijkstra(tasks, edges);</text>
+      <text x="20" y="272" fill="#FBBF24">return { tasks, edges, order, groups, critPath };</text>
+      <text x="0" y="292" fill="#FBBF24">}</text>
+    </g>
+
+    <!-- DAG Visualization -->
+    <text x="200" y="325" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FBBF24" font-weight="600">DAG STRUCTURE</text>
+
+    <!-- Visual DAG nodes -->
+    <g transform="translate(50, 350)" font-family="JetBrains Mono, Menlo, monospace" font-size="7">
+      <!-- Task A (root) -->
+      <circle cx="150" cy="0" r="22" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5"/>
+      <text x="150" y="3" text-anchor="middle" fill="#60A5FA" font-weight="600">TASK A</text>
+      <text x="150" y="14" text-anchor="middle" fill="#64748B">(root)</text>
+
+      <!-- Task B -->
+      <circle cx="30" cy="55" r="22" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+      <text x="30" y="58" text-anchor="middle" fill="#A78BFA" font-weight="600">TASK B</text>
+      <text x="30" y="69" text-anchor="middle" fill="#64748B">dep: A</text>
+
+      <!-- Task C -->
+      <circle cx="150" cy="55" r="22" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+      <text x="150" y="58" text-anchor="middle" fill="#A78BFA" font-weight="600">TASK C</text>
+      <text x="150" y="69" text-anchor="middle" fill="#64748B">dep: A</text>
+
+      <!-- Task D -->
+      <circle cx="270" cy="55" r="22" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+      <text x="270" y="58" text-anchor="middle" fill="#A78BFA" font-weight="600">TASK D</text>
+      <text x="270" y="69" text-anchor="middle" fill="#64748B">dep: A</text>
+
+      <!-- Task E (depends on B,C) -->
+      <circle cx="90" cy="110" r="22" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5"/>
+      <text x="90" y="113" text-anchor="middle" fill="#FB923C" font-weight="600">TASK E</text>
+      <text x="90" y="124" text-anchor="middle" fill="#64748B">dep: B,C</text>
+
+      <!-- Task F (depends on D) -->
+      <circle cx="210" cy="110" r="22" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5"/>
+      <text x="210" y="113" text-anchor="middle" fill="#FB923C" font-weight="600">TASK F</text>
+      <text x="210" y="124" text-anchor="middle" fill="#64748B">dep: D</text>
+
+      <!-- Edges -->
+      <line x1="150" y1="22" x2="52" y2="33" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="150" y1="22" x2="150" y2="33" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="150" y1="22" x2="248" y2="33" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="52" y1="67" x2="68" y2="88" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="150" y1="67" x2="108" y2="88" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <line x1="248" y1="67" x2="210" y2="88" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- Parallel group label -->
+      <text x="150" y="145" text-anchor="middle" fill="#FBBF24" font-size="8">PARALLEL GROUP: {B, C, D} → {E, F}</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Agent Matching & Confidence -->
+  <g transform="translate(860, 110)">
+    <rect x="0" y="0" width="280" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="140" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#A78BFA" font-weight="600">AGENT MATCHING</text>
+    <text x="140" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">registry.service.ts</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(20, 75)">
+      <text x="0" y="0" fill="#E2E8F0">Capability Registry</text>
+      <text x="0" y="15" fill="#64748B">skill.file.schema.json</text>
+      <text x="0" y="35" fill="#E2E8F0">Match Algorithm</text>
+      <text x="0" y="50" fill="#64748B">Jaccard(task.caps, agent.caps)</text>
+      <text x="0" y="70" fill="#E2E8F0">Load Balancing</text>
+      <text x="0" y="85" fill="#64748B">Least-loaded agent</text>
+      <text x="0" y="105" fill="#E2E8F0">Swarm Formation</text>
+      <text x="0" y="120" fill="#64748B">Engineering · Media · Research</text>
+      <text x="0" y="140" fill="#E2E8F0">Fallback Chain</text>
+      <text x="0" y="155" fill="#64748B">Primary → Secondary → General</text>
+      <text x="0" y="175" fill="#E2E8F0">Assignment Output</text>
+      <text x="0" y="190" fill="#64748B">taskId → agentId + score</text>
+    </g>
+  </g>
+
+  <g transform="translate(860, 350)">
+    <rect x="0" y="0" width="280" height="210" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="140" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">CONFIDENCE SCORING</text>
+    <text x="140" y="50" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">confidence.scorer.ts</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(20, 75)">
+      <text x="0" y="0" fill="#E2E8F0">Bayesian Thompson Sampling</text>
+      <text x="0" y="20" fill="#64748B">Prior: Beta(α=1, β=1)</text>
+      <text x="0" y="40" fill="#E2E8F0">Update on completion</text>
+      <text x="0" y="55" fill="#64748B">Success: α += 1</text>
+      <text x="0" y="70" fill="#64748B">Failure: β += 1</text>
+      <text x="0" y="90" fill="#E2E8F0">Per-Agent Per-Intent</text>
+      <text x="0" y="105" fill="#64748B">Separate posterior each</text>
+      <text x="0" y="125" fill="#E2E8F0">Score = Sample from Posterior</text>
+      <text x="0" y="140" fill="#64748B">argmax over agents</text>
+      <text x="0" y="160" fill="#E2E8F0">Calibration</text>
+      <text x="0" y="175" fill="#64748B">Isotonic regression</text>
+      <text x="0" y="195" fill="#FBBF24" font-size="8">Output: ExecutionPlan</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Orchestrator Core -->
+  <g transform="translate(600, 580)">
+    <rect x="-500" y="0" width="1000" height="180" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="700">ORCHESTRATOR.CORE — orchestrator.service.ts</text>
+
+    <g transform="translate(-450, 45)" font-family="JetBrains Mono, Menlo, monospace" font-size="9">
+      <text x="0" y="0" fill="#60A5FA" font-weight="600">MISSION QUEUE (BullMQ + Redis)</text>
+      <text x="0" y="18" fill="#E2E8F0">Priority: CRITICAL > HIGH > NORMAL > LOW</text>
+      <text x="0" y="33" fill="#E2E8F0">Retry: 3x exponential backoff (1s, 2s, 4s)</text>
+      <text x="0" y="48" fill="#E2E8F0">Dead Letter: failed missions → DLQ for inspection</text>
+      <text x="0" y="68" fill="#A78BFA" font-weight="600">STATE MACHINE (XState v5)</text>
+      <text x="0" y="86" fill="#E2E8F0">SUBMITTED → PLANNING → MATCHING → EXECUTING → COMPLETE</text>
+      <text x="0" y="101" fill="#E2E8F0">↳ FAILED (retry) → DEAD (max retries) → COMPENSATING (rollback)</text>
+    </g>
+
+    <g transform="translate(-450, 135)" font-family="JetBrains Mono, Menlo, monospace" font-size="9">
+      <text x="0" y="0" fill="#FB923C" font-weight="600">EVENT BUS (EventEmitter2)</text>
+      <text x="0" y="18" fill="#E2E8F0">mission.created → task.created → task.assigned → task.started</text>
+      <text x="0" y="33" fill="#E2E8F0">task.completed → task.failed → mission.completed → mission.failed</text>
+      <text x="0" y="53" fill="#4ADE80" font-weight="600">MEMORY BARRIER</text>
+      <text x="0" y="71" fill="#E2E8F0">injectContext(missionId) → episodic.search + semantic.search</text>
+      <text x="0" y="86" fill="#E2E8F0">mergeResults(topK=5) → hydrate task.payloads with context</text>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">
+      <tspan fill="#FBBF24">orchestrator.service.ts</tspan>  ·  <tspan fill="#FBBF24">intent.service.ts</tspan>  ·  <tspan fill="#FBBF24">dag.generator.ts</tspan>  ·  <tspan fill="#FBBF24">confidence.scorer.ts</tspan>  ·  <tspan fill="#FBBF24">registry.service.ts</tspan>  ·  <tspan fill="#FBBF24">mission.execute.ts</tspan>  ·  <tspan fill="#FBBF24">state.machine.ts</tspan>
+    </text>
+  </g>
+</svg>

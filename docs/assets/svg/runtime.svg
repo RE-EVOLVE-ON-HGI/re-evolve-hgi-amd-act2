@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="1000" height="500">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1320;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glowGold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.12" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3B82F6" stroke-width="0.5" opacity="0.06"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6"/>
+    </marker>
+    <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B"/>
+    </marker>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.85" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="500" fill="url(#bgGrad)"/>
+  <rect width="1000" height="500" fill="url(#grid)"/>
+
+  <text x="500" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="22" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    RUNTIME EXECUTION FLOW — MISSION LIFECYCLE
+  </text>
+
+  <!-- Stage boxes -->
+  <g transform="translate(50, 80)">
+    <!-- Stage 1: Submit -->
+    <g class="stage">
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="5" width="4" height="110" rx="2" fill="url(#blueGrad)"/>
+      <circle cx="90" cy="30" r="24" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="2"/>
+      <text x="90" y="35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#3B82F6" font-weight="600">1</text>
+      <text x="90" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">SUBMIT</text>
+      <text x="90" y="88" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Goal + Constraints</text>
+      <text x="90" y="102" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Ingress Layer</text>
+    </g>
+
+    <line x1="180" y1="60" x2="200" y2="60" stroke="url(#blueGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(250, 80)">
+    <!-- Stage 2: Plan -->
+    <g class="stage">
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="5" width="4" height="110" rx="2" fill="url(#purpleGrad)"/>
+      <circle cx="90" cy="30" r="24" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="2"/>
+      <text x="90" y="35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#A78BFA" font-weight="600">2</text>
+      <text x="90" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">PLAN</text>
+      <text x="90" y="88" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">CENSA DAG Gen</text>
+      <text x="90" y="102" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Topological Order</text>
+    </g>
+
+    <line x1="180" y1="60" x2="200" y2="60" stroke="url(#purpleGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(450, 80)">
+    <!-- Stage 3: Match -->
+    <g class="stage">
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="5" width="4" height="110" rx="2" fill="url(#greenGrad)"/>
+      <circle cx="90" cy="30" r="24" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="2"/>
+      <text x="90" y="35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">3</text>
+      <text x="90" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">MATCH</text>
+      <text x="90" y="88" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Agent Registry</text>
+      <text x="90" y="102" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Capability Scores</text>
+    </g>
+
+    <line x1="180" y1="60" x2="200" y2="60" stroke="url(#greenGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(650, 80)">
+    <!-- Stage 4: Govern -->
+    <g class="stage">
+      <rect x="0" y="0" width="180" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="5" width="4" height="110" rx="2" fill="url(#redGrad)"/>
+      <circle cx="90" cy="30" r="24" fill="#1E293B" stroke="url(#redGrad)" stroke-width="2"/>
+      <text x="90" y="35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#F87171" font-weight="600">4</text>
+      <text x="90" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">GOVERN</text>
+      <text x="90" y="88" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Kavacha Policy</text>
+      <text x="90" y="102" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Inline Block/Allow</text>
+    </g>
+
+    <line x1="180" y1="60" x2="200" y2="60" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(850, 80)">
+    <!-- Stage 5: Execute -->
+    <g class="stage">
+      <rect x="0" y="0" width="150" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="5" width="4" height="110" rx="2" fill="url(#goldGrad)"/>
+      <circle cx="75" cy="30" r="24" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="2"/>
+      <text x="75" y="35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FBBF24" font-weight="600">5</text>
+      <text x="75" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">EXECUTE</text>
+      <text x="75" y="88" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Panani X VM</text>
+      <text x="75" y="102" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Sandbox + Timeout</text>
+    </g>
+  </g>
+
+  <!-- Lower flow: Inference, Persist, Loop -->
+  <g transform="translate(50, 240)">
+    <ellipse cx="130" cy="60" rx="130" ry="40" fill="url(#glowGold)" filter="url(#glow)"/>
+    <ellipse cx="500" cy="60" rx="130" ry="40" fill="url(glowBlue)" filter="url(#glow)"/>
+    <ellipse cx="870" cy="60" rx="130" ry="40" fill="url(glowBlue)" filter="url(#glow)"/>
+
+    <!-- Stage 6: Inference -->
+    <g class="stage">
+      <rect x="0" y="20" width="260" height="100" rx="12" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="25" width="4" height="90" rx="2" fill="url(#cyanGrad)"/>
+      <circle cx="130" cy="70" r="28" fill="#1E293B" stroke="url(#cyanGrad)" stroke-width="2"/>
+      <text x="130" y="75" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#22D3EE" font-weight="600">6</text>
+      <text x="130" y="110" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#E2E8F0" font-weight="600">INFERENCE</text>
+      <text x="130" y="128" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">ModelService • LiteLLM • ROCm / Fireworks</text>
+    </g>
+
+    <line x1="260" y1="70" x2="300" y2="70" stroke="url(#cyanGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(320, 240)">
+    <!-- Stage 7: Persist -->
+    <g class="stage">
+      <rect x="0" y="20" width="260" height="100" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="25" width="4" height="90" rx="2" fill="url(#greenGrad)"/>
+      <circle cx="130" cy="70" r="28" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="2"/>
+      <text x="130" y="75" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#4ADE80" font-weight="600">7</text>
+      <text x="130" y="110" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#E2E8F0" font-weight="600">PERSIST</text>
+      <text x="130" y="128" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Memory Vault • pgvector • Qdrant</text>
+    </g>
+
+    <line x1="260" y1="70" x2="300" y2="70" stroke="url(#greenGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(600, 240)">
+    <!-- Stage 8: Loop / Complete -->
+    <g class="stage">
+      <rect x="0" y="20" width="280" height="100" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <rect x="5" y="25" width="4" height="90" rx="2" fill="url(#goldGrad)"/>
+      <circle cx="140" cy="70" r="28" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="2"/>
+      <text x="140" y="75" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="600">8</text>
+      <text x="140" y="110" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#E2E8F0" font-weight="600">LOOP / COMPLETE</text>
+      <text x="140" y="128" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">CENSA Evaluates • Next Node or Complete</text>
+    </g>
+  </g>
+
+  <!-- Error handling flow -->
+  <g transform="translate(520, 380)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#EF4444" font-weight="600">ERROR HANDLING & RECOVERY</text>
+    <text x="-180" y="22" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Node Failure → Local Retry (3×)</text>
+    <line x1="-150" y1="32" x2="-100" y2="32" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+    <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Retry Exhausted → Agent Swap</text>
+    <line x1="50" y1="32" x2="100" y2="32" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrow)"/>
+    <text x="220" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">No Agent → Mission BLOCKED</text>
+  </g>
+
+  <!-- Key -->
+  <g transform="translate(50, 430)">
+    <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#334155">LEGEND:</text>
+    <rect x="60" y="-8" width="12" height="12" rx="3" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1"/>
+    <text x="80" y="2" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Orchestration (CENSA)</text>
+    <rect x="230" y="-8" width="12" height="12" rx="3" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1"/>
+    <text x="250" y="2" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Governance (Kavacha)</text>
+    <rect x="420" y="-8" width="12" height="12" rx="3" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1"/>
+    <text x="440" y="2" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Execution (Panani X)</text>
+    <rect x="600" y="-8" width="12" height="12" rx="3" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1"/>
+    <text x="620" y="2" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Memory (Vault)</text>
+    <rect x="770" y="-8" width="12" height="12" rx="3" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1"/>
+    <text x="790" y="2" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Inference (Fabric)</text>
+  </g>
+</svg>

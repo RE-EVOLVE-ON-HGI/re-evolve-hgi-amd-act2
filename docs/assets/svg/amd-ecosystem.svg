@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3B82F6" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    AMD ECOSYSTEM ALIGNMENT
+  </text>
+
+  <!-- Central HGI -->
+  <g transform="translate(600, 200)">
+    <circle cx="0" cy="0" r="80" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="3" filter="url(#glow)"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="700">HGI</text>
+    <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#94A3B8">Orchestration Layer</text>
+    <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Hardware-Agnostic</text>
+    <text x="0" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#64748B">Intent-Driven</text>
+  </g>
+
+  <!-- AMD Technologies around HGI -->
+  <g transform="translate(200, 200)">
+    <ellipse cx="0" cy="0" rx="100" ry="50" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#F87171" font-weight="600">AMD INSTINCT</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">MI300X</text>
+    <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">192 GB HBM3</text>
+    <text x="0" y="38" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Primary Target</text>
+    <line x1="100" y1="0" x2="140" y2="0" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(900, 200)">
+    <ellipse cx="0" cy="0" rx="100" ry="50" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#60A5FA" font-weight="600">ROCm 7.2</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">HIP Compiler</text>
+    <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">PyTorch 2.9+</text>
+    <text x="0" y="38" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">vLLM Native</text>
+    <line x1="-100" y1="0" x2="-140" y2="0" stroke="url(#blueGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(200, 450)">
+    <ellipse cx="0" cy="0" rx="100" ry="50" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FB923C" font-weight="600">FIREWORKS AI</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Inference API</text>
+    <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Failover < 500ms</text>
+    <text x="0" y="38" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Validated Fallback</text>
+    <line x1="100" y1="0" x2="140" y2="0" stroke="url(#orangeGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <g transform="translate(900, 450)">
+    <ellipse cx="0" cy="0" rx="100" ry="50" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">EPYC / RYZEN AI</text>
+    <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Control Plane</text>
+    <text x="0" y="26" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Orchestration CPU</text>
+    <text x="0" y="38" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Edge Inference</text>
+    <line x1="-100" y1="0" x2="-140" y2="0" stroke="url(#greenGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Routing Strategy -->
+  <g transform="translate(600, 520)">
+    <rect x="-350" y="-100" width="700" height="200" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="-70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="16" fill="#FBBF24" font-weight="700">ADAPTIVE PROVIDER ROUTING</text>
+    <text x="0" y="-45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#94A3B8">Intent-Aware • Zero Vendor Lock-in • <500ms Failover</text>
+
+    <g transform="translate(-320, -15)">
+      <rect x="0" y="0" width="200" height="100" rx="8" fill="#1E293B" stroke="url(#redGrad)" stroke-width="1.5"/>
+      <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#F87171" font-weight="600">PRIORITY 1</text>
+      <text x="100" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">AMD Instinct</text>
+      <text x="100" y="55" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">High-throughput</text>
+      <text x="100" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Sensitive data</text>
+      <text x="100" y="85" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Local residency</text>
+    </g>
+
+    <g transform="translate(-100, -15)">
+      <rect x="0" y="0" width="200" height="100" rx="8" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="1.5"/>
+      <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">PRIORITY 2</text>
+      <text x="100" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Fireworks AI</text>
+      <text x="100" y="55" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Rapid prototyping</text>
+      <text x="100" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Low latency</text>
+      <text x="100" y="85" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Managed infra</text>
+    </g>
+
+    <g transform="translate(120, -15)">
+      <rect x="0" y="0" width="200" height="100" rx="8" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+      <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#A78BFA" font-weight="600">PRIORITY 3</text>
+      <text x="100" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">OpenRouter</text>
+      <text x="100" y="55" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Model breadth</text>
+      <text x="100" y="70" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">Specialized tasks</text>
+    </g>
+
+    <!-- Intent Override -->
+    <g transform="translate(-320, 90)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">CENSA INTENT OVERRIDES:</text>
+      <text x="0" y="18" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#F87171">SENSITIVE</text><text x="70" y="18" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">→ Force AMD local</text>
+      <text x="0" y="32" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#60A5FA">FAST_PROTOTYPE</text><text x="100" y="32" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">→ Force Fireworks</text>
+      <text x="0" y="46" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#FB923C">HEAVY_REASONING</text><text x="105" y="46" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#64748B">→ Prioritize MI300X</text>
+    </g>
+  </g>
+
+  <!-- Why Orchestration Complements Heterogeneous Compute -->
+  <g transform="translate(600, 730)">
+    <rect x="-350" y="-20" width="700" height="50" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#22D3EE" font-weight="600">WHY ORCHESTRATION COMPLEMENTS HETEROGENEOUS COMPUTE</text>
+  </g>
+</svg>

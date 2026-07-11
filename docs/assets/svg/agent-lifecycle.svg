@@ -1,0 +1,290 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    AGENT LIFECYCLE — REGISTRY → LOAD → EXECUTE → RECALL
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Dynamic Capability Mapping • Specialist Loading • Swarm Formation • Memory Integration
+  </text>
+
+  <!-- Top: Registry & Discovery -->
+  <g transform="translate(600, 120)">
+    <rect x="-500" y="-60" width="1000" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#A78BFA" font-weight="600">AGENT REGISTRY — registry.service.ts</text>
+
+    <g transform="translate(-450, -10)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">CAPABILITY INDEX</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#60A5FA">code_generation → [CodeAgent, DebugAgent]</text>
+        <text x="0" y="18" fill="#60A5FA">research → [ResearchAgent, AnalystAgent]</text>
+        <text x="0" y="36" fill="#60A5FA">analysis → [AnalystAgent, ReviewAgent]</text>
+        <text x="0" y="54" fill="#60A5FA">creative → [WriterAgent, MediaAgent]</text>
+        <text x="0" y="72" fill="#60A5FA">deploy → [DeployAgent, InfraAgent]</text>
+      </g>
+    </g>
+
+    <g transform="translate(-150, -10)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">AGENT MANIFEST (skill.file.schema.json)</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#64748B">{</text>
+        <text x="20" y="18" fill="#E2E8F0">id: "code-agent-v2",</text>
+        <text x="20" y="36" fill="#E2E8F0">name: "Code Generation Specialist",</text>
+        <text x="20" y="54" fill="#E2E8F0">capabilities: ["code_generation", "debug"],</text>
+        <text x="20" y="72" fill="#E2E8F0">version: "2.1.0",</text>
+        <text x="20" y="90" fill="#E2E8F0">entryPoint: "./agents/code/agent.ts",</text>
+        <text x="20" y="108" fill="#E2E8F0">resources: { cpu: "500m", mem: "256Mi" },</text>
+        <text x="20" y="126" fill="#E2E8F0">timeout: 300000,</text>
+        <text x="20" y="144" fill="#E2E8F0">retryPolicy: { max: 3, backoff: "exp" }</text>
+        <text x="0" y="162" fill="#64748B">}</text>
+      </g>
+    </g>
+
+    <g transform="translate(250, -10)">
+      <text x="0" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0" font-weight="600">DISCOVERY MECHANISM</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 20)">
+        <text x="0" y="0" fill="#64748B">• File watcher: skills/**/*.json</text>
+        <text x="0" y="18" fill="#64748B">• Hot reload on manifest change</text>
+        <text x="0" y="36" fill="#64748B">• Validation: JSON Schema + Zod</text>
+        <text x="0" y="54" fill="#64748B">• Index rebuild < 50ms</text>
+        <text x="0" y="72" fill="#64748B">• Capability → Agent[] mapping</text>
+        <text x="0" y="90" fill="#64748B">• Confidence default per agent</text>
+        <text x="0" y="108" fill="#22C55E">• Zero-downtime registration</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Center: Swarm Formation -->
+  <g transform="translate(600, 280)">
+    <rect x="-300" y="-60" width="600" height="180" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="0" y="-30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="600">SWARM FORMATION — swarm.loader.ts</text>
+
+    <!-- Three swarms -->
+    <g transform="translate(-250, 10)">
+      <rect x="0" y="0" width="160" height="130" rx="8" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="1.5"/>
+      <text x="80" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">ENGINEERING SWARM</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 35)">
+        <text x="0" y="0" fill="#E2E8F0">CodeAgent (Lead)</text>
+        <text x="0" y="18" fill="#64748B">DebugAgent</text>
+        <text x="0" y="36" fill="#64748B">ReviewAgent</text>
+        <text x="0" y="54" fill="#64748B">TestAgent</text>
+        <text x="0" y="72" fill="#64748B">DeployAgent</text>
+        <text x="0" y="90" fill="#FBBF24" font-size="7">Coord: Shared memory</text>
+        <text x="0" y="105" fill="#22C55E" font-size="7">Task: Feature impl</text>
+      </g>
+    </g>
+
+    <g transform="translate(-80, 10)">
+      <rect x="0" y="0" width="160" height="130" rx="8" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+      <text x="80" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#A78BFA" font-weight="600">MEDIA SWARM</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 35)">
+        <text x="0" y="0" fill="#E2E8F0">WriterAgent (Lead)</text>
+        <text x="0" y="18" fill="#64748B">DesignerAgent</text>
+        <text x="0" y="36" fill="#64748B">VideoAgent</text>
+        <text x="0" y="54" fill="#64748B">AudioAgent</text>
+        <text x="0" y="72" fill="#64748B">FormatAgent</text>
+        <text x="0" y="90" fill="#FBBF24" font-size="7">Coord: Asset pipeline</text>
+        <text x="0" y="105" fill="#22C55E" font-size="7">Task: Content prod</text>
+      </g>
+    </g>
+
+    <g transform="translate(90, 10)">
+      <rect x="0" y="0" width="160" height="130" rx="8" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="1.5"/>
+      <text x="80" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#4ADE80" font-weight="600">RESEARCH SWARM</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 35)">
+        <text x="0" y="0" fill="#E2E8F0">ResearchAgent (Lead)</text>
+        <text x="0" y="18" fill="#64748B">AnalystAgent</text>
+        <text x="0" y="36" fill="#64748B">CritiqueAgent</text>
+        <text x="0" y="54" fill="#64748B">SynthAgent</text>
+        <text x="0" y="72" fill="#64748B">FactCheckAgent</text>
+        <text x="0" y="90" fill="#FBBF24" font-size="7">Coord: Citation graph</text>
+        <text x="0" y="105" fill="#22C55E" font-size="7">Task: Deep research</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Left: Agent Execution Lifecycle -->
+  <g transform="translate(50, 480)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">AGENT EXECUTION LIFECYCLE</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(15, 45)">
+      <!-- State boxes -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#60A5FA" font-weight="600" font-size="8">IDLE</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">awaiting task</text>
+      </g>
+      <line x1="100" y1="17" x2="120" y2="17" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(120, 0)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="8">LOADING</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">dynamic import()</text>
+      </g>
+      <line x1="220" y1="17" x2="240" y2="17" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(240, 0)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#orangeGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="8">INITIALIZING</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">constructor(ctx)</text>
+      </g>
+
+      <g transform="translate(0, 50)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#4ADE80" font-weight="600" font-size="8">EXECUTING</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">execute(task)</text>
+      </g>
+      <line x1="100" y1="67" x2="120" y2="67" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(120, 50)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#cyanGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#22D3EE" font-weight="600" font-size="8">STREAMING</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">yield results</text>
+      </g>
+      <line x1="220" y1="67" x2="240" y2="67" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(240, 50)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#A78BFA" font-weight="600" font-size="8">COMPLETING</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">finalize()</text>
+      </g>
+
+      <g transform="translate(0, 100)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#4ADE80" font-weight="600" font-size="8">IDLE (ready)</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">pool returns</text>
+      </g>
+      <line x1="100" y1="117" x2="120" y2="117" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(120, 100)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#redGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#F87171" font-weight="600" font-size="8">ERROR</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">catch & report</text>
+      </g>
+      <line x1="220" y1="117" x2="240" y2="117" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow)"/>
+      <g transform="translate(240, 100)">
+        <rect x="0" y="0" width="100" height="35" rx="4" fill="#1E293B" stroke="url(#orangeGrad)" stroke-width="1.5"/>
+        <text x="50" y="12" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="8">RETRY</text>
+        <text x="50" y="24" text-anchor="middle" fill="#64748B" font-size="7">backoff & retry</text>
+      </g>
+    </g>
+
+    <g transform="translate(10, 190)" font-family="JetBrains Mono, Menlo, monospace" font-size="8">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">KEY POINTS:</text>
+      <text x="0" y="18" fill="#64748B">• Agents are stateless between tasks</text>
+      <text x="0" y="36" fill="#64748B">• Context injected per execution</text>
+      <text x="0" y="54" fill="#64748B">• Resource limits enforced per task</text>
+      <text x="0" y="72" fill="#64748B">• Streaming via AsyncGenerator</text>
+      <text x="0" y="90" fill="#64748B">• Health check every 30s (idle)</text>
+      <text x="0" y="108" fill="#FBBF24">• Max concurrent: pool.size (default 8)</text>
+    </g>
+  </g>
+
+  <!-- Bottom Center: Memory Integration -->
+  <g transform="translate(425, 480)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#FBBF24" font-weight="600">MEMORY INTEGRATION</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">EPISODIC (pgvector)</text>
+      <text x="0" y="20" fill="#64748B">• task.executed → episodic.store()</text>
+      <text x="0" y="38" fill="#64748B">• Embedding: task + result + context</text>
+      <text x="0" y="56" fill="#64748B">• Query: similar tasks by intent</text>
+      <text x="0" y="74" fill="#64748B">• TTL: 30 days, auto-summarize</text>
+
+      <text x="0" y="100" fill="#E2E8F0" font-weight="600">SEMANTIC (Qdrant)</text>
+      <text x="0" y="120" fill="#64748B">• agent.knowledge → semantic.upsert()</text>
+      <text x="0" y="138" fill="#64748B">• Collections per capability</text>
+      <text x="0" y="156" fill="#64748B">• Hybrid search: vector + filter</text>
+      <text x="0" y="174" fill="#64748B">• Top-K injection into context</text>
+
+      <text x="0" y="200" fill="#E2E8F0" font-weight="600">CONTEXT INJECTION</text>
+      <text x="0" y="220" fill="#64748B">• Before execute: memory.recall(task)</text>
+      <text x="0" y="238" fill="#64748B">• Merge: episodic (3) + semantic (3)</text>
+      <text x="0" y="256" fill="#64748B">• Inject: task.payload.context = merged</text>
+      <text x="0" y="274" fill="#22C55E" font-size="8">• Boosts confidence 15-25%</text>
+    </g>
+  </g>
+
+  <!-- Bottom Right: Skill Spector -->
+  <g transform="translate(800, 480)">
+    <rect x="0" y="0" width="350" height="280" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">SKILL SPECTOR — skill.spector.ts</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(15, 45)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">STATIC ANALYSIS</text>
+      <text x="0" y="20" fill="#64748B">• Parse agent source (AST)</text>
+      <text x="0" y="38" fill="#64748B">• Detect: eval, Function, require</text>
+      <text x="0" y="56" fill="#64748B">• Detect: process, fs, child_process</text>
+      <text x="0" y="74" fill="#64748B">• Detect: prototype pollution</text>
+
+      <text x="0" y="100" fill="#E2E8F0" font-weight="600">RUNTIME VERIFICATION</text>
+      <text x="0" y="120" fill="#64748B">• Canary execution (sandbox)</text>
+      <text x="0" y="138" fill="#64748B">• Fuzz inputs → verify output shape</text>
+      <text x="0" y="156" fill="#64748B">• Measure: latency, memory, CPU</text>
+      <text x="0" y="174" fill="#64748B">• Benchmark vs baseline</text>
+
+      <text x="0" y="200" fill="#E2E8F0" font-weight="600">CONTINUOUS VALIDATION</text>
+      <text x="0" y="220" fill="#64748B">• On deploy: full spector run</text>
+      <text x="0" y="238" fill="#64748B">• On config change: diff analysis</text>
+      <text x="0" y="256" fill="#64748B">• Weekly: regression suite</text>
+      <text x="0" y="274" fill="#EF4444" font-size="8">• Fail → auto-quarantine agent</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Key Files -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">registry.service.ts</tspan>  ·  <tspan fill="#FBBF24">swarm.loader.ts</tspan>  ·  <tspan fill="#FBBF24">skill.spector.ts</tspan>  ·  <tspan fill="#FBBF24">skill.file.schema.json</tspan>  ·  <tspan fill="#FBBF24">agent.base.ts</tspan>  ·  <tspan fill="#FBBF24">agent.pool.ts</tspan>
+    </text>
+  </g>
+</svg>

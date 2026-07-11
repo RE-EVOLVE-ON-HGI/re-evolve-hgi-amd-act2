@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#EF4444" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#redGrad)" filter="url(#textGlow)">
+    KAVACHA — ZERO-TRUST GOVERNANCE
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Policy Interceptor • Input/Output Scanning • Immutable Audit Ledger • Automated Threat Blocking
+  </text>
+
+  <!-- Central: Policy Engine Pipeline -->
+  <g transform="translate(600, 380)">
+    <!-- Ingress -->
+    <g transform="translate(-300, -200)">
+      <ellipse cx="0" cy="0" rx="100" ry="35" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">REQUEST INGRESS</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">HTTP / gRPC / SDK</text>
+    </g>
+
+    <line x1="-200" y1="-200" x2="-120" y2="-200" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Input Scanner -->
+    <g transform="translate(0, -200)">
+      <rect x="-80" y="-35" width="160" height="70" rx="8" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">INPUT SCANNER</text>
+      <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">policy.service.ts</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-70, 28)">
+        <text x="0" y="0" fill="#EF4444">▸ PII Detection (regex + NER)</text>
+        <text x="0" y="14" fill="#EF4444">▸ Prompt Injection Patterns</text>
+        <text x="0" y="28" fill="#EF4444">▸ Malicious Code Patterns</text>
+        <text x="0" y="42" fill="#FBBF24">▸ Policy Violation Check</text>
+      </g>
+    </g>
+
+    <line x1="80" y1="-200" x2="160" y2="-200" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Policy Decision Point (OPA) -->
+    <g transform="translate(280, -200)">
+      <ellipse cx="0" cy="0" rx="90" ry="35" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FBBF24" font-weight="600">OPA DECISION</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">opa.rego policies</text>
+    </g>
+
+    <line x1="370" y1="-200" x2="450" y2="-200" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Execution Point (Panani X) -->
+    <g transform="translate(580, -200)">
+      <rect x="-60" y="-35" width="120" height="70" rx="8" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FB923C" font-weight="600">EXECUTE</text>
+      <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Panani X Runtime</text>
+    </g>
+
+    <line x1="640" y1="-200" x2="720" y2="-200" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Output Scanner -->
+    <g transform="translate(840, -200)">
+      <rect x="-80" y="-35" width="160" height="70" rx="8" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">OUTPUT SCANNER</text>
+      <text x="0" y="10" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">policy.service.ts</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-70, 28)">
+        <text x="0" y="0" fill="#EF4444">▸ PII Leakage Check</text>
+        <text x="0" y="14" fill="#EF4444">▸ Secret Detection</text>
+        <text x="0" y="28" fill="#EF4444">▸ Hallucination Markers</text>
+        <text x="0" y="42" fill="#FBBF24">▸ Compliance Rules</text>
+      </g>
+    </g>
+
+    <line x1="920" y1="-200" x2="1000" y2="-200" stroke="url(#redGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Egress -->
+    <g transform="translate(1060, -200)">
+      <ellipse cx="0" cy="0" rx="100" ry="35" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#4ADE80" font-weight="600">RESPONSE EGRESS</text>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Sanitized / Blocked</text>
+    </g>
+
+    <!-- Audit Ledger (below pipeline) -->
+    <g transform="translate(-280, -70)">
+      <rect x="0" y="0" width="560" height="180" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="280" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#22D3EE" font-weight="600">IMMUTABLE AUDIT LEDGER — audit.service.ts</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(15, 40)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">EVENT STRUCTURE:</text>
+        <text x="0" y="20" fill="#64748B">{</text>
+        <text x="20" y="38" fill="#E2E8F0">eventId: "evt_abc123...",</text>
+        <text x="20" y="56" fill="#E2E8F0">timestamp: "2026-07-11T10:30:00.123Z",</text>
+        <text x="20" y="74" fill="#E2E8F0">missionId: "mis_xyz789...",</text>
+        <text x="20" y="92" fill="#E2E8F0">taskId: "tsk_def456...",</text>
+        <text x="20" y="110" fill="#E2E8F0">stage: "INPUT_SCAN | OPA_DECIDE | OUTPUT_SCAN",</text>
+        <text x="20" y="128" fill="#E2E8F0">decision: "ALLOW | DENY | REDACT | QUARANTINE",</text>
+        <text x="20" y="146" fill="#E2E8F0">policy: "data_privacy.v1.prompt_injection.v2",</text>
+        <text x="20" y="164" fill="#E2E8F0">matches: ["PII:EMAIL", "INJECTION:IGNORE"],</text>
+        <text x="20" y="182" fill="#E2E8F0">inputHash: "sha256:...", outputHash: "sha256:...",</text>
+        <text x="20" y="200" fill="#E2E8F0">actor: "system | user:usr_123 | agent:code-agent"</text>
+        <text x="0" y="218" fill="#64748B">}</text>
+      </g>
+    </g>
+
+    <!-- Storage Backpressure test results
+    <g transform="translate(300, -70)">
+      <rect x="0" y="0" width="260" height="180" rx="10" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="130" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">PRESSURE TEST RESULTS</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 40)">
+        <text x="0" y="0" fill="#E2E8F0">Throughput: 12,000 req/s</text>
+        <text x="0" y="20" fill="#64748B">P50 Latency: 2.3 ms</text>
+        <text x="0" y="40" fill="#64748B">P99 Latency: 8.7 ms</text>
+        <text x="0" y="60" fill="#64748B">False Positive: 0.02%</text>
+        <text x="0" y="80" fill="#64748B">False Negative: 0.001%</text>
+        <text x="0" y="100" fill="#22C55E">Bypass Attempts: 0/10,000</text>
+        <text x="0" y="120" fill="#22C55E">Mutation Tests: 100% caught</text>
+        <text x="0" y="140" fill="#FBBF24">OPA Eval: < 1ms avg</text>
+        <text x="0" y="160" fill="#E2E8F0">Storage: PostgreSQL + WAL</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Left: Policy Categories -->
+  <g transform="translate(50, 120)">
+    <rect x="0" y="0" width="220" height="600" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="110" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#F87171" font-weight="600">POLICY CATEGORIES</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 50)">
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#redGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#EF4444" font-weight="600" font-size="9">DATA PRIVACY</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">PII: Email, Phone, SSN</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Secrets: Keys, Tokens</text>
+      </g>
+
+      <g transform="translate(0, 80)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#orangeGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="9">PROMPT INJECTION</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">Ignore Previous Instructions</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Role Play Attempts</text>
+      </g>
+
+      <g transform="translate(0, 160)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#A78BFA" font-weight="600" font-size="9">CODE SAFETY</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">eval / Function Detection</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Prototype Pollution</text>
+      </g>
+
+      <g transform="translate(0, 240)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#60A5FA" font-weight="600" font-size="9">COMPLIANCE</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">GDPR Art. 25 (Design)</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">SOC2 Type II Controls</text>
+      </g>
+
+      <g transform="translate(0, 320)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#4ADE80" font-weight="600" font-size="9">HALLUCINATION</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">Confidence Thresholds</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Citation Verification</text>
+      </g>
+
+      <g transform="translate(0, 400)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#cyanGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#22D3EE" font-weight="600" font-size="9">RESOURCE ABUSE</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">Token Limit Enforcement</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Loop Detection</text>
+      </g>
+
+      <g transform="translate(0, 480)">
+        <rect x="0" y="0" width="200" height="65" rx="6" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="1"/>
+        <text x="100" y="18" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="9">CUSTOM POLICIES</text>
+        <text x="100" y="34" text-anchor="middle" fill="#64748B" font-size="7">OPA Rego Modules</text>
+        <text x="100" y="50" text-anchor="middle" fill="#64748B" font-size="7">Hot-reload < 100ms</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right: Decision Actions -->
+  <g transform="translate(930, 120)">
+    <rect x="0" y="0" width="220" height="600" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="110" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">DECISION ACTIONS</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 50)">
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#greenGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#22C55E" font-weight="600" font-size="10">✓ ALLOW</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">No violations detected</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">Pass through unchanged</text>
+      </g>
+
+      <g transform="translate(0, 85)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#orangeGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="10">✎ REDACT</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">PII masked: [EMAIL]</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">Secrets: [REDACTED]</text>
+      </g>
+
+      <g transform="translate(0, 170)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#redGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#EF4444" font-weight="600" font-size="10">✗ DENY</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">Critical violation</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">Block + Audit Alert</text>
+      </g>
+
+      <g transform="translate(0, 255)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#purpleGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#A78BFA" font-weight="600" font-size="10">⬜ QUARANTINE</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">Suspicious but unclear</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">Human review queue</text>
+      </g>
+
+      <g transform="translate(0, 340)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#blueGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#60A5FA" font-weight="600" font-size="10">🔄 TRANSFORM</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">Rewrite to safe form</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">Preserve intent</text>
+      </g>
+
+      <g transform="translate(0, 425)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#cyanGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#22D3EE" font-weight="600" font-size="10">📋 LOG_ONLY</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">Monitor mode (dev)</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">No blocking</text>
+      </g>
+
+      <g transform="translate(0, 510)">
+        <rect x="0" y="0" width="200" height="70" rx="6" fill="#1E293B" stroke="url(#goldGrad)" stroke-width="2"/>
+        <text x="100" y="18" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="10">⚡ ESCALATE</text>
+        <text x="100" y="36" text-anchor="middle" fill="#64748B" font-size="7">Critical: SIEM webhook</text>
+        <text x="100" y="52" text-anchor="middle" fill="#64748B" font-size="7">PagerDuty / Slack</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom: Key Files & OPA Example -->
+  <g transform="translate(600, 610)">
+    <rect x="-500" y="0" width="1000" height="150" rx="10" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FBBF24" font-weight="600">OPA POLICY EXAMPLE (opa.rego)  •  KEY FILES</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-480, 35)">
+      <text x="0" y="0" fill="#E2E8F0">package kavacha.input_scan</text>
+      <text x="0" y="14" fill="#64748B"># Deny if PII detected in prompt</text>
+      <text x="0" y="28" fill="#E2E8F0">deny[msg] {</text>
+      <text x="20" y="42" fill="#E2E8F0">input.pii_detected[_] == "EMAIL"</text>
+      <text x="20" y="56" fill="#E2E8F0">msg := "PII:EMAIL detected in input"</text>
+      <text x="0" y="70" fill="#E2E8F0">}</text>
+      <text x="0" y="84" fill="#64748B"># Redact secrets in output</text>
+      <text x="0" y="98" fill="#E2E8F0">redact[output] {</text>
+      <text x="20" y="112" fill="#E2E8F0">output := regex.replace(input.text,</text>
+      <text x="20" y="126" fill="#E2E8F0">"(?i)(api[_-]?key|secret|token)\\s*[:=]\\s*\\S+",</text>
+      <text x="20" y="140" fill="#E2E8F0">"$1=[REDACTED]")</text>
+      <text x="0" y="154" fill="#E2E8F0">}</text>
+    </g>
+  </g>
+
+  <g transform="translate(600, 775)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">policy.service.ts</tspan>  ·  <tspan fill="#FBBF24">audit.service.ts</tspan>  ·  <tspan fill="#FBBF24">opa.rego</tspan>  ·  <tspan fill="#FBBF24">compliance.reporter.ts</tspan>  ·  <tspan fill="#FBBF24">scanner.pii.ts</tspan>  ·  <tspan fill="#FBBF24">scanner.injection.ts</tspan>  ·  <tspan fill="#FBBF24">ledger.writer.ts</tspan>
+    </text>
+  </g>
+</svg>

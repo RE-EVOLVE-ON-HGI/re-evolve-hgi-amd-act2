@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    ADAPTIVE PROVIDER ROUTING — UNIFIED INFERENCE GATEWAY
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    LiteLLM Gateway → CENSA Router → Multi-Provider Pool → Telemetry → Feedback Loop
+  </text>
+
+  <!-- Top: Architecture Overview -->
+  <g transform="translate(600, 130)">
+    <!-- Client Layer -->
+    <g transform="translate(-500, -80)">
+      <ellipse cx="0" cy="0" rx="120" ry="40" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#22D3EE" font-weight="600">CLIENTS</text>
+      <text x="0" y="12" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">SDK • API • CLI • Dashboard</text>
+    </g>
+
+    <line x1="-380" y1="0" x2="-220" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- LiteLLM Gateway -->
+    <g transform="translate(-200, -80)">
+      <rect x="-120" y="-40" width="240" height="160" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">LITELLM GATEWAY</text>
+      <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Unified OpenAI-Compatible API</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-100, 20)">
+        <text x="0" y="0" fill="#4ADE80">✓ Load Balancing (Least Latency)</text>
+        <text x="0" y="14" fill="#4ADE80">✓ Retry + Exponential Backoff</text>
+        <text x="0" y="28" fill="#4ADE80">✓ Circuit Breaker (per provider)</text>
+        <text x="0" y="42" fill="#4ADE80">✓ Request/Response Transform</text>
+        <text x="0" y="56" fill="#4ADE80">✓ Streaming Support (SSE)</text>
+        <text x="0" y="70" fill="#4ADE80">✓ Auth: API Key / JWT / OAuth</text>
+        <text x="0" y="84" fill="#FBBF24">✓ Cost Tracking (per request)</text>
+        <text x="0" y="98" fill="#FBBF24">✓ Fallback Chain Config</text>
+      </g>
+    </g>
+
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- CENSA Router -->
+    <g transform="translate(200, -80)">
+      <rect x="-120" y="-40" width="240" height="160" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">CENSA ROUTER</text>
+      <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Intent-Aware Selection Engine</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-100, 20)">
+        <text x="0" y="0" fill="#4ADE80">✓ Intent Classification (BERT)</text>
+        <text x="0" y="14" fill="#4ADE80">✓ Semantic Model Matching</text>
+        <text x="0" y="28" fill="#4ADE80">✓ Priority Engine (AMD First)</text>
+        <text x="0" y="42" fill="#4ADE80">✓ Budget Guard (Cost Ceilings)</text>
+        <text x="0" y="56" fill="#4ADE80">✓ Privacy Gate (Data Sovereignty)</text>
+        <text x="0" y="70" fill="#4ADE80">✓ Latency SLA Enforcement</text>
+        <text x="0" y="84" fill="#FBBF24">→ Selected Provider + Model</text>
+        <text x="0" y="98" fill="#FBBF24">→ Runtime Params (temp, top_p)</text>
+      </g>
+    </g>
+
+    <line x1="320" y1="0" x2="480" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Provider Pool -->
+    <g transform="translate(550, -80)">
+      <rect x="-120" y="-40" width="240" height="160" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#4ADE80" font-weight="600">PROVIDER POOL</text>
+      <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Multi-Backend Execution</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-100, 20)">
+        <text x="0" y="0" fill="#FF6B6B" font-weight="600">TIER 1 — AMD INSTINCT:</text>
+        <text x="10" y="18" fill="#E2E8F0">• vLLM on MI300X (TP=8)</text>
+        <text x="10" y="32" fill="#E2E8F0">• Models: 405B, 70B, 8B, Code</text>
+
+        <text x="0" y="55" fill="#FB923C" font-weight="600">TIER 2 — FIREWORKS:</text>
+        <text x="10" y="73" fill="#E2E8F0">• Optimized Inference API</text>
+        <text x="10" y="87" fill="#E2E8F0">• MoE, Speculative Decoding</text>
+
+        <text x="0" y="110" fill="#F87171" font-weight="600">TIER 3 — OPENROUTER:</text>
+        <text x="10" y="128" fill="#E2E8F0">• 200+ Models (OpenAI, Anthropic,</text>
+        <text x="10" y="142" fill="#E2E8F0">  Google, Open Models)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Middle: Request Flow Detail -->
+  <g transform="translate(600, 330)">
+    <text x="-520" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FBBF24" font-weight="600">REQUEST FLOW — END-TO-END LATENCY BUDGET</text>
+
+    <g transform="translate(-500, 25)">
+      <!-- Flow Steps -->
+      <g transform="translate(0, 0)">
+        <rect x="-200" y="0" width="400" height="140" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+
+        <!-- Step boxes horizontal -->
+        <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-190, 15)">
+          <!-- Step 1 -->
+          <rect x="0" y="0" width="75" height="110" rx="6" fill="#0F172A" stroke="#60A5FA" stroke-width="1"/>
+          <text x="37.5" y="15" text-anchor="middle" fill="#60A5FA" font-weight="600" font-size="7">1. INGRESS</text>
+          <text x="37.5" y="28" text-anchor="middle" fill="#E2E8F0" font-size="6">Validate</text>
+          <text x="37.5" y="38" text-anchor="middle" fill="#E2E8F0" font-size="6">Auth</text>
+          <text x="37.5" y="48" text-anchor="middle" fill="#E2E8F0" font-size="6">Rate Limit</text>
+          <text x="37.5" y="63" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="6">~5ms</text>
+
+          <!-- Arrow -->
+          <text x="85" y="60" text-anchor="middle" fill="#F59E0B" font-size="12">→</text>
+
+          <!-- Step 2 -->
+          <rect x="95" y="0" width="75" height="110" rx="6" fill="#0F172A" stroke="#A78BFA" stroke-width="1"/>
+          <text x="132.5" y="15" text-anchor="middle" fill="#A78BFA" font-weight="600" font-size="7">2. CENSA</text>
+          <text x="132.5" y="28" text-anchor="middle" fill="#E2E8F0" font-size="6">Classify</text>
+          <text x="132.5" y="38" text-anchor="middle" fill="#E2E8F0" font-size="6">Intent</text>
+          <text x="132.5" y="48" text-anchor="middle" fill="#E2E8F0" font-size="6">Route</text>
+          <text x="132.5" y="63" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="6">~15ms</text>
+
+          <text x="180" y="60" text-anchor="middle" fill="#F59E0B" font-size="12">→</text>
+
+          <!-- Step 3 -->
+          <rect x="190" y="0" width="75" height="110" rx="6" fill="#0F172A" stroke="#ED1C24" stroke-width="1"/>
+          <text x="227.5" y="15" text-anchor="middle" fill="#FF6B6B" font-weight="600" font-size="7">3. AMD?</text>
+          <text x="227.5" y="28" text-anchor="middle" fill="#E2E8F0" font-size="6">Capacity</text>
+          <text x="227.5" y="38" text-anchor="middle" fill="#E2E8F0" font-size="6">Model?</text>
+          <text x="227.5" y="48" text-anchor="middle" fill="#E2E8F0" font-size="6">Privacy?</text>
+          <text x="227.5" y="63" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="6">~2ms</text>
+
+          <text x="275" y="60" text-anchor="middle" fill="#F59E0B" font-size="12">→</text>
+
+          <!-- Step 4a -->
+          <rect x="285" y="0" width="75" height="50" rx="6" fill="#0F172A" stroke="#FF6B6B" stroke-width="2"/>
+          <text x="322.5" y="15" text-anchor="middle" fill="#FF6B6B" font-weight="600" font-size="7">4a. AMD</text>
+          <text x="322.5" y="32" text-anchor="middle" fill="#E2E8F0" font-size="6">Execute</text>
+          <text x="322.5" y="47" text-anchor="middle" fill="#22C55E" font-weight="600" font-size="6">~80ms</text>
+
+          <!-- Step 4b -->
+          <rect x="285" y="60" width="75" height="50" rx="6" fill="#0F172A" stroke="#FB923C" stroke-width="1"/>
+          <text x="322.5" y="75" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="7">4b. FW</text>
+          <text x="322.5" y="92" text-anchor="middle" fill="#E2E8F0" font-size="6">Execute</text>
+          <text x="322.5" y="107" text-anchor="middle" fill="#22C55E" font-weight="600" font-size="6">~150ms</text>
+
+          <!-- Step 5 -->
+          <text x="370" y="60" text-anchor="middle" fill="#F59E0B" font-size="12">→</text>
+          <rect x="375" y="25" width="75" height="60" rx="6" fill="#0F172A" stroke="#22C55E" stroke-width="2"/>
+          <text x="412.5" y="45" text-anchor="middle" fill="#4ADE80" font-weight="600" font-size="7">5. STREAM</text>
+          <text x="412.5" y="60" text-anchor="middle" fill="#E2E8F0" font-size="6">Tokens</text>
+          <text x="412.5" y="75" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="6">TTFT</text>
+        </g>
+      </g>
+
+      <!-- Latency Budget Summary -->
+      <g transform="translate(50, 160)" font-family="JetBrains Mono, Menlo, monospace" font-size="8">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">TARGET LATENCY BUDGETS (P99):</text>
+        <text x="20" y="20" fill="#4ADE80">✓ TTFT (Time to First Token): < 500ms (AMD), < 1000ms (Fireworks), < 2000ms (OpenRouter)</text>
+        <text x="20" y="38" fill="#4ADE80">✓ Token Throughput: > 50 tok/s (AMD 70B), > 30 tok/s (Fireworks), > 20 tok/s (OpenRouter)</text>
+        <text x="20" y="56" fill="#4ADE80">✓ End-to-End (1k tokens): < 3s (AMD), < 5s (Fireworks), < 10s (OpenRouter)</text>
+        <text x="20" y="74" fill="#FBBF24" font-weight="600">OBSERVED: AMD MI300X 405B ~2.1s, 70B ~0.8s | Fireworks 70B ~1.2s | OpenRouter GPT-4o ~3.5s</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom: Configuration & Feedback Loop -->
+  <g transform="translate(600, 520)">
+    <!-- LiteLLM Config -->
+    <g transform="translate(-500, 0)">
+      <rect x="-280" y="0" width="560" height="180" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">LITELLM GATEWAY CONFIGURATION (config.yaml)</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-260, 35)" fill="#E2E8F0">
+        <text x="0" y="0" fill="#FBBF24">model_list:</text>
+        <text x="10" y="18">- model_name: llama-3.1-405b-amd</text>
+        <text x="20" y="36">litellm_params:</text>
+        <text x="30" y="54">model: openai/llama-3.1-405b</text>
+        <text x="30" y="72">api_base: http://amd-vllm:8000/v1</text>
+        <text x="30" y="90">api_key: "os.environ/AMD_API_KEY"</text>
+        <text x="30" y="108">tpm: 1000000  # tokens per minute</text>
+        <text x="30" y="126">rpm: 1000     # requests per minute</text>
+        <text x="20" y="144">model_info:</text>
+        <text x="30" y="162">tier: "amd_instinct"</text>
+        <text x="30" y="180">cost_per_token: 0.0</text>
+
+        <text x="200" y="0" fill="#FBBF24">router_strategy: "least_latency"</text>
+        <text x="210" y="18">fallbacks:</text>
+        <text x="220" y="36">- llama-3.1-405b-fireworks</text>
+        <text x="220" y="54">- llama-3.1-405b-openrouter</text>
+        <text x="210" y="78">circuit_breaker:</text>
+        <text x="220" y="96">failure_threshold: 5</text>
+        <text x="220" y="114">recovery_timeout: 30s</text>
+        <text x="210" y="138">retry_policy:</text>
+        <text x="220" y="156">max_retries: 3</text>
+        <text x="220" y="174">backoff_factor: 2.0</text>
+
+        <text x="420" y="0" fill="#FBBF24">callbacks:</text>
+        <text x="430" y="18">- "censa_cost_tracker"</text>
+        <text x="430" y="36">- "kavacha_audit_log"</text>
+        <text x="430" y="54">- "prometheus_metrics"</text>
+        <text x="420" y="78">input_callbacks:</text>
+        <text x="430" y="96">- "censa_intent_classifier"</text>
+        <text x="430" y="114">- "kavacha_input_scan"</text>
+        <text x="420" y="138">output_callbacks:</text>
+        <text x="430" y="156">- "kavacha_output_scan"</text>
+        <text x="430" y="174">- "censa_feedback_collector"</text>
+      </g>
+    </g>
+
+    <!-- Feedback Loop & Metrics -->
+    <g transform="translate(300, 0)">
+      <rect x="-280" y="0" width="560" height="180" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+      <text x="0" y="22" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">FEEDBACK LOOP & CONTINUOUS OPTIMIZATION</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-260, 35)">
+        <!-- Flow -->
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">EXECUTION PHASE:</text>
+        <text x="20" y="20" fill="#4ADE80">→ Request routed, executed, streamed</text>
+        <text x="20" y="38" fill="#4ADE80">→ Latency, tokens, cost, success recorded</text>
+        <text x="20" y="56" fill="#4ADE80">→ Provider health updated (EWMA)</text>
+
+        <text x="0" y="85" fill="#E2E8F0" font-weight="600">OBSERVABILITY (Real-time):</text>
+        <text x="20" y="105" fill="#64748B">• Prometheus: latency histogram, error rate, token throughput</text>
+        <text x="20" y="123" fill="#64748B">• Grafana: Per-model, per-provider, per-mission-type dashboards</text>
+        <text x="20" y="141" fill="#64748B">• Alert: P99 latency > SLA, Error rate > 1%, Cost spike > 2x</text>
+
+        <text x="0" y="170" fill="#E2E8F0" font-weight="600">OPTIMIZATION LOOP (Hourly Cron):</text>
+        <text x="20" y="190" fill="#FBBF24">• Re-train intent classifier on new data (BERT fine-tune)</text>
+        <text x="20" y="208" fill="#FBBF24">• Update model capability embeddings (new benchmarks)</text>
+        <text x="20" y="226" fill="#FBBF24">• Adjust priority weights (cost vs quality trade-off)</text>
+        <text x="20" y="244" fill="#FBBF24">• Prune unhealthy providers (auto-circuit-break)</text>
+        <text x="20" y="262" fill="#FBBF24">• Rebalance capacity (AMD scale-up, Fireworks reserved)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">packages/litellm-gateway/config.yaml</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/adaptive-router.ts</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/cost-tracker.ts</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/feedback-loop.ts</tspan>  ·  <tspan fill="#FBBF24">infra/monitoring/grafana-dashboards/</tspan>
+    </text>
+  </g>
+</svg>

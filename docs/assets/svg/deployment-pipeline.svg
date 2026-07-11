@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    DEPLOYMENT PIPELINE — CI/CD TO PRODUCTION
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    GitHub Actions → Turborepo → Multi-arch Docker → Railway (Backend) + Vercel (Frontend) + npm (CLI)
+  </text>
+
+  <!-- Pipeline Stages Horizontal -->
+  <g transform="translate(600, 150)">
+    <!-- Stage 1: PR / Commit -->
+    <g transform="translate(-500, 0)">
+      <rect x="-90" y="-40" width="180" height="80" rx="10" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#60A5FA" font-weight="600">1. COMMIT / PR</text>
+      <text x="0" y="5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">push / pull_request</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Conventional Commits</text>
+      <text x="0" y="32" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Branch: feat/* fix/*</text>
+    </g>
+
+    <line x1="-410" y1="0" x2="-330" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 2: CI -->
+    <g transform="translate(-230, 0)">
+      <rect x="-100" y="-40" width="200" height="100" rx="10" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#A78BFA" font-weight="600">2. CI PIPELINE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-90, -5)">
+        <text x="0" y="0" fill="#4ADE80">✓ pnpm install (frozen)</text>
+        <text x="0" y="14" fill="#4ADE80">✓ turbo run lint</text>
+        <text x="0" y="28" fill="#4ADE80">✓ turbo run typecheck</text>
+        <text x="0" y="42" fill="#4ADE80">✓ turbo run test (coverage ≥80%)</text>
+        <text x="0" y="56" fill="#4ADE80">✓ turbo run build</text>
+        <text x="0" y="70" fill="#FBBF24">✓ Contract tests (pact)</text>
+        <text x="0" y="84" fill="#64748B">Matrix: Node 20, 22</text>
+        <text x="0" y="98" fill="#64748B">Cache: Turbo + pnpm store</text>
+      </g>
+    </g>
+
+    <line x1="-130" y1="0" x2="-50" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 3: Docker Build -->
+    <g transform="translate(50, 0)">
+      <rect x="-100" y="-40" width="200" height="100" rx="10" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FB923C" font-weight="600">3. DOCKER BUILD</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-90, -5)">
+        <text x="0" y="0" fill="#4ADE80">✓ Multi-arch: amd64, arm64</text>
+        <text x="0" y="14" fill="#4ADE80">✓ BuildKit + Cache Mounts</text>
+        <text x="0" y="28" fill="#4ADE80">✓ Distroless Base (gcr.io/distroless/nodejs20)</text>
+        <text x="0" y="42" fill="#4ADE80">✓ SBOM (Syft) + Sign (Cosign)</text>
+        <text x="0" y="56" fill="#4ADE80">✓ Trivy Scan (Critical=0)</text>
+        <text x="0" y="70" fill="#4ADE80">✓ Push GHCR (ghcr.io/org/repo)</text>
+        <text x="0" y="84" fill="#64748B">Tags: sha, branch, semver</text>
+      </g>
+    </g>
+
+    <line x1="150" y1="0" x2="230" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 4: Staging Deploy -->
+    <g transform="translate(330, 0)">
+      <rect x="-100" y="-40" width="200" height="100" rx="10" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#22D3EE" font-weight="600">4. STAGING DEPLOY</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(-90, -5)">
+        <text x="0" y="0" fill="#4ADE80">✓ Railway Preview Env</text>
+        <text x="0" y="14" fill="#4ADE80">✓ Vercel Preview Deploy</text>
+        <text x="0" y="28" fill="#4ADE80">✓ E2E Tests (Playwright)</text>
+        <text x="0" y="42" fill="#4ADE80">✓ Contract Verification</text>
+        <text x="0" y="56" fill="#4ADE80">✓ Smoke Tests (health, auth)</text>
+        <text x="0" y="70" fill="#FBBF24">✓ Performance Baseline</text>
+        <text x="0" y="84" fill="#64748B">Auto-cleanup on PR close</text>
+      </g>
+    </g>
+
+    <line x1="430" y1="0" x2="510" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 5: Production -->
+    <g transform="translate(610, 0)">
+      <rect x="-90" y="-40" width="180" height="80" rx="10" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#4ADE80" font-weight="600">5. PRODUCTION</text>
+      <text x="0" y="5" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="8" fill="#E2E8F0">Release Tag v*</text>
+      <text x="0" y="20" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Blue/Green (Railway)</text>
+      <text x="0" y="32" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="7" fill="#64748B">Instant Rollback</text>
+    </g>
+  </g>
+
+  <!-- Parallel Deploy Targets -->
+  <g transform="translate(600, 300)">
+    <!-- Railway Backend -->
+    <g transform="translate(-350, 0)">
+      <rect x="-200" y="0" width="400" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#60A5FA" font-weight="600">RAILWAY — BACKEND SERVICES</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-180, 50)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">SERVICES:</text>
+        <text x="0" y="20" fill="#64748B">• api (Node.js 20, 2 replicas)</text>
+        <text x="0" y="38" fill="#64748B">• worker (BullMQ, 4 replicas)</text>
+        <text x="0" y="56" fill="#64748B">• websocket (Socket.io, 2 replicas)</text>
+        <text x="0" y="74" fill="#64748B">• scheduler (Cron, 1 replica)</text>
+
+        <text x="0" y="105" fill="#E2E8F0" font-weight="600">CONFIG:</text>
+        <text x="0" y="125" fill="#64748B">• Health: /health (TCP + HTTP)</text>
+        <text x="0" y="143" fill="#64748B">• Rolling: maxSurge=1, maxUnavailable=0</text>
+        <text x="0" y="161" fill="#64748B">• Sleep: disabled (prod)</text>
+        <text x="0" y="179" fill="#64748B">• Regions: us-east, eu-west</text>
+
+        <text x="0" y="205" fill="#E2E8F0" font-weight="600">INFRA:</text>
+        <text x="0" y="225" fill="#64748B">• PostgreSQL (managed, HA)</text>
+        <text x="0" y="243" fill="#64748B">• Redis (managed, cluster)</text>
+        <text x="0" y="261" fill="#64748B">• Private Network (Railway)</text>
+        <text x="0" y="279" fill="#64748B">• Custom Domain + TLS</text>
+      </g>
+    </g>
+
+    <!-- Vercel Frontend -->
+    <g transform="translate(50, 0)">
+      <rect x="-200" y="0" width="400" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#A78BFA" font-weight="600">VERCEL — FRONTEND + EDGE</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-180, 50)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">FRAMEWORK:</text>
+        <text x="0" y="20" fill="#64748B">Next.js 15 (App Router)</text>
+        <text x="0" y="38" fill="#64748B">React 19 + Server Components</text>
+        <text x="0" y="56" fill="#64748B">Tailwind CSS + shadcn/ui</text>
+
+        <text x="0" y="85" fill="#E2E8F0" font-weight="600">EDGE FUNCTIONS:</text>
+        <text x="0" y="105" fill="#64748B">• Auth Middleware (Edge)</text>
+        <text x="0" y="123" fill="#64748B">• Rate Limit (Edge, 100 req/s)</text>
+        <text x="0" y="141" fill="#64748B">• Geo Routing (US/EU/APAC)</text>
+
+        <text x="0" y="170" fill="#E2E8F0" font-weight="600">DEPLOYMENT:</text>
+        <text x="0" y="190" fill="#64748B">• Preview: every PR (unique URL)</text>
+        <text x="0" y="208" fill="#64748B">• Production: main branch</text>
+        <text x="0" y="226" fill="#64748B">• Rollback: 1-click (30 days)</text>
+        <text x="0" y="244" fill="#64748B">• Analytics: Real User Metrics</text>
+      </g>
+    </g>
+
+    <!-- npm CLI Package -->
+    <g transform="translate(450, 0)">
+      <rect x="-150" y="0" width="300" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FB923C" font-weight="600">NPM — CLI PACKAGE</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-130, 50)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">PUBLISH:</text>
+        <text x="0" y="20" fill="#4ADE80">✓ Changesets → Version</text>
+        <text x="0" y="38" fill="#4ADE80">✓ pnpm publish --access public</text>
+        <text x="0" y="56" fill="#4ADE80">✓ Provenance (SLSA Level 3)</text>
+        <text x="0" y="74" fill="#4ADE80">✓ Registry: npmjs.com</text>
+
+        <text x="0" y="105" fill="#E2E8F0" font-weight="600">ARTIFACTS:</text>
+        <text x="0" y="125" fill="#64748B">• @hgi/cli (bin: hgi)</text>
+        <text x="0" y="143" fill="#64748B">• @hgi/sdk (ESM + Types)</text>
+        <text x="0" y="161" fill="#64748B">• @hgi/contracts (Types only)</text>
+        <text x="0" y="179" fill="#64748B">• @hgi/panani (Runtime)</text>
+
+        <text x="0" y="205" fill="#E2E8F0" font-weight="600">INSTALL:</text>
+        <text x="0" y="225" fill="#64748B">npm i -g @hgi/cli</text>
+        <text x="0" y="243" fill="#64748B">npm i @hgi/sdk @hgi/contracts</text>
+        <text x="0" y="261" fill="#64748B">npx hgi@latest mission run</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom: Observability & Rollback -->
+  <g transform="translate(600, 550)">
+    <rect x="-500" y="0" width="1000" height="200" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FBBF24" font-weight="600">OBSERVABILITY & INCIDENT RESPONSE</text>
+
+    <g transform="translate(-480, 45)" font-family="JetBrains Mono, Menlo, monospace" font-size="8">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">METRICS (Prometheus + Grafana):</text>
+      <text x="20" y="20" fill="#64748B">• HTTP: rate, latency (p50/p95/p99), errors (4xx/5xx)</text>
+      <text x="20" y="38" fill="#64748B">• Mission: throughput, duration, success rate, queue depth</text>
+      <text x="20" y="56" fill="#64748B">• Agent: execution time, memory, CPU, success/failure</text>
+      <text x="20" y="74" fill="#64748B">• Inference: tokens/s, cost/req, provider latency, failover count</text>
+      <text x="20" y="92" fill="#64748B">• System: CPU, Memory, Disk, Network, Pod restarts</text>
+
+      <text x="0" y="115" fill="#E2E8F0" font-weight="600">LOGGING (Structured JSON → Loki):</text>
+      <text x="20" y="135" fill="#64748B">• Correlation IDs (request_id → mission_id → task_id)</text>
+      <text x="20" y="153" fill="#64748B">• Levels: debug, info, warn, error (Pino)</text>
+      <text x="20" y="171" fill="#64748B">• Audit: Immutable (Kavacha ledger)</text>
+
+      <text x="0" y="195" fill="#E2E8F0" font-weight="600">TRACING (OpenTelemetry → Tempo):</text>
+      <text x="20" y="215" fill="#64748B">• Ingress → CENSA → Registry → Panani → Kavacha → Inference → Memory</text>
+
+      <text x="400" y="0" fill="#E2E8F0" font-weight="600">ALERTING (Alertmanager → PagerDuty/Slack):</text>
+      <text x="420" y="20" fill="#EF4444">• P1: Mission success rate < 95% (5m)</text>
+      <text x="420" y="38" fill="#EF4444">• P1: Inference failover > 3/min</text>
+      <text x="420" y="56" fill="#EF4444">• P1: API P99 latency > 5s</text>
+      <text x="420" y="74" fill="#EF4444">• P1: Kavacha DENY rate > 10%</text>
+      <text x="420" y="92" fill="#FBBF24">• P2: Queue depth > 100 (15m)</text>
+      <text x="420" y="110" fill="#FBBF24">• P2: Pod restarts > 5/hr</text>
+      <text x="420" y="128" fill="#FBBF24">• P2: Disk usage > 80%</text>
+
+      <text x="400" y="155" fill="#E2E8F0" font-weight="600">ROLLBACK STRATEGY:</text>
+      <text x="420" y="175" fill="#4ADE80">• Railway: Instant rollback (previous deployment)</text>
+      <text x="420" y="193" fill="#4ADE80">• Vercel: Instant rollback (previous deployment)</text>
+      <text x="420" y="211" fill="#4ADE80">• Database: PITR (5-min RPO), Migration down scripts</text>
+      <text x="420" y="229" fill="#4ADE80">• CLI: npm unpublish (within 72h) / npx hgi@version</text>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">.github/workflows/ci.yml</tspan>  ·  <tspan fill="#FBBF24">.github/workflows/docker.yml</tspan>  ·  <tspan fill="#FBBF24">.github/workflows/deploy-railway.yml</tspan>  ·  <tspan fill="#FBBF24">.github/workflows/deploy-vercel.yml</tspan>  ·  <tspan fill="#FBBF24">Dockerfile.api</tspan>  ·  <tspan fill="#FBBF24">Dockerfile.worker</tspan>  ·  <tspan fill="#FBBF24">railway.json</tspan>  ·  <tspan fill="#FBBF24">vercel.json</tspan>  ·  <tspan fill="#FBBF24">changeset.yml</tspan>
+    </text>
+  </g>
+</svg>

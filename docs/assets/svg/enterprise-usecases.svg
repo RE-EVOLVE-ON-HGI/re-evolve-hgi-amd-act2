@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    ENTERPRISE USE CASES — HGI IN PRODUCTION
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    Mission archetypes across regulated, high-stakes, and AI-native workflows
+  </text>
+
+  <!-- Use Case Cards Grid -->
+  <g transform="translate(600, 130)">
+    <!-- USE CASE 1: Regulated Code Review -->
+    <g transform="translate(-520, -180)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#60A5FA" font-weight="600">REGULATED CODE REVIEW</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">SOC2 / HIPAA / GDPR Compliance Automation</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Analyze PR diffs for compliance violations</text>
+        <text x="10" y="38" fill="#E2E8F0">Generate audit-ready evidence artifacts</text>
+        <text x="10" y="56" fill="#E2E8F0">Enforce policy-as-code (Rego) gates</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• PolicyScanner (Rego + OPA)</text>
+        <text x="10" y="123" fill="#64748B">• DiffAnalyzer (Tree-sitter AST)</text>
+        <text x="10" y="141" fill="#64748B">• EvidenceBuilder (Immutable ledger)</text>
+        <text x="10" y="159" fill="#64748B">• ComplianceReporter (SOC2/HIPAA)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#22C55E">✓ Kavacha: DENY on PII leak, secret exposure</text>
+        <text x="10" y="226" fill="#22C55E">✓ Kavacha: APPROVE only with human sign-off</text>
+      </g>
+    </g>
+
+    <!-- USE CASE 2: Incident Response -->
+    <g transform="translate(40, -180)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#F87171" font-weight="600">INCIDENT RESPONSE AUTOMATION</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">MTTR Reduction via Autonomous Triage & Remediation</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Ingest alerts (PagerDuty, Datadog, CloudWatch)</text>
+        <text x="10" y="38" fill="#E2E8F0">Correlate logs, traces, metrics, deployments</text>
+        <text x="10" y="56" fill="#E2E8F0">Propose & execute safe remediation actions</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• AlertTriage (ML classifier)</text>
+        <text x="10" y="123" fill="#64748B">• RootCauseAnalyzer (Graph RAG)</text>
+        <text x="10" y="141" fill="#64748B">• RunbookExecutor (Safe actions only)</text>
+        <text x="10" y="159" fill="#64748B">• PostmortemGenerator (Blameless)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#EF4444">✗ Kavacha: BLOCK destrcutive actions w/o approval</text>
+        <text x="10" y="226" fill="#22C55E">✓ Kavacha: ALLOW read-only diagnostics auto</text>
+      </g>
+    </g>
+
+    <!-- USE CASE 3: Threat Hunting -->
+    <g transform="translate(520, -180)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#A78BFA" font-weight="600">THREAT HUNTING & SECURITY OPS</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Continuous Adversary Simulation & Detection</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Simulate MITRE ATT&CK techniques (safe)</text>
+        <text x="10" y="38" fill="#E2E8F0">Detect gaps in logging, controls, coverage</text>
+        <text x="10" y="56" fill="#E2E8F0">Generate detection rules (Sigma, YARA, KQL)</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• AdversarySim (MITRE ATT&CK mapper)</text>
+        <text x="10" y="123" fill="#64748B">• DetectionEngineer (Rule synthesis)</text>
+        <text x="10" y="141" fill="#64748B">• CoverageAuditor (Log gap analysis)</text>
+        <text x="10" y="159" fill="#64748B">• ThreatIntelEnricher (MISP, OTX)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#22C55E">✓ Panani: Network isolation, no external calls</text>
+        <text x="10" y="226" fill="#22C55E">✓ Kavacha: Sandbox egress, rate-limited</text>
+      </g>
+    </g>
+
+    <!-- USE CASE 4: Data Pipeline Governance -->
+    <g transform="translate(-520, 60)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#4ADE80" font-weight="600">DATA PIPELINE GOVERNANCE</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Lineage, Quality, Privacy — End-to-End</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Track data lineage across warehouses/lakes</text>
+        <text x="10" y="38" fill="#E2E8F0">Validate quality (Great Expectations style)</text>
+        <text x="10" y="56" fill="#E2E8F0">Enforce PII tagging, retention, access control</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• LineageTracker (SQL parsing + OpenLineage)</text>
+        <text x="10" y="123" fill="#64748B">• QualityValidator (Expectations engine)</text>
+        <text x="10" y="141" fill="#64748B">• PrivacyScanner (PII detection + tagging)</text>
+        <text x="10" y="159" fill="#64748B">• ContractEnforcer (Schema evolution)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#22C55E">✓ Memory: Episodic (run history), Semantic (schemas)</text>
+        <text x="10" y="226" fill="#22C55E">✓ Kavacha: DENY on untagged PII egress</text>
+      </g>
+    </g>
+
+    <!-- USE CASE 5: AI Model Governance -->
+    <g transform="translate(40, 60)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FB923C" font-weight="600">AI MODEL GOVERNANCE & MLOPS</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Model Cards, Eval, Drift, Explainability</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Continuous eval (accuracy, bias, toxicity)</text>
+        <text x="10" y="38" fill="#E2E8F0">Drift detection (data, concept, prediction)</text>
+        <text x="10" y="56" fill="#E2E8F0">Generate Model Cards (EU AI Act ready)</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• ModelEvaluator (Benchmarks + custom)</text>
+        <text x="10" y="123" fill="#64748B">• DriftMonitor (KS-test, PSI, embedding)</text>
+        <text x="10" y="141" fill="#64748B">• Explainer (SHAP, LIME, counterfactual)</text>
+        <text x="10" y="159" fill="#64748B">• CardGenerator (Template + evidence)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#22C55E">✓ CENSA: Cost/latency routing with policy override</text>
+        <text x="10" y="226" fill="#22C55E">✓ Kavacha: DENY on unsafe model outputs</text>
+      </g>
+    </g>
+
+    <!-- USE CASE 6: Developer Productivity -->
+    <g transform="translate(520, 60)">
+      <rect x="-240" y="0" width="480" height="220" rx="12" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#22D3EE" font-weight="600">DEVELOPER PRODUCTIVITY PLATFORM</text>
+      <text x="0" y="45" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#E2E8F0">Code Gen, Review, Docs, Migration — Self-Service</text>
+
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-220, 65)">
+        <text x="0" y="0" fill="#FBBF24" font-weight="600">MISSION:</text>
+        <text x="10" y="20" fill="#E2E8F0">Generate code from specs (OpenAPI, GraphQL)</text>
+        <text x="10" y="38" fill="#E2E8F0">Automated PR reviews (style, security, perf)</text>
+        <text x="10" y="56" fill="#E2E8F0">Legacy migration (JS→TS, REST→GraphQL)</text>
+
+        <text x="0" y="85" fill="#FBBF24" font-weight="600">AGENTS:</text>
+        <text x="10" y="105" fill="#64748B">• CodeGenerator (Spec → Implementation)</text>
+        <text x="10" y="123" fill="#64748B">• PRReviewer (Multi-dimensional)</text>
+        <text x="10" y="141" fill="#64748B">• DocSyncer (Code ↔ Docs bidirectional)</text>
+        <text x="10" y="159" fill="#64748B">• Migrator (AST transforms + verification)</text>
+
+        <text x="0" y="188" fill="#FBBF24" font-weight="600">GOVERNANCE:</text>
+        <text x="10" y="208" fill="#22C55E">✓ Panani: No FS write, read-only repo access</text>
+        <text x="10" y="226" fill="#22C55E">✓ CENSA: Prefer AMD Instinct for code tasks</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Common Patterns Row -->
+  <g transform="translate(600, 480)">
+    <text x="-520" y="0" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="700">COMMON PATTERNS ACROSS ALL USE CASES</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(-480, 25)">
+      <!-- Pattern 1 -->
+      <rect x="0" y="0" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="140" y="20" text-anchor="middle" fill="#60A5FA" font-weight="600" font-size="10">HUMAN-IN-THE-LOOP</text>
+      <text x="10" y="40" fill="#E2E8F0" font-size="8">✓ Approval gates for mutating actions</text>
+      <text x="10" y="56" fill="#E2E8F0" font-size="8">✓ Escalation on low confidence</text>
+      <text x="10" y="72" fill="#E2E8F0" font-size="8">✓ Audit trail for every decision</text>
+      <text x="10" y="90" fill="#E2E8F0" font-size="8">✓ Override capability (break-glass)</text>
+      <text x="10" y="110" fill="#64748B" font-size="7">Kavacha + CENSA confidence</text>
+      <text x="10" y="130" fill="#64748B" font-size="7">Memory: decision history</text>
+
+      <!-- Pattern 2 -->
+      <rect x="300" y="0" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="440" y="20" text-anchor="middle" fill="#A78BFA" font-weight="600" font-size="10">POLICY-AS-CODE</text>
+      <text x="310" y="40" fill="#E2E8F0" font-size="8">✓ Rego policies versioned in Git</text>
+      <text x="310" y="56" fill="#E2E8F0" font-size="8">✓ Unit tests for every policy</text>
+      <text x="310" y="72" fill="#E2E8F0" font-size="8">✓ Dry-run mode before enforce</text>
+      <text x="310" y="90" fill="#E2E8F0" font-size="8">✓ Gradual rollout (monitor → enforce)</text>
+      <text x="310" y="110" fill="#64748B" font-size="7">Kavacha OPA engine</text>
+      <text x="310" y="130" fill="#64748B" font-size="7">CENSA intent overrides</text>
+
+      <!-- Pattern 3 -->
+      <rect x="600" y="0" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="740" y="20" text-anchor="middle" fill="#4ADE80" font-weight="600" font-size="10">OBSERVABILITY FIRST</text>
+      <text x="610" y="40" fill="#E2E8F0" font-size="8">✓ Structured logs (JSON, correlation IDs)</text>
+      <text x="610" y="56" fill="#E2E8F0" font-size="8">✓ Metrics: RED + USE method</text>
+      <text x="610" y="72" fill="#E2E8F0" font-size="8">✓ Distributed tracing (W3C)</text>
+      <text x="610" y="90" fill="#E2E8F0" font-size="8">✓ Dashboards per mission type</text>
+      <text x="610" y="110" fill="#64748B" font-size="7">Prometheus + Grafana</text>
+      <text x="610" y="130" fill="#64748B" font-size="7">OpenTelemetry native</text>
+
+      <!-- Pattern 4 -->
+      <rect x="0" y="170" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="140" y="190" text-anchor="middle" fill="#FBBF24" font-weight="600" font-size="10">COST-AWARE ROUTING</text>
+      <text x="10" y="210" fill="#E2E8F0" font-size="8">✓ AMD Instinct first (owned hardware)</text>
+      <text x="10" y="226" fill="#E2E8F0" font-size="8">✓ Fireworks for specialized models</text>
+      <text x="10" y="242" fill="#E2E8F0" font-size="8">✓ OpenRouter as last resort</text>
+      <text x="10" y="258" fill="#E2E8F0" font-size="8">✓ Budget guards per mission/org</text>
+      <text x="10" y="278" fill="#64748B" font-size="7">CENSA adaptive provider</text>
+      <text x="10" y="298" fill="#64748B" font-size="7">LiteLLM gateway + metrics</text>
+
+      <!-- Pattern 5 -->
+      <rect x="300" y="170" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="440" y="190" text-anchor="middle" fill="#FB923C" font-weight="600" font-size="10">MEMORY-AUGMENTED</text>
+      <text x="310" y="210" fill="#E2E8F0" font-size="8">✓ Episodic: mission/task history</text>
+      <text x="310" y="226" fill="#E2E8F0" font-size="8">✓ Semantic: docs, code, patterns</text>
+      <text x="310" y="242" fill="#E2E8F0" font-size="8">✓ Hybrid retrieval (keyword + vector)</text>
+      <text x="310" y="258" fill="#E2E8F0" font-size="8">✓ Context injection at orchestration</text>
+      <text x="310" y="278" fill="#64748B" font-size="7">PostgreSQL + pgvector</text>
+      <text x="310" y="298" fill="#64748B" font-size="7">Qdrant for dense vectors</text>
+
+      <!-- Pattern 6 -->
+      <rect x="600" y="170" width="280" height="150" rx="8" fill="url(#glassGrad)" stroke="#334155" stroke-width="1"/>
+      <text x="740" y="190" text-anchor="middle" fill="#22D3EE" font-weight="600" font-size="10">SANDBOXED EXECUTION</text>
+      <text x="610" y="210" fill="#E2E8F0" font-size="8">✓ Node.js vm isolation (Panani X)</text>
+      <text x="610" y="226" fill="#E2E8F0" font-size="8">✓ No filesystem, no network by default</text>
+      <text x="610" y="242" fill="#E2E8F0" font-size="8">✓ CPU/memory/time quotas enforced</text>
+      <text x="610" y="258" fill="#E2E8F0" font-size="8">✓ Deterministic replay capability</text>
+      <text x="610" y="278" fill="#64748B" font-size="7">VM isolates + seccomp</text>
+      <text x="610" y="298" fill="#64748B" font-size="7">WASM future (wasmtime)</text>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">apps/backend/src/missions/</tspan>  ·  <tspan fill="#FBBF24">packages/agents/src/</tspan>  ·  <tspan fill="#FBBF24">packages/kavacha/policies/</tspan>  ·  <tspan fill="#FBBF24">packages/censa/src/intent-router.ts</tspan>  ·  <tspan fill="#FBBF24">packages/panani/src/sandbox.ts</tspan>
+    </text>
+  </g>
+</svg>

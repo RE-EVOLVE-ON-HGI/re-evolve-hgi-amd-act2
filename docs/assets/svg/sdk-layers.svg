@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    SDK LAYERS — CLIENT ARCHITECTURE
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    TypeScript SDK · REST API · GraphQL · WebSocket · CLI · Local Runtime
+  </text>
+
+  <!-- Layer Stack (bottom to top) -->
+  <g transform="translate(600, 400)">
+    <!-- Layer 1: Transport (bottom) -->
+    <g transform="translate(0, 200)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#60A5FA" font-weight="600">LAYER 1: TRANSPORT</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">HTTP/2 + TLS 1.3  •  WebSocket (WSS)  •  gRPC (future)  •  Server-Sent Events</text>
+    </g>
+
+    <!-- Layer 2: Protocol -->
+    <g transform="translate(0, 110)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#A78BFA" font-weight="600">LAYER 2: PROTOCOL</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">REST (OpenAPI 3.1)  •  GraphQL (Apollo Federation)  •  JSON-RPC 2.0 (WebSocket)</text>
+    </g>
+
+    <!-- Layer 3: Contracts -->
+    <g transform="translate(0, 20)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FBBF24" font-weight="600">LAYER 3: CONTRACTS (@hgi/contracts)</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Zod → TypeScript Types  •  Single Source of Truth  •  Mission, Task, Agent, Intent, DAG, Policy, Memory, Audit Event</text>
+    </g>
+
+    <!-- Layer 4: Client Core -->
+    <g transform="translate(0, -70)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#4ADE80" font-weight="600">LAYER 4: CLIENT CORE (@hgi/sdk)</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Auth (Bearer + Refresh)  •  Retry/Backoff  •  Request/Response Interceptors  •  Streaming Helpers  •  Error Normalization</text>
+    </g>
+
+    <!-- Layer 5: Domain APIs -->
+    <g transform="translate(0, -160)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#FB923C" font-weight="600">LAYER 5: DOMAIN APIs</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">mission.*  •  agent.*  •  memory.*  •  governance.*  •  analytics.*  •  Real-time hooks (useMission, useAgents, useMemory)</text>
+    </g>
+
+    <!-- Layer 6: Integrations (top) -->
+    <g transform="translate(0, -250)">
+      <rect x="-400" y="-30" width="800" height="60" rx="8" fill="url(#glassGrad)" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="14" fill="#22D3EE" font-weight="600">LAYER 6: INTEGRATIONS & EXTENSIONS</text>
+      <text x="0" y="28" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="9" fill="#E2E8F0">Next.js / React Query / SWR  •  VS Code Extension  •  GitHub Action  •  Custom Agents  •  Webhooks</text>
+    </g>
+  </g>
+
+  <!-- Left Panel: Authentication Flow -->
+  <g transform="translate(50, 120)">
+    <rect x="0" y="0" width="220" height="300" rx="10" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="110" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#60A5FA" font-weight="600">AUTHENTICATION</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 45)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">API KEY (Server-to-Server)</text>
+      <text x="0" y="20" fill="#64748B">Authorization: Bearer hgi_sk_...</text>
+      <text x="0" y="38" fill="#64748B">Scopes: missions:read agents:write</text>
+      <text x="0" y="56" fill="#64748B">Rotation: 90 days, auto-renew</text>
+
+      <text x="0" y="85" fill="#E2E8F0" font-weight="600">OAUTH 2.1 (User Login)</text>
+      <text x="0" y="105" fill="#64748B">Device Flow (CLI)</text>
+      <text x="0" y="123" fill="#64748B">PKCE + Refresh Tokens</text>
+      <text x="0" y="141" fill="#64748B">Access: 15min, Refresh: 30d</text>
+
+      <text x="0" y="170" fill="#E2E8F0" font-weight="600">SDK HANDLING:</text>
+      <text x="0" y="190" fill="#64748B">auto-refresh on 401</text>
+      <text x="0" y="208" fill="#64748B">token storage: secure OS keychain</text>
+      <text x="0" y="226" fill="#64748B">offline queue + replay</text>
+
+      <text x="0" y="255" fill="#E2E8F0" font-weight="600">RATE LIMITS:</text>
+      <text x="0" y="275" fill="#64748B">API Key: 5K req/min</text>
+      <text x="0" y="293" fill="#64748B">OAuth: 1K req/min</text>
+    </g>
+  </g>
+
+  <g transform="translate(50, 440)">
+    <rect x="0" y="0" width="220" height="300" rx="10" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="110" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#F87171" font-weight="600">ERROR HANDLING</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(10, 45)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">NORMALIZED ERRORS:</text>
+      <text x="0" y="20" fill="#E2E8F0">class HGIError extends Error {</text>
+      <text x="20" y="40" fill="#64748B">code: ErrorCode;</text>
+      <text x="20" y="58" fill="#64748B">status: number;</text>
+      <text x="20" y="76" fill="#64748B">details: unknown;</text>
+      <text x="20" y="94" fill="#64748B">retryable: boolean;</text>
+      <text x="0" y="112" fill="#E2E8F0">}</text>
+
+      <text x="0" y="135" fill="#E2E8F0" font-weight="600">CODES:</text>
+      <text x="0" y="155" fill="#EF4444">AUTH_EXPIRED, AUTH_INVALID</text>
+      <text x="0" y="173" fill="#EF4444">VALIDATION_ERROR</text>
+      <text x="0" y="191" fill="#EF4444">NOT_FOUND</text>
+      <text x="0" y="209" fill="#FBBF24">RATE_LIMITED (retry-after)</text>
+      <text x="0" y="227" fill="#FBBF24">UPSTREAM_ERROR (retryable)</text>
+      <text x="0" y="245" fill="#FBBF24">GOVERNANCE_DENIED</text>
+      <text x="0" y="263" fill="#FBBF24">EXECUTION_TIMEOUT</text>
+      <text x="0" y="281" fill="#64748B">All retryable → auto-retry</text>
+    </g>
+  </g>
+
+  <!-- Right Panel: API Examples -->
+  <g transform="translate(930, 120)">
+    <rect x="0" y="0" width="220" height="620" rx="10" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="110" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="11" fill="#A78BFA" font-weight="600">DOMAIN API REFERENCE</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="7" transform="translate(10, 40)">
+      <g transform="translate(0, 0)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">MISSION:</text>
+        <text x="0" y="16" fill="#64748B">create(input)</text>
+        <text x="0" y="32" fill="#64748B">get(id)</text>
+        <text x="0" y="48" fill="#64748B">stream(id)</text>
+        <text x="0" y="64" fill="#64748B">retry(id)</text>
+        <text x="0" y="80" fill="#64748B">fork(id, changes?)</text>
+        <text x="0" y="96" fill="#64748B">cancel(id)</text>
+        <text x="0" y="112" fill="#64748B">list(filter?)</text>
+      </g>
+      <g transform="translate(0, 130)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">AGENT:</text>
+        <text x="0" y="16" fill="#64748B">list()</text>
+        <text x="0" y="32" fill="#64748B">get(id)</text>
+        <text x="0" y="48" fill="#64748B">invoke(id, input)</text>
+        <text x="0" y="64" fill="#64748B">capabilities()</text>
+        <text x="0" y="80" fill="#64748B">health()</text>
+      </g>
+      <g transform="translate(0, 230)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">MEMORY:</text>
+        <text x="0" y="16" fill="#64748B">search(query, opts?)</text>
+        <text x="0" y="32" fill="#64748B">episodic.get(id)</text>
+        <text x="0" y="48" fill="#64748B">semantic.upsert(vec)</text>
+        <text x="0" y="64" fill="#64748B">context.inject(taskId)</text>
+        <text x="0" y="80" fill="#64748B">summarize(missionId)</text>
+      </g>
+      <g transform="translate(0, 330)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">GOVERNANCE:</text>
+        <text x="0" y="16" fill="#64748B">policies.list()</text>
+        <text x="0" y="32" fill="#64748B">policies.upsert(p)</text>
+        <text x="0" y="48" fill="#64748B">audit.events(query)</text>
+        <text x="0" y="64" fill="#64748B">compliance.report()</text>
+      </g>
+      <g transform="translate(0, 410)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">ANALYTICS:</text>
+        <text x="0" y="16" fill="#64748B">usage(cost, tokens)</text>
+        <text x="0" y="32" fill="#64748B">performance(p50, p99)</text>
+        <text x="0" y="48" fill="#64748B">errors(by code)</text>
+        <text x="0" y="64" fill="#64748B">routing(decisions)</text>
+      </g>
+      <g transform="translate(0, 500)">
+        <text x="0" y="0" fill="#E2E8F0" font-weight="600">REAL-TIME HOOKS:</text>
+        <text x="0" y="16" fill="#64748B">useMission(id)</text>
+        <text x="0" y="32" fill="#64748B">useAgents()</text>
+        <text x="0" y="48" fill="#64748B">useMemorySearch()</text>
+        <text x="0" y="64" fill="#64748B">useGovernanceEvents()</text>
+        <text x="0" y="80" fill="#64748B">useCostTracker()</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Center Bottom: CLI Commands -->
+  <g transform="translate(600, 520)">
+    <rect x="-400" y="0" width="800" height="240" rx="10" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="25" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#FB923C" font-weight="600">CLI COMMANDS (@hgi/cli) — Local-First Parity</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-380, 50)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">MISSION MANAGEMENT:</text>
+      <text x="0" y="20" fill="#60A5FA">hgi mission create "Build REST API" --intent code_generation</text>
+      <text x="0" y="38" fill="#60A5FA">hgi mission run ./mission.yaml --watch --stream</text>
+      <text x="0" y="56" fill="#60A5FA">hgi mission list --status running --limit 20</text>
+      <text x="0" y="74" fill="#60A5FA">hgi mission logs <id> --follow --format json</text>
+      <text x="0" y="92" fill="#60A5FA">hgi mission retry <id> --from-failed</text>
+      <text x="0" y="110" fill="#60A5FA">hgi mission fork <id> --edit</text>
+
+      <text x="0" y="135" fill="#E2E8F0" font-weight="600">AGENT OPERATIONS:</text>
+      <text x="0" y="155" fill="#A78BFA">hgi agent list --capability research</text>
+      <text x="0" y="173" fill="#A78BFA">hgi agent invoke code-agent --input '{"task": "..."}'</text>
+      <text x="0" y="191" fill="#A78BFA">hgi agent register ./my-agent --manifest skill.json</text>
+
+      <text x="200" y="0" fill="#E2E8F0" font-weight="600">LOCAL RUNTIME (Panani X):</text>
+      <text x="200" y="20" fill="#FB923C">hgi panani run ./script.ts --timeout 60s</text>
+      <text x="200" y="38" fill="#FB923C">hgi panani exec 'const x = 1+1; console.log(x)'</text>
+      <text x="200" y="56" fill="#FB923C">hgi panani benchmark ./script.ts --runs 100</text>
+      <text x="200" y="74" fill="#FB923C">hgi panani inspect ./script.ts --ast --policy</text>
+
+      <text x="200" y="110" fill="#E2E8F0" font-weight="600">MEMORY & GOVERNANCE:</text>
+      <text x="200" y="130" fill="#4ADE80">hgi memory search "auth patterns" --top 5</text>
+      <text x="200" y="148" fill="#4ADE80">hgi memory export --format parquet --since 7d</text>
+      <text x="200" y="166" fill="#F87171">hgi policy list --category data_privacy</text>
+      <text x="200" y="184" fill="#F87171">hgi policy test ./policy.rego --input ./test.json</text>
+
+      <text x="400" y="0" fill="#E2E8F0" font-weight="600">CONFIG & AUTH:</text>
+      <text x="400" y="20" fill="#22D3EE">hgi config set apiKey hgi_sk_...</text>
+      <text x="400" y="38" fill="#22D3EE">hgi config get baseUrl</text>
+      <text x="400" y="56" fill="#22D3EE">hgi auth login --device</text>
+      <text x="400" y="74" fill="#22D3EE">hgi auth status</text>
+      <text x="400" y="92" fill="#22D3EE">hgi auth logout</text>
+      <text x="400" y="110" fill="#22D3EE">hgi doctor --check-all</text>
+    </g>
+  </g>
+
+  <!-- Key Files Footer -->
+  <g transform="translate(600, 780)">
+    <text x="0" y="0" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#64748B">
+      <tspan fill="#FBBF24">packages/sdk/src/client.ts</tspan>  ·  <tspan fill="#FBBF24">packages/sdk/src/errors.ts</tspan>  ·  <tspan fill="#FBBF24">packages/sdk/src/hooks/*.ts</tspan>  ·  <tspan fill="#FBBF24">packages/contracts/src/*.ts</tspan>  ·  <tspan fill="#FBBF24">apps/cli/src/commands/*.ts</tspan>  ·  <tspan fill="#FBBF24">apps/cli/src/panani/*.ts</tspan>
+    </text>
+  </g>
+</svg>

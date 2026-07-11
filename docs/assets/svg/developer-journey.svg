@@ -1,0 +1,272 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080D16;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0C1522;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FBBF24;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#60A5FA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4ADE80;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A78BFA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F87171;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#22D3EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FB923C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0F172A;stop-opacity:0.95" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#1E293B" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#F59E0B" opacity="0.8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
+  <text x="600" y="40" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="24" font-weight="700" fill="url(#goldGrad)" filter="url(#textGlow)">
+    DEVELOPER JOURNEY — FROM GOAL TO RESULT
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#94A3B8">
+    CLI · SDK · API · Dashboard · Local-First · Cloud-Native
+  </text>
+
+  <!-- Journey Stages -->
+  <g transform="translate(600, 140)">
+    <!-- Stage 1: Install -->
+    <g transform="translate(-500, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#60A5FA" font-weight="600">1. INSTALL</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">CLI:</text>
+        <text x="0" y="16" fill="#64748B">npm i -g @hgi/cli</text>
+        <text x="0" y="36" fill="#E2E8F0">SDK:</text>
+        <text x="0" y="52" fill="#64748B">npm i @hgi/sdk</text>
+        <text x="0" y="72" fill="#E2E8F0">Docker:</text>
+        <text x="0" y="88" fill="#64748B">docker run hgi/backend</text>
+      </g>
+    </g>
+
+    <line x1="-400" y1="0" x2="-320" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 2: Auth -->
+    <g transform="translate(-220, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#A78BFA" font-weight="600">2. AUTHENTICATE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">CLI:</text>
+        <text x="0" y="16" fill="#64748B">hgi auth login</text>
+        <text x="0" y="36" fill="#E2E8F0">Device Flow</text>
+        <text x="0" y="52" fill="#64748B">→ Browser OAuth</text>
+        <text x="0" y="72" fill="#E2E8F0">SDK:</text>
+        <text x="0" y="88" fill="#64748B">new HGIClient({</text>
+        <text x="15" y="104" fill="#64748B">apiKey: "hgi_..."</text>
+        <text x="0" y="120" fill="#64748B">})</text>
+      </g>
+    </g>
+
+    <line x1="-120" y1="0" x2="-40" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 3: Define Goal -->
+    <g transform="translate(40, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#goldGrad)" stroke-width="3" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FBBF24" font-weight="600">3. DEFINE GOAL</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">Natural Language:</text>
+        <text x="0" y="16" fill="#64748B">"Build a REST API</text>
+        <text x="0" y="32" fill="#64748B">with auth + tests"</text>
+        <text x="0" y="52" fill="#E2E8F0">Structured Spec:</text>
+        <text x="0" y="68" fill="#64748B">{ intent: "CODE_GEN",</text>
+        <text x="10" y="84" fill="#64748B">spec: { framework:"fastify",</text>
+        <text x="10" y="100" fill="#64748B">database: "postgres" } }</text>
+      </g>
+    </g>
+
+    <line x1="140" y1="0" x2="220" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 4: Execute -->
+    <g transform="translate(320, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#FB923C" font-weight="600">4. EXECUTE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">CLI:</text>
+        <text x="0" y="16" fill="#64748B">hgi mission run \</text>
+        <text x="10" y="32" fill="#64748B">--goal "..." --stream</text>
+        <text x="0" y="52" fill="#E2E8F0">SDK:</text>
+        <text x="0" y="68" fill="#64748B">for await (const</text>
+        <text x="10" y="84" fill="#64748B">event of client.mission</text>
+        <text x="10" y="100" fill="#64748B">.stream(goal)) {}</text>
+        <text x="0" y="120" fill="#E2E8F0">Dashboard:</text>
+        <text x="0" y="136" fill="#64748B">Click "Run Mission"</text>
+      </g>
+    </g>
+
+    <line x1="420" y1="0" x2="500" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 5: Observe -->
+    <g transform="translate(600, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#4ADE80" font-weight="600">5. OBSERVE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">Real-time Stream:</text>
+        <text x="0" y="16" fill="#64748B">Task started → Agent</text>
+        <text x="0" y="32" fill="#64748B">Task completed →</text>
+        <text x="0" y="48" fill="#60A5FA">Result chunks →</text>
+        <text x="0" y="64" fill="#A78BFA">Mission complete</text>
+        <text x="0" y="84" fill="#E2E8F0">Debug:</text>
+        <text x="0" y="100" fill="#64748B">DAG visual, logs,</text>
+        <text x="0" y="116" fill="#64748B">metrics, trace</text>
+      </g>
+    </g>
+
+    <line x1="700" y1="0" x2="780" y2="0" stroke="url(#goldGrad)" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <!-- Stage 6: Iterate -->
+    <g transform="translate(880, 0)">
+      <rect x="-100" y="-60" width="200" height="120" rx="12" fill="url(#glassGrad)" stroke="url(#redGrad)" stroke-width="2" filter="url(#glow)"/>
+      <text x="0" y="-35" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="12" fill="#F87171" font-weight="600">6. ITERATE</text>
+      <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(-90, -15)">
+        <text x="0" y="0" fill="#E2E8F0">Refine:</text>
+        <text x="0" y="16" fill="#64748B">hgi mission retry</text>
+        <text x="0" y="32" fill="#64748B">--task=code-gen --feedback</text>
+        <text x="0" y="52" fill="#E2E8F0">Branch:</text>
+        <text x="0" y="68" fill="#64748B">hgi mission fork</text>
+        <text x="0" y="84" fill="#64748B">--from=step-3</text>
+        <text x="0" y="104" fill="#E2E8F0">Context:</text>
+        <text x="0" y="120" fill="#64748B">Auto-loaded from</text>
+        <text x="0" y="136" fill="#64748B">Memory Vault</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Detailed Flows Below -->
+  <!-- Left: CLI Flow -->
+  <g transform="translate(50, 320)">
+    <rect x="0" y="0" width="350" height="440" rx="12" fill="url(#glassGrad)" stroke="url(#blueGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#60A5FA" font-weight="600">CLI WORKFLOW</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(20, 50)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">$ hgi mission run \</text>
+      <text x="20" y="20" fill="#E2E8F0">  --goal "Build auth API" \</text>
+      <text x="20" y="40" fill="#E2E8F0">  --intent CODE_GENERATION \</text>
+      <text x="20" y="60" fill="#E2E8F0">  --stream \</text>
+      <text x="20" y="80" fill="#E2E8F0">  --output json</text>
+
+      <text x="0" y="110" fill="#FBBF24" font-weight="600">▸ Submitting goal...</text>
+      <text x="0" y="130" fill="#60A5FA">✓ Goal validated (mission_abc123)</text>
+      <text x="0" y="150" fill="#FBBF24">▸ CENSA planning...</text>
+      <text x="0" y="170" fill="#A78BFA">✓ DAG created (8 tasks, 3 parallel)</text>
+      <text x="0" y="190" fill="#FBBF24">▸ Matching agents...</text>
+      <text x="0" y="210" fill="#A78BFA">✓ CodeAgent assigned (conf 0.94)</text>
+      <text x="0" y="230" fill="#FBBF24">▸ Executing in Panani X...</text>
+      <text x="0" y="250" fill="#FB923C">▸ Streaming output:</text>
+      <text x="20" y="270" fill="#64748B">[code-gen] Writing src/auth/routes.ts</text>
+      <text x="20" y="290" fill="#64748B">[code-gen] Writing src/auth/middleware.ts</text>
+      <text x="20" y="310" fill="#64748B">[test-gen] Writing tests/auth.test.ts</text>
+      <text x="0" y="330" fill="#4ADE80" font-weight="600">▸ Kavacha scan: PASS</text>
+      <text x="0" y="350" fill="#4ADE80" font-weight="600">▸ Memory stored (episodic + semantic)</text>
+      <text x="0" y="370" fill="#FBBF24" font-weight="600">✓ Mission complete (2.3s)</text>
+      <text x="0" y="390" fill="#64748B">Output: ./out/mission_abc123/</text>
+    </g>
+  </g>
+
+  <!-- Center: SDK Flow -->
+  <g transform="translate(425, 320)">
+    <rect x="0" y="0" width="350" height="440" rx="12" fill="url(#glassGrad)" stroke="url(#purpleGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#A78BFA" font-weight="600">SDK WORKFLOW (TypeScript)</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="8" transform="translate(20, 50)">
+      <text x="0" y="0" fill="#E2E8F0">import { HGIClient } from '@hgi/sdk';</text>
+      <text x="0" y="20" fill="#E2E8F0">const client = new HGIClient({</text>
+      <text x="20" y="40" fill="#64748B">apiKey: process.env.HGI_API_KEY,</text>
+      <text x="20" y="60" fill="#64748B">baseUrl: 'https://api.hgi.dev',</text>
+      <text x="0" y="80" fill="#E2E8F0">});</text>
+      <text x="0" y="100" fill="#64748B">// Streaming mission execution</text>
+      <text x="0" y="120" fill="#E2E8F0">for await (const event of</text>
+      <text x="20" y="140" fill="#E2E8F0">client.mission.stream({</text>
+      <text x="40" y="160" fill="#64748B">goal: "Build auth API",</text>
+      <text x="40" y="180" fill="#64748B">intent: Intent.CODE_GENERATION,</text>
+      <text x="20" y="200" fill="#E2E8F0">})) {</text>
+      <text x="40" y="220" fill="#64748B">switch (event.type) {</text>
+      <text x="60" y="240" fill="#E2E8F0">case 'task.started':</text>
+      <text x="80" y="260" fill="#64748B">console.log(event.task.name);</text>
+      <text x="60" y="280" fill="#E2E8F0">break;</text>
+      <text x="60" y="300" fill="#E2E8F0">case 'task.completed':</text>
+      <text x="80" y="320" fill="#64748B">console.log(event.result.stdout);</text>
+      <text x="60" y="340" fill="#E2E8F0">break;</text>
+      <text x="60" y="360" fill="#E2E8F0">case 'mission.completed':</text>
+      <text x="80" y="380" fill="#64748B">return event.result;</text>
+      <text x="20" y="400" fill="#E2E8F0">}</text>
+      <text x="0" y="420" fill="#E2E8F0">}</text>
+    </g>
+  </g>
+
+  <!-- Right: API / Dashboard Flow -->
+  <g transform="translate(800, 320)">
+    <rect x="0" y="0" width="350" height="440" rx="12" fill="url(#glassGrad)" stroke="url(#greenGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="175" y="30" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="13" fill="#4ADE80" font-weight="600">REST API + DASHBOARD</text>
+
+    <g font-family="JetBrains Mono, Menlo, monospace" font-size="9" transform="translate(20, 50)">
+      <text x="0" y="0" fill="#E2E8F0" font-weight="600">REST ENDPOINTS:</text>
+      <text x="0" y="22" fill="#64748B">POST   /api/v1/missions</text>
+      <text x="0" y="40" fill="#64748B">GET    /api/v1/missions/:id</text>
+      <text x="0" y="58" fill="#64748B">GET    /api/v1/missions/:id/stream</text>
+      <text x="0" y="76" fill="#64748B">POST   /api/v1/missions/:id/retry</text>
+      <text x="0" y="94" fill="#64748B">POST   /api/v1/missions/:id/fork</text>
+      <text x="0" y="112" fill="#64748B">GET    /api/v1/agents</text>
+      <text x="0" y="130" fill="#64748B">GET    /api/v1/memory/search</text>
+      <text x="0" y="148" fill="#64748B">GET    /api/v1/audit/events</text>
+
+      <text x="0" y="180" fill="#E2E8F0" font-weight="600">DASHBOARD (Next.js 15):</text>
+      <text x="0" y="210" fill="#64748B">• Mission Builder (visual DAG)</text>
+      <text x="0" y="230" fill="#64748B">• Real-time Execution View</text>
+      <text x="0" y="250" fill="#64748B">• Agent Registry Explorer</text>
+      <text x="0" y="270" fill="#64748B">• Memory Vault Browser</text>
+      <text x="0" y="290" fill="#64748B">• Kavacha Policy Editor</text>
+      <text x="0" y="310" fill="#64748B">• Analytics & Cost Tracking</text>
+
+      <text x="0" y="340" fill="#E2E8F0" font-weight="600">WEBSOCKET:</text>
+      <text x="0" y="362" fill="#64748B">wss://api.hgi.dev/ws/mission/:id</text>
+      <text x="0" y="382" fill="#64748B">Events: task.*, mission.*,</text>
+      <text x="0" y="402" fill="#64748B">agent.*, governance.*</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Local-First Dev -->
+  <g transform="translate(600, 770)">
+    <rect x="-500" y="0" width="1000" height="25" rx="6" fill="url(#glassGrad)" stroke="url(#orangeGrad)" stroke-width="1.5" filter="url(#glow)"/>
+    <text x="0" y="15" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" font-size="10" fill="#FB923C" font-weight="600">
+      LOCAL-FIRST DEVELOPMENT:  hgi panani run script.ts  |  hgi panani exec 'console.log("hello")'  |  Zero cloud deps for sandbox  •  Full parity with cloud runtime
+    </text>
+  </g>
+</svg>
