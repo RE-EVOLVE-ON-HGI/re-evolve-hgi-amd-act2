@@ -27,9 +27,9 @@
 **[Live Demo](https://frontend-5bsp61y3v-next-unicorns-projects.vercel.app)** · **[Architecture](#-section-02--os-overview--architecture)** · **[Quick Start](#-section-07--developer-journey)** · **[Demo Script](DEMO_SCRIPT.md)** · **[Judge Guide](JUDGE_GUIDE.md)** · **[Slide Outline](SLIDE_OUTLINE.md)**
 
 **Production URLs**
-- Frontend: https://frontend-5bsp61y3v-next-unicorns-projects.vercel.app
-- Backend: https://backend-cl4nwlvro-next-unicorns-projects.vercel.app
-- Health: https://backend-cl4nwlvro-next-unicorns-projects.vercel.app/health
+- Frontend: https://release-certification.vercel.app
+- Backend: https://release-certification.vercel.app/api
+- Health: https://release-certification.vercel.app/api/model/health
 
 </div>
 
