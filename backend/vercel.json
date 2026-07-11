@@ -1,7 +1,12 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": 2,
   "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/build-step",
+      "config": {
+        "cmd": "npm run build"
+      }
+    },
     {
       "src": "dist/main.js",
       "use": "@vercel/node"
