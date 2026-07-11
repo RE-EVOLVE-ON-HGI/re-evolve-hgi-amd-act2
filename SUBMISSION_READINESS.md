@@ -19,7 +19,7 @@
 | **Phase 6: Passcode Feature Flag** | ✅ PASS | Passcode overlay modal protects the `/hq` dashboard. |
 | **Phase 7: Hardware Guide** | ✅ PASS | `docs/AMD_INTEGRATION_GUIDE.md` is complete and committed. |
 | **Phase 8: Vercel CDN Assets** | ✅ PASS | All 11 SVG assets render on raw GitHub URLs. |
-| **Phase 9: Live Endpoint** | ✅ PASS | Live at https://frontend-alpha-rose-25.vercel.app |
+| **Phase 9: Live Endpoint** | ✅ PASS | Live at https://release-certification.vercel.app |
 
 ---
 

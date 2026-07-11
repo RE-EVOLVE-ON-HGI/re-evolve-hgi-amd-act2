@@ -5,7 +5,7 @@
 
 ## 1. Live Endpoint Verification
 
-*   **Production Deployment URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
+*   **Production Deployment URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
 *   **Vercel Build Result**: Success (0 errors, 0 warnings, static routes optimized)
 *   **SSL/HTTPS Status**: Verified (TLS 1.3 active)
 

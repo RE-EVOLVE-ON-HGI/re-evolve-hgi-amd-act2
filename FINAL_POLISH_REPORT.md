@@ -36,4 +36,4 @@ Next.js Turbopack compiler output successfully validated:
 
 ## 3. Live Demonstration Sign-off
 
-With all copy refined, build tests passing, and Vercel hosting active at [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app), we issue the final **GO FOR SUBMISSION** sign-off.
+With all copy refined, build tests passing, and Vercel hosting active at [https://release-certification.vercel.app](https://release-certification.vercel.app), we issue the final **GO FOR SUBMISSION** sign-off.

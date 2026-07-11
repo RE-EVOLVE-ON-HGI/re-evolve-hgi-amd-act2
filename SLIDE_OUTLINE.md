@@ -106,7 +106,7 @@ This document provides a slide-by-slide layout for our investor-grade presentati
 ### Slide 14: Conclusion & Live Link
 *   **Header**: Re-Evolve on HGI
 *   **Content**:
-    *   Live URL: `https://frontend-alpha-rose-25.vercel.app`
+    *   Live URL: `https://release-certification.vercel.app`
     *   Passcode: `AMD-GOLD`
     *   GitHub Repository: `RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2`
 *   **Visual**: QR Code pointing to the live website.

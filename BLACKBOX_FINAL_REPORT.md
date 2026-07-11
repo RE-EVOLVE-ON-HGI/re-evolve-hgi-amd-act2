@@ -34,7 +34,7 @@ Re-Evolve on HGI has been audited across all dimensions—repository sanity, dep
   * Release tag `v2.0.0-final` points directly to the latest verified commit.
   
 - **Deployment Health: Excellent**
-  * Live URL: **[https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)**
+  * Live URL: **[https://release-certification.vercel.app](https://release-certification.vercel.app)**
   * SSL Certificate: Secure (TLS 1.3).
   * Page loading and client-side transitions validated via browser subagent.
   

@@ -58,6 +58,6 @@ Re-Evolve on HGI has been audited across all dimensions—repository structure, 
 ## 4. Release Registry
 
 *   **Repository URL**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
-*   **Verified Production URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
+*   **Verified Production URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
 *   **Release Tag**: `v2.0.0-submission`
 *   **Latest Commit SHA**: `07e86d9810ce87ad4f98d6c8e33b4497a030df1f` (updated on freeze)

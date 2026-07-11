@@ -12,7 +12,7 @@
 | **Repository URL** | https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2 |
 | **Visibility** | Public |
 | **Default Branch** | `main` |
-| **Homepage URL** | https://frontend-alpha-rose-25.vercel.app |
+| **Homepage URL** | https://release-certification.vercel.app |
 
 ---
 
@@ -102,7 +102,7 @@
 
 | Environment | URL | Status |
 |-------------|-----|--------|
-| Frontend (Vercel) | https://frontend-alpha-rose-25.vercel.app | Production |
+| Frontend (Vercel) | https://release-certification.vercel.app | Production |
 | Backend (Railway/Render) | Per deployment config | Configured |
 
 ---

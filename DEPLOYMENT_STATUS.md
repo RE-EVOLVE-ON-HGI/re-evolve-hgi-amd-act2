@@ -4,7 +4,7 @@
 
 | Service | Status | URL / Endpoint | Verification |
 |---|---|---|---|
-| **Frontend (HQ Dashboard)** | ✅ ACTIVE | [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app) | Page loads; Interactive simulation and workspace active. |
+| **Frontend (HQ Dashboard)** | ✅ ACTIVE | [https://release-certification.vercel.app](https://release-certification.vercel.app) | Page loads; Interactive simulation and workspace active. |
 | **Backend API (NestJS)** | ✅ ACTIVE | (Railway Internal Endpoint) | Health endpoints `/health` and `/readiness` returning 200 OK. |
 | **Database (PostgreSQL)** | ✅ ACTIVE | Managed pgvector Instance | Connection established; Schema migrations applied. |
 | **Vector Store (Qdrant)** | ✅ ACTIVE | Managed Qdrant Cluster | API responding; Collection indices verified. |

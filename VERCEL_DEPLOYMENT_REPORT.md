@@ -9,8 +9,8 @@
 
 ## 1. Production Deployment Details
 
--   **Public URL**: https://frontend-alpha-rose-25.vercel.app
--   **Production Alias**: `frontend-alpha-rose-25.vercel.app`
+-   **Public URL**: https://release-certification.vercel.app
+-   **Production Alias**: `release-certification.vercel.app`
 -   **Vercel Project Name**: `re-evolve-hgi-amd-act2`
 -   **Vercel Deployment ID**: `dpl_Hv3WfGd7jVRFvWL8Wn5frzEwAoiE`
 -   **Framework Version**: Next.js `16.2.6`

@@ -101,6 +101,6 @@ This file contains the high-fidelity copy, headers, and bullet points designed t
 ### Slide 14: Conclusion & URLs
 *   **Headline**: Re-Evolve on HGI
 *   **Bullet Points**:
-    *   Live URL: `https://frontend-alpha-rose-25.vercel.app`
+    *   Live URL: `https://release-certification.vercel.app`
     *   Passcode: `AMD-GOLD`
     *   GitHub: `RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2`

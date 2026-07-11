@@ -5,7 +5,7 @@
 
 ## 1. Quick Access Summary
 
-*   **Live Application URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
+*   **Live Application URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
 *   **GitHub Repository**: [RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
 *   **Developer Workspace Passcode**: `AMD-GOLD`
 

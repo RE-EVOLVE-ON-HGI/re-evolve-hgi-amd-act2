@@ -11,7 +11,7 @@ This document consolidates our final submission details for the Hackathon review
 *   **Tagline**: The Operating System for Autonomous Intelligence on AMD AI Fabric.
 *   **Target Track**: AI Agent Frameworks & Infrastructure Optimization.
 *   **Repository URL**: [https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2](https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2)
-*   **Active Deployment URL**: [https://frontend-alpha-rose-25.vercel.app](https://frontend-alpha-rose-25.vercel.app)
+*   **Active Deployment URL**: [https://release-certification.vercel.app](https://release-certification.vercel.app)
 
 ---
 

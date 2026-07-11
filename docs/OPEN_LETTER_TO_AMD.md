@@ -358,8 +358,8 @@ The problems are hard enough. We should work on them together.
 
 | Resource | URL |
 |----------|-----|
-| **Live Frontend** | https://frontend-5bsp61y3v-next-unicorns-projects.vercel.app |
-| **Backend Health** | https://frontend-5bsp61y3v-next-unicorns-projects.vercel.app/api/model/health |
+| **Live Frontend** | https://release-certification.vercel.app |
+| **Backend Health** | https://xb8rdgq6.up.railway.app/api/model/health |
 | **Repository** | https://github.com/RE-EVOLVE-ON-HGI/re-evolve-hgi-amd-act2 |
 | **Spec Index** | `SPEC_INDEX.md` |
 | **Traceability Matrix** | `TRACEABILITY_MATRIX.md` |

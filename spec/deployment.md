@@ -5,7 +5,7 @@ The HGI stack is deployed as a distributed set of services to ensure high availa
 
 ### 1.1 Frontend (Vercel)
 - **Framework**: Next.js.
-- **Domain**: `frontend-alpha-rose-25.vercel.app`.
+- **Domain**: `release-certification.vercel.app`.
 - **CI/CD**: Automatic deployments from the `main` branch.
 
 ### 1.2 Backend (Railway)
