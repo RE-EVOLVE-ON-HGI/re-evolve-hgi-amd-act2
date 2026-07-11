@@ -13,7 +13,11 @@
     "strictPropertyInitialization": false,
     "declaration": true,
     "sourceMap": true,
-    "paths": { "@common/*": ["src/common/*"], "@modules/*": ["src/modules/*"] }
+    "paths": {
+      "@common/*": ["src/common/*"],
+      "@modules/*": ["src/modules/*"]
+    }
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
