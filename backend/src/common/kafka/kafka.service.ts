@@ -43,6 +43,11 @@ export class KafkaService implements OnModuleInit, OnModuleDestroy {
 
   /** Call once after all subscriptions are registered (from AppModule bootstrap). */
   async run(): Promise<void> {
+    if (!this.consumer) {
+      this.logger.warn('Kafka consumer is unavailable; skipping consumer startup');
+      return;
+    }
+
     await this.consumer.run({
       eachMessage: async (payload) => {
         const { topic, message } = payload;
