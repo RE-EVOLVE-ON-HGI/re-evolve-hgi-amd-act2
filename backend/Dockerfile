@@ -1,7 +1,7 @@
 # ── build stage ──────────────────────────────────────────────
-FROM node:20-bullseye-slim AS build
+FROM node:20-alpine AS build
 WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache openssl
 COPY package*.json ./
 RUN npm ci
 COPY prisma ./prisma
@@ -10,10 +10,10 @@ COPY . .
 RUN npm run build
 
 # ── runtime stage ────────────────────────────────────────────
-FROM node:20-bullseye-slim AS runtime
+FROM node:20-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
-RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache openssl
 COPY package*.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
