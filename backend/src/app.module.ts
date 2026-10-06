@@ -19,13 +19,16 @@ import { GovernanceModule } from './modules/governance/governance.module';
 import { SimulationModule } from './modules/simulation/simulation.module';
 import { ModelModule } from './modules/model/model.module';
 import { EirModule } from './modules/eir/eir.module';
+import { HealthController } from './health.controller';
 
 @Module({
+  controllers: [HealthController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      typePaths: [join(process.cwd(), 'src', '**', '*.graphql')],
+      autoSchemaFile: join(process.cwd(), 'schema.gql'),
+      sortSchema: true,
       playground: true,
     }),
     // infrastructure

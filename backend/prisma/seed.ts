@@ -2,6 +2,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
+  const bootstrapPassword = process.env.BOOTSTRAP_ADMIN_PASSWORD;
+  if (!bootstrapPassword) {
+    throw new Error('BOOTSTRAP_ADMIN_PASSWORD is required to seed the founder account');
+  }
   const resources = ['agents', 'memory', 'workflows', 'telemetry', 'governance'];
   const actions = ['read', 'write', 'create', 'execute', 'evaluate'];
   for (const r of resources) for (const a of actions) {
@@ -26,12 +30,12 @@ async function main() {
     create: { slug: 're-evolve', name: 'RE-EVOLVE ON HGI', tier: 'SOVEREIGN' },
   });
 
-  // Create default founder user for dashboard access
+  // Create the founder user with a deployment-managed bootstrap password.
   const bcrypt = require('bcrypt');
-  const passwordHash = bcrypt.hashSync('password', 10);
+  const passwordHash = bcrypt.hashSync(bootstrapPassword, 12);
   const user = await prisma.user.upsert({
     where: { email: 'founder@re-evolve.ai' },
-    update: {},
+    update: { passwordHash, status: 'ACTIVE' },
     create: {
       email: 'founder@re-evolve.ai',
       displayName: 'Founder',
