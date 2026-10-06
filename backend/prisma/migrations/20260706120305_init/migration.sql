@@ -35,7 +35,7 @@ CREATE TYPE "TaskStage" AS ENUM ('INTAKE', 'ANALYZE', 'PLAN', 'EXECUTE', 'VALIDA
 CREATE TYPE "TaskStatus" AS ENUM ('QUEUED', 'RUNNING', 'SUCCEEDED', 'FAILED', 'RETRYING', 'CANCELLED');
 
 -- CreateEnum
-CREATE TYPE "MemoryKind" AS ENUM ('CONVERSATION', 'DOCUMENT', 'CODE', 'EVENT', 'CONFIG', 'EPISODIC');
+CREATE TYPE "HgiMemoryKind" AS ENUM ('CONVERSATION', 'DOCUMENT', 'CODE', 'EVENT', 'CONFIG', 'EPISODIC');
 
 -- CreateEnum
 CREATE TYPE "RetentionTier" AS ENUM ('HOT', 'WARM', 'COLD', 'ARCHIVE');
@@ -50,7 +50,7 @@ CREATE TYPE "Severity" AS ENUM ('LOW', 'MEDIUM', 'HIGH', 'CRITICAL');
 CREATE TYPE "ViolationStatus" AS ENUM ('OPEN', 'INVESTIGATING', 'MITIGATED', 'RESOLVED');
 
 -- CreateEnum
-CREATE TYPE "ApprovalStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED', 'ESCALATED');
+CREATE TYPE "HgiApprovalStatus" AS ENUM ('PENDING', 'APPROVED', 'REJECTED', 'ESCALATED');
 
 -- CreateEnum
 CREATE TYPE "WorkflowStatus" AS ENUM ('DRAFT', 'ACTIVE', 'PAUSED', 'ARCHIVED');
@@ -281,7 +281,7 @@ CREATE TABLE "memory_records" (
     "id" TEXT NOT NULL,
     "orgId" TEXT NOT NULL,
     "agentId" TEXT,
-    "kind" "MemoryKind" NOT NULL,
+    "kind" "HgiMemoryKind" NOT NULL,
     "source" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "summary" TEXT,
@@ -383,7 +383,7 @@ CREATE TABLE "approvals" (
     "approverId" TEXT,
     "subjectType" TEXT NOT NULL,
     "subjectId" TEXT NOT NULL,
-    "status" "ApprovalStatus" NOT NULL DEFAULT 'PENDING',
+    "status" "HgiApprovalStatus" NOT NULL DEFAULT 'PENDING',
     "chain" JSONB NOT NULL DEFAULT '[]',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "decidedAt" TIMESTAMP(3),

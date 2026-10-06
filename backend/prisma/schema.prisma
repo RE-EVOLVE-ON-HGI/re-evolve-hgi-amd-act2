@@ -365,6 +365,7 @@ enum MemoryKind {
   EVENT
   CONFIG
   EPISODIC
+  @@map("HgiMemoryKind")
 }
 
 enum RetentionTier {
@@ -512,6 +513,7 @@ enum ApprovalStatus {
   APPROVED
   REJECTED
   ESCALATED
+  @@map("HgiApprovalStatus")
 }
 
 model AuditLog {
