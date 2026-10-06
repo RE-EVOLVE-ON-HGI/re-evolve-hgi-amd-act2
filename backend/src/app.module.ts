@@ -1,8 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
 
 import configuration from './common/config/configuration';
 import { PrismaModule } from './common/prisma/prisma.module';
@@ -25,12 +22,6 @@ import { HealthController } from './health.controller';
   controllers: [HealthController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [configuration] }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'schema.gql'),
-      sortSchema: true,
-      playground: true,
-    }),
     // infrastructure
     PrismaModule, KafkaModule, RedisModule, AuthModule, RealtimeModule, ModelModule, EirModule,
     // domain modules (fully implemented reference set)
