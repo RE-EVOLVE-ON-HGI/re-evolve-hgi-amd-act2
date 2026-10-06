@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { io, Socket } from 'socket.io-client';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
+// The Next.js rewrite proxies this same-origin path to the private API.
+const BACKEND_URL = '';
 
 interface RealtimeMessage {
   channel: string;

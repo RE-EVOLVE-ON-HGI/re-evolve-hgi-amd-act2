@@ -1,4 +1,7 @@
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://xb8rdgq6.up.railway.app';
+// Keep browser traffic same-origin. The production Next server rewrites this
+// path to the Railway-private hgi-api service, so no API URL or token is
+// exposed to the browser bundle.
+const BACKEND_URL = '/api';
 
 // Helper for standard JSON fetches with JWT authentication
 async function fetchJson<T>(path: string, options?: RequestInit): Promise<T | null> {
@@ -11,6 +14,7 @@ async function fetchJson<T>(path: string, options?: RequestInit): Promise<T | nu
   try {
     const res = await fetch(url, {
       ...options,
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
@@ -26,19 +30,19 @@ async function fetchJson<T>(path: string, options?: RequestInit): Promise<T | nu
 }
 
 // User Login helper
-export async function login(email: string, passwordHash: string): Promise<boolean> {
+export async function login(email: string, password: string): Promise<boolean> {
   try {
     const res = await fetch(`${BACKEND_URL}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, passwordHash }),
+      credentials: 'include',
+      body: JSON.stringify({ email, password }),
     });
     if (!res.ok) return false;
     const data = await res.json();
-    if (data.accessToken) {
+    if (data?.session?.user) {
       if (typeof window !== 'undefined') {
-        localStorage.setItem('token', data.accessToken);
-        localStorage.setItem('orgId', data.orgId || 're-evolve');
+        localStorage.setItem('orgId', data.session.user.orgId);
       }
       return true;
     }
