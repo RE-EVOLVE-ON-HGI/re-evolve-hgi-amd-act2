@@ -8,7 +8,13 @@ export default () => ({
     password: process.env.REDIS_PASSWORD,
   },
   kafka: {
-    brokers: (process.env.KAFKA_BROKERS ?? 'localhost:9092').split(','),
+    // Kafka is optional for the API-only deployment.  Do not fall back to a
+    // localhost broker in a container: that produces an unhandled retry error
+    // and prevents the HTTP API from starting when no Kafka service exists.
+    brokers: (process.env.KAFKA_BROKERS ?? '')
+      .split(',')
+      .map((broker) => broker.trim())
+      .filter(Boolean),
     clientId: process.env.KAFKA_CLIENT_ID ?? 'hgi-backend',
     groupId: process.env.KAFKA_GROUP_ID ?? 'hgi-core',
   },
